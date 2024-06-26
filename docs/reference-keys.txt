@@ -1,7 +1,6 @@
 tab:fpr-kable-nr
 fig:overview-map
 fig:fig-multi
-fig:fig-multi-conditional
 intro
 background
 project-location
