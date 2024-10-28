@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="background.html"/>
-<link rel="next" href="references.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -200,9 +200,6 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="sample-data.html"><a href="sample-data.html"><i class="fa fa-check"></i><b>3</b> Sample data</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
-<li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/mybookdown-template" target="blank">Scripts and Data</a></li>
 
@@ -286,15 +283,73 @@ rv(sorted_data)
 })
 }</p>
 <p>shinyApp(ui, server)</p>
+<pre><code>
+&lt;!--chapter:end:0200-background.Rmd--&gt;
 
+
+
+# References {-}
+
+&lt;div id=&quot;refs&quot;&gt;&lt;/div&gt;
+
+
+&lt;br&gt;
+
+Note that this reference was not actually cited in the body of the report but rather in the `index.Rmd` file `yaml` headerj
+under the `no_cite` key.
+
+&lt;!--chapter:end:2000-references.Rmd--&gt;
+
+# Changelog {-}
+
+### mybookdown-template 0.0.4 {-}
+
+  * 20240410
+  * add fpr::fpr_kable to intro
+  * remove `getwd` from `run.R`
+  * stop keeping the `merged_file` (`mybookdown_template.Rmd`)
+  * packages.R now uses `pak`
+
+
+### mybookdown-template 0.0.2 {-}
+
+  * 20220516
+  * add references.bib
+  * add `NEWS.md` file
+  * update `README.md`
+  * update logos
+  * put date on line with version numbers
+  * tighten packages and functions
+
+&lt;!--chapter:end:2090-report-change-log.Rmd--&gt;
+
+
+# Session Info {-}
+
+Information about the computing environment is important for reproducibility. A summary of the computing environment 
+is saved to `session_info.csv` that can be viewed and downloaded from https://github.com/NewGraphEnvironment/mybookdown-template/session_info.csv.
+
+
+``` r
+if(gitbook_on){
+  devtools::session_info(to_file = &#39;session_info.csv&#39;)
+} else {
+  devtools::session_info()
+}</code></pre>
+
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div class="csl-entry">
+Irvine, Allan. (2022) 2024. <span>“<span>NewGraphEnvironment</span>/Fpr.”</span> <a href="https://github.com/NewGraphEnvironment/fpr">https://github.com/NewGraphEnvironment/fpr</a>.
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="background.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
