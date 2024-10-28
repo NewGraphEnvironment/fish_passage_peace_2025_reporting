@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Background | My Bookdown Template</title>
+  <title>3 Sample data | My Bookdown Template</title>
   <meta name="description" content="My Description." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Background | My Bookdown Template" />
+  <meta property="og:title" content="3 Sample data | My Bookdown Template" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="My Description." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Background | My Bookdown Template" />
+  <meta name="twitter:title" content="3 Sample data | My Bookdown Template" />
   
   <meta name="twitter:description" content="My Description." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html"/>
-<link rel="next" href="sample-data.html"/>
+<link rel="prev" href="background.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -223,52 +223,78 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="background" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="project-location" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Project Location<a href="background.html#project-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Here is how we insert a figure and we can reference it like this - Figure <a href="background.html#fig:overview-map">2.1</a>. The caption is in the
-chunk header as <code>fig.cap</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="background.html#cb7-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/nge-icon_name.png&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:overview-map"></span>
-<img src="fig/nge-icon_name.png" alt="Overview map of Study Areas" width="100%" />
-<p class="caption">
-Figure 2.1: Overview map of Study Areas
-</p>
-</div>
-<p><br></p>
-<p>Here is how we do multiple figures in one chunk - side by each (like toasts). We reference it like this -
-Figure <a href="background.html#fig:fig-multi">2.2</a>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="background.html#cb8-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;data/TimePhoto_20220814_112459.jpg&quot;</span>)</span>
-<span id="cb8-2"><a href="background.html#cb8-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb8-3"><a href="background.html#cb8-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;data/TimePhoto_20220814_112923.jpg&quot;</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:fig-multi"></span>
-<img src="data/TimePhoto_20220814_112459.jpg" alt="Multiple figures or photos side by each." width="49.5%" /><img src="fig/pixel.png" alt="Multiple figures or photos side by each." width="1%" /><img src="data/TimePhoto_20220814_112923.jpg" alt="Multiple figures or photos side by each." width="49.5%" />
-<p class="caption">
-Figure 2.2: Multiple figures or photos side by each.
-</p>
-</div>
-<p><br></p>
-<p>Here is how we conditionally include chunk output based on the <code>gitbook_on</code> parameter. If this is the gitbook version,
-the image will NOT be included. If this is the pdf version, this double image will not be included. We do this to make the pdf version read nicely and not be a million pages long due to individual photos taking up a half a page each.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;data/TimePhoto_20220814_112459.jpg&quot;</span>)</span>
-<span id="cb9-2"><a href="background.html#cb9-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
-<span id="cb9-3"><a href="background.html#cb9-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;data/TimePhoto_20220814_112923.jpg&quot;</span>)</span></code></pre></div>
-<p><br></p>
-<p>here is a a shot at a sortable table</p>
-<p>```{shinylive-r}
-library(shiny)
-library(bslib)
-library(DT)</p>
-</div>
+<div id="sample-data" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Sample data<a href="sample-data.html#sample-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>initial_data &lt;- data.frame(
+Item = c(“Apple”, “Banana”, “Orange”, “Pear”),
+Price = c(1.99, 0.99, 1.49, 2.49),
+UserRating = rep(NA, 4), # Column for user inputs
+stringsAsFactors = FALSE
+)</p>
+<p>ui &lt;- page_sidebar(
+theme = bs_theme(),
+title = “Table with User Inputs”,
+sidebar = card(
+radioButtons(“sort_direction”, “Sort Direction:”,
+choices = c(“Highest to Lowest” = “desc”,
+“Lowest to Highest” = “asc”),
+selected = “desc”),
+actionButton(“sort_btn”, “Sort by Ratings”, class = “btn-primary”)
+),</p>
+<p>card(
+card_header(“Interactive Table”),
+div(style = “padding: 15px;”,
+DTOutput(“table”, width = “100%”)
+)
+)
+)</p>
+<p>server &lt;- function(input, output, session) {
+# Reactive value to store the current state of the data
+rv &lt;- reactiveVal(initial_data)</p>
+<p># Create the interactive table
+output$table &lt;- renderDT({
+datatable(
+rv(),
+selection = ‘none’,
+editable = list(
+target = “cell”,
+disable = list(columns = c(0, 1)) # Make only UserRating column editable
+),
+options = list(
+pageLength = 10,
+dom = ‘t’, # Show only the table without other controls
+ordering = FALSE # Disable default sorting
+)
+)
+}, server = FALSE) # Use client-side processing</p>
+<p># Handle cell edits
+observeEvent(input<span class="math inline">\(table_cell_edit, {
+    info &lt;- input\)</span>table_cell_edit
+current_data &lt;- rv()
+current_data[info<span class="math inline">\(row, info\)</span>col] &lt;- as.numeric(info$value)
+rv(current_data)
+})</p>
+<p># Handle sort button click
+observeEvent(input<span class="math inline">\(sort_btn, {
+    current_data &lt;- rv()
+    # Only sort if there are valid ratings
+    if (!all(is.na(current_data\)</span>UserRating))) {
+decreasing &lt;- input<span class="math inline">\(sort_direction == &quot;desc&quot;
+      sorted_data &lt;- current_data[order(current_data\)</span>UserRating, decreasing = decreasing), ]
+rv(sorted_data)
+}
+})
+}</p>
+<p>shinyApp(ui, server)</p>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sample-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="background.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

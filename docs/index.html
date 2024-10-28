@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>My Bookdown Template</title>
   <meta name="description" content="My Description." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="My Bookdown Template" />
   <meta property="og:type" content="book" />
@@ -199,6 +199,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="sample-data.html"><a href="sample-data.html"><i class="fa fa-check"></i><b>3</b> Sample data</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
@@ -232,7 +233,7 @@ Prepared by<br />
 Al Irvine, B.Sc., R.P.Bio. and Lucy Schick, B.Sc.<br />
 New Graph Environment Ltd.</div></em></p>
 <p class="date"><em><div class="line-block"><br />
-Version 0.0.4 2024-07-04</div></em></p>
+Version 0.0.4 2024-10-27</div></em></p>
 </div>
 <div id="acknowledgement" class="section level1 front-matter unnumbered hasAnchor">
 <h1>Acknowledgement<a href="index.html#acknowledgement" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -298,11 +299,28 @@ gitbook.start({
 },
 "toc": {
 "collapse": "section"
+},
+"includes": {
+"in_header": "shinylive-dependencies.html"
 }
 });
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
