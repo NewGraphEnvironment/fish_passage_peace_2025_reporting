@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-<link rel="next" href="sample-data.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -199,7 +199,9 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="sample-data.html"><a href="sample-data.html"><i class="fa fa-check"></i><b>3</b> Sample data</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a></li>
+<li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/mybookdown-template" target="blank">Scripts and Data</a></li>
 
@@ -252,11 +254,8 @@ the image will NOT be included. If this is the pdf version, this double image wi
 <span id="cb9-2"><a href="background.html#cb9-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/pixel.png&quot;</span>)</span>
 <span id="cb9-3"><a href="background.html#cb9-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;data/TimePhoto_20220814_112923.jpg&quot;</span>)</span></code></pre></div>
 <p><br></p>
-<p>here is a a shot at a sortable table</p>
-<p>```{shinylive-r}
-library(shiny)
-library(bslib)
-library(DT)</p>
+<p>A sortable table with user input is demonstrated at <a href="https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024_recomendations" class="uri">https://github.com/NewGraphEnvironment/restoration_wedzin_kwa_2024_recomendations</a>. If we move to quarto (want to but haven’t figured out how to password protect online reports yet) we should be able to include in the body of the same reports……</p>
+
 </div>
 </div>
             </section>
@@ -265,7 +264,7 @@ library(DT)</p>
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="sample-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -314,28 +313,11 @@ gitbook.start({
 },
 "toc": {
 "collapse": "section"
-},
-"includes": {
-"in_header": "shinylive-dependencies.html"
 }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

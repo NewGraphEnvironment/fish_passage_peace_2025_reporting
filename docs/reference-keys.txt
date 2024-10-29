@@ -4,4 +4,3 @@ fig:fig-multi
 intro
 background
 project-location
-sample-data
