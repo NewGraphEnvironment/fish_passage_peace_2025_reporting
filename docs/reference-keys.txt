@@ -1,6 +1,0 @@
-tab:fpr-kable-nr
-fig:overview-map
-fig:fig-multi
-intro
-background
-project-location
