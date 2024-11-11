@@ -8,9 +8,13 @@ tab:fiss-species-table
 fig:fish-gantt-morice
 fig:fish-plot-grad
 fig:fish-plot-width
+tab:tab-fish-spawning-rearing
+tab:tab-fish-spawning-rearing-references
+tab:tab-bcfp-def
 tab:tab-hab-value
 tab:tab-barrier-scoring
 tab:tab-barrier-result
+tab:tab-cost-mult
 tab:tab-moti-params
 intro
 background
