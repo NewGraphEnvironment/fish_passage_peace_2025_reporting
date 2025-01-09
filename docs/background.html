@@ -264,13 +264,19 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="background" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">2</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The study area includes the Bulkley River, Zymoetz River, Kispiox River, Morice River and Kitsumkalum River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>) and is within the traditional territories of the Wet’suwet’en, Gitxsan and Tsimshian.</p>
+<p>The Skeena study area includes the Bulkley River, Zymoetz River, Kispiox River, Morice River and Kitsumkalum River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>) and is within the traditional territories of the Wet’suwet’en, Gitxsan and Tsimshian.</p>
 <p><br></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="background.html#cb5-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/fishpassage_overview.png&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="background.html#cb5-1" tabindex="-1"></a><span class="co"># grab the latest version when updates happen</span></span>
+<span id="cb5-2"><a href="background.html#cb5-2" tabindex="-1"></a><span class="co"># fs::file_copy(</span></span>
+<span id="cb5-3"><a href="background.html#cb5-3" tabindex="-1"></a><span class="co">#   path = &quot;~/Projects/gis/restoration_bc_2024/exports/maps/fishpassage_2024_sern_summary.jpeg&quot;,</span></span>
+<span id="cb5-4"><a href="background.html#cb5-4" tabindex="-1"></a><span class="co">#   new_path = &quot;fig/fishpassage_2024_sern_summary.jpeg&quot;,</span></span>
+<span id="cb5-5"><a href="background.html#cb5-5" tabindex="-1"></a><span class="co">#   overwrite = TRUE</span></span>
+<span id="cb5-6"><a href="background.html#cb5-6" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb5-7"><a href="background.html#cb5-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/fishpassage_2024_sern_summary.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:overview-map"></span>
-<img src="fig/fishpassage_overview.png" alt="Overview map of Study Areas" width="100%" />
+<img src="fig/fishpassage_2024_sern_summary.jpeg" alt="Overview map of Study Areas in the Skeena, Fraser and Mackenzie (FWCP Peace) watersheds" width="100%" />
 <p class="caption">
-Figure 2.1: Overview map of Study Areas
+Figure 2.1: Overview map of Study Areas in the Skeena, Fraser and Mackenzie (FWCP Peace) watersheds
 </p>
 </div>
 <div id="wetsuweten" class="section level2 hasAnchor" number="2.1">
