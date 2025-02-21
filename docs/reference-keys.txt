@@ -43,6 +43,7 @@ engage-partners
 collaborative-gis-environment
 issue-tracking
 mapping
+planning
 habitat-modelling
 fish-passage-assessments
 cost-estimates
