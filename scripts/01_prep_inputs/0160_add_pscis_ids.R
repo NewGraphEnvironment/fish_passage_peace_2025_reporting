@@ -52,10 +52,6 @@ source("scripts/02_reporting/0120-read-sqlite.R")
                  delete_dsn = TRUE)
 
 
-## Backup our changes ------------------
-  source("scripts/01_prep_inputs/0100_backup_forms.R")
-
-
 
 
 # Add PSCIS IDs to form eDNA ---------------
@@ -114,9 +110,6 @@ source("scripts/02_reporting/0120-read-sqlite.R")
                  append = FALSE,
                  delete_dsn = TRUE)
 
-
-## Backup our changes ------------------
-  source("scripts/01_prep_inputs/0100_backup_forms.R")
 
 
 
@@ -178,7 +171,7 @@ source("scripts/02_reporting/0120-read-sqlite.R")
                  delete_dsn = TRUE)
 
 
-  ## Backup our changes ------------------
+# Backup our changes ------------------
   source("scripts/01_prep_inputs/0100_backup_forms.R")
 
 

@@ -3,10 +3,10 @@
 ## Params
 
 # for skeena and fraser
-dir_photos_onedrive <- fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/", params$project_region, "renamed")
+# dir_photos_onedrive <- fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/", params$project_region, "renamed")
 
 # for peace
-# dir_photos_onedrive <- fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/renamed")
+dir_photos_onedrive <- fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/renamed")
 
 # path to form_pscis_<year>
 path_form_pscis <- fs::path(

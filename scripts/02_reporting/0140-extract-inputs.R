@@ -114,3 +114,24 @@ readwritesqlite::rws_write(rd_class_surface, exists = F, delete = T,
 readwritesqlite::rws_disconnect(conn)
 
 }
+
+
+
+
+# Copy fish data over from onedrive -------------------
+
+# Copy from
+path_copy <- fs::path(
+  "~/Library/CloudStorage/OneDrive-Personal/Projects",
+  paste0(params$project_year, "_data"),
+  "fish",
+  paste0("fish_data_tags_joined_", params$project_year ,".csv")
+)
+
+
+
+fs::file_copy(path_copy,
+              fs::path("data"))
+
+
+
