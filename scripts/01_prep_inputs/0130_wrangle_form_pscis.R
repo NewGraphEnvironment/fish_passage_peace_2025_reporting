@@ -57,12 +57,12 @@ for (i in seq_along(name_projects)) {
 
                   # remove white space from comments
                   assessment_comment = stringr::str_squish(assessment_comment),
-                  dplyr::across(tidyselect::matches("assessment_comment|_notes"),
+                  dplyr::across(tidyselect::matches("stream_name|assessment_comment|_notes"),
                                 ~ stringr::str_trim(.x))) |>
 
     # Add in the scores using the new xfm_ functions
-    fpr::fpr_xfm_paw_all_scores_result()  |>
-    fpr::fpr_xfm_paw_xing_fix_size()
+    fpr::fpr_xfm_paw_all_scores_result() |>
+  fpr::fpr_xfm_paw_xing_fix_size()
 
 
 
