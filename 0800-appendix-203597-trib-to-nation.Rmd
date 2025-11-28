@@ -26,10 +26,10 @@ PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info
 
 <br>
 
-```{r map-203597, fig.cap = my_caption, eval = F}
+```{r map-203597, fig.cap = my_caption, eval = T}
  my_caption <- "Map of Tributary To Nation River"
  
- knitr::include_graphics("fig/gis/trib_to_nation.jpeg")
+ knitr::include_graphics("fig/gis/map_trib_to_nation.jpeg")
  
 ```
 
