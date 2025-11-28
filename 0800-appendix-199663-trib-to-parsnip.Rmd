@@ -22,7 +22,7 @@ my_site <- 199663
 
 ## Site Location {.unnumbered}
 
-COST ESTIMATEs AND CORRECT BCFISHPASS HABITAT SHOULD WORK ONCE THIS IS FIXED https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/142
+COST ESTIMATEs AND CORRECT BCFISHPASS HABITAT MODELLING SHOULD WORK ONCE THIS IS FIXED https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/142
 
 PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 20km northeast of community of McLeod Lake, BC, in the Parsnip River watershed group (Figure \@ref(fig:map-199663)). The crossing is located 780m upstream of the stream’s confluence with the Parsnip River on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` road which is the responsibility of BC Timber Sales.
 
@@ -48,7 +48,7 @@ a maximum of `r fpr::fpr_my_wshd(col = 'elev_max')`m to
 
 <br>
 
-PSCIS crossing `r as.character(my_site)` was first assessed with a fish passage assessment as part of this project in 2024 and ranked as a barrier to fish passage with medium value habitat documented [@irvine_schick2025RestoringFish]. The crossing was reassessed in 2025 and a habitat confirmation assessment was conducted due to the presence of medium value habitat and a significant outlet drop at the culvert. 
+PSCIS crossing `r as.character(my_site)` was first assessed in 2024 as part of this project and was ranked as a barrier to fish passage with medium value habitat documented [@irvine_schick2025RestoringFish]. The crossing was reassessed in 2025, and a habitat confirmation was completed due to the presence of medium value habitat and a significant outlet drop at the culvert. Just upstream of the confluence of this tributary and the Parsnip River, grayling have been documented [@norris2024smnorrisbcfishobs; @moe2024KnownBC].
 
 <br>
 
