@@ -1,23 +1,24 @@
 --- 
-title: "Restoring Fish Passage in the Fraser Region - 2025"
+title: "Restoring Fish Passage in the Peace Region - 2025"
 author: |
  |
+ | PEA-F24-F-3944-DCA - NEED TO UPDATE
+ |
  | Prepared for
- | Ministry of Transportation and Infrastructure
- |
- | and
- |
- | Society for Ecosystem Restoration in Northern BC (SERNbc)
+ | Fish and Wildlife Compensation Program 
+ |       and  
+ | Fish Passage Technical Working Group 
  |
  |
  | Prepared by
  | Al Irvine, B.Sc., R.P.Bio. and Lucy Schick, B.Sc.
  | New Graph Environment Ltd.
- |
- | on behalf of
+ | on behalf of 
+ | Society for Ecosystem Restoration in Northern BC
  | 
- | Society for Ecosystem Restoration in Northern BC (SERNbc)
-
+ | Prepared with financial support of the Fish and Wildlife Compensation Program on
+ | behalf of its program partners BC Hydro, the Province of BC, Fisheries and Oceans
+ | Canada, First Nations and Public Stakeholders.
 date: |
  |
  | Version 0.0.1 `r format(Sys.Date(), "%Y-%m-%d")`
@@ -29,20 +30,20 @@ output:
             in_header: header.html
 params:
   run_project: TRUE
-  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_fraser_2025_reporting'
-  report_url: 'https://www.newgraphenvironment.com/fish_passage_fraser_2025_reporting/'
-  job_name: '2025-076-sern-skeena-fraser-fish-passage'
-  repo_name: "fish_passage_fraser_2025_reporting" 
-  gis_project_name: "sern_fraser_2024" 
-  project_region: "fraser"
+  repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting'
+  report_url: 'https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/'
+  job_name: '2025-077-sern-peace-fish-passage'
+  repo_name: "fish_passage_peace_2025_reporting" 
+  gis_project_name: "sern_peace_fwcp_2023" 
+  project_region: "peace"
   project_year: "2025"
-  project_start_year: "2023"
+  project_start_year: "2020"
   model_species: "bt"
-  wsg_code: [LCHL, NECR, FRAN, MORK, UFRA, WILL, TABR, LSAL]
+  wsg_code: [PARS, CARP, CRKD, NATR, PARA, PARS]
   update_packages: FALSE
   update_form_pscis: FALSE
   update_form_fiss_site: FALSE
-  update_form_monitoring: FALSE
+  update_form_monitoring: TRUE
   update_form_edna: FALSE
   update_gis: FALSE
 nocite: |
@@ -54,7 +55,12 @@ nocite: |
   @sloat_etal2017Streamnetwork,
   @woll_etal2017SalmonEcological,
   @porter_etal2008DevelopingFish,
-  @rosenfeld_etal2000Habitatfactors
+  @rosenfeld_etal2000Habitatfactors,
+  @irvine2020ParsnipRiver,
+  @irvine2022PEAF22F3577DCARestoring,
+  @irvine_winterscheidt2023RestoringFish,
+  @irvine_winterscheidt2024RestoringFish,
+  @irvine_schick2025RestoringFish
 documentclass: book
 bibliography: "`r rbbt::bbt_write_bib('references.bib', overwrite = TRUE)`"
 biblio-style: apalike

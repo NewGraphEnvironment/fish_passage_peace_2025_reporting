@@ -3,10 +3,10 @@
 ```{r paths, eval=TRUE}
 
 # for skeena and fraser
-dir_server_photos <- fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/", params$project_region, "renamed"))
+# dir_server_photos <- fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/", params$project_region, "renamed"))
 
 # for peace
-# dir_server_photos <- fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects/", params$job_name, "/data/photos/renamed")
+dir_server_photos <- fs::path_expand(fs::path("~/Library/CloudStorage/OneDrive-Personal/Projects", params$job_name, "data/photos/renamed"))
 
 # CHANGE ONCE INVIDIDUAL REPOS ARE MADE
 dir_repo_photos <- fs::path("~/Projects/repo/","fish_passage_template_reporting", "/data/photos/")
