@@ -136,41 +136,60 @@ Initial outreach about Nation River trib deactivation and CHCO 11000 culvert:
 ### Authentication Setup
 1. OAuth credentials at: `/Users/airvine/Projects/repo/gmailr/quickstart/credentials.json`
 2. Environment variable in `~/.Renviron`: `GMAILR_OAUTH_CLIENT`
-3. User authenticates interactively in RStudio, token gets cached
+3. Authenticate interactively in RStudio, token gets cached
 4. Command line can then use cached token
 
-### Useful gmailr Commands
+### Searching & Reading Emails
 ```r
-library(gmailr)
-gm_auth(email = 'al@newgraphenvironment.com')
+gmailr::gm_auth(email = 'al@newgraphenvironment.com')
 
 # Search messages
-msgs <- gm_messages(search = 'from:Andrew.Upson@gov.bc.ca subject:Kennedy Siding')
+msgs <- gmailr::gm_messages(search = 'from:Andrew.Upson@gov.bc.ca subject:Kennedy Siding')
 
 # Get thread
-thread <- gm_thread('thread_id_here')
+thread <- gmailr::gm_thread('thread_id_here')
 msgs <- thread$messages
 
 # Get message details
-gm_from(msg)
-gm_to(msg)
-gm_date(msg)
-gm_subject(msg)
-gm_body(msg, type = 'text/plain')
+gmailr::gm_from(msg)
+gmailr::gm_to(msg)
+gmailr::gm_date(msg)
+gmailr::gm_subject(msg)
+gmailr::gm_body(msg, type = 'text/plain')
 ```
 
-### blastula Email Pattern
+### Sending Emails (gmailr - supports threading)
 ```r
-email <- blastula::compose_email(
-  body = blastula::md(glue::glue("Email content here"))
-)
+msg <- gmailr::gm_mime() |>
+  gmailr::gm_to(to_addr) |>
+  gmailr::gm_from("al@newgraphenvironment.com") |>
+  gmailr::gm_cc(cc_addr) |>
+  gmailr::gm_subject("Subject line") |>
+  gmailr::gm_html_body(email_body)
 
-email |>
-  blastula::smtp_send(
-    from = "al@newgraphenvironment.com",
-    to = "recipient@email.com",
-    cc = c("cc1@email.com", "cc2@email.com"),
-    subject = "Subject line",
-    credentials = blastula::creds_key(id = "gmail")
-  )
+# Send as new email
+gmailr::gm_send_message(msg)
+
+# Send as reply in thread
+gmailr::gm_send_message(msg, thread_id = "thread_id_here")
+```
+
+### Test Mode Pattern
+```r
+test_mode <- TRUE
+
+if (test_mode) {
+  to_addr <- "al@newgraphenvironment.com"
+  cc_addr <- NULL
+} else {
+  to_addr <- "actual@recipient.com"
+  cc_addr <- c("cc1@example.com", "cc2@example.com")
+}
+
+# Send - no thread in test mode
+if (test_mode) {
+  gmailr::gm_send_message(msg)
+} else {
+  gmailr::gm_send_message(msg, thread_id = thread_id)
+}
 ```
