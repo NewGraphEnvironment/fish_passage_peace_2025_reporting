@@ -1,4 +1,44 @@
-# Findings: BCTS/FWCP Fish Passage Email Communications
+# Findings: Email Communications
+
+## Tone Guide
+
+Guidelines for email tone. Use these categories when requesting email drafts.
+
+### Casual (default)
+Professional but warm. Appropriate for established working relationships.
+- Direct and concise
+- Friendly but not overly familiar
+- No slang ("stoked", "awesome")
+- No commentary on others' situations (e.g., someone being stuck in meetings)
+- Express appreciation simply: "Great to hear..." / "It's great that..."
+
+**Example phrases:**
+- "It's great that one's moving."
+- "We're keen on partnering on..."
+- "2026 dollars probably makes sense."
+
+### Very Casual
+For close working relationships with established rapport (e.g., frequent collaborators).
+- More colloquial language ok
+- Light humor appropriate
+- Can reference shared context/inside jokes
+- Slang acceptable: "stoked", "solid"
+
+**Example phrases:**
+- "Stoked that one's moving."
+- "Appreciate Stephanie pointing me your way while she's in meeting purgatory all week."
+- "Sounds like riding into 2026 makes sense."
+
+### Formal
+For new contacts, senior officials, formal requests.
+- Full sentences, proper structure
+- No contractions
+- Clear and respectful
+- State purpose early
+
+---
+
+## Thread-Specific Context: BCTS/FWCP Fish Passage
 
 ## Email Thread Details
 
