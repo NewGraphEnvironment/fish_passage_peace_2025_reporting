@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -271,8 +269,9 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Habitat Confirmation Assessments</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#fish-sampling"><i class="fa fa-check"></i><b>3.4.1</b> Fish Sampling</a></li>
-<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) sampling</a></li>
-<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.3</b> Aerial Imagery</a></li>
+<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) Sampling</a></li>
+<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#open-source-reporting-framework"><i class="fa fa-check"></i><b>3.4.3</b> Open Source Reporting Framework</a></li>
+<li class="chapter" data-level="3.4.4" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.4</b> Aerial Imagery</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#engineering-design"><i class="fa fa-check"></i><b>3.5</b> Engineering Design</a></li>
 <li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
@@ -330,10 +329,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a>
-<ul>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_reporting_template-0.0.1"><i class="fa fa-check"></i>fish_passage_reporting_template 0.0.1</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
@@ -380,7 +375,7 @@ Figure 5.1: Map of Tributary To Parsnip River
 <div id="background-1" class="section level2 unnumbered hasAnchor">
 <h2>Background<a href="tributary-to-parsnip-river---199663---appendix.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At PSCIS crossing 199663, Tributary To Parsnip River is a
-second order stream and drains a watershed of approximately
+third order stream and drains a watershed of approximately
 1km<sup>2</sup>. The watershed ranges in elevation from
 a maximum of 849m to
 713m near the crossing (Table
@@ -396,7 +391,7 @@ a maximum of 849m to
 <span id="cb65-2"><a href="tributary-to-parsnip-river---199663---appendix.html#cb65-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
 <span id="cb65-3"><a href="tributary-to-parsnip-river---199663---appendix.html#cb65-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
 <span id="cb65-4"><a href="tributary-to-parsnip-river---199663---appendix.html#cb65-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-199663">Table 5.1: </span>Summary of derived upstream watershed statistics for PSCIS crossing 199663.
 </caption>
@@ -466,7 +461,7 @@ SW
 </table>
 <p><br></p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="tributary-to-parsnip-river---199663---appendix.html#cb66-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-bcfp-199663">Table 5.2: </span>Summary of fish habitat modelling for PSCIS crossing 199663.
 </caption>
@@ -492,13 +487,13 @@ Remediation Gain (%)
 BT Rearing (km)
 </td>
 <td style="text-align:right;">
-0.0
+1.6
 </td>
 <td style="text-align:right;">
-0.0
+1.6
 </td>
 <td style="text-align:right;">
-–
+100
 </td>
 </tr>
 <tr>
@@ -506,13 +501,13 @@ BT Rearing (km)
 BT Spawning (km)
 </td>
 <td style="text-align:right;">
-0.0
+0.7
 </td>
 <td style="text-align:right;">
-0.0
+0.7
 </td>
 <td style="text-align:right;">
-–
+100
 </td>
 </tr>
 <tr>
@@ -520,13 +515,13 @@ BT Spawning (km)
 BT Network (km)
 </td>
 <td style="text-align:right;">
-4.1
+9.9
 </td>
 <td style="text-align:right;">
-1.2
+9.3
 </td>
 <td style="text-align:right;">
-29
+94
 </td>
 </tr>
 <tr>
@@ -534,13 +529,13 @@ BT Network (km)
 BT Stream (km)
 </td>
 <td style="text-align:right;">
-3.5
+8.0
 </td>
 <td style="text-align:right;">
-0.7
+7.4
 </td>
 <td style="text-align:right;">
-20
+92
 </td>
 </tr>
 <tr>
@@ -548,10 +543,10 @@ BT Stream (km)
 BT Lake Reservoir (ha)
 </td>
 <td style="text-align:right;">
-2.1
+0.5
 </td>
 <td style="text-align:right;">
-2.1
+0.5
 </td>
 <td style="text-align:right;">
 100
@@ -562,13 +557,13 @@ BT Lake Reservoir (ha)
 BT Wetland (ha)
 </td>
 <td style="text-align:right;">
-8.1
+12.8
 </td>
 <td style="text-align:right;">
-7.6
+12.8
 </td>
 <td style="text-align:right;">
-94
+100
 </td>
 </tr>
 <tr>
@@ -576,13 +571,13 @@ BT Wetland (ha)
 BT Slopeclass03 (km)
 </td>
 <td style="text-align:right;">
-0.3
+3.6
 </td>
 <td style="text-align:right;">
-0.0
+3.0
 </td>
 <td style="text-align:right;">
-0
+83
 </td>
 </tr>
 <tr>
@@ -590,13 +585,13 @@ BT Slopeclass03 (km)
 BT Slopeclass05 (km)
 </td>
 <td style="text-align:right;">
-2.4
+3.6
 </td>
 <td style="text-align:right;">
-0.7
+3.6
 </td>
 <td style="text-align:right;">
-29
+100
 </td>
 </tr>
 <tr>
@@ -604,13 +599,13 @@ BT Slopeclass05 (km)
 BT Slopeclass08 (km)
 </td>
 <td style="text-align:right;">
-0.8
+0.9
 </td>
 <td style="text-align:right;">
-0.0
+0.9
 </td>
 <td style="text-align:right;">
-0
+100
 </td>
 </tr>
 <tr>
@@ -618,13 +613,13 @@ BT Slopeclass08 (km)
 BT Slopeclass15 (km)
 </td>
 <td style="text-align:right;">
-0.0
+0.2
 </td>
 <td style="text-align:right;">
-0.0
+0.2
 </td>
 <td style="text-align:right;">
-–
+100
 </td>
 </tr>
 </tbody>
@@ -647,7 +642,7 @@ pH was 8.2 and
 conductivity was 310 uS/cm.</p>
 <p><br></p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tributary-to-parsnip-river---199663---appendix.html#cb67-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-199663">Table 5.3: </span>Summary of fish passage assessment for PSCIS crossing 199663.
 </caption>
@@ -920,12 +915,12 @@ Fix Span / Diameter
 <div id="stream-characteristics-downstream-of-crossing-199663" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 199663<a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-downstream-of-crossing-199663" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The stream was surveyed downstream from crossing 199663 for 80m (Figure <a href="tributary-to-parsnip-river---199663---appendix.html#fig:photo-199663-01">5.2</a>). The habitat was rated as medium value for salmonid spawning and rearing. The stream had good flow and abundant gravels for 30–40m downstream of the culvert. A wetland was located ~80m downstream of the FSR. The average channel width was 2.6m and the average wetted width was 2.8m. The dominant substrate was cobbles with gravels sub-dominant.Total cover amount was rated as abundant with deep pools dominant. Cover was also present as small woody debris, large woody debris, undercut banks, and overhanging vegetation.</p>
-<!-- The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 2.6m, the average wetted width was 2.8m, and the average gradient was NA%.Total cover amount was rated as abundant with deep pools dominant. Cover was also present as small woody debris, large woody debris, undercut banks, and overhanging vegetation. -->
+<!-- Total cover amount was rated as abundant with deep pools dominant. Cover was also present as small woody debris, large woody debris, undercut banks, and overhanging vegetation.The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 2.6m, the average wetted width was 2.8m, and the average gradient was NA%. -->
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-199663" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 199663<a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-upstream-of-crossing-199663" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 199663 for 600m (Figure <a href="tributary-to-parsnip-river---199663---appendix.html#fig:photo-199663-02">5.3</a>). The habitat was rated as medium value. The dominant substrate was fines with gravels sub-dominant.The average channel width was 3m, the average wetted width was 2.1m, and the average gradient was 2.8%.Total cover amount was rated as abundant with overhanging vegetation dominant. Cover was also present as small woody debris, large woody debris, and undercut banks. The stream was low gradient with significant riparian tree blowdown throughout. Wide floodplain within a well defined canyon (approximately 15m deep with slopes of ~45°). Healthy riparian consisting of herb and shrub cover within sparse spruce forest that appears to have been impacted by some sort of beetle or other affliction. Most of the spruce trees were dead with many already fallen down.</p>
+<p>The stream was surveyed upstream from crossing 199663 for 600m (Figure <a href="tributary-to-parsnip-river---199663---appendix.html#fig:photo-199663-02">5.3</a>). The habitat was rated as medium value. Total cover amount was rated as abundant with overhanging vegetation dominant. Cover was also present as small woody debris, large woody debris, and undercut banks.The dominant substrate was fines with gravels sub-dominant.The average channel width was 3m, the average wetted width was 2.1m, and the average gradient was 2.8%. The stream was low gradient with significant riparian tree blowdown throughout. Wide floodplain within a well defined canyon (approximately 15m deep with slopes of ~45°). Healthy riparian consisting of herb and shrub cover within sparse spruce forest that appears to have been impacted by some sort of beetle or other affliction. Most of the spruce trees were dead with many already fallen down.</p>
 <p><br></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tributary-to-parsnip-river---199663---appendix.html#cb69-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
 <span id="cb69-2"><a href="tributary-to-parsnip-river---199663---appendix.html#cb69-2" tabindex="-1"></a>form_edna <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments_field)</span>
@@ -953,7 +948,7 @@ Fix Span / Diameter
 <span id="cb70-5"><a href="tributary-to-parsnip-river---199663---appendix.html#cb70-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>site) <span class="sc">|&gt;</span> </span>
 <span id="cb70-6"><a href="tributary-to-parsnip-river---199663---appendix.html#cb70-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(Site) <span class="sc">|&gt;</span> </span>
 <span id="cb70-7"><a href="tributary-to-parsnip-river---199663---appendix.html#cb70-7" tabindex="-1"></a>  <span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption, <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-edna-199663">Table 5.4: </span>Summary of eDNA samples collected at site 199663.
 </caption>
@@ -1056,7 +1051,7 @@ Sample collected 25m upstream of culvert inlet on the right bank
 <span id="cb71-2"><a href="tributary-to-parsnip-river---199663---appendix.html#cb71-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
 <span id="cb71-3"><a href="tributary-to-parsnip-river---199663---appendix.html#cb71-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
 <span id="cb71-4"><a href="tributary-to-parsnip-river---199663---appendix.html#cb71-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-199663">Table 5.5: </span>Summary of habitat details for PSCIS crossing 199663.
 </caption>

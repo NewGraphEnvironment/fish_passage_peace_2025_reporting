@@ -75,8 +75,11 @@ electrofishing
 fish-handling-and-processing
 pit-tagging
 environmental-dna-edna-sampling
-edna-sampling-and-filtration
+sample-collection-and-filtration
+quality-assurance
+laboratory-analysis
 edna-extraction
+open-source-reporting-framework
 aerial-imagery
 engineering-design
 remediations

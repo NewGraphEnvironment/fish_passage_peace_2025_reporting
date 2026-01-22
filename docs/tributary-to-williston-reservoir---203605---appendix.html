@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -271,8 +269,9 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Habitat Confirmation Assessments</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#fish-sampling"><i class="fa fa-check"></i><b>3.4.1</b> Fish Sampling</a></li>
-<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) sampling</a></li>
-<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.3</b> Aerial Imagery</a></li>
+<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) Sampling</a></li>
+<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#open-source-reporting-framework"><i class="fa fa-check"></i><b>3.4.3</b> Open Source Reporting Framework</a></li>
+<li class="chapter" data-level="3.4.4" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.4</b> Aerial Imagery</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#engineering-design"><i class="fa fa-check"></i><b>3.5</b> Engineering Design</a></li>
 <li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
@@ -330,10 +329,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a>
-<ul>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_reporting_template-0.0.1"><i class="fa fa-check"></i>fish_passage_reporting_template 0.0.1</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
@@ -396,7 +391,7 @@ a maximum of 1644m to
 <span id="cb95-2"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb95-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of derived upstream watershed statistics for PSCIS crossing &#39;</span>, my_site, <span class="st">&#39;.&#39;</span>),</span>
 <span id="cb95-3"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb95-3" tabindex="-1"></a>           <span class="at">footnote_text =</span> <span class="st">&#39;Elev P60 = Elevation at which 60% of the watershed area is above&#39;</span>,</span>
 <span id="cb95-4"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb95-4" tabindex="-1"></a>           <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-wshd-203605">Table 5.11: </span>Summary of derived upstream watershed statistics for PSCIS crossing 203605.
 </caption>
@@ -466,7 +461,7 @@ SE
 </table>
 <p><br></p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb96-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_bcfp</span>(<span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-bcfp-203605">Table 5.12: </span>Summary of fish habitat modelling for PSCIS crossing 203605.
 </caption>
@@ -647,7 +642,7 @@ pH was 7.6 and
 conductivity was 251 uS/cm.</p>
 <p><br></p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb97-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_cv_summary_memo</span>()</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-culvert-203605">Table 5.13: </span>Summary of fish passage assessment for PSCIS crossing 203605.
 </caption>
@@ -952,7 +947,7 @@ Fix Span / Diameter
 <span id="cb100-5"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb100-5" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>site) <span class="sc">|&gt;</span> </span>
 <span id="cb100-6"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb100-6" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">arrange</span>(Site) <span class="sc">|&gt;</span> </span>
 <span id="cb100-7"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb100-7" tabindex="-1"></a>  <span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption, <span class="at">scroll =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-edna-203605">Table 5.14: </span>Summary of eDNA samples collected at site 203605.
 </caption>
@@ -1055,7 +1050,7 @@ Approximately 45 m upstream of culvert inlet on the left bank
 <span id="cb101-2"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb101-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(Site <span class="sc">%in%</span> <span class="fu">c</span>(my_site)) <span class="sc">|&gt;</span> </span>
 <span id="cb101-3"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb101-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of habitat details for PSCIS crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
 <span id="cb101-4"><a href="tributary-to-williston-reservoir---203605---appendix.html#cb101-4" tabindex="-1"></a>                 <span class="at">scroll =</span> F) </span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-habitat-summary-203605">Table 5.15: </span>Summary of habitat details for PSCIS crossing 203605.
 </caption>

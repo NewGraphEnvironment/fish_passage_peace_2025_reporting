@@ -52,8 +52,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -271,8 +269,9 @@ div.csl-indent {
 <li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.4</b> Habitat Confirmation Assessments</a>
 <ul>
 <li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#fish-sampling"><i class="fa fa-check"></i><b>3.4.1</b> Fish Sampling</a></li>
-<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) sampling</a></li>
-<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.3</b> Aerial Imagery</a></li>
+<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.4.2</b> Environmental DNA (eDNA) Sampling</a></li>
+<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#open-source-reporting-framework"><i class="fa fa-check"></i><b>3.4.3</b> Open Source Reporting Framework</a></li>
+<li class="chapter" data-level="3.4.4" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.4.4</b> Aerial Imagery</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#engineering-design"><i class="fa fa-check"></i><b>3.5</b> Engineering Design</a></li>
 <li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.6</b> Remediations</a></li>
@@ -330,10 +329,6 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html"><i class="fa fa-check"></i>Changelog</a>
-<ul>
-<li class="chapter" data-level="" data-path="changelog.html"><a href="changelog.html#fish_passage_reporting_template-0.0.1"><i class="fa fa-check"></i>fish_passage_reporting_template 0.0.1</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
@@ -466,7 +461,7 @@ applied to the linear spawning and rearing habitat model for this year’s proje
 <span id="cb23-37"><a href="methods.html#cb23-37" tabindex="-1"></a>                 <span class="at">footnote_text =</span> text_footnote,</span>
 <span id="cb23-38"><a href="methods.html#cb23-38" tabindex="-1"></a>                 <span class="at">scroll =</span> F,</span>
 <span id="cb23-39"><a href="methods.html#cb23-39" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&#39;300px&#39;</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-spawning-rearing">Table 3.1: </span>Stream gradient and channel width thresholds used to model potentially highest value fish habitat.
 </caption>
@@ -639,7 +634,7 @@ Data and Information (SEDIS) training conducted through WLRS.</p>
 <span id="cb28-2"><a href="methods.html#cb28-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&#39;Habitat value criteria (Fish Passage Technical Working Group, 2011).&#39;</span>, <span class="at">booktabs =</span> T, <span class="at">label =</span> <span class="cn">NA</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-3"><a href="methods.html#cb28-3" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="at">column =</span> <span class="dv">1</span>, <span class="at">width_min =</span> <span class="st">&#39;1.5in&#39;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-4"><a href="methods.html#cb28-4" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">&quot;condensed&quot;</span>), <span class="at">full_width =</span> T, <span class="at">font_size =</span> font_set)</span></code></pre></div>
-<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-hab-value">Table 3.2: </span>Habitat value criteria (Fish Passage Technical Working Group, 2011).
 </caption>
@@ -692,7 +687,7 @@ No suitable spawning habitat, and habitat with low rearing potential (e.g., loca
 <span id="cb29-7"><a href="methods.html#cb29-7" tabindex="-1"></a></span>
 <span id="cb29-8"><a href="methods.html#cb29-8" tabindex="-1"></a>tab <span class="sc">|&gt;</span></span>
 <span id="cb29-9"><a href="methods.html#cb29-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish Barrier Risk Assessment (MoE 2011).&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-barrier-scoring">Table 3.3: </span>Fish Barrier Risk Assessment (MoE 2011).
 </caption>
@@ -858,7 +853,7 @@ Value
 <p><br></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="methods.html#cb30-1" tabindex="-1"></a>fpr_table_barrier_result <span class="sc">|&gt;</span></span>
 <span id="cb30-2"><a href="methods.html#cb30-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish Barrier Scoring Results (MoE 2011).&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-barrier-result">Table 3.4: </span>Fish Barrier Scoring Results (MoE 2011).
 </caption>
@@ -939,7 +934,7 @@ barrier
 <span id="cb31-17"><a href="methods.html#cb31-17" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb31-18"><a href="methods.html#cb31-18" tabindex="-1"></a>  <span class="co"># dplyr::filter(Class != &#39;FSR&#39; &amp; Surface != &#39;Paved&#39;) |&gt;</span></span>
 <span id="cb31-19"><a href="methods.html#cb31-19" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Cost multiplier table based on road class and surface type.&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-cost-mult">Table 3.5: </span>Cost multiplier table based on road class and surface type.
 </caption>
@@ -1369,7 +1364,7 @@ community access, cost, constructability, fish bearing status and environmental 
 <span id="cb32-7"><a href="methods.html#cb32-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Parameter =</span> spdsht, <span class="at">Description =</span> report) <span class="sc">|&gt;</span></span>
 <span id="cb32-8"><a href="methods.html#cb32-8" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Climate change data collected at MoTi culvert sites&#39;</span>, <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-moti-params">Table 3.6: </span>Climate change data collected at MoTi culvert sites
 </caption>
@@ -1562,24 +1557,34 @@ Describe details and rational for priority rankings
 </div>
 </div>
 <div id="environmental-dna-edna-sampling" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Environmental DNA (eDNA) sampling<a href="methods.html#environmental-dna-edna-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="edna-sampling-and-filtration" class="section level4 hasAnchor" number="3.4.2.1">
-<h4><span class="header-section-number">3.4.2.1</span> eDNA Sampling and Filtration<a href="methods.html#edna-sampling-and-filtration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Environmental DNA (eDNA) samples were collected using two approaches: in-stream filtration with a Haltech EMOS eDNA sampler and a grab-and-go bottle collection method following <span class="citation">Hobbs et al. (2025)</span>. For both approaches, all water collected at a site (typically 1–3L) was treated as a single sample and filtered onto one MCE filter, resulting in one eDNA replicate per site. Typically, one sample was collected upstream and one downstream of the road–stream crossing, although in some cases only a downstream sample was collected. Field blanks were collected at the start of each sampling day using distilled water.</p>
-<p><br></p>
-<p>In-stream filtration was completed using Haltech reusable aluminum housings pre-loaded with mixed cellulose ester (MCE) filters (0.45µm, 1µm, or 1.5µm pore sizes). When turbidity was high, a Haltech pre-filter equipped with a 100µm nitex screen was installed upstream of the MCE filter to remove coarse material and maintain filtration efficiency. After filtration, aluminum housings were returned to their labelled bags and stored in a cooler with ice until the end of the day. Each evening, filters were removed from housings in a clean environment, transferred into coin envelopes placed inside labelled ziplock bags with silica desiccant, and stored in a freezer until shipment. Aluminum housings were sanitized with a bleach solution, reloaded with new filters, and stored in clean ziplock bags for future use.</p>
-<p><br></p>
-<p>At sites where the grab-and-go method was used, stream water was collected in sanitized 1L HDPE Nalgene bottles. For detailed procedures, see <span class="citation">Hobbs et al. (2025)</span>. Bottles were stored in a cooler with ice until the end of the day and then filtered through MCE filters identical to those used for the EMOS sampler. Post-filtration handling followed the same procedures as the in-stream method, with filters transferred to labelled bags with silica desiccant and frozen until shipment. Nalgene bottles were sanitized with a bleach solution after use.</p>
-<p><br></p>
-<p>All eDNA samples were shipped frozen to the University of Northern British Columbia (UNBC) laboratory for analysis.</p>
+<h3><span class="header-section-number">3.4.2</span> Environmental DNA (eDNA) Sampling<a href="methods.html#environmental-dna-edna-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sample-collection-and-filtration" class="section level4 hasAnchor" number="3.4.2.1">
+<h4><span class="header-section-number">3.4.2.1</span> Sample Collection and Filtration<a href="methods.html#sample-collection-and-filtration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Samples were collected using two approaches informed by <span class="citation">Hobbs et al. (2025)</span>: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.</p>
+<p>For in-stream filtration, Haltech reusable aluminum housings were pre-loaded with filters. In high-turbidity conditions, a Haltech pre-filter with a 100µm nitex screen was installed upstream to remove coarse material. For grab-and-go sampling, stream water was collected in sanitized 1L HDPE Nalgene bottles and filtered at the end of each day.</p>
+<p>After filtration, filters were removed from housings in a clean environment, placed in coin envelopes with silica desiccant inside labelled ziplock bags, and frozen until shipment. Aluminum housings and Nalgene bottles were sanitized with bleach solution between uses.</p>
 </div>
-<div id="edna-extraction" class="section level4 hasAnchor" number="3.4.2.2">
-<h4><span class="header-section-number">3.4.2.2</span> eDNA Extraction<a href="methods.html#edna-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="quality-assurance" class="section level4 hasAnchor" number="3.4.2.2">
+<h4><span class="header-section-number">3.4.2.2</span> Quality Assurance<a href="methods.html#quality-assurance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Approximately 10% of samples were collected for quality assurance. Field blanks using distilled water were collected daily. Office blanks were processed at field accommodations by filtering clean water when processing grab-and-go samples. Positive controls were obtained at select sites where electrofishing confirmed species presence prior to eDNA sampling.</p>
+</div>
+<div id="laboratory-analysis" class="section level4 hasAnchor" number="3.4.2.3">
+<h4><span class="header-section-number">3.4.2.3</span> Laboratory Analysis<a href="methods.html#laboratory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Samples were shipped frozen to the University of Northern British Columbia (UNBC) for extraction and analysis. DNA was extracted and analyzed using quantitative polymerase chain reaction (qPCR) with species-specific assays following protocols developed by <span class="citation">Murray and Booth (2023)</span>. Assays targeted mitochondrial genes (COI, CytB) using fluorescent dyes (FAM, VIC, HEX), allowing multiple species to be tested per sample through multiplexing. Target species included Chinook, Coho, Sockeye, Rainbow Trout, Bull Trout, Arctic Grayling, and Kokanee, with additional assays for Coastal Cutthroat and White Sturgeon at select sites.</p>
+<p>Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished using mtDNA-based assays. The Bull Trout assay also detects Dolly Varden, requiring geographic context to interpret results in areas where ranges overlap. Similarly, Rainbow Trout and Coastal Cutthroat assays may cross-react where these species co-occur or hybridize.</p>
+<p>To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An <a href="https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_assays.csv">assay mapping table</a> cross-referencing species codes to assay identifiers and dye types was developed, along with <a href="https://github.com/NewGraphEnvironment/dff-2022/blob/main/scripts/edna_unbc_plan.R">processing scripts</a> to generate sample groupings and a <a href="https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_group_run_order.csv">run order configuration</a> specifying species order within each group.</p>
+</div>
+<div id="edna-extraction" class="section level4 hasAnchor" number="3.4.2.4">
+<h4><span class="header-section-number">3.4.2.4</span> eDNA Extraction<a href="methods.html#edna-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>eDNA was extracted in the dedicated eDNA lab at UNBC and analysed with the protocols developed by <span class="citation">Murray and Booth (2023)</span>.</p>
 </div>
 </div>
-<div id="aerial-imagery" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Aerial Imagery<a href="methods.html#aerial-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="open-source-reporting-framework" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Open Source Reporting Framework<a href="methods.html#open-source-reporting-framework" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This report is produced using open-source tools (R, bookdown) with full version control via git, enabling iterative updates. All code, data, and revision history are publicly accessible in the <a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting">project repository</a>, with ongoing tasks tracked via GitHub <a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reportingissues">issues</a> and version history maintained in the <a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reportingblob/main/NEWS.md">project changelog</a>.</p>
+</div>
+<div id="aerial-imagery" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> Aerial Imagery<a href="methods.html#aerial-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; <span class="nocase">stac-utils</span> 2025; Simoes et al. 2021)</span>.</p>
 </div>
 </div>
@@ -1612,7 +1617,7 @@ Table <a href="methods.html#tab:tab-monitoring-metrics">3.7</a>) outlines the mo
 <span id="cb33-4"><a href="methods.html#cb33-4" tabindex="-1"></a>                                T <span class="sc">~</span> Parameter)) <span class="sc">|&gt;</span> </span>
 <span id="cb33-5"><a href="methods.html#cb33-5" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">scroll =</span> F,</span>
 <span id="cb33-6"><a href="methods.html#cb33-6" tabindex="-1"></a>                 <span class="at">caption_text =</span> <span class="st">&#39;Description of monitoring metrics used for effectiveness monitoring.&#39;</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-monitoring-metrics">Table 3.7: </span>Description of monitoring metrics used for effectiveness monitoring.
 </caption>
