@@ -388,25 +388,28 @@ Captured fish were held in buckets with sufficient water to minimize stress unti
 Fish with a fork length greater than 60 mm and belonging to species approved under the scientific fish collection permit `r fish_col_permit_num` were tagged with Passive Integrated Transponders (PIT tags) using the [Abdominal Cavity](https://www.youtube.com/watch?v=9CKZ9yaS5o8) method outlined by Biomark. To anesthetize fish prior to pit tagging, we used a solution of approximately 0.1 mL of clove oil per 1 L of water (1:10,000). This concentration was selected for its efficiency in providing effective sedation with minimal residual effects, making it ideal for studies in which fish are released back into their natural habitats [@fernandes_etal2017efficacyclove]. The clove oil solution was prepared in advance by dissolving pure clove oil in ethyl alcohol in a 1:9 ratio (clove oil: ethyl alcohol) to enhance solubility, then mixed into the water bucket [@fernandes_etal2017efficacyclove]. Fish were immersed in this solution until they reached an appropriate level of anesthesia for handling and then were tagged. To maintain needle sharpness and minimize injury risk, needles were replaced approximately every 10 fish. Each tagged fish was scanned with the PIT reader, and both the PIT tag ID and row ID were recorded. Once tagged, fish were placed into a bucket of fresh water and allowed to recover before being released back into the stream. Fish information and habitat data will be submitted to the province under scientific fish collection permit `r fish_col_permit_num`.
 
 
-### Environmental DNA (eDNA) sampling
+### Environmental DNA (eDNA) Sampling
 
-#### eDNA Sampling and Filtration
+#### Sample Collection and Filtration
 
-Environmental DNA (eDNA) samples were collected using two approaches: in-stream filtration with a Haltech EMOS eDNA sampler and a grab-and-go bottle collection method following @hobbs_etal2025EnvironmentalDNA. For both approaches, all water collected at a site (typically 1–3L) was treated as a single sample and filtered onto one MCE filter, resulting in one eDNA replicate per site. Typically, one sample was collected upstream and one downstream of the road–stream crossing, although in some cases only a downstream sample was collected. Field blanks were collected at the start of each sampling day using distilled water.
+Samples were collected using two approaches informed by @hobbs_etal2025EnvironmentalDNA: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.
 
+For in-stream filtration, Haltech reusable aluminum housings were pre-loaded with filters. In high-turbidity conditions, a Haltech pre-filter with a 100µm nitex screen was installed upstream to remove coarse material. For grab-and-go sampling, stream water was collected in sanitized 1L HDPE Nalgene bottles and filtered at the end of each day.
 
-<br>
+After filtration, filters were removed from housings in a clean environment, placed in coin envelopes with silica desiccant inside labelled ziplock bags, and frozen until shipment. Aluminum housings and Nalgene bottles were sanitized with bleach solution between uses.
 
-In-stream filtration was completed using Haltech reusable aluminum housings pre-loaded with mixed cellulose ester (MCE) filters (0.45µm, 1µm, or 1.5µm pore sizes). When turbidity was high, a Haltech pre-filter equipped with a 100µm nitex screen was installed upstream of the MCE filter to remove coarse material and maintain filtration efficiency. After filtration, aluminum housings were returned to their labelled bags and stored in a cooler with ice until the end of the day. Each evening, filters were removed from housings in a clean environment, transferred into coin envelopes placed inside labelled ziplock bags with silica desiccant, and stored in a freezer until shipment. Aluminum housings were sanitized with a bleach solution, reloaded with new filters, and stored in clean ziplock bags for future use.
+#### Quality Assurance
 
-<br>
+Approximately 10% of samples were collected for quality assurance. Field blanks using distilled water were collected daily. Office blanks were processed at field accommodations by filtering clean water when processing grab-and-go samples. Positive controls were obtained at select sites where electrofishing confirmed species presence prior to eDNA sampling.
 
-At sites where the grab-and-go method was used, stream water was collected in sanitized 1L HDPE Nalgene bottles. For detailed procedures, see @hobbs_etal2025EnvironmentalDNA. Bottles were stored in a cooler with ice until the end of the day and then filtered through MCE filters identical to those used for the EMOS sampler. Post-filtration handling followed the same procedures as the in-stream method, with filters transferred to labelled bags with silica desiccant and frozen until shipment. Nalgene bottles were sanitized with a bleach solution after use.
+#### Laboratory Analysis
 
-<br>
+Samples were shipped frozen to the University of Northern British Columbia (UNBC) for extraction and analysis. DNA was extracted and analyzed using quantitative polymerase chain reaction (qPCR) with species-specific assays following protocols developed by @murray_booth2023Report2023. Assays targeted mitochondrial genes (COI, CytB) using fluorescent dyes (FAM, VIC, HEX), allowing multiple species to be tested per sample through multiplexing. Target species included Chinook, Coho, Sockeye, Rainbow Trout, Bull Trout, Arctic Grayling, and Kokanee, with additional assays for Coastal Cutthroat and White Sturgeon at select sites.
 
+Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished using mtDNA-based assays. The Bull Trout assay also detects Dolly Varden, requiring geographic context to interpret results in areas where ranges overlap. Similarly, Rainbow Trout and Coastal Cutthroat assays may cross-react where these species co-occur or hybridize.
 
-All eDNA samples were shipped frozen to the University of Northern British Columbia (UNBC) laboratory for analysis.
+To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An [assay mapping table](https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_assays.csv) cross-referencing species codes to assay identifiers and dye types was developed, along with [processing scripts](https://github.com/NewGraphEnvironment/dff-2022/blob/main/scripts/edna_unbc_plan.R) to generate sample groupings and a [run order configuration](https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_group_run_order.csv) specifying species order within each group. 
+
 
 #### eDNA Extraction
 
