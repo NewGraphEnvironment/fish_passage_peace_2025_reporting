@@ -1,13 +1,7 @@
-# ensure pak is installed and up to date from CRAN
+# ensure pak is installed
+# Removed update check that breaks non-interactive builds - see #150
 if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak")
-} else {
-  # Only run this if an update is needed
-  current <- packageVersion("pak")
-  latest <- package_version(available.packages()["pak", "Version"])
-  if (current < latest) {
-    pak::pak("pak")  # uses pak to update itself = no popup
-  }
+  install.packages("pak", repos = "https://cloud.r-project.org")
 }
 
 pkgs_cran <- c(
@@ -18,8 +12,10 @@ pkgs_cran <- c(
   'pagedown',
   'RPostgres',
   'sf',
-  "ggdark",
-  "kableExtra"
+  # removed ggdark - see #149
+  "kableExtra",
+  "english",
+  "pdftools"
 )
 
 pkgs_gh <- c(
@@ -42,8 +38,9 @@ if(params$update_packages){
 }
 
 # load all the packages
+# Strip @branch suffix before basename - see #150
 pkgs_ld <- c(pkgs_cran,
-             basename(pkgs_gh))
+             basename(pkgs_gh) |> stringr::str_remove("@.*"))
 
 lapply(pkgs_ld,
        require,

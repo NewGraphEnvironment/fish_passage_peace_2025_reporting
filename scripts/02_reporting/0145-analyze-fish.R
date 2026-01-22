@@ -1,8 +1,8 @@
 source('scripts/packages.R')
 
 # Grab data from bcfishpass ---------------------
-wsg <- c('LCHL', 'NECR', 'FRAN', "MORK", "UFRA")
-species_of_interest <- c('BT', 'CH', 'CM', 'CO', 'CT', 'DV', 'PK', 'RB','SK', 'ST')
+wsg <- c('PARS', 'CARP', 'CRKD', 'NATR', 'PARA')
+species_of_interest <- c('BT', 'GR', 'KO', 'RB')
 
 fiss_sum <- fpr::fpr_db_query(
   glue::glue(
@@ -38,8 +38,10 @@ fiss_sum |>
 ##lets put it in the sqlite for safekeeping
 conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 readwritesqlite::rws_list_tables(conn)
-readwritesqlite::rws_drop_table("fiss_sum", conn = conn) ##if it exists get rid of it - might be able to just change exists to T in next line
-readwritesqlite::rws_write(fiss_sum, exists = F, delete = TRUE,
+if ("fiss_sum" %in% readwritesqlite::rws_list_tables(conn)) {
+  readwritesqlite::rws_drop_table("fiss_sum", conn = conn)
+}
+readwritesqlite::rws_write(fiss_sum, exists = FALSE, delete = TRUE,
           conn = conn, x_name = "fiss_sum")
 readwritesqlite::rws_list_tables(conn)
 readwritesqlite::rws_disconnect(conn)
@@ -140,7 +142,7 @@ plot_width <- fiss_sum_width |>
   ggplot2::ggplot(ggplot2::aes(x = Width, y = Percent)) +
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::facet_wrap(~species_code, ncol = 2) +
-  ggdark::dark_theme_bw(base_size = 11) +
+  ggplot2::theme_bw(base_size = 11)  # Changed from ggdark, see NewGraphEnvironment/fish_passage_template_reporting#149 +
   ggplot2::labs(x = "Channel Width", y = "Occurrences (%)")
 
 plot_width
@@ -197,7 +199,7 @@ plot_wshed <- fiss_sum_wshed |>
   ggplot2::ggplot(ggplot2::aes(x = Watershed, y = Percent)) +
   ggplot2::geom_bar(stat = "identity") +
   ggplot2::facet_wrap(~species_code, ncol = 2) +
-  ggdark::dark_theme_bw(base_size = 11) +
+  ggplot2::theme_bw(base_size = 11)  # Changed from ggdark, see NewGraphEnvironment/fish_passage_template_reporting#149 +
   ggplot2::labs(x = "Watershed Area", y = "Occurrences (%)") +
   ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
 
