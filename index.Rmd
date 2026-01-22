@@ -39,7 +39,8 @@ params:
   project_year: "2025"
   project_start_year: "2020"
   model_species: "bt"
-  wsg_code: [PARS, CARP, CRKD, NATR, PARA, PARS]
+  wsg_code: [PARS, CARP, CRKD, NATR, PARA]
+  species_of_interest: [BT, GR, KO, RB]
   update_packages: FALSE
   update_form_pscis: FALSE
   update_form_fiss_site: FALSE

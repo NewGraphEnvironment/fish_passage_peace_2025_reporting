@@ -1,8 +1,10 @@
 source('scripts/packages.R')
 
 # Grab data from bcfishpass ---------------------
-wsg <- c('PARS', 'CARP', 'CRKD', 'NATR', 'PARA')
-species_of_interest <- c('BT', 'GR', 'KO', 'RB')
+# Use params from index.Rmd if available, otherwise use defaults
+# See https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/151
+wsg <- if (exists("params") && !is.null(params$wsg_code)) params$wsg_code else c('PARS', 'CARP', 'CRKD', 'NATR', 'PARA')
+species_of_interest <- if (exists("params") && !is.null(params$species_of_interest)) params$species_of_interest else c('BT', 'GR', 'KO', 'RB')
 
 fiss_sum <- fpr::fpr_db_query(
   glue::glue(
@@ -83,20 +85,7 @@ fiss_sum_grad <- dplyr::left_join(
   dplyr::mutate(Percent = round(Count / total_spp * 100, 0))
 
 ##save this for the report
-##burn it all to a file we can use later
 fiss_sum_grad |> readr::write_csv(file = 'data/inputs_extracted/fiss_sum_grad.csv')
-
-# test the plot
-plot_grad <- fiss_sum_grad |>
-  dplyr::filter(gradient_id != 99) |>
-  ggplot2::ggplot(ggplot2::aes(x = Gradient, y = Percent)) +
-  ggplot2::geom_bar(stat = "identity") +
-  ggplot2::facet_wrap(~species_code, ncol = 2) +
-  ggplot2::theme_bw(base_size = 11) +
-  ggplot2::labs(x = "Average Stream Gradient", y = "Occurrences (%)")
-
-plot_grad
-
 
 # Calculate the fish observations vs. channel width ---------------------
 fiss_sum_width_prep1 <- fiss_sum |>
@@ -135,20 +124,6 @@ fiss_sum_width <- dplyr::left_join(
 ## save this for the report
 fiss_sum_width |>
   readr::write_csv(file = "data/inputs_extracted/fiss_sum_width.csv")
-
-# Plot: fish vs. channel width
-plot_width <- fiss_sum_width |>
-  dplyr::filter(!is.na(width_id)) |>
-  ggplot2::ggplot(ggplot2::aes(x = Width, y = Percent)) +
-  ggplot2::geom_bar(stat = "identity") +
-  ggplot2::facet_wrap(~species_code, ncol = 2) +
-  ggplot2::theme_bw(base_size = 11)  # Changed from ggdark, see NewGraphEnvironment/fish_passage_template_reporting#149 +
-  ggplot2::labs(x = "Channel Width", y = "Occurrences (%)")
-
-plot_width
-
-
-# Calculate the fish observations vs. watershed size ---------------------
 
 # Calculate the fish observations vs. watershed size ---------------------
 
@@ -192,50 +167,3 @@ fiss_sum_wshed <- dplyr::left_join(
 ## save this for the report
 fiss_sum_wshed |>
   readr::write_csv(file = "data/inputs_extracted/fiss_sum_wshed.csv")
-
-# Plot: fish vs. watershed size
-plot_wshed <- fiss_sum_wshed |>
-  dplyr::filter(!is.na(Watershed)) |>
-  ggplot2::ggplot(ggplot2::aes(x = Watershed, y = Percent)) +
-  ggplot2::geom_bar(stat = "identity") +
-  ggplot2::facet_wrap(~species_code, ncol = 2) +
-  ggplot2::theme_bw(base_size = 11)  # Changed from ggdark, see NewGraphEnvironment/fish_passage_template_reporting#149 +
-  ggplot2::labs(x = "Watershed Area", y = "Occurrences (%)") +
-  ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
-
-plot_wshed
-
-
-
-# fiss_sum_wshed_filter <- fiss_sum |>
-#   dplyr::filter(upstream_area_ha < 10000)
-#
-# bin_1 <- 0
-# bin_n <- ceiling(max(fiss_sum_wshed_filter$upstream_area_ha, na.rm = TRUE) / 5) * 5
-# bins <- seq(bin_1, bin_n, by = 1000)
-#
-# # Plot: histogram of fish observations vs. upstream watershed area
-# plot_wshed_hist <- ggplot2::ggplot(
-#   fiss_sum_wshed_filter,
-#   ggplot2::aes(x = upstream_area_ha)
-# ) +
-#   ggplot2::geom_histogram(breaks = bins, position = "identity", size = 0.75) +
-#   ggplot2::geom_histogram(
-#     ggplot2::aes(y = ..density..),
-#     breaks = bins,
-#     alpha = 0.5,
-#     position = "identity",
-#     size = 0.75
-#   ) +
-#   ggplot2::facet_wrap(~species_code, ncol = 2) +
-#   ggplot2::scale_x_continuous(breaks = bins[seq(1, length(bins), by = 2)]) +
-#   ggplot2::theme_bw(base_size = 11) +
-#   ggplot2::labs(
-#     x = "Upstream Watershed Area (ha)",
-#     y = "Count Fish (#)"
-#   )
-#
-# plot_wshed_hist
-#
-#
-#
