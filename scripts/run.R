@@ -16,7 +16,6 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
   # update util file functions from staticeimports
   staticimports::import()
   source('scripts/staticimports.R')
-  my_news_to_appendix()
 
   # These files are included in the gitbook version already so we move them out of the build
   files_to_move <- list.files(pattern = ".Rmd$") |>
@@ -67,7 +66,7 @@ source('scripts/02_reporting/0180-photos-extract-metadata.R')
 
 }
 
-# not run but available to remove files we don't need in the gitbook build (sometimes appendices are not built in gitbook)
+11# not run but available to remove files we don't need in the gitbook build (sometimes appendices are not built in gitbook)
 # {
 #
 #   source('scripts/functions.R')
