@@ -1,7 +1,13 @@
-# ensure pak is installed
-# Removed update check that breaks non-interactive builds - see #150
+# ensure pak is installed and up to date from CRAN
 if (!requireNamespace("pak", quietly = TRUE)) {
-  install.packages("pak", repos = "https://cloud.r-project.org")
+  install.packages("pak")
+} else {
+  # Only run this if an update is needed
+  current <- packageVersion("pak")
+  latest <- package_version(available.packages()["pak", "Version"])
+  if (current < latest) {
+    pak::pak("pak")  # uses pak to update itself = no popup
+  }
 }
 
 pkgs_cran <- c(
@@ -12,9 +18,9 @@ pkgs_cran <- c(
   'pagedown',
   'RPostgres',
   'sf',
-  # removed ggdark - see #149
   "kableExtra",
-  "english",
+  "leafem",
+  "leaflet",
   "pdftools"
 )
 
@@ -22,7 +28,7 @@ pkgs_gh <- c(
   "newgraphenvironment/fpr",
   "newgraphenvironment/ngr",
   "newgraphenvironment/staticimports",
-  "lucy-schick/fishbc@updated_data",
+  "newgraphenvironment/fishbc@updated_data",
   "poissonconsulting/readwritesqlite", #https://github.com/poissonconsulting/readwritesqlite/issues/47
   "paleolimbot/rbbt"
 )
