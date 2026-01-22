@@ -47,6 +47,7 @@ params:
   update_form_monitoring: TRUE
   update_form_edna: FALSE
   update_gis: FALSE
+  pscis_funding_project_number: "peace_2025_phase1"
 nocite: |
   @busch_etal2011LandscapeLevelModela, 
   @woll_etal2017SalmonEcological,
