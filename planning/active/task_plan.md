@@ -8,10 +8,11 @@ eDNA UNBC 2025 batch results need to be integrated into Peace's Results chapter 
 
 These must be done before Peace's snapshot is meaningful, otherwise Peace pulls stale data:
 
-- [ ] Push staged M41351 GPKG fix to Mergin (Peace project: `sern_peace_fwcp_2023`)
-- [ ] In template repo: run form backup script (rfp form-backup pipeline — pulls Mergin → refreshes `data/backup/2025/form_edna_2025.csv`)
+- [ ] In template repo: run form backup script (reads local Mergin checkout where M41351 GPKG fix is already staged) — refreshes `data/backup/2025/form_edna_2025.csv`. Expected diff: single row, M41351's `control_blank_field` flips TRUE → FALSE
+- [ ] Verify the CSV diff is exactly that one cell change (sanity check — anything else means upstream form has additional drift we didn't expect)
 - [ ] In template repo: re-run `scripts/edna_unbc_results_explore.R` to regenerate analytic CSVs from the corrected form
 - [ ] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
+- [ ] (Mergin push of the GPKG itself is OUT OF SCOPE here — separate concern, can happen later on its own clock)
 
 ### 1b. Peace snapshot script + initial run
 
