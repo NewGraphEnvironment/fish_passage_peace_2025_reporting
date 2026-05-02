@@ -4,14 +4,32 @@ eDNA UNBC 2025 batch results need to be integrated into Peace's Results chapter 
 
 ## Phase 1: Snapshot data + Peace-local map build
 
-- [ ] Copy `data/edna_unbc_results_2025_analytic.csv` from template repo into Peace `data/`
-- [ ] Copy `data/edna_unbc_results_2025_by_site_target.csv` from template repo into Peace `data/`
+### 1a. Upstream prerequisites (in `fish_passage_template_reporting`, out of this branch's scope but blocking)
+
+These must be done before Peace's snapshot is meaningful, otherwise Peace pulls stale data:
+
+- [ ] Push staged M41351 GPKG fix to Mergin (Peace project: `sern_peace_fwcp_2023`)
+- [ ] In template repo: run form backup script (rfp form-backup pipeline — pulls Mergin → refreshes `data/backup/2025/form_edna_2025.csv`)
+- [ ] In template repo: re-run `scripts/edna_unbc_results_explore.R` to regenerate analytic CSVs from the corrected form
+- [ ] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
+
+### 1b. Peace snapshot script + initial run
+
+- [ ] Create `scripts/edna_inputs_snapshot.R`:
+  - Source: `~/Projects/repo/fish_passage_template_reporting/data/edna_unbc_results_2025_*.csv`
+  - Destination: `data/edna_unbc_results_2025_*.csv` in this repo
+  - Captures upstream commit SHA in a small manifest file (e.g., `data/edna_inputs_snapshot_manifest.txt`) for provenance — what upstream version was snapshotted, when
+  - Header documents refresh procedure inline (no README until pattern reused)
+  - Re-runnable; idempotent on no-change
+- [ ] Run snapshot, verify CSVs in Peace `data/` match upstream
+
+### 1c. Peace-local map build
+
 - [ ] Identify Peace site filter (drive from `params$wsg_code` in `index.Rmd`)
 - [ ] Create `scripts/edna_map_peace.R`:
-  - Reads local CSVs
+  - Reads local CSVs (snapshotted in 1b)
   - Filters to Peace sites (`wsg_code` based)
   - Produces `data/edna_unbc_results_2025_peace_map.html`
-  - Header documents refresh procedure (no README until pattern reused)
 - [ ] Run script, verify output map opens locally + shows only Peace sites
 
 ## Phase 2: Main Results subsection (gitbook + PDF dual)
@@ -71,6 +89,8 @@ For the 3 existing per-site appendices, add brief eDNA subsection IF the site wa
 | Peace builds its own map locally (not link to m1rr0r combined map) | Self-containment + m1rr0r is interim hosting only |
 | Pipeline source-of-truth stays in template repo | First-year UNBC results, prove pattern before crate migration |
 | Branch: `6-edna` | User pattern: `<issue#>-<topic>` |
+| Snapshot is a script, not a manual `cp` | Re-runnable when upstream updates; documents the dependency in code; manifest captures upstream SHA for provenance |
+| Phase 1a (upstream refresh) is blocking but lives outside this branch | The wrangle pipeline + form backup belong to template repo's domain. This branch consumes its outputs. |
 
 ## Errors Encountered
 
