@@ -18,4 +18,10 @@
 - Form backup re-run cleanly; M41351 correction propagated through per-project + combined CSVs
 - Re-ran `scripts/edna_unbc_results_explore.R`; M41351's 4 sample-assay rows now show `control_blank_field=FALSE`
 - Three commits on template `main`: `022781f`, `e571b7c`, `a3201d9` (all pushed)
-- Next: Phase 1b — write Peace's `scripts/edna_inputs_snapshot.R`, run it, verify CSVs landed
+
+### Phase 1b — Peace snapshot script + initial run
+
+- Wrote `scripts/edna_inputs_snapshot.R` (top-level, follows existing convention used by `scripts/edna_unbc_lab.R`). Pulls analytic CSVs from template, captures upstream commit + MD5 in manifest, idempotent on no-change.
+- Considered using `scripts/01_prep_inputs/03xx_*.R` numbered convention but kept top-level since the existing `0300_edna_wrangle.R` does something different (form CSV pull + Mergin GPKG mutation; reaches into template + Mergin at runtime — contradicts self-containment principle, separate concern from issue #6).
+- Initial snapshot run: pinned to template `a3201d9`, 2 CSVs landed under `data/`.
+- Next: Phase 1c — write `scripts/edna_map_peace.R` to filter by `params$wsg_code` and produce a Peace-only map.

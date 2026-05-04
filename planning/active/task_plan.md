@@ -17,15 +17,18 @@ Landed via template repo commits:
 - [x] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
 - [ ] (Mergin push of the GPKG itself is OUT OF SCOPE here — separate concern, can happen later on its own clock)
 
-### 1b. Peace snapshot script + initial run
+### 1b. Peace snapshot script + initial run — DONE 2026-05-04
 
-- [ ] Create `scripts/edna_inputs_snapshot.R`:
+- [x] Create `scripts/edna_inputs_snapshot.R`:
   - Source: `~/Projects/repo/fish_passage_template_reporting/data/edna_unbc_results_2025_*.csv`
   - Destination: `data/edna_unbc_results_2025_*.csv` in this repo
-  - Captures upstream commit SHA in a small manifest file (e.g., `data/edna_inputs_snapshot_manifest.txt`) for provenance — what upstream version was snapshotted, when
+  - Captures upstream commit SHA in `data/edna_inputs_snapshot_manifest.txt` for provenance
   - Header documents refresh procedure inline (no README until pattern reused)
-  - Re-runnable; idempotent on no-change
-- [ ] Run snapshot, verify CSVs in Peace `data/` match upstream
+  - Re-runnable; idempotent on no-change (compares MD5; manifest only rewritten if commit moved or any file copied)
+- [x] Run snapshot, verify CSVs in Peace `data/` match upstream
+  - Pinned to template commit `a3201d9` (the M41351 fix)
+  - 2 CSVs landed: `edna_unbc_results_2025_analytic.csv` + `edna_unbc_results_2025_by_site_target.csv`
+  - Note: `upstream_dirty: true` in manifest reflects template's untracked `comms/` dir; doesn't affect CSV content
 
 ### 1c. Peace-local map build
 
