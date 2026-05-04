@@ -38,4 +38,16 @@
   - Positive-control popup notes for sites with electrofish-confirmed species
 - Map output: 35 sites → 4 office blanks dropped → 31 plotted (28 real samples + 3 field blanks on Controls layer)
 - Added `data/*_files/` to `.gitignore` (sidecar cruft from htmlwidgets `selfcontained=TRUE`)
-- Next: Phase 2 — write the eDNA results subsection in `0400-results.Rmd` (gitbook + pagedown PDF dual). New PR after Phase 1 ships.
+
+### Phase 2 — Results subsection in 0400-results.Rmd
+
+- Verified Methods eDNA section in 0300-methods.Rmd (lines 391-416) is generic + lift-ready — no edits needed.
+- Replaced `INCLUDE LAB RESULTS` stub with:
+  - prep chunk (loads + filters + computes per-species summary)
+  - 2-paragraph narrative (inline-R headline counts + detection framing + ddPCR threshold note)
+  - summary table via `fpr::fpr_kable(scroll = gitbook_on)` — same chunk works in both gitbook (with horizontal scroll) and PDF (static)
+  - inline link to interactive Peace eDNA map via `ngr::ngr_str_link_url`
+- Single chunk for the table (kable) instead of dual DT/kable, since data is small (5 species × 6 cols) and kable renders cleanly in both HTML and PDF — DT only earns its keep on bigger interactive tables. If user wants DT in gitbook later, easy upgrade.
+- Verified prep chunk runs cleanly: 28 real / 3 field-blank / 4 office-blank Peace sites; Rainbow Trout most-detected (22/28), Bull Trout 1/28, Grayling 0/24.
+- Thematic appendix cross-ref deferred to Phase 3.
+- Next: Phase 3 — create `08xx-Appendix-edna.Rmd` thematic appendix with detail tables.

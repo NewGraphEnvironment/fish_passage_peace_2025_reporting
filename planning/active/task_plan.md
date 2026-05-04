@@ -47,17 +47,16 @@ Filter approach changed from `params$wsg_code` (originally proposed) to `source`
   - 28 real environmental samples on default layers + 3 field blanks on Controls layer (off by default)
 - [x] Added `data/*_files/` to `.gitignore` (htmlwidgets sidecar duplicate cruft)
 
-## Phase 2: Main Results subsection (gitbook + PDF dual)
+## Phase 2: Main Results subsection (gitbook + PDF dual) — DONE 2026-05-04
 
-- [ ] Verify Methods eDNA section in `0300-methods.Rmd` (lines 391-416) — should be unchanged, just confirm
-- [ ] Replace `INCLUDE LAB RESULTS` stub in `0400-results.Rmd` with eDNA subsection:
-  - 1-2 paragraph narrative (sites tested, headline findings)
-  - High-level summary table chunk (sites × species, confirmed/not detected counts)
-    - DT interactive for `gitbook_on = TRUE`
-    - `fpr_kable` static for PDF
-  - Link to thematic appendix
-  - Link to Peace map (path/URL strategy depending on output)
-  - Prose adapts to format (no "interactive map below" language in PDF)
+- [x] Verify Methods eDNA section in `0300-methods.Rmd` (lines 391-416) — unchanged, generic, lift-ready
+- [x] Replace `INCLUDE LAB RESULTS` stub in `0400-results.Rmd` with eDNA subsection:
+  - 2-paragraph narrative driven by inline R (counts: real samples / field blanks / office blanks; per-species detection summary)
+  - Single summary table chunk via `fpr::fpr_kable` with `scroll = gitbook_on` — kable renders cleanly in both HTML (gitbook) and PDF (pagedown/Chrome) without needing dual chunks
+  - Map link via `ngr::ngr_str_link_url` against `params$report_url` — same target both formats; renders as clickable link in HTML, text URL in PDF
+  - Thematic appendix cross-ref deferred to Phase 3 (will land when the appendix file is created)
+- [x] Verified prep chunk runs cleanly with snapshotted data (28 real / 3 field-blank / 4 office-blank Peace sites)
+- [ ] Full bookdown gitbook + pagedown builds → Phase 5 validation
 
 ## Phase 3: Thematic appendix `08xx-Appendix-edna.Rmd`
 
