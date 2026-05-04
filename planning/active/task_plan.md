@@ -4,14 +4,17 @@ eDNA UNBC 2025 batch results need to be integrated into Peace's Results chapter 
 
 ## Phase 1: Snapshot data + Peace-local map build
 
-### 1a. Upstream prerequisites (in `fish_passage_template_reporting`, out of this branch's scope but blocking)
+### 1a. Upstream prerequisites (in `fish_passage_template_reporting`, out of this branch's scope but blocking) — DONE 2026-05-03/04
 
-These must be done before Peace's snapshot is meaningful, otherwise Peace pulls stale data:
+Landed via template repo commits:
+- `022781f` Fix form backup script (skip non-form gpkgs + drop sf geometry before CSV write) — two robustness fixes that surfaced when running on current data
+- `e571b7c` Refresh form backups: M41351 control_blank_field correction
+- `a3201d9` Refresh eDNA analytic outputs from corrected form data
 
-- [ ] In template repo: run form backup script (reads local Mergin checkout where M41351 GPKG fix is already staged) — refreshes `data/backup/2025/form_edna_2025.csv`. Expected diff: single row, M41351's `control_blank_field` flips TRUE → FALSE
-- [ ] Verify the CSV diff is exactly that one cell change (sanity check — anything else means upstream form has additional drift we didn't expect)
-- [ ] In template repo: re-run `scripts/edna_unbc_results_explore.R` to regenerate analytic CSVs from the corrected form
-- [ ] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
+- [x] In template repo: run form backup script (reads local Mergin checkout where M41351 GPKG fix is already staged) — refreshes `data/backup/2025/form_edna_2025.csv`. M41351's `control_blank_field` flipped TRUE → FALSE
+- [x] Verify the CSV diff is exactly that one cell change — Peace per-project CSV had the targeted single-cell diff; combined CSV had broader textual diff because of the geometry-drop script fix in `022781f` (CSV no longer carries `geom` WKT column; geometry preserved in `.geojson` + `.gpkg`)
+- [x] In template repo: re-run `scripts/edna_unbc_results_explore.R` to regenerate analytic CSVs from the corrected form
+- [x] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
 - [ ] (Mergin push of the GPKG itself is OUT OF SCOPE here — separate concern, can happen later on its own clock)
 
 ### 1b. Peace snapshot script + initial run

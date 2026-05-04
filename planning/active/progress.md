@@ -6,4 +6,16 @@
 - Filed issue #6 in Peace
 - Created branch `6-edna` off main
 - Scaffolded PWF baseline (this file + task_plan.md + findings.md)
-- Next: read task_plan.md, start Phase 1 — snapshot CSVs from template + build Peace-local map
+- Refined Phase 1 to split upstream/downstream + add snapshot script (commits `d09735d`, `f70ef34`)
+
+## Session 2026-05-03/04 — Phase 1a (upstream prereq) done
+
+- Switched to template repo for upstream prerequisites work
+- Investigated QGIS open-file state (none of the 12 target form gpkgs were locked); proceeded
+- Form backup script needed two robustness fixes before it would run:
+  - Loop 2 was choking on Fraser's polygon `fishpass_mapping.gpkg` via `fpr::fpr_sp_assign_utm` (point-only) — added `"fishpass_mapping"` to `str_exclude`
+  - Loop 3's `readr::write_excel_csv` was failing on sticky `sfc_POINT` geom column ("invalid 'trim' argument") — added `sf::st_drop_geometry` before write
+- Form backup re-run cleanly; M41351 correction propagated through per-project + combined CSVs
+- Re-ran `scripts/edna_unbc_results_explore.R`; M41351's 4 sample-assay rows now show `control_blank_field=FALSE`
+- Three commits on template `main`: `022781f`, `e571b7c`, `a3201d9` (all pushed)
+- Next: Phase 1b — write Peace's `scripts/edna_inputs_snapshot.R`, run it, verify CSVs landed
