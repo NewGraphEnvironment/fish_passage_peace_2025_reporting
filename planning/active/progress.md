@@ -24,4 +24,18 @@
 - Wrote `scripts/edna_inputs_snapshot.R` (top-level, follows existing convention used by `scripts/edna_unbc_lab.R`). Pulls analytic CSVs from template, captures upstream commit + MD5 in manifest, idempotent on no-change.
 - Considered using `scripts/01_prep_inputs/03xx_*.R` numbered convention but kept top-level since the existing `0300_edna_wrangle.R` does something different (form CSV pull + Mergin GPKG mutation; reaches into template + Mergin at runtime — contradicts self-containment principle, separate concern from issue #6).
 - Initial snapshot run: pinned to template `a3201d9`, 2 CSVs landed under `data/`.
-- Next: Phase 1c — write `scripts/edna_map_peace.R` to filter by `params$wsg_code` and produce a Peace-only map.
+
+### Phase 1c — Peace-local map build
+
+- Filter approach pivoted: instead of `params$wsg_code`, used the `source` column from form_edna's combined CSV (project-path tag added during form backup). User instinctively suggested this; matched what made sense.
+- Required two upstream rounds in template to land the supporting columns in the rollups:
+  - `584c606` — Add `source` to analytic + by_site_target + by_site rollups
+  - `85e8964` — Carry control_blank_field/office/species_present_field through rollups
+- Re-snapshotted in Peace twice (idempotent script worked correctly: skipped unchanged files, copied changed ones, manifest updated to latest commit).
+- Wrote `scripts/edna_map_peace.R` mirroring template's combined map but Peace-filtered. Key additions over the template baseline:
+  - Office blanks dropped entirely (inherited fake coords)
+  - Field blanks split into "Controls" layer, hidden by default, distinct gray + heavy black stroke, popup leads with **"FIELD BLANK — protocol QA, not site eDNA"**
+  - Positive-control popup notes for sites with electrofish-confirmed species
+- Map output: 35 sites → 4 office blanks dropped → 31 plotted (28 real samples + 3 field blanks on Controls layer)
+- Added `data/*_files/` to `.gitignore` (sidecar cruft from htmlwidgets `selfcontained=TRUE`)
+- Next: Phase 2 — write the eDNA results subsection in `0400-results.Rmd` (gitbook + pagedown PDF dual). New PR after Phase 1 ships.

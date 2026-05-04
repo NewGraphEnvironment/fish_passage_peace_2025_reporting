@@ -30,14 +30,22 @@ Landed via template repo commits:
   - 2 CSVs landed: `edna_unbc_results_2025_analytic.csv` + `edna_unbc_results_2025_by_site_target.csv`
   - Note: `upstream_dirty: true` in manifest reflects template's untracked `comms/` dir; doesn't affect CSV content
 
-### 1c. Peace-local map build
+### 1c. Peace-local map build — DONE 2026-05-04
 
-- [ ] Identify Peace site filter (drive from `params$wsg_code` in `index.Rmd`)
-- [ ] Create `scripts/edna_map_peace.R`:
-  - Reads local CSVs (snapshotted in 1b)
-  - Filters to Peace sites (`wsg_code` based)
+Filter approach changed from `params$wsg_code` (originally proposed) to `source` column carried through the rollup. `source` is the project-path tag added during form backup; matches what the user instinctively suggested. Two upstream rounds (template commits `584c606`, `85e8964`) added `source` + control flags to the rollups so Peace's filter works on snapshot data alone — no need to read params or join to bcfishpass.
+
+- [x] Identify Peace site filter — `grepl("sern_peace_fwcp_2023", source)` on the `source` column in by_site_target
+- [x] Create `scripts/edna_map_peace.R`:
+  - Reads local snapshotted by_site_target CSV
+  - Filters to Peace sites by `source` pattern
+  - Drops office blanks (their UTM coords are inherited from related sites — fake)
+  - Splits field blanks into a separate "Controls" layer (off by default; mirrors sub-threshold pattern; popup leads with bold "FIELD BLANK" disclaimer)
+  - Adds positive-control popup notes for `control_species_present_field=TRUE` sites
   - Produces `data/edna_unbc_results_2025_peace_map.html`
-- [ ] Run script, verify output map opens locally + shows only Peace sites
+- [x] Run script, verify output map opens locally + shows only Peace sites
+  - 35 Peace site_ids → 4 office blanks dropped → 31 sites on map
+  - 28 real environmental samples on default layers + 3 field blanks on Controls layer (off by default)
+- [x] Added `data/*_files/` to `.gitignore` (htmlwidgets sidecar duplicate cruft)
 
 ## Phase 2: Main Results subsection (gitbook + PDF dual)
 
