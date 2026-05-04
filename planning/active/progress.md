@@ -50,4 +50,17 @@
 - Single chunk for the table (kable) instead of dual DT/kable, since data is small (5 species × 6 cols) and kable renders cleanly in both HTML and PDF — DT only earns its keep on bigger interactive tables. If user wants DT in gitbook later, easy upgrade.
 - Verified prep chunk runs cleanly: 28 real / 3 field-blank / 4 office-blank Peace sites; Rainbow Trout most-detected (22/28), Bull Trout 1/28, Grayling 0/24.
 - Thematic appendix cross-ref deferred to Phase 3.
-- Next: Phase 3 — create `08xx-Appendix-edna.Rmd` thematic appendix with detail tables.
+
+### Phase 3 — Thematic appendix 0850-appendix-edna.Rmd
+
+- Numbering: `0850-` lands between per-site appendices (`0800-appendix-{site_id}`) and references (`2000-`). Bookdown alphabetical default works — no `_bookdown.yml` edit.
+- Anchor `{-#app-edna}` for cross-ref from main Results.
+- 3 tables (all `fpr::fpr_kable`, single chunk each, `scroll = gitbook_on`):
+  - Per-site detection (28 rows × 7 cols, format `CODE(max_droplets)*`)
+  - Field blanks (3 rows, bold protocol-contamination disclaimer)
+  - Retests (22 site×target reruns; Sample type column distinguishes real vs field-blank)
+- Per-species rollup deliberately not duplicated from main Results.
+- Map link at end.
+- Updated main Results to cross-ref the appendix.
+- Verified prep chunks: 28 / 3 / 22 rows.
+- Next: Phase 4 — per-site appendix mentions for the 3 Peace per-site appendices that overlap eDNA-sampled sites.

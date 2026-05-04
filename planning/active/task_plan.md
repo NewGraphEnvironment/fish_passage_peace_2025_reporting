@@ -58,17 +58,21 @@ Filter approach changed from `params$wsg_code` (originally proposed) to `source`
 - [x] Verified prep chunk runs cleanly with snapshotted data (28 real / 3 field-blank / 4 office-blank Peace sites)
 - [ ] Full bookdown gitbook + pagedown builds → Phase 5 validation
 
-## Phase 3: Thematic appendix `08xx-Appendix-edna.Rmd`
+## Phase 3: Thematic appendix `0850-appendix-edna.Rmd` — DONE 2026-05-04
 
-- [ ] Pick the appendix number (consistent with existing convention; check what `08xx` slot is free)
-- [ ] Create file with structure:
-  - Per-site detection table (Peace-filtered)
-  - Per-species detection rollup
-  - QA / retest summary
-  - Link to Peace map
-- [ ] Each table chunk dual-gates gitbook/PDF (DT vs kable)
-- [ ] Add to `_bookdown.yml` rmd_files order
-- [ ] Verify rendering in both formats
+- [x] Picked `0850-` to land between Peace's per-site appendices (`0800-appendix-{site_id}`) and references (`2000-references.Rmd`). Bookdown alphabetical default works — no `_bookdown.yml` rmd_files edit needed.
+- [x] Created `0850-appendix-edna.Rmd` with:
+  - Anchor `{-#app-edna}` (unnumbered, cross-ref-able)
+  - prep chunk loading the same snapshotted CSV as Phase 2's main-results section
+  - **Per-site detection table** (28 rows = real Peace samples, columns: Site ID / Stream / UNBC ID / Pos. control / Detected / Sub-threshold / Not detected; format `CODE(max_droplets)*` with `*` flagging UNBC retests)
+  - **Field blanks table** (3 rows, with bold disclaimer that detections in blanks are protocol contamination, not site eDNA)
+  - **Retests table** (22 site×target combinations UNBC reran, including reruns from both real samples and field blanks; Sample type column distinguishes)
+  - Map link via `ngr::ngr_str_link_url` (same URL pattern as main Results)
+- [x] Per-species rollup deliberately NOT duplicated here — already in main Results table; appendix is for site-level detail.
+- [x] Single `fpr::fpr_kable(scroll = gitbook_on)` per table — works in both gitbook + PDF without dual chunks.
+- [x] Added cross-ref from main Results' eDNA subsection back to `[Appendix - Environmental DNA Results](#app-edna)`.
+- [x] Verified prep chunks run cleanly: 28 per-site / 3 field-blank / 22 retest rows.
+- [ ] Full bookdown gitbook + pagedown render verification → Phase 5
 
 ## Phase 4: Per-site appendix mentions
 
