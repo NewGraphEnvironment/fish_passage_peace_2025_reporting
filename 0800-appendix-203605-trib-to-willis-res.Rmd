@@ -148,19 +148,58 @@ eDNA samples were collected both upstream and downstream of crossing `r as.chara
 ```{r tab-edna-203605}
 my_caption <- paste0("Summary of eDNA samples collected at site ", my_site, ".")
 
-tab_edna |> 
-  dplyr::filter(site == my_site) |> 
-  dplyr::select(-site) |> 
-    dplyr::arrange(Site) |> 
+tab_edna |>
+  dplyr::filter(site == my_site) |>
+  dplyr::select(-site) |>
+    dplyr::arrange(Site) |>
   fpr_kable(caption_text = my_caption, scroll = FALSE)
 
 ```
- 
+
+<br>
+
+## Environmental DNA Results {.unnumbered}
+
+```{r tab-edna-results-203605-prep, include=FALSE}
+edna_results_203605 <- edna_bystargets_peace |>
+  dplyr::filter(grepl("^203605", site_id), !control_blank_field, !control_blank_office) |>
+  dplyr::group_by(site_id) |>
+  dplyr::summarise(
+    `UNBC ID`        = paste(sort(unique(unlist(strsplit(lab_ids, ", ")))), collapse = ", "),
+    `Detected`       = fmt_targets(target[any_clean], max_pos[any_clean], retested[any_clean]),
+    `Sub-threshold`  = fmt_targets(target[any_crude & !any_clean],
+                                   max_pos[any_crude & !any_clean],
+                                   retested[any_crude & !any_clean]),
+    `Not detected`   = fmt_targets(target[!any_crude],
+                                   max_pos[!any_crude],
+                                   retested[!any_crude]),
+    .groups = "drop"
+  ) |>
+  dplyr::rename(`Site ID` = site_id) |>
+  dplyr::arrange(`Site ID`)
+```
+
+eDNA samples were collected upstream and downstream of crossing `r as.character(my_site)` and submitted to UNBC for ddPCR analysis against Bull Trout, Arctic Grayling, Rainbow Trout, and Kokanee assays (the SOCK ddPCR assay does not distinguish between anadromous Sockeye Salmon and landlocked Kokanee; in Peace tributaries above the Peace Canyon Dam, any SOCK detection would be Kokanee). Per-position results are summarized in Table \@ref(tab:tab-edna-results-203605). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran. Sub-threshold signals (1-3 droplets) are tracked separately as they are not interpretable as species presence per ddPCR convention.
+
+<br>
+
+```{r tab-edna-results-203605}
+edna_results_203605 |>
+  fpr::fpr_kable(
+    caption_text = paste0("eDNA detection results at crossing ", my_site, "."),
+    scroll = FALSE
+  )
+```
+
+<br>
+
+Site-level detail across all sampled crossings is in [Appendix - Environmental DNA Results](#app-edna). The `r ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "edna_unbc_results_2025_peace_map.html", anchor_text = "interactive Peace eDNA map")` shows toggleable per-species layers.
+
 <br>
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a `r dplyr::case_when(fpr_my_pscis_info(col_pull = crossing_fix) == "Replace with New Open Bottom Structure" ~ "bridge", fpr_my_pscis_info(col_pull = crossing_fix) == "Replace Structure with Streambed Simulation CBS" ~ "streambed simulation")` (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m span) is recommended. At the time of reporting in 2025, the cost of the work is estimated at \$`r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a `r dplyr::case_when(fpr_my_pscis_info(col_pull = crossing_fix) == "Replace with New Open Bottom Structure" ~ "bridge", fpr_my_pscis_info(col_pull = crossing_fix) == "Replace Structure with Streambed Simulation CBS" ~ "streambed simulation")` (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m span) is recommended. At the time of reporting in 2026, the cost of the work is estimated at \$`r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
 
 <br>
 

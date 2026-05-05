@@ -74,13 +74,21 @@ Filter approach changed from `params$wsg_code` (originally proposed) to `source`
 - [x] Verified prep chunks run cleanly: 28 per-site / 3 field-blank / 22 retest rows.
 - [ ] Full bookdown gitbook + pagedown render verification → Phase 5
 
-## Phase 4: Per-site appendix mentions
+## Phase 4: Per-site appendix mentions — DONE 2026-05-04
 
-For the 3 existing per-site appendices, add brief eDNA subsection IF the site was sampled:
+All 3 per-site appendices already had a `## Environmental DNA Sampling {.unnumbered}` section for collection metadata. Added a new `## Environmental DNA Results {.unnumbered}` section after it in each one — different concern (lab outcomes vs collection effort).
 
-- [ ] `0800-appendix-199663-trib-to-parsnip.Rmd` — eDNA subsection if applicable
-- [ ] `0800-appendix-203597-trib-to-nation.Rmd` — same
-- [ ] `0800-appendix-203605-trib-to-willis-res.Rmd` — same
+- [x] `0800-appendix-199663-trib-to-parsnip.Rmd` — 2-position table (RAIN at both, BURB at ds only); narrative notes Burbot was tested only at this crossing among Peace 2025 sites
+- [x] `0800-appendix-203597-trib-to-nation.Rmd` — 2-position table (RAIN at both real samples) + bold callout for the field blank `203597_ds_ed1a` (M41365) with explicit framing as protocol contamination, not site eDNA
+- [x] `0800-appendix-203605-trib-to-willis-res.Rmd` — 2-position table (RAIN detected at both, BULT sub-threshold at both)
+
+Polish + cross-cutting fixes bundled in the same commit:
+
+- [x] `fmt_targets()` helper hoisted into Phase 2 prep chunk so it's globally available downstream (Phase 4 per-site appendices use it; Phase 3 appendix has its own redundant copy that's harmless to leave)
+- [x] Phase 2 main summary table + Phase 3 field blanks table changed to `scroll = FALSE` (small tables don't need horizontal-scroll wrapper; was leaving empty space below)
+- [x] `SOCK` species name changed from "Sockeye Salmon" to "Kokanee" in Peace context (no anadromous Sockeye above the Peace Canyon Dam; SOCK ddPCR assay would detect landlocked Kokanee). Per-site narratives note this assay nuance.
+- [x] "At the time of reporting in 2025" → "...in 2026" across the 3 per-site appendices (publication year vs project_year)
+- [x] `scripts/run_gitbook_iter.R` restore section refactored to defensive loop (per-file try + cat) — earlier mapply form silently no-op'd, leaving files stranded in `hold/`. Verified working on rebuild.
 
 ## Phase 5: Validation
 

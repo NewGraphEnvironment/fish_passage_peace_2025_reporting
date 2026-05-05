@@ -687,6 +687,19 @@ norm_lgl <- function(x) {
   out
 }
 
+# Used in main Results, the thematic appendix, and the per-site appendices —
+# defining once here so every consumer downstream in the bookdown merge order
+# can use it without redefinition.
+fmt_targets <- function(target, max_pos, retested) {
+  if (length(target) == 0) return("—")
+  parts <- paste0(
+    target,
+    "(", ifelse(is.na(max_pos), "?", max_pos), ")",
+    ifelse(retested, "*", "")
+  )
+  paste(parts, collapse = ", ")
+}
+
 edna_bystargets_peace <- readr::read_csv(
   "data/edna_unbc_results_2025_by_site_target.csv",
   show_col_types = FALSE
@@ -718,7 +731,10 @@ edna_species_names <- c(
   RAIN2 = "Rainbow Trout (confirmation primer)",
   CHIN  = "Chinook Salmon",
   COHO  = "Coho Salmon",
-  SOCK  = "Sockeye Salmon",
+  # In Peace tributaries above the Peace Canyon Dam there are no
+  # anadromous Sockeye Salmon — the SOCK ddPCR assay detects landlocked
+  # Kokanee. Different from Fraser/Skeena where SOCK = Sockeye Salmon.
+  SOCK  = "Kokanee",
   BURB  = "Burbot"
 )
 
@@ -753,7 +769,7 @@ Per-species detection results across the `r n_edna_real_sites` real environmenta
 edna_summary_peace |>
   fpr::fpr_kable(
     caption_text = "Per-species summary of eDNA results across real environmental samples in the Peace project area (excludes field and office blanks).",
-    scroll = gitbook_on
+    scroll = FALSE
   )
 ```
 

@@ -75,3 +75,17 @@
 - Pagedown PDF build deferred to Phase 5 proper.
 
 ### Next: Phase 4 — per-site appendix mentions for the 3 Peace per-site appendices that overlap eDNA-sampled sites
+
+### Phase 4 — per-site appendix mentions
+
+- All 3 per-site appendices had eDNA samples. Each got a new `## Environmental DNA Results {.unnumbered}` section after the existing `## Environmental DNA Sampling` (collection metadata stays as-is, results come after).
+- Tables: small kable per crossing (2-3 rows), `scroll = FALSE` (no empty-space wrapper below).
+- 203597 has a field-blank callout (M41365 contaminated RAIN signal — explicit "protocol contamination, not site eDNA at this location").
+- Bundled polish:
+  - Hoisted `fmt_targets()` to Phase 2 prep (global)
+  - Phase 2 main summary + Phase 3 field blanks: `scroll = FALSE` (small-table polish per user)
+  - SOCK → Kokanee in Peace context (no anadromous Sockeye above Peace Canyon Dam)
+  - "At the time of reporting in 2025" → "2026" in 3 per-site appendices
+  - Iter script restore refactored to defensive loop (verified working — files cleanly restored on the rebuild)
+- Build verified: 251/251 chunks rendered; defensive restore loop logged each rename.
+- Next: Phase 5 — pagedown PDF build verification, full validation pass.

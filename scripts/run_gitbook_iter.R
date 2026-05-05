@@ -41,16 +41,37 @@ fs::file_copy(
 # Build
 rmarkdown::render_site(output_format = 'bookdown::gitbook', encoding = 'UTF-8')
 
-# Restore moved files
-mapply(file.rename, from = files_destination, to = files_to_move)
-if (file.exists("hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html")) {
-  fs::file_copy(
-    "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
-    "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
-    overwrite = TRUE
-  )
+# Restore moved files. Defensive loop with per-file reporting — earlier
+# `mapply(file.rename, ...)` form silently no-op'd on at least one run and
+# left files stranded in hold/. This loop surfaces what happens on each file.
+cat("\n=== Restoring moved files ===\n")
+for (i in seq_along(files_destination)) {
+  src <- files_destination[i]
+  dst <- files_to_move[i]
+  if (!file.exists(src)) {
+    cat(sprintf("  WARN: source missing, cannot restore: %s\n", src))
+    next
+  }
+  if (file.exists(dst)) {
+    cat(sprintf("  WARN: dest already exists, removing first: %s\n", dst))
+    file.remove(dst)
+  }
+  ok <- file.rename(src, dst)
+  cat(sprintf("  %s -> %s : %s\n", src, dst, ok))
 }
-file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
+
+# Restore the pre-existing phase 1 appendix HTML
+phase1_src <- "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
+phase1_dst <- "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
+if (file.exists(phase1_src)) {
+  ok <- fs::file_copy(phase1_src, phase1_dst, overwrite = TRUE)
+  cat(sprintf("  Phase 1 appendix HTML restored: %s\n", as.character(ok)))
+}
+
+# Move the placeholder back to hold/
+if (file.exists('0600-appendix-placeholder.Rmd')) {
+  file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
+}
 
 # Auto-open results chapter (or fall back to index.html)
 results_html <- list.files("docs", pattern = "^results", ignore.case = TRUE, full.names = TRUE)[1]
