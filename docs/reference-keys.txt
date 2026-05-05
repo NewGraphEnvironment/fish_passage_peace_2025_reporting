@@ -33,6 +33,7 @@ tab:tab-wshd-199663
 tab:tab-culvert-bcfp-199663
 tab:tab-culvert-199663
 tab:tab-edna-199663
+tab:tab-edna-results-199663
 tab:tab-habitat-summary-199663
 fig:photo-199663-01
 fig:photo-199663-02
@@ -41,6 +42,7 @@ tab:tab-wshd-203597
 tab:tab-culvert-bcfp-203597
 tab:tab-culvert-203597
 tab:tab-edna-203597
+tab:tab-edna-results-203597
 tab:tab-habitat-summary-203597
 fig:photo-203597-01
 fig:photo-203597-02
@@ -49,6 +51,7 @@ tab:tab-wshd-203605
 tab:tab-culvert-bcfp-203605
 tab:tab-culvert-203605
 tab:tab-edna-203605
+tab:tab-edna-results-203605
 tab:tab-habitat-summary-203605
 fig:photo-203605-01
 fig:photo-203605-02
