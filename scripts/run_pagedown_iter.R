@@ -48,15 +48,48 @@ input_html  <- paste0(input_html_stem, ".html")
 output_pdf  <- file.path("docs", paste0(output_pdf_stem, ".pdf"))
 
 # --- Move 0600 appendix out (per run.R block 2: too big for PDF) ---------
-if (file.exists('hold/0600-appendix.Rmd')) {
-  file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+# Defensive: report each rename outcome (matches gitbook iter pattern after
+# bare mapply was observed to silently no-op).
+move_to_hold <- function(path) {
+  if (!file.exists(path)) {
+    cat(sprintf("  WARN: %s missing, skipping move-to-hold\n", path))
+    return(invisible(FALSE))
+  }
+  hold_path <- file.path("hold", basename(path))
+  if (file.exists(hold_path)) {
+    cat(sprintf("  hold/ already has %s, removing first\n", basename(path)))
+    file.remove(hold_path)
+  }
+  ok <- file.rename(path, hold_path)
+  cat(sprintf("  %s -> %s : %s\n", path, hold_path, ok))
+  invisible(ok)
 }
-file.rename('0600-appendix.Rmd', 'hold/0600-appendix.Rmd')
+move_back_from_hold <- function(path) {
+  hold_path <- file.path("hold", basename(path))
+  if (!file.exists(hold_path)) {
+    cat(sprintf("  WARN: %s not in hold/, cannot restore\n", basename(path)))
+    return(invisible(FALSE))
+  }
+  if (file.exists(path)) {
+    cat(sprintf("  %s already exists, removing first\n", path))
+    file.remove(path)
+  }
+  ok <- file.rename(hold_path, path)
+  cat(sprintf("  %s -> %s : %s\n", hold_path, path, ok))
+  invisible(ok)
+}
 
-# Restore 0600 even on render crash (so the repo doesn't get stranded)
+cat("\n=== Moving 0600 appendix out (too big for PDF) ===\n")
+# If a previous PDF run left 0600 in hold/, restore first so move-to-hold is symmetric
+if (file.exists('hold/0600-appendix.Rmd') && !file.exists('0600-appendix.Rmd')) {
+  move_back_from_hold('0600-appendix.Rmd')
+}
+move_to_hold('0600-appendix.Rmd')
+
+# Crash-safe restore (so the repo doesn't get stranded if render fails)
 on.exit({
   if (file.exists('hold/0600-appendix.Rmd') && !file.exists('0600-appendix.Rmd')) {
-    file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+    move_back_from_hold('0600-appendix.Rmd')
   }
 }, add = TRUE)
 
@@ -64,7 +97,8 @@ on.exit({
 rmarkdown::render_site(output_format = 'pagedown::html_paged', encoding = 'UTF-8')
 
 # --- Restore 0600 appendix ----------------------------------------------
-file.rename('hold/0600-appendix.Rmd', '0600-appendix.Rmd')
+cat("\n=== Restoring 0600 appendix from hold/ ===\n")
+move_back_from_hold('0600-appendix.Rmd')
 
 # --- Chrome print HTML -> PDF -------------------------------------------
 cat(sprintf("\nPrinting %s -> %s ...\n", input_html, output_pdf))

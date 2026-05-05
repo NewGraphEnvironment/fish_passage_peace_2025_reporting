@@ -24,26 +24,11 @@ norm_lgl <- function(x) {
   out
 }
 
-edna_species_names <- c(
-  BULT  = "Bull Trout",
-  GRAY  = "Arctic Grayling",
-  RAIN  = "Rainbow Trout",
-  RAIN2 = "Rainbow Trout (confirmation primer)",
-  CHIN  = "Chinook Salmon",
-  COHO  = "Coho Salmon",
-  SOCK  = "Sockeye Salmon",
-  BURB  = "Burbot"
-)
-
-fmt_targets <- function(target, max_pos, retested) {
-  if (length(target) == 0) return("—")
-  parts <- paste0(
-    target,
-    "(", ifelse(is.na(max_pos), "?", max_pos), ")",
-    ifelse(retested, "*", "")
-  )
-  paste(parts, collapse = ", ")
-}
+# `edna_species_names` and `fmt_targets` are defined globally in 0400-results.Rmd's
+# Phase 2 prep chunk. They flow through to this appendix via the bookdown merge
+# order (0400 < 0850 alphabetically). Don't redefine here — the prior local copy
+# drifted from main Results' Kokanee labelling and produced inconsistent species
+# names in the same report (caught by /code-check 2026-05-05).
 
 edna_bystargets_app <- readr::read_csv(
   "data/edna_unbc_results_2025_by_site_target.csv",
