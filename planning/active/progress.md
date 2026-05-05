@@ -88,4 +88,16 @@
   - "At the time of reporting in 2025" → "2026" in 3 per-site appendices
   - Iter script restore refactored to defensive loop (verified working — files cleanly restored on the rebuild)
 - Build verified: 251/251 chunks rendered; defensive restore loop logged each rename.
-- Next: Phase 5 — pagedown PDF build verification, full validation pass.
+
+### Phase 5 (in progress) — pagedown PDF verification
+
+- Wrote `scripts/run_pagedown_iter.R` mirroring `scripts/run.R` block 2 with the same robustness fixes the gitbook iter has: explicit CRAN mirror, defensive cleanup, auto-open. Auto-toggles `gitbook_on` FALSE at start, restores TRUE via `on.exit` (wrapped in a `build_pdf()` function so the `on.exit` actually fires — top-level `on.exit` in Rscript silently no-ops, learned that on first run when gitbook_on stayed FALSE post-build).
+- Found pre-existing template-spawn drift: `_bookdown.yml` `book_filename: "fish_passage_template_reporting"` (template name) but `params$repo_url` basename is the regional name. Iter script reads both and uses each appropriately (template name for input HTML pagedown actually produces, regional name for output PDF). To file as separate cleanup later.
+- PDF built successfully: 6.7 MB at `docs/fish_passage_peace_2025_reporting.pdf`. All eDNA chunks render cleanly in PDF format. 2 cosmetic jQuery warnings during chrome_print (pagedown HTML doesn't ship jQuery; some optional UI features fall through, doesn't affect content).
+- Visual review confirmed: main Results subsection + thematic appendix tables + per-site Results sections all render correctly in PDF.
+
+### Phase 5 remaining
+
+- [ ] Test self-containment: clone Peace fresh in a temp dir and run the iter scripts to confirm no cross-repo runtime deps slipped in
+- [ ] `/code-check` on the staged diff before final PR
+- [ ] `/planning-archive` + `/gh-pr-push`
