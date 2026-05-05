@@ -63,4 +63,15 @@
 - Map link at end.
 - Updated main Results to cross-ref the appendix.
 - Verified prep chunks: 28 / 3 / 22 rows.
-- Next: Phase 4 — per-site appendix mentions for the 3 Peace per-site appendices that overlap eDNA-sampled sites.
+
+### Mid-cycle: gitbook smoke build (Phase 5 partial — gitbook only, not PDF)
+
+- Wrote `scripts/run_gitbook_iter.R` for fast gitbook-only iteration. Two adjustments needed before first successful run:
+  - Set CRAN mirror at top of script (Rscript doesn't inherit RStudio's setting; `scripts/packages.R` calls `available.packages()` and errors without a repo)
+  - Added `update_bib: FALSE` param + gated `bibliography:` line in `index.Rmd` (rbbt::bbt_write_bib was erroring on 25 missing citation keys — drift between Rmd prose and current Zotero state. Filed as #7 with the bib_repair.R approach from restoration_wedzin_kwa_2024.)
+- Build then succeeded: 239/239 chunks rendered. All eDNA chunks rendered correctly: `tab-edna-summary-prep`, `tab-edna-summary` (main Results), `app-edna-prep`, `tab-edna-per-site`, `tab-edna-field-blanks`, `tab-edna-retests` (appendix).
+- Render verified visually: Results subsection narrative + summary table + cross-refs working; appendix detail tables rendering; map link target correct.
+- Known bug in iter script: restore section didn't fully fire on first run — `0600-appendix.Rmd` + `2300-Attachment...Rmd` stayed in `hold/`. Manually restored. To debug separately.
+- Pagedown PDF build deferred to Phase 5 proper.
+
+### Next: Phase 4 — per-site appendix mentions for the 3 Peace per-site appendices that overlap eDNA-sampled sites
