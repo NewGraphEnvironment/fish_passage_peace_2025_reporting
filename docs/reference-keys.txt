@@ -26,6 +26,7 @@ tab:cost-est-phase-2
 tab:tab-habitat-summary
 tab:tab-wshd-sum-all
 fig:plot-model-all
+tab:tab-edna-summary
 tab:tab-mon-overview
 fig:map-199663
 tab:tab-wshd-199663
@@ -52,6 +53,9 @@ tab:tab-habitat-summary-203605
 fig:photo-203605-01
 fig:photo-203605-02
 fig:photo-203605-03
+tab:tab-edna-per-site
+tab:tab-edna-field-blanks
+tab:tab-edna-retests
 introduction
 background
 project-location

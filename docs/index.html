@@ -29,7 +29,7 @@
   
   
 
-<link rel="next" href="executive-summary.html"/>
+<link rel="next" href="ai-disclosure.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -60,7 +62,7 @@
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-binding-2.2.3/leaflet.js"></script>
-<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
 <link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
 <script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
@@ -126,7 +128,6 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -235,6 +236,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="ai-disclosure.html"><a href="ai-disclosure.html"><i class="fa fa-check"></i>AI Disclosure</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
@@ -328,10 +330,16 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#structure-remediation-and-cost-estimate-2"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html"><i class="fa fa-check"></i><strong>Appendix - Environmental DNA Results</strong></a>
+<ul>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#per-site-detection-results"><i class="fa fa-check"></i>Per-site detection results</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#field-blanks"><i class="fa fa-check"></i>Field blanks</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#retests"><i class="fa fa-check"></i>Retests</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i><strong>Attachment - Habitat Assessment and Fish Sampling Data</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-bayes.html"><a href="attach-bayes.html"><i class="fa fa-check"></i><strong>Attachment - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
@@ -375,17 +383,14 @@ Prepared with financial support of the Fish and Wildlife Compensation Program on
 behalf of its program partners BC Hydro, the Province of BC, Fisheries and Oceans<br />
 Canada, First Nations and Public Stakeholders.</div></em></p>
 <p class="date"><em><div class="line-block"><br />
-Version 0.0.1 2026-01-22</div></em></p>
+Version 0.0.1 2026-05-04</div></em></p>
 </div>
 <div id="acknowledgement" class="section level1 front-matter unnumbered hasAnchor">
 <h1>Acknowledgement<a href="index.html#acknowledgement" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>At New Graph Environment, we understand our well-being as inseparable from the health of the land and waters we work within. When we care for ecosystems, we care for ourselves and for the communities connected to them. This relationship is not metaphorical — it is the foundation of our practice.</p>
 <p>Modern civilization has a long journey ahead to acknowledge and address the historic and ongoing impacts of colonialism that have resulted in harm to the cultures and livelihoods living interconnected with our ecosystems for many thousands of years.</p>
-<script>
-title=document.getElementById('header');
-title.innerHTML = '<img src="fig/logo_sern/SERNbc-Logo-HALF.jpg" alt="NewGraph">' + title.innerHTML 
-
-</script>
-
+<p>This work takes place within the territories of [Nations], who have stewarded these lands and waters since time immemorial. [Project-specific connection to territory, governance, species, or watershed.]</p>
+<p>[Funding and partner acknowledgements.]</p>
 </div>
             </section>
 
@@ -393,7 +398,7 @@ title.innerHTML = '<img src="fig/logo_sern/SERNbc-Logo-HALF.jpg" alt="NewGraph">
         </div>
       </div>
 
-<a href="executive-summary.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="ai-disclosure.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
