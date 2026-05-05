@@ -8,7 +8,7 @@
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Vancouver
- date     2026-05-04
+ date     2026-05-05
  pandoc   3.0.1 @ /opt/homebrew/bin/ (via rmarkdown)
  quarto   1.4.553 @ /usr/local/bin/quarto
 
@@ -35,6 +35,7 @@
  curl                7.1.0      2026-04-22 [1] CRAN (R 4.5.2)
  DBI                 1.3.0      2026-02-25 [1] CRAN (R 4.5.2)
  dbplyr              2.5.2      2026-02-13 [1] CRAN (R 4.5.2)
+ desc                1.4.3      2023-12-10 [2] CRAN (R 4.5.0)
  devtools            2.4.6      2025-10-03 [2] CRAN (R 4.5.0)
  digest              0.6.39     2025-11-19 [1] CRAN (R 4.5.2)
  doParallel          1.0.17     2022-02-07 [2] CRAN (R 4.5.0)
