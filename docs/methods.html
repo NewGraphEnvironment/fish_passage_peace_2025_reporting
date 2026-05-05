@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -60,7 +62,7 @@
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-binding-2.2.3/leaflet.js"></script>
-<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
 <link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
 <script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
@@ -126,7 +128,6 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -235,6 +236,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="ai-disclosure.html"><a href="ai-disclosure.html"><i class="fa fa-check"></i>AI Disclosure</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
@@ -303,6 +305,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-downstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 199663</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-upstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 199663</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#environmental-dna-sampling"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#environmental-dna-results"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#structure-remediation-and-cost-estimate"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
@@ -314,6 +317,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-downstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203597</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-upstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203597</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#environmental-dna-sampling-1"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#environmental-dna-results-1"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#structure-remediation-and-cost-estimate-1"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
@@ -325,13 +329,20 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-downstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203605</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-upstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203605</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#environmental-dna-sampling-2"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#environmental-dna-results-2"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#structure-remediation-and-cost-estimate-2"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html"><i class="fa fa-check"></i><strong>Appendix - Environmental DNA Results</strong></a>
+<ul>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#per-site-detection-results"><i class="fa fa-check"></i>Per-site detection results</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#field-blanks"><i class="fa fa-check"></i>Field blanks</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#retests"><i class="fa fa-check"></i>Retests</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
-<li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i><strong>Attachment - Habitat Assessment and Fish Sampling Data</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-bayes.html"><a href="attach-bayes.html"><i class="fa fa-check"></i><strong>Attachment - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
@@ -461,7 +472,7 @@ applied to the linear spawning and rearing habitat model for this year’s proje
 <span id="cb23-37"><a href="methods.html#cb23-37" tabindex="-1"></a>                 <span class="at">footnote_text =</span> text_footnote,</span>
 <span id="cb23-38"><a href="methods.html#cb23-38" tabindex="-1"></a>                 <span class="at">scroll =</span> F,</span>
 <span id="cb23-39"><a href="methods.html#cb23-39" tabindex="-1"></a>                 <span class="at">scroll_box_height =</span> <span class="st">&#39;300px&#39;</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;border-bottom: 0;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-spawning-rearing">Table 3.1: </span>Stream gradient and channel width thresholds used to model potentially highest value fish habitat.
 </caption>
@@ -538,16 +549,16 @@ Rearing Gradient Max (%)
 channel width (observed or predicted) into species specific linear spawning/rearing habitat models. In early 2021,
 Bayesian statistical methods were developed to predict channel width in all provincial freshwater atlas stream segments
 where width measurements had not previously been measured in the field. The model was based on the relationship between
-watershed area and mean annual precipitation weighted by upstream watershed area <span class="citation">(Thorley and Irvine 2021)</span>. In
-December of 2021, <span class="citation">Thorley and Irvine (2021)</span> methods were updated using a power model derived by
+watershed area and mean annual precipitation weighted by upstream watershed area <span class="citation">(J. Thorley and Irvine 2021)</span>. In
+December of 2021, <span class="citation">J. Thorley and Irvine (2021)</span> methods were updated using a power model derived by
 <span class="citation">Finnegan et al. (2005)</span> which relates stream discharge to watershed area and mean annual precipitation resulting
-in <span class="citation">Thorley et al. (2021)</span> which was utilized for channel width estimates within <code>bcfishpass</code> modelling at the time
+in <span class="citation">J. L. Thorley, Norris, and Irvine (2021)</span> which was utilized for channel width estimates within <code>bcfishpass</code> modelling at the time
 of reporting. More detailed documentation of the methodology used to facilitate both the data collection and statistical
-analysis can be sourced in <span class="citation">Irvine ([2021] 2022)</span> and <span class="citation">Thorley et al. (2021)</span>.</p>
+analysis can be sourced in <span class="citation">Irvine ([2021] 2022)</span> and <span class="citation">J. L. Thorley, Norris, and Irvine (2021)</span>.</p>
 <p><br></p>
 <p>In 2024, in collaboration with Poisson Consulting - stream discharge and temperature causal effects pathways were mapped
 with the intent of focusing aquatic restoration actions in areas of highest potential for positive impacts on fisheries
-values (ie. elimination of areas from intrinic models where water temperatures are likely too cold to support fish production). The project began with a custom mechanistic model (visually represented <a href="https://github.com/poissonconsulting/fish-passage-22b?tab=readme-ov-file#dags">here</a>), but the model struggled to converge. The project then shifted to the air2stream model, which offers a middle ground between fully mechanistic models—often data-intensive and reliant on quantities that are difficult to measure or estimate—and purely statistical models, which lack physical justification and perform poorly when extrapolated to new conditions (<span class="citation">Toffolon and Piccolroaz (2015)</span>). After several adaptations, the expected stream temperatures were best modeled using the four-parameter version of the air2stream model, with added random effects by site for each of the four parameters (<span class="citation">Hill et al. (2024)</span>).
+values (ie. elimination of areas from intrinic models where water temperatures are likely too cold to support fish production). The project began with a custom mechanistic model (visually represented <a href="https://github.com/poissonconsulting/fish-passage-22b?tab=readme-ov-file#dags">here</a>), but the model struggled to converge. The project then shifted to the air2stream model, which offers a middle ground between fully mechanistic models—often data-intensive and reliant on quantities that are difficult to measure or estimate—and purely statistical models, which lack physical justification and perform poorly when extrapolated to new conditions (<span class="citation">Toffolon and Piccolroaz (2015)</span>). After several adaptations, the expected stream temperatures were best modeled using the four-parameter version of the air2stream model, with added random effects by site for each of the four parameters (<span class="citation">Hill, Thorley, and Irvine (2024)</span>).
 The data used for the model were sourced from the following locations, for years 2019-2021:</p>
 <ul>
 <li>Water temperature data collected in the Nechako Watershed were downloaded from <a href="https://zenodo.org/records/6426024#.ZEAqr-zMI0Q">Zenodo</a> <span class="citation">(Gilbert et al. 2022)</span>.</li>
@@ -634,7 +645,7 @@ Data and Information (SEDIS) training conducted through WLRS.</p>
 <span id="cb28-2"><a href="methods.html#cb28-2" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">&#39;Habitat value criteria (Fish Passage Technical Working Group, 2011).&#39;</span>, <span class="at">booktabs =</span> T, <span class="at">label =</span> <span class="cn">NA</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-3"><a href="methods.html#cb28-3" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">column_spec</span>(<span class="at">column =</span> <span class="dv">1</span>, <span class="at">width_min =</span> <span class="st">&#39;1.5in&#39;</span>) <span class="sc">|&gt;</span></span>
 <span id="cb28-4"><a href="methods.html#cb28-4" tabindex="-1"></a>    kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(<span class="fu">c</span>(<span class="st">&quot;condensed&quot;</span>), <span class="at">full_width =</span> T, <span class="at">font_size =</span> font_set)</span></code></pre></div>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-hab-value">Table 3.2: </span>Habitat value criteria (Fish Passage Technical Working Group, 2011).
 </caption>
@@ -676,7 +687,7 @@ No suitable spawning habitat, and habitat with low rearing potential (e.g., loca
 </tbody>
 </table>
 <p><br></p>
-<p>Fish passage potential was determined for each stream crossing identified as a closed bottom structure as per <span class="citation">MoE (2011)</span>. The combined scores from five criteria: depth and degree to which the structure is embedded, outlet drop, stream width ratio, culvert slope, and culvert length were used to screen whether each culvert was a likely barrier to some fish species and life stages (Table <a href="methods.html#tab:tab-barrier-scoring">3.3</a>, Table <a href="methods.html#tab:tab-barrier-result">3.4</a>). These criteria were developed based on data obtained from various studies and reflect an estimation for the passage of a juvenile salmon or small resident rainbow trout <span class="citation">(Clarkin et al. 2005; Bell 1991; Thompson 2013)</span>. For crossings determined to be potential barriers or barriers based on the data, a culvert fix and recommended diameter/span was proposed.</p>
+<p>Fish passage potential was determined for each stream crossing identified as a closed bottom structure as per <span class="citation">MoE (2011)</span>. The combined scores from five criteria: depth and degree to which the structure is embedded, outlet drop, stream width ratio, culvert slope, and culvert length were used to screen whether each culvert was a likely barrier to some fish species and life stages (Table <a href="methods.html#tab:tab-barrier-scoring">3.3</a>, Table <a href="methods.html#tab:tab-barrier-result">3.4</a>). These criteria were developed based on data obtained from various studies and reflect an estimation for the passage of a juvenile salmon or small resident rainbow trout <span class="citation">(Clarkin et al. 2005 ; Bell 1991; Thompson 2013)</span>. For crossings determined to be potential barriers or barriers based on the data, a culvert fix and recommended diameter/span was proposed.</p>
 <p><br></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="methods.html#cb29-1" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(fpr_table_barrier_scoring)) <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a href="methods.html#cb29-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">V4 =</span> <span class="fu">names</span>(fpr_table_barrier_scoring)) <span class="sc">|&gt;</span></span>
@@ -687,7 +698,7 @@ No suitable spawning habitat, and habitat with low rearing potential (e.g., loca
 <span id="cb29-7"><a href="methods.html#cb29-7" tabindex="-1"></a></span>
 <span id="cb29-8"><a href="methods.html#cb29-8" tabindex="-1"></a>tab <span class="sc">|&gt;</span></span>
 <span id="cb29-9"><a href="methods.html#cb29-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish Barrier Risk Assessment (MoE 2011).&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-barrier-scoring">Table 3.3: </span>Fish Barrier Risk Assessment (MoE 2011).
 </caption>
@@ -853,7 +864,7 @@ Value
 <p><br></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="methods.html#cb30-1" tabindex="-1"></a>fpr_table_barrier_result <span class="sc">|&gt;</span></span>
 <span id="cb30-2"><a href="methods.html#cb30-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Fish Barrier Scoring Results (MoE 2011).&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-barrier-result">Table 3.4: </span>Fish Barrier Scoring Results (MoE 2011).
 </caption>
@@ -934,7 +945,7 @@ barrier
 <span id="cb31-17"><a href="methods.html#cb31-17" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
 <span id="cb31-18"><a href="methods.html#cb31-18" tabindex="-1"></a>  <span class="co"># dplyr::filter(Class != &#39;FSR&#39; &amp; Surface != &#39;Paved&#39;) |&gt;</span></span>
 <span id="cb31-19"><a href="methods.html#cb31-19" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Cost multiplier table based on road class and surface type.&#39;</span>, <span class="at">scroll =</span> F)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-cost-mult">Table 3.5: </span>Cost multiplier table based on road class and surface type.
 </caption>
@@ -1364,7 +1375,7 @@ community access, cost, constructability, fish bearing status and environmental 
 <span id="cb32-7"><a href="methods.html#cb32-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Parameter =</span> spdsht, <span class="at">Description =</span> report) <span class="sc">|&gt;</span></span>
 <span id="cb32-8"><a href="methods.html#cb32-8" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;Climate change data collected at MoTi culvert sites&#39;</span>, <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-moti-params">Table 3.6: </span>Climate change data collected at MoTi culvert sites
 </caption>
@@ -1560,7 +1571,7 @@ Describe details and rational for priority rankings
 <h3><span class="header-section-number">3.4.2</span> Environmental DNA (eDNA) Sampling<a href="methods.html#environmental-dna-edna-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="sample-collection-and-filtration" class="section level4 hasAnchor" number="3.4.2.1">
 <h4><span class="header-section-number">3.4.2.1</span> Sample Collection and Filtration<a href="methods.html#sample-collection-and-filtration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Samples were collected using two approaches informed by <span class="citation">Hobbs et al. (2025)</span>: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.</p>
+<p>Samples were collected using two approaches informed by <span class="citation">Hobbs, Helbing, and Goldberg (2025)</span>: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.</p>
 <p>For in-stream filtration, Haltech reusable aluminum housings were pre-loaded with filters. In high-turbidity conditions, a Haltech pre-filter with a 100µm nitex screen was installed upstream to remove coarse material. For grab-and-go sampling, stream water was collected in sanitized 1L HDPE Nalgene bottles and filtered at the end of each day.</p>
 <p>After filtration, filters were removed from housings in a clean environment, placed in coin envelopes with silica desiccant inside labelled ziplock bags, and frozen until shipment. Aluminum housings and Nalgene bottles were sanitized with bleach solution between uses.</p>
 </div>
@@ -1585,7 +1596,7 @@ Describe details and rational for priority rankings
 </div>
 <div id="aerial-imagery" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Aerial Imagery<a href="methods.html#aerial-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; <span class="nocase">stac-utils</span> 2025; Simoes et al. 2021)</span>.</p>
+<p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; stac-utils 2025; Simoes et al. 2021)</span>.</p>
 </div>
 </div>
 <div id="engineering-design" class="section level2 hasAnchor" number="3.5">
@@ -1617,7 +1628,7 @@ Table <a href="methods.html#tab:tab-monitoring-metrics">3.7</a>) outlines the mo
 <span id="cb33-4"><a href="methods.html#cb33-4" tabindex="-1"></a>                                T <span class="sc">~</span> Parameter)) <span class="sc">|&gt;</span> </span>
 <span id="cb33-5"><a href="methods.html#cb33-5" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">scroll =</span> F,</span>
 <span id="cb33-6"><a href="methods.html#cb33-6" tabindex="-1"></a>                 <span class="at">caption_text =</span> <span class="st">&#39;Description of monitoring metrics used for effectiveness monitoring.&#39;</span>)</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-monitoring-metrics">Table 3.7: </span>Description of monitoring metrics used for effectiveness monitoring.
 </caption>

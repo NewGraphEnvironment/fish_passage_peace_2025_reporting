@@ -1,0 +1,132 @@
+# Task: Integrate eDNA results into Peace 2025 report (#6)
+
+eDNA UNBC 2025 batch results need to be integrated into Peace's Results chapter + a new thematic appendix + brief mentions in 3 per-site appendices, rendering correctly in BOTH the gitbook (HTML) and pagedown (Chrome PDF) builds. Peace must build cleanly from `git clone` — no cross-repo runtime dependencies, no runtime dependency on m1rr0r.
+
+## Phase 1: Snapshot data + Peace-local map build
+
+### 1a. Upstream prerequisites (in `fish_passage_template_reporting`, out of this branch's scope but blocking) — DONE 2026-05-03/04
+
+Landed via template repo commits:
+- `022781f` Fix form backup script (skip non-form gpkgs + drop sf geometry before CSV write) — two robustness fixes that surfaced when running on current data
+- `e571b7c` Refresh form backups: M41351 control_blank_field correction
+- `a3201d9` Refresh eDNA analytic outputs from corrected form data
+
+- [x] In template repo: run form backup script (reads local Mergin checkout where M41351 GPKG fix is already staged) — refreshes `data/backup/2025/form_edna_2025.csv`. M41351's `control_blank_field` flipped TRUE → FALSE
+- [x] Verify the CSV diff is exactly that one cell change — Peace per-project CSV had the targeted single-cell diff; combined CSV had broader textual diff because of the geometry-drop script fix in `022781f` (CSV no longer carries `geom` WKT column; geometry preserved in `.geojson` + `.gpkg`)
+- [x] In template repo: re-run `scripts/edna_unbc_results_explore.R` to regenerate analytic CSVs from the corrected form
+- [x] In template repo: commit + push refreshed CSVs (so Peace can pull current data)
+- [ ] (Mergin push of the GPKG itself is OUT OF SCOPE here — separate concern, can happen later on its own clock)
+
+### 1b. Peace snapshot script + initial run — DONE 2026-05-04
+
+- [x] Create `scripts/edna_inputs_snapshot.R`:
+  - Source: `~/Projects/repo/fish_passage_template_reporting/data/edna_unbc_results_2025_*.csv`
+  - Destination: `data/edna_unbc_results_2025_*.csv` in this repo
+  - Captures upstream commit SHA in `data/edna_inputs_snapshot_manifest.txt` for provenance
+  - Header documents refresh procedure inline (no README until pattern reused)
+  - Re-runnable; idempotent on no-change (compares MD5; manifest only rewritten if commit moved or any file copied)
+- [x] Run snapshot, verify CSVs in Peace `data/` match upstream
+  - Pinned to template commit `a3201d9` (the M41351 fix)
+  - 2 CSVs landed: `edna_unbc_results_2025_analytic.csv` + `edna_unbc_results_2025_by_site_target.csv`
+  - Note: `upstream_dirty: true` in manifest reflects template's untracked `comms/` dir; doesn't affect CSV content
+
+### 1c. Peace-local map build — DONE 2026-05-04
+
+Filter approach changed from `params$wsg_code` (originally proposed) to `source` column carried through the rollup. `source` is the project-path tag added during form backup; matches what the user instinctively suggested. Two upstream rounds (template commits `584c606`, `85e8964`) added `source` + control flags to the rollups so Peace's filter works on snapshot data alone — no need to read params or join to bcfishpass.
+
+- [x] Identify Peace site filter — `grepl("sern_peace_fwcp_2023", source)` on the `source` column in by_site_target
+- [x] Create `scripts/edna_map_peace.R`:
+  - Reads local snapshotted by_site_target CSV
+  - Filters to Peace sites by `source` pattern
+  - Drops office blanks (their UTM coords are inherited from related sites — fake)
+  - Splits field blanks into a separate "Controls" layer (off by default; mirrors sub-threshold pattern; popup leads with bold "FIELD BLANK" disclaimer)
+  - Adds positive-control popup notes for `control_species_present_field=TRUE` sites
+  - Produces `data/edna_unbc_results_2025_peace_map.html`
+- [x] Run script, verify output map opens locally + shows only Peace sites
+  - 35 Peace site_ids → 4 office blanks dropped → 31 sites on map
+  - 28 real environmental samples on default layers + 3 field blanks on Controls layer (off by default)
+- [x] Added `data/*_files/` to `.gitignore` (htmlwidgets sidecar duplicate cruft)
+
+## Phase 2: Main Results subsection (gitbook + PDF dual) — DONE 2026-05-04
+
+- [x] Verify Methods eDNA section in `0300-methods.Rmd` (lines 391-416) — unchanged, generic, lift-ready
+- [x] Replace `INCLUDE LAB RESULTS` stub in `0400-results.Rmd` with eDNA subsection:
+  - 2-paragraph narrative driven by inline R (counts: real samples / field blanks / office blanks; per-species detection summary)
+  - Single summary table chunk via `fpr::fpr_kable` with `scroll = gitbook_on` — kable renders cleanly in both HTML (gitbook) and PDF (pagedown/Chrome) without needing dual chunks
+  - Map link via `ngr::ngr_str_link_url` against `params$report_url` — same target both formats; renders as clickable link in HTML, text URL in PDF
+  - Thematic appendix cross-ref deferred to Phase 3 (will land when the appendix file is created)
+- [x] Verified prep chunk runs cleanly with snapshotted data (28 real / 3 field-blank / 4 office-blank Peace sites)
+- [ ] Full bookdown gitbook + pagedown builds → Phase 5 validation
+
+## Phase 3: Thematic appendix `0850-appendix-edna.Rmd` — DONE 2026-05-04
+
+- [x] Picked `0850-` to land between Peace's per-site appendices (`0800-appendix-{site_id}`) and references (`2000-references.Rmd`). Bookdown alphabetical default works — no `_bookdown.yml` rmd_files edit needed.
+- [x] Created `0850-appendix-edna.Rmd` with:
+  - Anchor `{-#app-edna}` (unnumbered, cross-ref-able)
+  - prep chunk loading the same snapshotted CSV as Phase 2's main-results section
+  - **Per-site detection table** (28 rows = real Peace samples, columns: Site ID / Stream / UNBC ID / Pos. control / Detected / Sub-threshold / Not detected; format `CODE(max_droplets)*` with `*` flagging UNBC retests)
+  - **Field blanks table** (3 rows, with bold disclaimer that detections in blanks are protocol contamination, not site eDNA)
+  - **Retests table** (22 site×target combinations UNBC reran, including reruns from both real samples and field blanks; Sample type column distinguishes)
+  - Map link via `ngr::ngr_str_link_url` (same URL pattern as main Results)
+- [x] Per-species rollup deliberately NOT duplicated here — already in main Results table; appendix is for site-level detail.
+- [x] Single `fpr::fpr_kable(scroll = gitbook_on)` per table — works in both gitbook + PDF without dual chunks.
+- [x] Added cross-ref from main Results' eDNA subsection back to `[Appendix - Environmental DNA Results](#app-edna)`.
+- [x] Verified prep chunks run cleanly: 28 per-site / 3 field-blank / 22 retest rows.
+- [ ] Full bookdown gitbook + pagedown render verification → Phase 5
+
+## Phase 4: Per-site appendix mentions — DONE 2026-05-04
+
+All 3 per-site appendices already had a `## Environmental DNA Sampling {.unnumbered}` section for collection metadata. Added a new `## Environmental DNA Results {.unnumbered}` section after it in each one — different concern (lab outcomes vs collection effort).
+
+- [x] `0800-appendix-199663-trib-to-parsnip.Rmd` — 2-position table (RAIN at both, BURB at ds only); narrative notes Burbot was tested only at this crossing among Peace 2025 sites
+- [x] `0800-appendix-203597-trib-to-nation.Rmd` — 2-position table (RAIN at both real samples) + bold callout for the field blank `203597_ds_ed1a` (M41365) with explicit framing as protocol contamination, not site eDNA
+- [x] `0800-appendix-203605-trib-to-willis-res.Rmd` — 2-position table (RAIN detected at both, BULT sub-threshold at both)
+
+Polish + cross-cutting fixes bundled in the same commit:
+
+- [x] `fmt_targets()` helper hoisted into Phase 2 prep chunk so it's globally available downstream (Phase 4 per-site appendices use it; Phase 3 appendix has its own redundant copy that's harmless to leave)
+- [x] Phase 2 main summary table + Phase 3 field blanks table changed to `scroll = FALSE` (small tables don't need horizontal-scroll wrapper; was leaving empty space below)
+- [x] `SOCK` species name changed from "Sockeye Salmon" to "Kokanee" in Peace context (no anadromous Sockeye above the Peace Canyon Dam; SOCK ddPCR assay would detect landlocked Kokanee). Per-site narratives note this assay nuance.
+- [x] "At the time of reporting in 2025" → "...in 2026" across the 3 per-site appendices (publication year vs project_year)
+- [x] `scripts/run_gitbook_iter.R` restore section refactored to defensive loop (per-file try + cat) — earlier mapply form silently no-op'd, leaving files stranded in `hold/`. Verified working on rebuild.
+
+## Phase 5: Validation
+
+- [ ] Peace builds from `git clone` with no cross-repo path dependencies
+- [ ] Map script generates Peace-only map cleanly
+- [ ] gitbook build (`gitbook_on = TRUE`): Results subsection renders with interactive table + working link to map; thematic appendix renders; per-site appendix mentions render
+- [ ] pagedown PDF build (`gitbook_on = FALSE`): Same content renders with static tables, no "interactive" language, URLs visible
+- [ ] `/code-check` clean on each commit
+- [ ] PWF checkboxes match landed work
+- [ ] `/planning-archive` on completion → `/gh-pr-push`
+
+## Key Questions
+
+1. Which `08xx-Appendix-*.Rmd` slot is free for the eDNA thematic appendix? (Peace already has 3 per-site appendices at 0800-appendix-{site_id}; thematic needs to slot somewhere that doesn't collide)
+2. How does the Peace map file get linked from the report — by relative path inside published gitbook, or by configured URL? (decide during Phase 1 once publishing target is confirmed)
+3. Do all 3 per-site appendix sites have eDNA samples? (verify in Phase 1, adjust Phase 4 scope if any have no samples)
+
+## Decisions Made
+
+| Decision | Rationale |
+|----------|-----------|
+| Hybrid placement (Results narrative + thematic appendix + per-site mentions) | Lifts wedzin kwa narrative-first pattern; preserves detail in appendix |
+| Data flow option B: snapshot CSVs into Peace | Repos must stand alone from `git clone` |
+| Peace builds its own map locally (not link to m1rr0r combined map) | Self-containment + m1rr0r is interim hosting only |
+| Pipeline source-of-truth stays in template repo | First-year UNBC results, prove pattern before crate migration |
+| Branch: `6-edna` | User pattern: `<issue#>-<topic>` |
+| Snapshot is a script, not a manual `cp` | Re-runnable when upstream updates; documents the dependency in code; manifest captures upstream SHA for provenance |
+| Phase 1a (upstream refresh) is blocking but lives outside this branch | The wrangle pipeline + form backup belong to template repo's domain. This branch consumes its outputs. |
+
+## Errors Encountered
+
+| Error | Attempt | Resolution |
+|-------|---------|------------|
+|       | 1       |            |
+
+## Notes
+
+- Each phase ends with an atomic commit bundling code + checkbox flip in this file
+- Don't merge phases — multi-PR ship per user direction
+- Methods section is already in place and generic; do not edit unless verification reveals a problem
+- Permanent publishing host (replacing m1rr0r) is out of scope here, tracked separately
