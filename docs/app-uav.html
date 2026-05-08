@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Executive Summary | Restoring Fish Passage in the Peace Region - 2025</title>
+  <title>Appendix - UAV Imagery | Restoring Fish Passage in the Peace Region - 2025</title>
   <meta name="description" content="My Description." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Executive Summary | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta property="og:title" content="Appendix - UAV Imagery | Restoring Fish Passage in the Peace Region - 2025" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="My Description." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Executive Summary | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta name="twitter:title" content="Appendix - UAV Imagery | Restoring Fish Passage in the Peace Region - 2025" />
   
   <meta name="twitter:description" content="My Description." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ai-disclosure.html"/>
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="app-edna.html"/>
+<link rel="next" href="app-gis.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -365,95 +365,84 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="executive-summary" class="section level1 unnumbered hasAnchor">
-<h1>Executive Summary<a href="executive-summary.html#executive-summary" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="executive-summary.html#cb5-1" tabindex="-1"></a>project_partners_text <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;fraser&quot;</span> <span class="sc">~</span> <span class="st">&quot;Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with support from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups which are sub-basins of the Upper Fraser River watershed. &quot;</span>,</span>
-<span id="cb5-2"><a href="executive-summary.html#cb5-2" tabindex="-1"></a>                                          params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;peace&quot;</span> <span class="sc">~</span> <span class="st">&quot;The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups. &quot;</span>,</span>
-<span id="cb5-3"><a href="executive-summary.html#cb5-3" tabindex="-1"></a>                                          params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;skeena&quot;</span> <span class="sc">~</span> <span class="st">&quot;Since 2020, the Society for Ecosystem Restoration Northern British Columbia (SERNbc) has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Bulkley River and Morice River watershed groups, which are sub-basins of the Skeena River watershed. In 2022, the study area was expanded to include the Zymoetz River watershed group and the Kispiox River watershed group, followed by an extension in 2023 to encompass sections of the Kitsumkalum River watershed group, particularly where Highway 16 intersects the watershed.&quot;</span></span>
-<span id="cb5-4"><a href="executive-summary.html#cb5-4" tabindex="-1"></a>)</span>
-<span id="cb5-5"><a href="executive-summary.html#cb5-5" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="executive-summary.html#cb5-6" tabindex="-1"></a><span class="fu">cat</span>(project_partners_text)</span></code></pre></div>
-<p>The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups.</p>
-<p><br></p>
-<p>The primary objective of this project is to identify and prioritize fish passage barriers within study areas, develop comprehensive restoration plans to address these barriers, and foster momentum for broader ecosystem restoration initiatives. While the primary focus is on fish passage, this work also serves as a lens through which to view the broader ecosystems, leveraging efforts to build capacity for ecosystem restoration and improving our understanding of watershed health. We recognize that the health of life - such as our own - and the health of our surroundings are interconnected, with our overall well-being dependent on the health of our environment.</p>
-<p><br></p>
-<p>Although the main purpose of this report is to document field work data and results, it also builds on reporting
-from past field activities and all reports can be considered living documents that can be updated and improved over time. In addition to the numerous assessments at sites undocumented in past years of the project, field activities in 2024 were also conducted at sites where habitat confirmations were previously documented within the reports linked below. The reports for these sites were edited and updated with data.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="executive-summary.html#cb6-1" tabindex="-1"></a><span class="cf">if</span> (params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;peace&quot;</span>) {</span>
-<span id="cb6-2"><a href="executive-summary.html#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="executive-summary.html#cb6-3" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span></span>
-<span id="cb6-4"><a href="executive-summary.html#cb6-4" tabindex="-1"></a><span class="st">- [Parsnip River Watershed – Fish Habitat Confirmations (PEA-F20-F-2967)](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine2020ParsnipRiver]</span></span>
-<span id="cb6-5"><a href="executive-summary.html#cb6-5" tabindex="-1"></a><span class="st">- [PEA-F22-F-3577-DCA Restoring Fish Passage in the Peace Region](https://www.newgraphenvironment.com/fish_passage_parsnip_2021_reporting/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine2022PEAF22F3577DCARestoring]  </span></span>
-<span id="cb6-6"><a href="executive-summary.html#cb6-6" tabindex="-1"></a><span class="st">- [Restoring Fish Passage in the Peace Region - 2022 - PEA-F23-F-3761-DCA](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine_winterscheidt2023RestoringFish]</span></span>
-<span id="cb6-7"><a href="executive-summary.html#cb6-7" tabindex="-1"></a><span class="st">- [Restoring Fish Passage in the Peace Region - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine_winterscheidt2024RestoringFish]</span></span>
-<span id="cb6-8"><a href="executive-summary.html#cb6-8" tabindex="-1"></a><span class="st">- [Restoring Fish Passage in the Peace Region - 2024](https://newgraphenvironment.github.io/fish_passage_peace_2024_reporting/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine_schick2025RestoringFish]</span></span>
-<span id="cb6-9"><a href="executive-summary.html#cb6-9" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb6-10"><a href="executive-summary.html#cb6-10" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="executive-summary.html#cb6-11" tabindex="-1"></a>  </span>
-<span id="cb6-12"><a href="executive-summary.html#cb6-12" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;fraser&quot;</span>) {</span>
-<span id="cb6-13"><a href="executive-summary.html#cb6-13" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="executive-summary.html#cb6-14" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span></span>
-<span id="cb6-15"><a href="executive-summary.html#cb6-15" tabindex="-1"></a><span class="st">- [Restoring Fish Passage in the Fraser Region - 2023](https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting/){target=</span><span class="sc">\&quot;</span><span class="st">_blank</span><span class="sc">\&quot;</span><span class="st">} [@irvine_schick2024Restoringfish]</span></span>
-<span id="cb6-16"><a href="executive-summary.html#cb6-16" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb6-17"><a href="executive-summary.html#cb6-17" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="executive-summary.html#cb6-18" tabindex="-1"></a>  </span>
-<span id="cb6-19"><a href="executive-summary.html#cb6-19" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (params<span class="sc">$</span>project_region <span class="sc">==</span> <span class="st">&quot;skeena&quot;</span>) {</span>
-<span id="cb6-20"><a href="executive-summary.html#cb6-20" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="executive-summary.html#cb6-21" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span></span>
-<span id="cb6-22"><a href="executive-summary.html#cb6-22" tabindex="-1"></a><span class="st">- [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning (2020)](https://newgraphenvironment.github.io/fish_passage_bulkley_2020_reporting/) [@irvine2021BulkleyRiver]</span></span>
-<span id="cb6-23"><a href="executive-summary.html#cb6-23" tabindex="-1"></a><span class="st">- [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://newgraphenvironment.github.io/fish_passage_skeena_2021_reporting/) [@irvine2022BulkleyRiver]</span></span>
-<span id="cb6-24"><a href="executive-summary.html#cb6-24" tabindex="-1"></a><span class="st">- [Bulkley River Watershed Fish Passage Restoration Planning 2022](https://newgraphenvironment.github.io/fish_passage_bulkley_2022_reporting/) [@irvine_etal2023BulkleyWatershed]</span></span>
-<span id="cb6-25"><a href="executive-summary.html#cb6-25" tabindex="-1"></a><span class="st">- [Skeena Watershed Fish Passage Restoration Planning 2022](https://newgraphenvironment.github.io/fish_passage_skeena_2022_reporting/) [@irvine_wintersheidt2023SkeenaWatershed]</span></span>
-<span id="cb6-26"><a href="executive-summary.html#cb6-26" tabindex="-1"></a><span class="st">- [Skeena Watershed Fish Passage Restoration Planning 2023](https://newgraphenvironment.github.io/fish_passage_skeena_2023_reporting/) [@irvine_schick2023SkeenaWatershed]</span></span>
-<span id="cb6-27"><a href="executive-summary.html#cb6-27" tabindex="-1"></a><span class="st">- [Skeena Watershed Fish Passage Restoration Planning 2024](https://newgraphenvironment.github.io/fish_passage_skeena_2024_reporting/) [@irvine_schick2025SkeenaWatershed]</span></span>
-<span id="cb6-28"><a href="executive-summary.html#cb6-28" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb6-29"><a href="executive-summary.html#cb6-29" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="executive-summary.html#cb6-30" tabindex="-1"></a>}</span></code></pre></div>
-<ul>
-<li><a href="https://newgraphenvironment.github.io/Parsnip_Fish_Passage/" target="_blank">Parsnip River Watershed – Fish Habitat Confirmations (PEA-F20-F-2967)</a> <span class="citation">(A. Irvine 2020)</span></li>
-<li><a href="https://www.newgraphenvironment.com/fish_passage_parsnip_2021_reporting/" target="_blank">PEA-F22-F-3577-DCA Restoring Fish Passage in the Peace Region</a> <span class="citation">(Irvine 2022)</span><br />
-</li>
-<li><a href="https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/" target="_blank">Restoring Fish Passage in the Peace Region - 2022 - PEA-F23-F-3761-DCA</a> <span class="citation">(Irvine and Winterscheidt 2023)</span></li>
-<li><a href="https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/" target="_blank">Restoring Fish Passage in the Peace Region - 2023</a> <span class="citation">(Irvine and Winterscheidt 2024)</span></li>
-<li><a href="https://newgraphenvironment.github.io/fish_passage_peace_2024_reporting/" target="_blank">Restoring Fish Passage in the Peace Region - 2024</a> <span class="citation">(Irvine and Schick 2025)</span></li>
-</ul>
-<!-- Project specific below -->
-<p>Fish passage assessment procedures conducted through SERNbc in the Upper Fraser River Watershed since 2023 are amalgamated in Tables <a href="results-and-discussion.html#tab:tab-sites-sum-cap">4.1</a> - <a href="results-and-discussion.html#tab:tab-sites-cap">4.2</a>
-which includes links to project reporting for each site.</p>
-<p><br></p>
-<p>In 2025, the project area was expanded to include the Willow river, Lower Salmon River, and Tabor River watershed groups. Fish passage assessments were completed at 12 new sites, focusing on structures with potential barriers to upstream fish movement using standard provincial criteria.</p>
-<p><br></p>
-<p>Habitat confirmation assessments were conducted at multiple sites within the Willow river and Tabor River watersheds,
-covering over XX km of stream length. Detailed habitat metrics were
-documented alongside eDNA samples to evaluate habitat quality and presence of fish species.</p>
-<p><br></p>
-<p>New in 2025, environmental DNA (eDNA) sampling was incorporated into the program at both previously assessed and newly added sites. A total of 35 samples were collected across 10 streams.</p>
-<p><br></p>
-<p>Monitoring was conducted at two sites, including post-remediation evaluations at PSCIS crossings 196085 and 196200. Monitoring included eDNA sampling and habitat observations. A custom effectiveness monitoring form tailored to fish passage projects
-was used and metrics assessed included flow velocity, substrate condition, channel constriction, riparian condition, and cover
-availability.</p>
-<p><!-- Project specific above --></p>
-<p><br></p>
-<p>A major challenge in advancing fish passage restoration is the complexity of working across jurisdictions and with multiple stakeholders—rail and highway authorities, forestry ministries, licensees, and private landowners. These partners are often being asked to accommodate priorities that originate outside their mandates and budgets. Convincing them to invest in difficult, high-cost interventions—like modifying crossings or relocating infrastructure—requires navigating uncertainty about costs and ecological outcomes, as well as a disconnect between the benefits to watershed health and the internal pressures or performance goals of these agencies. It’s a tough ask: to take on massive, uncertain projects when they’re already stretched thin with their own responsibilities.</p>
-<p><br></p>
-<p>Fish passage restoration across British Columbia is further complicated by the legacy of infrastructure deeply embedded in the landscape. Roads, railways, highways, community infrastructure and private assets often constrain floodplains and disrupt natural hydrological processes. While targeted repairs to individual barriers are essential, they won’t resolve the broader systemic issues without rethinking and restructuring how infrastructure interacts with watershed function. Loss of riparian vegetation and intensive beaver management only add to the degradation. Addressing these challenges means making strategic, well-communicated choices—picking battles carefully, building trust, and staying committed to a longer-term transformation.</p>
-<p><br></p>
-<p>While preliminary top remediation priorities are provided by watershed group, these rankings are inherently subjective and can depend on the capacity and willingness of infrastructure owners and tenure holders to support implementation—both financially and over the often multi-year project timelines. In practice, we must often act opportunistically, pursuing simpler, lower-cost options to maintain momentum and achieve near-term progress.</p>
-<p><br></p>
-<p><!-- Project specific below --></p>
-<p>NEEDS TO BE UPDATED</p>
-<p>To enhance fish passage restoration in the FWCP Peace Region:</p>
-<ul>
-<li><p>Maintain strong partnerships to support funding, site selection, remediation, and monitoring through adaptive management informed by traditional knowledge and real-time data.</p></li>
-<li><p>Prioritize detailed assessments in areas with blockages and high habitat potential, especially near McLeod Lake.</p></li>
-<li><p>Use climate modeling to prioritize crossings that enable access to cold, drought-resistant habitats.</p></li>
-<li><p>Secure financial commitments for Fern Creek remediation despite uncertainties in harvest planning.</p></li>
-<li><p>Continue effectiveness monitoring at key sites using fish sampling, eDNA, PIT tagging, temperature data, and aerial imagery.</p></li>
-<li><p>Continue to develop a cost-effective monitoring framework to assess productivity gains from improved passage.</p></li>
-<li><p>Collaborate with WLRS, UNC, local fisheries experts, FWCP, and the CEMPRA Project working group.</p></li>
-<li><p>Utilize environmental DNA (eDNA) to better understand bull trout and Arctic grayling habitat use at both potential and remediated sites. This will refine prioritization and assess fish passage effectiveness.</p>
-<!-- Project specific above --></li>
-</ul>
+<div id="app-uav" class="section level1 unnumbered hasAnchor">
+<h1><strong>Appendix - UAV Imagery</strong><a href="app-uav.html#app-uav" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This appendix lists the UAV (drone) imagery products generated for the Peace project area since 2020 and stored as Cloud Optimized GeoTIFFs on AWS. Each row links to a tile-service viewer for in-browser inspection alongside a direct download link to the source raster.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="app-uav.html#cb109-1" tabindex="-1"></a><span class="co"># only needs to be run at the beginning or if we want to update</span></span>
+<span id="cb109-2"><a href="app-uav.html#cb109-2" tabindex="-1"></a></span>
+<span id="cb109-3"><a href="app-uav.html#cb109-3" tabindex="-1"></a><span class="co"># Grab the imagery from the stac</span></span>
+<span id="cb109-4"><a href="app-uav.html#cb109-4" tabindex="-1"></a></span>
+<span id="cb109-5"><a href="app-uav.html#cb109-5" tabindex="-1"></a><span class="co"># bc bounding box</span></span>
+<span id="cb109-6"><a href="app-uav.html#cb109-6" tabindex="-1"></a>bcbbox <span class="ot">&lt;-</span>  <span class="fu">as.numeric</span>(</span>
+<span id="cb109-7"><a href="app-uav.html#cb109-7" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_bbox</span>(bcmaps<span class="sc">::</span><span class="fu">bc_bound</span>()) <span class="sc">|&gt;</span> sf<span class="sc">::</span><span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb109-8"><a href="app-uav.html#cb109-8" tabindex="-1"></a>)</span>
+<span id="cb109-9"><a href="app-uav.html#cb109-9" tabindex="-1"></a></span>
+<span id="cb109-10"><a href="app-uav.html#cb109-10" tabindex="-1"></a><span class="co"># use rstac to query the collection</span></span>
+<span id="cb109-11"><a href="app-uav.html#cb109-11" tabindex="-1"></a>q <span class="ot">&lt;-</span> rstac<span class="sc">::</span><span class="fu">stac</span>(<span class="st">&quot;https://images.a11s.one/&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb109-12"><a href="app-uav.html#cb109-12" tabindex="-1"></a>    rstac<span class="sc">::</span><span class="fu">stac_search</span>(</span>
+<span id="cb109-13"><a href="app-uav.html#cb109-13" tabindex="-1"></a>      <span class="at">collections =</span> <span class="st">&quot;imagery-uav-bc-prod&quot;</span>,</span>
+<span id="cb109-14"><a href="app-uav.html#cb109-14" tabindex="-1"></a>                      <span class="at">bbox =</span> bcbbox</span>
+<span id="cb109-15"><a href="app-uav.html#cb109-15" tabindex="-1"></a></span>
+<span id="cb109-16"><a href="app-uav.html#cb109-16" tabindex="-1"></a>                     ) <span class="sc">|&gt;</span></span>
+<span id="cb109-17"><a href="app-uav.html#cb109-17" tabindex="-1"></a>  rstac<span class="sc">::</span><span class="fu">post_request</span>()</span>
+<span id="cb109-18"><a href="app-uav.html#cb109-18" tabindex="-1"></a></span>
+<span id="cb109-19"><a href="app-uav.html#cb109-19" tabindex="-1"></a><span class="co"># get deets of the items</span></span>
+<span id="cb109-20"><a href="app-uav.html#cb109-20" tabindex="-1"></a>r <span class="ot">&lt;-</span> q <span class="sc">|&gt;</span></span>
+<span id="cb109-21"><a href="app-uav.html#cb109-21" tabindex="-1"></a>  rstac<span class="sc">::</span><span class="fu">items_fetch</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="app-uav.html#cb110-1" tabindex="-1"></a><span class="co"># build the table to display the info</span></span>
+<span id="cb110-2"><a href="app-uav.html#cb110-2" tabindex="-1"></a>tab_uav <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(<span class="at">url_download =</span> purrr<span class="sc">::</span><span class="fu">map_chr</span>(r<span class="sc">$</span>features, <span class="sc">~</span> purrr<span class="sc">::</span><span class="fu">pluck</span>(.x, <span class="st">&quot;assets&quot;</span>, <span class="st">&quot;image&quot;</span>, <span class="st">&quot;href&quot;</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb110-3"><a href="app-uav.html#cb110-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">stub =</span> stringr<span class="sc">::</span><span class="fu">str_replace_all</span>(url_download, <span class="st">&quot;https://imagery-uav-bc.s3.amazonaws.com/&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb110-4"><a href="app-uav.html#cb110-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">separate</span>(</span>
+<span id="cb110-5"><a href="app-uav.html#cb110-5" tabindex="-1"></a>    <span class="at">col =</span> stub,</span>
+<span id="cb110-6"><a href="app-uav.html#cb110-6" tabindex="-1"></a>    <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;region&quot;</span>, <span class="st">&quot;watershed_group&quot;</span>, <span class="st">&quot;year&quot;</span>, <span class="st">&quot;item&quot;</span>, <span class="st">&quot;rest&quot;</span>),</span>
+<span id="cb110-7"><a href="app-uav.html#cb110-7" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;/&quot;</span>,</span>
+<span id="cb110-8"><a href="app-uav.html#cb110-8" tabindex="-1"></a>    <span class="at">extra =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb110-9"><a href="app-uav.html#cb110-9" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb110-10"><a href="app-uav.html#cb110-10" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb110-11"><a href="app-uav.html#cb110-11" tabindex="-1"></a>    <span class="at">link_view =</span></span>
+<span id="cb110-12"><a href="app-uav.html#cb110-12" tabindex="-1"></a>                  dplyr<span class="sc">::</span><span class="fu">case_when</span>(</span>
+<span id="cb110-13"><a href="app-uav.html#cb110-13" tabindex="-1"></a>                    <span class="sc">!</span>tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(url_download)) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;dsm&quot;</span>, <span class="st">&quot;dtm&quot;</span>) <span class="sc">~</span></span>
+<span id="cb110-14"><a href="app-uav.html#cb110-14" tabindex="-1"></a>                      ngr<span class="sc">::</span><span class="fu">ngr_str_link_url</span>(</span>
+<span id="cb110-15"><a href="app-uav.html#cb110-15" tabindex="-1"></a>                        <span class="at">url_base =</span> <span class="st">&quot;https://viewer.a11s.one/?cog=&quot;</span>,</span>
+<span id="cb110-16"><a href="app-uav.html#cb110-16" tabindex="-1"></a>                        <span class="at">url_resource =</span> url_download,</span>
+<span id="cb110-17"><a href="app-uav.html#cb110-17" tabindex="-1"></a>                        <span class="at">url_resource_path =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb110-18"><a href="app-uav.html#cb110-18" tabindex="-1"></a>                        <span class="co"># anchor_text= &quot;URL View&quot;</span></span>
+<span id="cb110-19"><a href="app-uav.html#cb110-19" tabindex="-1"></a>                        <span class="at">anchor_text=</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(url_download))),</span>
+<span id="cb110-20"><a href="app-uav.html#cb110-20" tabindex="-1"></a>                    T <span class="sc">~</span> <span class="st">&quot;-&quot;</span>),</span>
+<span id="cb110-21"><a href="app-uav.html#cb110-21" tabindex="-1"></a>                        <span class="at">link_download =</span> ngr<span class="sc">::</span><span class="fu">ngr_str_link_url</span>(<span class="at">url_base =</span> url_download, <span class="at">anchor_text =</span> url_download)</span>
+<span id="cb110-22"><a href="app-uav.html#cb110-22" tabindex="-1"></a>    )<span class="sc">|&gt;</span></span>
+<span id="cb110-23"><a href="app-uav.html#cb110-23" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(region, watershed_group, year, item, link_view, link_download)</span>
+<span id="cb110-24"><a href="app-uav.html#cb110-24" tabindex="-1"></a></span>
+<span id="cb110-25"><a href="app-uav.html#cb110-25" tabindex="-1"></a></span>
+<span id="cb110-26"><a href="app-uav.html#cb110-26" tabindex="-1"></a></span>
+<span id="cb110-27"><a href="app-uav.html#cb110-27" tabindex="-1"></a><span class="co"># grab the imagery for this project area</span></span>
+<span id="cb110-28"><a href="app-uav.html#cb110-28" tabindex="-1"></a>project_region <span class="ot">&lt;-</span> <span class="st">&quot;skeena&quot;</span></span>
+<span id="cb110-29"><a href="app-uav.html#cb110-29" tabindex="-1"></a></span>
+<span id="cb110-30"><a href="app-uav.html#cb110-30" tabindex="-1"></a>project_uav <span class="ot">&lt;-</span> tab_uav <span class="sc">|&gt;</span></span>
+<span id="cb110-31"><a href="app-uav.html#cb110-31" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(region <span class="sc">==</span> project_region)</span>
+<span id="cb110-32"><a href="app-uav.html#cb110-32" tabindex="-1"></a></span>
+<span id="cb110-33"><a href="app-uav.html#cb110-33" tabindex="-1"></a><span class="co"># how many distinct items are there</span></span>
+<span id="cb110-34"><a href="app-uav.html#cb110-34" tabindex="-1"></a><span class="co"># length(unique(project_uav$item))</span></span>
+<span id="cb110-35"><a href="app-uav.html#cb110-35" tabindex="-1"></a></span>
+<span id="cb110-36"><a href="app-uav.html#cb110-36" tabindex="-1"></a><span class="co"># Burn to sqlite</span></span>
+<span id="cb110-37"><a href="app-uav.html#cb110-37" tabindex="-1"></a>conn <span class="ot">&lt;-</span> readwritesqlite<span class="sc">::</span><span class="fu">rws_connect</span>(<span class="st">&quot;data/bcfishpass.sqlite&quot;</span>)</span>
+<span id="cb110-38"><a href="app-uav.html#cb110-38" tabindex="-1"></a>readwritesqlite<span class="sc">::</span><span class="fu">rws_list_tables</span>(conn)</span>
+<span id="cb110-39"><a href="app-uav.html#cb110-39" tabindex="-1"></a>readwritesqlite<span class="sc">::</span><span class="fu">rws_drop_table</span>(<span class="st">&quot;project_uav&quot;</span>, <span class="at">conn =</span> conn)</span>
+<span id="cb110-40"><a href="app-uav.html#cb110-40" tabindex="-1"></a>readwritesqlite<span class="sc">::</span><span class="fu">rws_write</span>(project_uav, <span class="at">exists =</span> F, <span class="at">delete =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb110-41"><a href="app-uav.html#cb110-41" tabindex="-1"></a>                           <span class="at">conn =</span> conn, <span class="at">x_name =</span> <span class="st">&quot;project_uav&quot;</span>)</span>
+<span id="cb110-42"><a href="app-uav.html#cb110-42" tabindex="-1"></a>readwritesqlite<span class="sc">::</span><span class="fu">rws_disconnect</span>(conn)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="app-uav.html#cb111-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="st">&quot;Drone imagery download and viewer links.&quot;</span></span>
+<span id="cb111-2"><a href="app-uav.html#cb111-2" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="app-uav.html#cb111-3" tabindex="-1"></a><span class="fu">my_tab_caption</span>()</span></code></pre></div>
+<table>
+<caption>
+<span id="tab:tab-uav-imagery-cap">Table 5.22: </span>Drone imagery download and viewer links. <b>NOTE: To view all columns in the table - please click on one of the sort arrows within column headers before scrolling to the right.</b>
+</caption>
+</table>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="app-uav.html#cb112-1" tabindex="-1"></a>project_uav <span class="sc">|&gt;</span></span>
+<span id="cb112-2"><a href="app-uav.html#cb112-2" tabindex="-1"></a>  <span class="fu">my_dt_table</span>(<span class="at">cols_freeze_left =</span> <span class="dv">2</span>, <span class="at">escape =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-f7dbda29895b2fc7642b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f7dbda29895b2fc7642b">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\" disabled=\"\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","extensions":["Buttons","FixedColumns","ColReorder"],"data":[["mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie","mackenzie"],["parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","parsnip","carp","carp","carp"],["2023","2023","2023","2023","2023","2023","2024","2024","2024","2022","2022","2022","2022","2022","2022","2024","2024","2024"],["125231_table_trib_tablefsr_21k","125231_table_trib_tablefsr_21k","125231_table_trib_tablefsr_21k","125261_fern_tablefsr_2k","125261_fern_tablefsr_2k","125261_fern_tablefsr_2k","125231_table_trib_tablefsr_21k","125231_table_trib_tablefsr_21k","125231_table_trib_tablefsr_21k","125000_parsnip_trib_arctic","125000_parsnip_trib_arctic","125000_parsnip_trib_arctic","125179_missinka_trib","125179_missinka_trib","125179_missinka_trib","198692_kerry_lake_trib","198692_kerry_lake_trib","198692_kerry_lake_trib"],["<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-","<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-","<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-","<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-","<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-","<a href=\"https://viewer.a11s.one/?cog=https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">odm_orthophoto<\/a>","-","-"],["<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125231_table_trib_tablefsr_21k/odm_dem/dsm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2023/125261_fern_tablefsr_2k/odm_dem/dsm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2024/125231_table_trib_tablefsr_21k/odm_dem/dsm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125000_parsnip_trib_arctic/odm_dem/dsm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/parsnip/2022/125179_missinka_trib/odm_dem/dsm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_orthophoto/odm_orthophoto.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_orthophoto/odm_orthophoto.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_dem/dtm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_dem/dtm.tif<\/a>","<a href=\"https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_dem/dsm.tif\" target=\"_blank\">https://imagery-uav-bc.s3.amazonaws.com/mackenzie/carp/2024/198692_kerry_lake_trib/odm_dem/dsm.tif<\/a>"]],"container":"<table class=\"cell-border stripe\">\n  <thead>\n    <tr>\n      <th>region<\/th>\n      <th>watershed_group<\/th>\n      <th>year<\/th>\n      <th>item<\/th>\n      <th>link_view<\/th>\n      <th>link_download<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"scrollX":true,"columnDefs":[{"className":"dt-center","targets":"_all"},{"name":"region","targets":0},{"name":"watershed_group","targets":1},{"name":"year","targets":2},{"name":"item","targets":3},{"name":"link_view","targets":4},{"name":"link_download","targets":5}],"pageLength":10,"dom":"lrtipB","buttons":["excel","csv"],"fixedColumns":{"leftColumns":2},"lengthMenu":[[5,10,25,50,-1],["5","10","25","50","All"]],"colReorder":true,"initComplete":"function(settings, json) { $(this.api().table().container()).css({'font-size': '11px'}); }","order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":["options.initComplete"],"jsHooks":[]}</script>
 
 </div>
             </section>
@@ -461,8 +450,8 @@ availability.</p>
           </div>
         </div>
       </div>
-<a href="ai-disclosure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-edna.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-gis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

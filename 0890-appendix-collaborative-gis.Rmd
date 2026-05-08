@@ -1,0 +1,65 @@
+---
+output: html_document
+editor_options:
+  chunk_output_type: console
+---
+
+
+# **Appendix - Collaborative GIS Layers** {-#app-gis}
+
+This appendix lists background spatial layers and tables loaded to the collaborative GIS project (`r params$gis_project_name`) at the time of writing. The project serves as the spatial integration layer for fieldwork — viewable in QGIS in the office and synced to mobile devices for navigation and standardized data collection in the field via Mergin Maps.
+
+```{r rfp-metadata, eval = params$update_gis}
+# grab the metadata
+md <- rfp::rfp_meta_bcd_xref()
+
+# burn locally so we don't nee to wait for it
+md |>
+  readr::write_csv("data/rfp_metadata.csv")
+```
+
+```{r rfp-tracking-copy, eval = params$update_gis}
+
+md_raw <- readr::read_csv("data/rfp_metadata.csv")
+
+md <- dplyr::bind_rows(
+  md_raw,
+  rfp::rfp_xref_layers_custom
+)
+
+# first we will copy the doc from the Q project to this repo - the location of the Q project is outside of the repo!!
+q_path_stub <- "~/Projects/gis/sern_peace_fwcp_2023/"
+
+# this is differnet than Neexdzii Kwa as it lists layers vs tracking file (tracking file is newer than this project).
+# could revert really easily to the tracking file if we wanted to.
+gis_layers_ls <- sf::st_layers(paste0(q_path_stub, "background_layers.gpkg"))
+
+gis_layers <- tibble::tibble(content = gis_layers_ls[["name"]])
+
+# remove the `_vw` from the end of content
+rfp_tracking_prep <- dplyr::left_join(
+  gis_layers |>
+    dplyr::distinct(content, .keep_all = FALSE),
+
+  md |>
+    dplyr::select(content = object_name, url = url_browser, description),
+
+  by = "content"
+) |>
+  dplyr::arrange(content)
+
+rfp_tracking_prep |>
+  readr::write_csv("data/rfp_tracking_prep.csv")
+
+```
+
+```{r tab-rfp-tracking, eval= gitbook_on}
+rfp_tracking_prep <- readr::read_csv(
+  "data/rfp_tracking_prep.csv"
+)
+
+rfp_tracking_prep |>
+  fpr::fpr_kable(caption_text = "Layers loaded to collaborative GIS project.",
+                 footnote_text = "Metadata information for bcfishpass and bcfishobs layers can be provided here in the future but currently can usually be sourced from https://smnorris.github.io/bcfishpass/06_data_dictionary.html .",
+                 scroll = gitbook_on)
+```
