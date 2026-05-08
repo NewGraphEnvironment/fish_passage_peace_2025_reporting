@@ -125,10 +125,11 @@ Since `r params$project_start_year`, orthoimagery and elevation model rasters ha
 `r if(gitbook_on){knitr::asis_output("<br>")}`
 
 ```{r ld-db}
-
-sites_all <- fpr::fpr_db_query(
-  query = "SELECT * FROM working.fp_sites_tracking"
-)
+# Read the locally-snapshotted parquet (refreshed via
+# scripts/fp_inputs_snapshot.R; provenance in
+# data/fp_inputs_snapshot_manifest.txt). Lets the report build from a
+# fresh git clone with no DB or upstream-clone access at runtime.
+sites_all <- arrow::read_parquet("data/snapshots/fp_sites_tracking.parquet")
 
 ```
 
