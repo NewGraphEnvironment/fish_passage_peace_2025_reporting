@@ -11,7 +11,7 @@ name_f <- c(
 
 name_form <- "form_edna.gpkg"
 
-path_gis <- "/Users/lucy/Projects/gis"
+path_gis <- "~/Projects/gis"
 
 # list projects
 name_projects <- c(
