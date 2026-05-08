@@ -1,3 +1,11 @@
+# fish_passage_peace_2025_reporting 0.1.3 (2026-05-08)
+
+* Move Collaborative GIS Environment layer table out of mid-results into new appendix `0890-appendix-collaborative-gis.Rmd` (anchor `#app-gis`); section heading + tightened prose moved to end of results, matching the `restoration_wedzin_kwa_2024` pattern
+* Move UAV Imagery catalogue out of "Aerial Imagery" subsection into new appendix `0860-appendix-uav-imagery.Rmd` (anchor `#app-uav`)
+* Add eDNA-detected species (clean detections) to Phase 2 habitat confirmation overview table via `data/habitat_confirmations_priorities.csv` edits
+* Fix anzac cite drift: `@beaudry2013Assessmentassignment` → `@beaudry2013Assessmentassignmenta` (libID 9 suffix shift after BBT `citekeyFormat` pref change)
+* Trim Acknowledgement preamble; fix hardcoded path in `scripts/01_prep_inputs/0130_wrangle_form_pscis.R`
+
 # fish_passage_peace_2025_reporting 0.1.2 (2026-05-08)
 
 * Consume `fp_sites_tracking.parquet` snapshot from upstream fptr (v0.0.2) instead of querying postgres live; new `scripts/fp_inputs_snapshot.R` mirrors the existing eDNA pattern; Peace now builds from a fresh clone with no DB access at runtime ([Issue #10](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/10))

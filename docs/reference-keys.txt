@@ -17,8 +17,6 @@ tab:tab-monitoring-metrics
 fig:map-interactive
 tab:tab-sites-sum-cap
 tab:tab-sites-cap
-tab:tab-uav-imagery-cap
-tab:tab-rfp-tracking
 tab:cost-est-phase-1
 tab:tab-overview
 tab:phase-2-cv-assess-sum
@@ -59,6 +57,8 @@ fig:photo-203605-03
 tab:tab-edna-per-site
 tab:tab-edna-field-blanks
 tab:tab-edna-retests
+tab:tab-uav-imagery-cap
+tab:tab-rfp-tracking
 introduction
 background
 project-location
@@ -93,8 +93,6 @@ remediations
 monitoring
 results-and-discussion
 site-assessment-data
-collaborative-gis-environment-1
-methodology
 planning-1
 habitat-modelling-1
 statistical-support-for-bcfishpass-fish-habitat-modelling-updates-1
@@ -103,4 +101,6 @@ habitat-confirmation-assessments-1
 environmental-dna-edna-sampling-1
 engineering-design-1
 monitoring-1
+collaborative-gis-environment-1
 recommendations
+methodology

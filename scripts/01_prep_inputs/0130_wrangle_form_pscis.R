@@ -1,6 +1,6 @@
 # copy all forms to data_field_{year} directory
 
-path_gis <- "/Users/lucy/Projects/gis"
+path_gis <- "~/Projects/gis"
 
 # list projects
 name_projects <- c(
