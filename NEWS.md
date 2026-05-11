@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.1.4 (2026-05-11)
+
+* Add standalone PDF executive summary: `_executive_summary_pdf.Rmd` wrapper, `scripts/build_exec_pdf.R`, PDF download link in gitbook chapter. Strip `[@citekey]` refs from previous-work lists; fix hardcoded PDF name to derive from `_bookdown.yml`.
+
 # fish_passage_peace_2025_reporting 0.1.3 (2026-05-08)
 
 * Move Collaborative GIS Environment layer table out of mid-results into new appendix `0890-appendix-collaborative-gis.Rmd` (anchor `#app-gis`); section heading + tightened prose moved to end of results, matching the `restoration_wedzin_kwa_2024` pattern
