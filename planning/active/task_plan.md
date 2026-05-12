@@ -19,9 +19,9 @@ Port climate-departure analysis from the `cd` R package into the Peace 2025 repo
 - [x] Add `### Climate Departure` results paragraph in `0400-results.Rmd`
 
 ## Phase 4: Package dependency + version bump + build
-- [ ] Add `cd` to renv
-- [ ] Bump DESCRIPTION 0.2.0 → 0.3.0, NEWS.md entry
-- [ ] Full bookdown build + verify rendering
+- [x] Add `cd` to system library (no renv in this repo)
+- [x] Bump DESCRIPTION 0.2.0 → 0.3.0, NEWS.md entry
+- [x] Full bookdown build + verify rendering
 
 ## Validation
 

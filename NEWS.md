@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.3.0 (2026-05-12)
+
+* Add climate departure body section and appendix for FWCP Peace Region (`0880-appendix-climate-departure.Rmd`): ~16 figures and 5 tables covering temperature trends, precipitation, snowpack timing, spatial patterns, per-ecoregion variation, and watershed-group ecoregion mapping. Add methods and results paragraphs in main body under Planning with inline climate statistics. Port cached data via `scripts/cd_inputs_snapshot.R` from `cd` package v0.3.0 ([Issue #16](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/16))
+
 # fish_passage_peace_2025_reporting 0.2.0 (2026-05-11)
 
 * Add floodplain delineation appendix for Parsnip River Watershed Group pilot (`0870-appendix-floodplain.Rmd`): summary table, watershed-wide and detail terra maps, narrative on lateral connectivity for fish passage. Port build script (`scripts/gis/floodplain.R`) and cached data (`data/gis/`) from `flooded` package. Add methods and results paragraphs in main body under Planning ([Issue #14](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/14))

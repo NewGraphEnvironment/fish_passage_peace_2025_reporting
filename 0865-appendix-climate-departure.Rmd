@@ -127,12 +127,12 @@ difference is reported in the variable's native units, alongside
 percent change where it is meaningful (precipitation, soil
 moisture, vapour pressure deficit, relative humidity). Two
 p-values appear, answering different questions. **Δ p (windows)**
-is the Welch t-test on the annual values within each window — does
-the recent decade differ from the pre-warming reference? **Trend p
-(75-yr)** is the Mann-Kendall test on the full 1951–present series
-— is there a steady year-on-year ramp? Step changes show up as
-significant Δ p with non-significant trend p; gradual ramps show up
-as both significant.
+is the Welch t-test on the annual values within each window — this
+tells us if the recent decade differs from the pre-warming
+reference. **Trend p (75-yr)** is the Mann-Kendall test on the full
+1951–present series — this tells us if there is a steady
+year-on-year ramp. Step changes show up as significant Δ p with
+non-significant trend p; gradual ramps show up as both significant.
 
 ```{r cd-compare-table}
 trn_p <- trn[trn$trend_start == 1951, c("variable", "period", "mk_pvalue")]
@@ -285,8 +285,8 @@ ggplot(dtr, aes(x = year, y = dtr)) +
 
 ## Snowpack {-}
 
-Snowpack is the hinge of British Columbia hydrology: winter
-precipitation falls as snow, accumulates on the ground, and
+Snowpack drives the seasonal water supply across British Columbia:
+winter precipitation falls as snow, accumulates on the ground, and
 releases as meltwater across spring and summer. That seasonal
 storage is the difference between a late-summer creek that still
 flows and one that does not. It also sets the timing of the spring
@@ -296,10 +296,10 @@ up-river migrations to.
 For the FWCP Peace Region the snowpack signal is unambiguous and
 concentrated in the warm shoulders of the year. Annual snow water
 equivalent declined about 10 % (135 → 122 mm), but the seasonal
-breakdown is sharper: **summer SWE collapsed by 75 %** (21.5 →
+breakdown is sharper: **summer snow water equivalent collapsed by 75 %** (21.5 →
 5.3 mm) and **spring snowmelt rose 37 %** (212 → 290 mm) as the
 freshet shifted earlier in the calendar. Total annual snowfall
-barely changed (-6 %) — the SWE decline is mostly about warming
+barely changed (-6 %) — the snow water equivalent decline is mostly about warming
 removing snow earlier, not less snow falling.
 
 ### Seasonal snowpack curve {-}
@@ -309,7 +309,7 @@ Aggregated to the four standard meteorological seasons — winter
 fall (September–November) — the table below compares the recent
 decade (2015–2025) directly against the pre-warming reference
 (1951–1980) for each of the four monthly-native snow variables.
-The headline numbers (summer SWE collapse, spring snowmelt rise)
+The headline numbers (summer snow water equivalent collapse, spring snowmelt rise)
 are in the **summer** and **spring** rows.
 
 ```{r cd-snow-seasonal-table}
@@ -320,7 +320,7 @@ snow_seasonal <- cmp_pct[cmp_pct$variable %in% snow_monthly &
                           cmp_pct$period %in% season_order, ]
 snow_seasonal$period   <- factor(snow_seasonal$period, levels = season_order)
 snow_seasonal$variable <- factor(snow_seasonal$variable, levels = snow_monthly,
-                                 labels = c("SWE (mm)", "Snowfall (mm)",
+                                 labels = c("Snow water equivalent (mm)", "Snowfall (mm)",
                                             "Snowmelt (mm)", "Snow cover (%)"))
 snow_seasonal <- snow_seasonal[order(snow_seasonal$variable, snow_seasonal$period), ]
 snow_seasonal$mean_a     <- round(snow_seasonal$mean_a, 1)
@@ -334,7 +334,7 @@ names(snow_seasonal) <- c("Variable", "Season",
 
 kableExtra::kable_styling(
   knitr::kable(snow_seasonal, label = NA, row.names = FALSE,
-    caption = "Seasonal snowpack: recent decade versus pre-warming reference, FWCP Peace Region. Summer SWE collapse (-75 %) and spring snowmelt rise (+37 %) carry the headline signals."),
+    caption = "Seasonal snowpack: recent decade versus pre-warming reference, FWCP Peace Region. Summer snow water equivalent collapse (-75 %) and spring snowmelt rise (+37 %) carry the headline signals."),
   bootstrap_options = c("striped", "hover", "condensed")
 )
 ```
@@ -349,14 +349,14 @@ snowpack [@mote_etal2018Dramaticdeclines;
 freshet flashiness, and the fraction of precipitation falling as
 snow [@knowles_etal2006TrendsSnowfall].
 
-```{r cd-snow-swe-max, fig.cap = "Annual peak snow water equivalent (swe_max) for the FWCP Peace Region. ERA5-Land mm SWE, regional spatial mean."}
+```{r cd-snow-swe-max, fig.cap = "Annual peak snow water equivalent (swe_max) for the FWCP Peace Region. ERA5-Land mm snow water equivalent, regional spatial mean."}
 trn_swe_max <- cd::cd_trend(
   ano[ano$variable == "swe_max" & ano$period == "annual", ],
   trend_start = c(1951, 1981)
 )
 cd::cd_plot_timeseries(ano, variable = "swe_max", period = "annual",
                        trend = trn_swe_max,
-                       title = "Annual peak SWE — Anomaly")
+                       title = "Annual peak snow water equivalent — Anomaly")
 ```
 
 ```{r cd-snow-doy-50, fig.cap = "Day of year when half the annual snowmelt has accumulated (snowmelt_doy_50). Earlier dates indicate an earlier freshet centroid — directly relevant to crossing-design hydrology and to migration timing."}
@@ -408,7 +408,7 @@ timing across western North America in
 freshet advance in @kang_etal2016ImpactsRapidly for a basin whose
 southern boundary is just south of the Peace.
 
-**Summer is becoming snow-free.** Summer SWE has collapsed by 75 %
+**Summer is becoming snow-free.** Summer snow water equivalent has collapsed by 75 %
 and summer snowmelt is down 61 %. The high-elevation snowpack that
 historically lingered into summer no longer does in the recent
 decade. For aquatic ecosystems downstream this is a loss of
@@ -522,7 +522,8 @@ ggplot(ano_all[ano_all$variable == "tmean" & ano_all$period == "annual", ],
              labeller = labeller(ecoregion = er_labels)) +
   labs(x = NULL, y = expression("Mean temperature anomaly (" * degree * C * ")")) +
   theme_minimal(base_size = 11) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        strip.text = element_text(size = 7))
 ```
 
 ```{r cd-facet-prcp, fig.cap = "Annual precipitation anomaly (% of the 1951-1980 baseline) by ecoregion. The two northernmost ecoregions (BMP, NRM) show statistically significant precipitation increases over the full record; the others do not.", fig.height = 6}
@@ -539,19 +540,20 @@ ggplot(ano_all[ano_all$variable == "prcp" & ano_all$period == "annual", ],
              labeller = labeller(ecoregion = er_labels)) +
   labs(x = NULL, y = "Precipitation anomaly (% of baseline)") +
   theme_minimal(base_size = 11) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        strip.text = element_text(size = 7))
 ```
 
 ### Snow by ecoregion {-}
 
-Two snow metrics are worth viewing per-ecoregion: peak SWE (annual
+Two snow metrics are worth viewing per-ecoregion: peak snow water equivalent (annual
 snowpack magnitude) and DOY-50 (the day-of-year by which half the
 year's snowmelt has already happened — earlier values mean an
 earlier freshet). Pair them with the Watershed Groups Across
 Ecoregions section below to read each watershed group's dominant
 ecoregion signal.
 
-```{r cd-facet-swe-max, fig.cap = "Annual peak SWE anomaly by ecoregion, relative to the 1951-1980 baseline. Bars are mm of water-equivalent snowpack departure from baseline.", fig.height = 6}
+```{r cd-facet-swe-max, fig.cap = "Annual peak snow water equivalent anomaly by ecoregion, relative to the 1951-1980 baseline. Bars are mm of water-equivalent snowpack departure from baseline.", fig.height = 6}
 ggplot(ano_all[ano_all$variable == "swe_max" & ano_all$period == "annual", ],
        aes(x = year, y = anomaly)) +
   geom_col(aes(fill = anomaly >= 0), width = 0.85, show.legend = FALSE) +
@@ -563,9 +565,10 @@ ggplot(ano_all[ano_all$variable == "swe_max" & ano_all$period == "annual", ],
   scale_linetype_manual(values = c("dashed", "solid"), name = "Trend window") +
   facet_wrap(~ ecoregion, ncol = 3,
              labeller = labeller(ecoregion = er_labels)) +
-  labs(x = NULL, y = "Peak SWE anomaly (mm)") +
+  labs(x = NULL, y = "Peak snow water equivalent anomaly (mm)") +
   theme_minimal(base_size = 11) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        strip.text = element_text(size = 7))
 ```
 
 ```{r cd-facet-doy-50, fig.cap = "Snowmelt 50 % day-of-year (DOY-50) anomaly by ecoregion, relative to the 1951-1980 baseline. Negative values (red) mean the freshet midpoint shifted earlier in the year.", fig.height = 6}
@@ -582,7 +585,8 @@ ggplot(ano_all[ano_all$variable == "snowmelt_doy_50" & ano_all$period == "annual
              labeller = labeller(ecoregion = er_labels)) +
   labs(x = NULL, y = "DOY-50 anomaly (days; negative = earlier melt)") +
   theme_minimal(base_size = 11) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom",
+        strip.text = element_text(size = 7))
 ```
 
 ```{r cd-rollup}
@@ -717,7 +721,7 @@ snowpack-timing signal is regionally uniform — DOY-50 shifted
 earlier in every ecoregion. The freshet — the dominant high-flow
 event that mobilises spawning gravels, refills off-channel rearing
 habitat, and that crossing structures are sized against — is
-arriving weeks earlier across all 16 watershed groups. Summer SWE
+arriving weeks earlier across all 16 watershed groups. Summer snow water equivalent
 collapsed 75 %; the cold-water input that high-elevation snowpack
 provides to streams during the warmest weeks of summer is dropping
 in parallel. Both signals act on barrier prioritisation through
