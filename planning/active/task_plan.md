@@ -3,9 +3,9 @@
 Port climate-departure analysis from the `cd` R package into the Peace 2025 reporting repo: methods paragraph, results paragraph with hidden rollup chunk, and full appendix with ~16 figures and 5 tables. Mirrors the floodplain pattern from #14 but cd IS needed at render time for plotting/summary functions.
 
 ## Phase 1: Snapshot script + seed data
-- [ ] Create `scripts/cd_inputs_snapshot.R`
-- [ ] Run snapshot to seed `data/gis/cd_peace*` files
-- [ ] Verify gpkg has 8 layers
+- [x] Create `scripts/cd_inputs_snapshot.R`
+- [x] Run snapshot to seed `data/gis/cd_peace*` files
+- [x] Verify gpkg has 8 layers
 
 ## Phase 2: Port the appendix
 - [ ] Create `0880-appendix-climate-departure.Rmd` with YAML, heading, `{-}` sub-headings
