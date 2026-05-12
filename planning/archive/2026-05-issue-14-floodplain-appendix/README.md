@@ -1,0 +1,1 @@
+Floodplain delineation appendix — Parsnip pilot (#14). Ported `0870-appendix-floodplain.Rmd` from `flooded` package with summary table, two terra maps, and narrative. Added `scripts/gis/floodplain.R` build script and `data/gis/` cached outputs. Methods and results paragraphs in main body under Planning. Closed via PR #15, tagged v0.2.0.

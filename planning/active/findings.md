@@ -1,45 +1,27 @@
-# Findings — Add floodplain delineation appendix — Parsnip pilot (#14)
+# Findings — Climate departure body section + appendix (#16)
 
 ## Issue context
 
-Add a floodplain delineation appendix plus short methods + results sections in the main body that reference it. Pilot is the Parsnip River Watershed Group; the build script is generic so future reporting years can extend to other FWCP Peace watersheds.
+Port climate-departure analysis from the `cd` R package into the Peace 2025 reporting repo. Three pieces: methods paragraph in `0300-methods.Rmd`, results paragraph with hidden rollup chunk in `0400-results.Rmd`, and full appendix `0880-appendix-climate-departure.Rmd`.
 
-The appendix introduces floodplains as a second axis to fish-passage assessment (lateral connectivity, off-channel rearing, wetland refugia) and presents the modelled floodplain footprint plus a summary table of off-channel habitat units within it.
+## Key finding: cd needed at render time
 
-### Source material
+Unlike the floodplain appendix (where `flooded` is only needed by the build script), `cd` IS needed at render time. The appendix calls `cd::cd_compare()`, `cd::cd_summary()`, `cd::cd_plot_timeseries()`, and `cd::cd_trend()` for plotting and summary tables. The body rollup chunk does NOT need cd — only reads from cached RDS.
 
-Content is prepped in [`NewGraphEnvironment/flooded`](https://github.com/NewGraphEnvironment/flooded) at `hold/9999-appendix-floodplain.Rmd` (gitignored). Cached data and the build script:
+## Data path mapping
 
-- `flooded/data-raw/wsg_vignette_data.R` — data build script (289 lines)
-- `flooded/inst/vignette-data/pars.gpkg` — multi-layer vectors (9 layers, ~13 MB)
-- `flooded/inst/vignette-data/pars_dem.tif` — MRDEM-30 clip (~6.5 MB)
-- `flooded/inst/vignette-data/pars_valleys.tif` — `fl_valley_confine()` binary output (~112 KB)
-- `flooded/inst/vignette-data/pars_meta.rds` — bcfishpass version stamp
+| Source in cd package | Destination in Peace repo |
+|---------------------|--------------------------|
+| `inst/extdata/example_aoi_fwcp_peace.gpkg` | `data/gis/cd_peace.gpkg` (layer: aoi) |
+| `inst/extdata/context_fwcp_peace.gpkg` (7 layers) | `data/gis/cd_peace.gpkg` (layers: ecoregions, towns, lakes, rivers, streams, highways, wsgs) |
+| `inst/vignette-data/peace_fwcp.rds` | `data/gis/cd_peace.rds` |
+| `inst/vignette-data/peace_fwcp_departure_tmean.tif` | `data/gis/cd_peace_departure_tmean.tif` |
+| `inst/extdata/peace_wsg_ecoregion_commentary.csv` | `data/gis/cd_peace_wsg_ecoregion.csv` |
 
-## Exploration findings
+## Citation keys (9 total)
 
-### Appendix heading convention
-Existing appendices use: `# **Appendix - Title** {-#app-slug}` (e.g., `app-edna`, `app-uav`, `app-gis`). The floodplain appendix should use `{-#app-floodplain}`.
+`hansen_etal2012Perceptionclimate`, `karl_etal1993NewPerspective`, `mote_etal2018Dramaticdeclines`, `mote_etal2005DECLININGMOUNTAIN`, `stewart_etal2005ChangesEarlier`, `cayan_etal2001ChangesOnset`, `knowles_etal2006TrendsSnowfall`, `pepin_etal2015Elevationdependentwarming`, `kang_etal2016ImpactsRapidly`
 
-### Chapter ordering
-`_bookdown.yml` has NO `rmd_files` list — alphabetical ordering. `0870` slots between UAV (0860) and collaborative GIS (0890).
+## Lesson from #14
 
-### Data loading order
-Since 0400-results.Rmd renders before 0870-appendix-floodplain.Rmd, inline R variables from the appendix's `flood-rollup` chunk aren't available in the results chapter. Solution: duplicate the data-loading + rollup as a quiet `include = FALSE` chunk in 0400.
-
-### `terra` not in packages.R
-Must be loaded explicitly in the appendix setup chunk.
-
-### `library(flooded)` not needed at render time
-The appendix uses only `terra` and `sf` for rendering. `flooded` functions are only referenced in prose, not called.
-
-### References
-`@nagel_etal2014LandscapeScale` and `@hall_etal2007Predictingriver` are NOT in `references.bib`. Need to verify they exist in Zotero before build.
-
-## Post-merge feedback
-
-### Appendix sub-section numbering
-All `##` sub-headings inside appendices MUST use `{-}` to suppress section numbering. Without it, bookdown assigns chapter numbers (e.g., `5.1 Methods`, `5.2 Results`) which is wrong for unnumbered appendix chapters. Pattern: `## Methods {-}`, `## Results {-}`. Apply to all future appendices.
-
-### Body results section visibility
-The `### Floodplain Delineation` results paragraph under `## Planning` in 0400 rendered correctly (section 4.2.2) but was hard to find nested three levels deep. Consider whether body summary paragraphs should be more prominent for future appendices.
+All sub-headings inside unnumbered appendix chapters MUST use `{-}` to suppress section numbering.

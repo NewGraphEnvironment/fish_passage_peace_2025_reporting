@@ -1,36 +1,31 @@
-# Task: Add floodplain delineation appendix — Parsnip pilot (#14)
+# Task: Climate departure body section + appendix — FWCP Peace (#16)
 
-Add a floodplain delineation appendix plus short methods + results sections in the main body that reference it. Pilot is the Parsnip River Watershed Group; the build script is generic so future reporting years can extend to other FWCP Peace watersheds.
+Port climate-departure analysis from the `cd` R package into the Peace 2025 reporting repo: methods paragraph, results paragraph with hidden rollup chunk, and full appendix with ~16 figures and 5 tables. Mirrors the floodplain pattern from #14 but cd IS needed at render time for plotting/summary functions.
 
-The appendix introduces floodplains as a second axis to fish-passage assessment (lateral connectivity, off-channel rearing, wetland refugia) and presents the modelled floodplain footprint plus a summary table of off-channel habitat units within it.
+## Phase 1: Snapshot script + seed data
+- [x] Create `scripts/cd_inputs_snapshot.R`
+- [x] Run snapshot to seed `data/gis/cd_peace*` files
+- [x] Verify gpkg has 8 layers
 
-## Phase 1 — Port build script + seed data
+## Phase 2: Port the appendix
+- [x] Create `0880-appendix-climate-departure.Rmd` with YAML, heading, `{-}` sub-headings
+- [x] Update all data paths to `data/gis/cd_peace*`
+- [x] Update cross-ref anchors to `#app-climate-departure`
+- [ ] Verify 9 citation keys in Zotero
 
-- [x] Create `scripts/gis/` directory
-- [x] Copy `flooded/data-raw/wsg_vignette_data.R` → `scripts/gis/floodplain.R`
-- [x] Edit script: swap output dir from `inst/vignette-data` to `data/gis`; replace `devtools::load_all()` with `library(flooded)`
-- [x] Create `data/gis/` and copy 4 cached files from `flooded/inst/vignette-data/`
-- [x] Verify: `ogrinfo data/gis/pars.gpkg` lists 9 layers
+## Phase 3: Body methods + results
+- [x] Add `### Climate Departure` methods in `0300-methods.Rmd`
+- [x] Add `cd-rollup-body` quiet chunk in `0400-results.Rmd`
+- [x] Add `### Climate Departure` results paragraph in `0400-results.Rmd`
 
-## Phase 2 — Port the appendix
-
-- [x] Copy `flooded/hold/9999-appendix-floodplain.Rmd` → `0870-appendix-floodplain.Rmd`
-- [x] Add YAML frontmatter (matching `0850`/`0860`/`0890` convention)
-- [x] Change heading to `# **Appendix - Floodplain Delineation** {-#app-floodplain}` (matching repo convention)
-- [x] Replace `system.file("vignette-data/...", package = "flooded")` → `"data/gis/..."` paths
-- [x] Remove `library(flooded)` from setup chunk (not needed at render time — only `terra` and `sf`)
-- [ ] Verify citations exist in Zotero: `@nagel_etal2014LandscapeScale`, `@hall_etal2007Predictingriver`
-
-## Phase 3 — Body methods + results
-
-- [x] Add `### Floodplain Delineation` methods paragraph in `0300-methods.Rmd` under `## Planning` (after `tab-bcfp-def` chunk, ~line 213)
-- [x] Add `flood-rollup-body` quiet data-loading chunk in `0400-results.Rmd` (under `## Planning`, before `## Fish Passage Assessemnts`)
-- [x] Add `### Floodplain Delineation` results paragraph in `0400-results.Rmd` under `## Planning`
-- [x] Update cross-refs in body text: `[Appendix - Floodplain Delineation](#app-floodplain)`
+## Phase 4: Package dependency + version bump + build
+- [x] Add `cd` to system library (no renv in this repo)
+- [x] Bump DESCRIPTION 0.2.0 → 0.3.0, NEWS.md entry
+- [x] Full bookdown build + verify rendering
 
 ## Validation
 
-- [ ] `bookdown::render_book()` completes without error
+- [ ] Tests pass
 - [ ] `/code-check` clean on each commit
 - [ ] PWF checkboxes match landed work
 - [ ] `/planning-archive` on completion
