@@ -6,11 +6,11 @@ The appendix introduces floodplains as a second axis to fish-passage assessment 
 
 ## Phase 1 — Port build script + seed data
 
-- [ ] Create `scripts/gis/` directory
-- [ ] Copy `flooded/data-raw/wsg_vignette_data.R` → `scripts/gis/floodplain.R`
-- [ ] Edit script: swap output dir from `inst/vignette-data` to `data/gis`; replace `devtools::load_all()` with `library(flooded)`
-- [ ] Create `data/gis/` and copy 4 cached files from `flooded/inst/vignette-data/`
-- [ ] Verify: `ogrinfo data/gis/pars.gpkg` lists 9 layers
+- [x] Create `scripts/gis/` directory
+- [x] Copy `flooded/data-raw/wsg_vignette_data.R` → `scripts/gis/floodplain.R`
+- [x] Edit script: swap output dir from `inst/vignette-data` to `data/gis`; replace `devtools::load_all()` with `library(flooded)`
+- [x] Create `data/gis/` and copy 4 cached files from `flooded/inst/vignette-data/`
+- [x] Verify: `ogrinfo data/gis/pars.gpkg` lists 9 layers
 
 ## Phase 2 — Port the appendix
 
