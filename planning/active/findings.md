@@ -35,3 +35,11 @@ The appendix uses only `terra` and `sf` for rendering. `flooded` functions are o
 
 ### References
 `@nagel_etal2014LandscapeScale` and `@hall_etal2007Predictingriver` are NOT in `references.bib`. Need to verify they exist in Zotero before build.
+
+## Post-merge feedback
+
+### Appendix sub-section numbering
+All `##` sub-headings inside appendices MUST use `{-}` to suppress section numbering. Without it, bookdown assigns chapter numbers (e.g., `5.1 Methods`, `5.2 Results`) which is wrong for unnumbered appendix chapters. Pattern: `## Methods {-}`, `## Results {-}`. Apply to all future appendices.
+
+### Body results section visibility
+The `### Floodplain Delineation` results paragraph under `## Planning` in 0400 rendered correctly (section 4.2.2) but was hard to find nested three levels deep. Consider whether body summary paragraphs should be more prominent for future appendices.

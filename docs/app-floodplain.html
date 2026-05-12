@@ -346,9 +346,9 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i><strong>Appendix - UAV Imagery</strong></a></li>
 <li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i><strong>Appendix - Floodplain Delineation</strong></a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i><b>5.1</b> Floodplains and fish passage</a></li>
-<li class="chapter" data-level="5.2" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i><b>5.2</b> Methods</a></li>
-<li class="chapter" data-level="5.3" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i>Floodplains and fish passage</a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i>Results</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i><strong>Appendix - Collaborative GIS Layers</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -421,8 +421,8 @@ div.csl-indent {
 <span id="cb114-11"><a href="app-floodplain.html#cb114-11" tabindex="-1"></a>wetlands_n  <span class="ot">&lt;-</span> <span class="fu">sum</span>(wb_in_fp<span class="sc">$</span>waterbody_type <span class="sc">==</span> <span class="st">&quot;W&quot;</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb114-12"><a href="app-floodplain.html#cb114-12" tabindex="-1"></a>lakes_ha    <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sum</span>(sf<span class="sc">::</span><span class="fu">st_area</span>(wb_in_fp[wb_in_fp<span class="sc">$</span>waterbody_type <span class="sc">==</span> <span class="st">&quot;L&quot;</span>, ]))) <span class="sc">/</span> <span class="fl">1e4</span></span>
 <span id="cb114-13"><a href="app-floodplain.html#cb114-13" tabindex="-1"></a>wetlands_ha <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sum</span>(sf<span class="sc">::</span><span class="fu">st_area</span>(wb_in_fp[wb_in_fp<span class="sc">$</span>waterbody_type <span class="sc">==</span> <span class="st">&quot;W&quot;</span>, ]))) <span class="sc">/</span> <span class="fl">1e4</span></span></code></pre></div>
-<div id="floodplains-and-fish-passage" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Floodplains and fish passage<a href="app-floodplain.html#floodplains-and-fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="floodplains-and-fish-passage" class="section level2 unnumbered hasAnchor">
+<h2>Floodplains and fish passage<a href="app-floodplain.html#floodplains-and-fish-passage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Most fish-passage assessments treat a stream crossing as a single point
 on the mainstem — does it pass flow at bankfull, what is the gradient
 through the structure, can adult and juvenile fish move through it.
@@ -445,8 +445,8 @@ this reporting year. In coming years we plan to extend the method to
 the remaining FWCP Peace watersheds so that floodplain extent and
 values can carry through to barrier prioritisation across the region.</p>
 </div>
-<div id="methods-1" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Methods<a href="app-floodplain.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="methods-1" class="section level2 unnumbered hasAnchor">
+<h2>Methods<a href="app-floodplain.html#methods-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Floodplain footprints were delineated with the
 <a href="https://newgraphenvironment.github.io/flooded/"><code>flooded</code></a> R package,
 which combines a digital elevation model, the stream network, and a
@@ -469,8 +469,8 @@ scale for fish-habitat planning.</p>
 <a href="https://github.com/smnorris/bcfishpass">bcfishpass</a>, and BC Freshwater
 Atlas lakes and wetlands attached to that network.</p>
 </div>
-<div id="results" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Results<a href="app-floodplain.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="results" class="section level2 unnumbered hasAnchor">
+<h2>Results<a href="app-floodplain.html#results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="app-floodplain.html#cb115-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
 <span id="cb115-2"><a href="app-floodplain.html#cb115-2" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
 <span id="cb115-3"><a href="app-floodplain.html#cb115-3" tabindex="-1"></a>    <span class="at">Metric =</span> <span class="fu">c</span>(</span>
