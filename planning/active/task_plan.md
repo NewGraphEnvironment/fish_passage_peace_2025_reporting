@@ -8,9 +8,9 @@ Port climate-departure analysis from the `cd` R package into the Peace 2025 repo
 - [x] Verify gpkg has 8 layers
 
 ## Phase 2: Port the appendix
-- [ ] Create `0880-appendix-climate-departure.Rmd` with YAML, heading, `{-}` sub-headings
-- [ ] Update all data paths to `data/gis/cd_peace*`
-- [ ] Update cross-ref anchors to `#app-climate-departure`
+- [x] Create `0880-appendix-climate-departure.Rmd` with YAML, heading, `{-}` sub-headings
+- [x] Update all data paths to `data/gis/cd_peace*`
+- [x] Update cross-ref anchors to `#app-climate-departure`
 - [ ] Verify 9 citation keys in Zotero
 
 ## Phase 3: Body methods + results
