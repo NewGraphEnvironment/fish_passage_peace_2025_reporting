@@ -29,7 +29,7 @@
   
   
 <link rel="prev" href="references.html"/>
-<link rel="next" href="attach-dat.html"/>
+<link rel="next" href="attach-pdf-phase1-dat.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -260,6 +261,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#habitat-modelling"><i class="fa fa-check"></i><b>3.2.1</b> Habitat Modelling</a></li>
 <li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#bull-trout-and-arctic-grayling-critical-habitat"><i class="fa fa-check"></i><b>3.2.2</b> Bull Trout and Arctic Grayling Critical Habitat</a></li>
+<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#floodplain-delineation"><i class="fa fa-check"></i><b>3.2.3</b> Floodplain Delineation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a>
 <ul>
@@ -285,6 +287,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#planning-1"><i class="fa fa-check"></i><b>4.2</b> Planning</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-modelling-1"><i class="fa fa-check"></i><b>4.2.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#floodplain-delineation-1"><i class="fa fa-check"></i><b>4.2.2</b> Floodplain Delineation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Fish Passage Assessemnts</a></li>
 <li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-confirmation-assessments-1"><i class="fa fa-check"></i><b>4.4</b> Habitat Confirmation Assessments</a>
@@ -341,9 +344,16 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i><strong>Appendix - UAV Imagery</strong></a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i><strong>Appendix - Floodplain Delineation</strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i><b>5.1</b> Floodplains and fish passage</a></li>
+<li class="chapter" data-level="5.2" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i><b>5.2</b> Methods</a></li>
+<li class="chapter" data-level="5.3" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i><strong>Appendix - Collaborative GIS Layers</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i><strong>Attachment - Habitat Assessment and Fish Sampling Data</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
@@ -368,11 +378,11 @@ div.csl-indent {
 <div id="session-info" class="section level1 unnumbered hasAnchor">
 <h1>Session Info<a href="session-info.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Information about the computing environment is important for reproducibility. A summary of the computing environment is saved to <code>session_info.csv</code>, which can be viewed and downloaded from <a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/blob/main/session_info.csv" target="_blank">here</a>.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="session-info.html#cb116-1" tabindex="-1"></a><span class="cf">if</span>(gitbook_on){</span>
-<span id="cb116-2"><a href="session-info.html#cb116-2" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">session_info</span>(<span class="at">to_file =</span> <span class="st">&#39;session_info.csv&#39;</span>)</span>
-<span id="cb116-3"><a href="session-info.html#cb116-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb116-4"><a href="session-info.html#cb116-4" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">session_info</span>()</span>
-<span id="cb116-5"><a href="session-info.html#cb116-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="session-info.html#cb121-1" tabindex="-1"></a><span class="cf">if</span>(gitbook_on){</span>
+<span id="cb121-2"><a href="session-info.html#cb121-2" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">session_info</span>(<span class="at">to_file =</span> <span class="st">&#39;session_info.csv&#39;</span>)</span>
+<span id="cb121-3"><a href="session-info.html#cb121-3" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb121-4"><a href="session-info.html#cb121-4" tabindex="-1"></a>  devtools<span class="sc">::</span><span class="fu">session_info</span>()</span>
+<span id="cb121-5"><a href="session-info.html#cb121-5" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
             </section>
@@ -381,7 +391,7 @@ div.csl-indent {
         </div>
       </div>
 <a href="references.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="attach-dat.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="attach-pdf-phase1-dat.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

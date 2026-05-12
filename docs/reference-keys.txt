@@ -58,6 +58,9 @@ tab:tab-edna-per-site
 tab:tab-edna-field-blanks
 tab:tab-edna-retests
 tab:tab-uav-imagery-cap
+tab:flood-table
+fig:flood-map-wsg
+fig:flood-map-detail
 tab:tab-rfp-tracking
 introduction
 background
@@ -71,6 +74,7 @@ planning
 habitat-modelling
 statistical-support-for-bcfishpass-fish-habitat-modelling-updates
 bull-trout-and-arctic-grayling-critical-habitat
+floodplain-delineation
 fish-passage-assessments
 natural-barriers-to-fish-passage
 road-stream-crossings
@@ -96,6 +100,7 @@ site-assessment-data
 planning-1
 habitat-modelling-1
 statistical-support-for-bcfishpass-fish-habitat-modelling-updates-1
+floodplain-delineation-1
 fish-passage-assessemnts
 habitat-confirmation-assessments-1
 environmental-dna-edna-sampling-1
@@ -103,4 +108,7 @@ engineering-design-1
 monitoring-1
 collaborative-gis-environment-1
 recommendations
+floodplains-and-fish-passage
+methods-1
+results
 methodology

@@ -52,6 +52,8 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-1.3.1/leaflet.js"></script>
@@ -60,7 +62,7 @@
 <script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
 <link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
 <script src="libs/leaflet-binding-2.2.3/leaflet.js"></script>
-<script src="libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+<script src="libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
 <script src="libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
 <link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
 <script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
@@ -231,10 +233,11 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Fish Passage Reporting Template</a></li>
+<li><a href="./">Fish Passage in the Peace Region 2025</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="ai-disclosure.html"><a href="ai-disclosure.html"><i class="fa fa-check"></i>AI Disclosure</a></li>
 <li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
@@ -258,6 +261,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#habitat-modelling"><i class="fa fa-check"></i><b>3.2.1</b> Habitat Modelling</a></li>
 <li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#bull-trout-and-arctic-grayling-critical-habitat"><i class="fa fa-check"></i><b>3.2.2</b> Bull Trout and Arctic Grayling Critical Habitat</a></li>
+<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#floodplain-delineation"><i class="fa fa-check"></i><b>3.2.3</b> Floodplain Delineation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a>
 <ul>
@@ -280,18 +284,19 @@ div.csl-indent {
 <li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data"><i class="fa fa-check"></i><b>4.1</b> Site Assessment Data</a></li>
-<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.2</b> Collaborative GIS Environment</a></li>
-<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#planning-1"><i class="fa fa-check"></i><b>4.3</b> Planning</a>
+<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#planning-1"><i class="fa fa-check"></i><b>4.2</b> Planning</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-modelling-1"><i class="fa fa-check"></i><b>4.3.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="4.2.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-modelling-1"><i class="fa fa-check"></i><b>4.2.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#floodplain-delineation-1"><i class="fa fa-check"></i><b>4.2.2</b> Floodplain Delineation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.4</b> Fish Passage Assessemnts</a></li>
-<li class="chapter" data-level="4.5" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-confirmation-assessments-1"><i class="fa fa-check"></i><b>4.5</b> Habitat Confirmation Assessments</a>
+<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Fish Passage Assessemnts</a></li>
+<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-confirmation-assessments-1"><i class="fa fa-check"></i><b>4.4</b> Habitat Confirmation Assessments</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#environmental-dna-edna-sampling-1"><i class="fa fa-check"></i><b>4.5.1</b> Environmental DNA (eDNA) sampling</a></li>
+<li class="chapter" data-level="4.4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#environmental-dna-edna-sampling-1"><i class="fa fa-check"></i><b>4.4.1</b> Environmental DNA (eDNA) sampling</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="results-and-discussion.html"><a href="results-and-discussion.html#engineering-design-1"><i class="fa fa-check"></i><b>4.6</b> Engineering Design</a></li>
-<li class="chapter" data-level="4.7" data-path="results-and-discussion.html"><a href="results-and-discussion.html#monitoring-1"><i class="fa fa-check"></i><b>4.7</b> Monitoring</a></li>
+<li class="chapter" data-level="4.5" data-path="results-and-discussion.html"><a href="results-and-discussion.html#engineering-design-1"><i class="fa fa-check"></i><b>4.5</b> Engineering Design</a></li>
+<li class="chapter" data-level="4.6" data-path="results-and-discussion.html"><a href="results-and-discussion.html#monitoring-1"><i class="fa fa-check"></i><b>4.6</b> Monitoring</a></li>
+<li class="chapter" data-level="4.7" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.7</b> Collaborative GIS Environment</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
@@ -303,6 +308,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-downstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 199663</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-upstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 199663</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#environmental-dna-sampling"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#environmental-dna-results"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#structure-remediation-and-cost-estimate"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
@@ -314,6 +320,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-downstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203597</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-upstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203597</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#environmental-dna-sampling-1"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#environmental-dna-results-1"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#structure-remediation-and-cost-estimate-1"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
@@ -325,17 +332,31 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-downstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203605</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-upstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203605</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#environmental-dna-sampling-2"><i class="fa fa-check"></i>Environmental DNA Sampling</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#environmental-dna-results-2"><i class="fa fa-check"></i>Environmental DNA Results</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#structure-remediation-and-cost-estimate-2"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html"><i class="fa fa-check"></i><strong>Appendix - Environmental DNA Results</strong></a>
+<ul>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#per-site-detection-results"><i class="fa fa-check"></i>Per-site detection results</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#field-blanks"><i class="fa fa-check"></i>Field blanks</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#retests"><i class="fa fa-check"></i>Retests</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i><strong>Appendix - UAV Imagery</strong></a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i><strong>Appendix - Floodplain Delineation</strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i><b>5.1</b> Floodplains and fish passage</a></li>
+<li class="chapter" data-level="5.2" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i><b>5.2</b> Methods</a></li>
+<li class="chapter" data-level="5.3" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i><strong>Appendix - Collaborative GIS Layers</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
-<li class="chapter" data-level="" data-path="attach-maps.html"><a href="attach-maps.html"><i class="fa fa-check"></i><strong>Attachment - Maps</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i><strong>Attachment - Habitat Assessment and Fish Sampling Data</strong></a></li>
-<li class="chapter" data-level="" data-path="attach-bayes.html"><a href="attach-bayes.html"><i class="fa fa-check"></i><strong>Attachment - Bayesian analysis to map stream discharge and temperature causal effects pathways</strong></a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_template_reporting" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -356,7 +377,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="appendix---phase-1-fish-passage-assessment-data-and-photos" class="section level1 unnumbered hasAnchor">
 <h1>Appendix - Phase 1 Fish Passage Assessment Data and Photos<a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#appendix---phase-1-fish-passage-assessment-data-and-photos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -618,7 +639,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -880,7 +901,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1142,7 +1163,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1404,7 +1425,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1666,7 +1687,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -1928,7 +1949,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2190,7 +2211,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2452,7 +2473,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2714,7 +2735,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -2976,7 +2997,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3238,7 +3259,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3500,7 +3521,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -3762,7 +3783,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4024,7 +4045,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4286,7 +4307,7 @@ Fix Span / Diameter
 </tfoot>
 </table>
 <br><br><br><br><br>
-<table class="table table-condensed" style="font-size: 11px; color: black; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -4565,11 +4586,11 @@ Fix Span / Diameter
 </ul></li>
 </ul>
 
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb62-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb62-2"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb62-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb62-3"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb62-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb62-4"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb62-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb63-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199663</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb56-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb56-2"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb56-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb56-3"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb56-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb56-4"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb56-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#cb57-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">199663</span></span></code></pre></div>
 </div>
             </section>
 
@@ -4619,7 +4640,7 @@ gitbook.start({
     "link": null,
     "text": null
   },
-  "download": ["fish_passage_template_reporting.pdf", "fish_passage_template_reporting.html"],
+  "download": ["fish_passage_peace_reporting_2025.pdf", "fish_passage_peace_reporting_2025.html"],
   "search": {
     "engine": "fuse",
     "options": null
