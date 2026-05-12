@@ -14,19 +14,19 @@ The appendix introduces floodplains as a second axis to fish-passage assessment 
 
 ## Phase 2 — Port the appendix
 
-- [ ] Copy `flooded/hold/9999-appendix-floodplain.Rmd` → `0870-appendix-floodplain.Rmd`
-- [ ] Add YAML frontmatter (matching `0850`/`0860`/`0890` convention)
-- [ ] Change heading to `# **Appendix - Floodplain Delineation** {-#app-floodplain}` (matching repo convention)
-- [ ] Replace `system.file("vignette-data/...", package = "flooded")` → `"data/gis/..."` paths
-- [ ] Remove `library(flooded)` from setup chunk (not needed at render time — only `terra` and `sf`)
+- [x] Copy `flooded/hold/9999-appendix-floodplain.Rmd` → `0870-appendix-floodplain.Rmd`
+- [x] Add YAML frontmatter (matching `0850`/`0860`/`0890` convention)
+- [x] Change heading to `# **Appendix - Floodplain Delineation** {-#app-floodplain}` (matching repo convention)
+- [x] Replace `system.file("vignette-data/...", package = "flooded")` → `"data/gis/..."` paths
+- [x] Remove `library(flooded)` from setup chunk (not needed at render time — only `terra` and `sf`)
 - [ ] Verify citations exist in Zotero: `@nagel_etal2014LandscapeScale`, `@hall_etal2007Predictingriver`
 
 ## Phase 3 — Body methods + results
 
-- [ ] Add `### Floodplain Delineation` methods paragraph in `0300-methods.Rmd` under `## Planning` (after `tab-bcfp-def` chunk, ~line 213)
-- [ ] Add `flood-rollup-body` quiet data-loading chunk in `0400-results.Rmd` (before `## Planning` section, ~line 240) — loads `data/gis/pars.gpkg`, computes rollup stats
-- [ ] Add `### Floodplain Delineation` results paragraph in `0400-results.Rmd` under `## Planning` (after habitat modelling results, before `## Fish Passage Assessemnts`, ~line 257)
-- [ ] Update cross-refs in body text: `\@ref(app-floodplain)`
+- [x] Add `### Floodplain Delineation` methods paragraph in `0300-methods.Rmd` under `## Planning` (after `tab-bcfp-def` chunk, ~line 213)
+- [x] Add `flood-rollup-body` quiet data-loading chunk in `0400-results.Rmd` (under `## Planning`, before `## Fish Passage Assessemnts`)
+- [x] Add `### Floodplain Delineation` results paragraph in `0400-results.Rmd` under `## Planning`
+- [x] Update cross-refs in body text: `[Appendix - Floodplain Delineation](#app-floodplain)`
 
 ## Validation
 

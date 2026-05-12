@@ -213,6 +213,11 @@ xref_bcfishpass_names |>
 ```
 
 
+### Floodplain Delineation
+
+Floodplain extent was modelled for the Parsnip River Watershed Group using the [`flooded`](https://newgraphenvironment.github.io/flooded/) R package, which combines a digital elevation model, the bull trout accessible stream network, and a modelled bankfull flood surface to identify low-relief ground reached at high flow. Inputs were the [MRDEM-30](https://open.canada.ca/data/en/dataset/18752265-bda3-498c-a4ba-9dfe68cb98da) 30 m DEM, the bull trout accessible stream network (stream order ≥ 3) from [bcfishpass](https://github.com/smnorris/bcfishpass), and BC Freshwater Atlas lakes and wetlands attached to that network. We used the **functional floodplain** scenario (`ff04` in `flooded::fl_scenarios()`) — the recurrent-inundation footprint. Full methodology, parameter values, and citations are in [Appendix - Floodplain Delineation](#app-floodplain).
+
+
 ```{r tablethreshaverage, eval= FALSE}
 #to quantify upstream habitat potentially available for salmonids and facilitate stream line symbology based on stream morphology.
 

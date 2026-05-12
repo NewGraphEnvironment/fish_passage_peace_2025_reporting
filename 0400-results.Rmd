@@ -254,6 +254,36 @@ included as [Attachment - Water Temperature Modelling](#attach-bayes).
 
 
 
+```{r flood-rollup-body, include = FALSE}
+gpkg_fp    <- "data/gis/pars.gpkg"
+aoi_fp     <- sf::st_read(gpkg_fp, layer = "aoi", quiet = TRUE)
+streams_fp <- sf::st_read(gpkg_fp, layer = "streams", quiet = TRUE)
+wb_fp      <- sf::st_read(gpkg_fp, layer = "waterbodies", quiet = TRUE)
+fp_poly    <- sf::st_read(gpkg_fp, layer = "floodplain", quiet = TRUE)
+
+aoi_fp     <- sf::st_make_valid(aoi_fp)
+streams_fp <- suppressWarnings(sf::st_intersection(streams_fp, aoi_fp))
+fp_poly    <- suppressWarnings(sf::st_intersection(fp_poly, aoi_fp))
+
+aoi_area_km2    <- as.numeric(sum(sf::st_area(aoi_fp))) / 1e6
+fp_area_ha      <- as.numeric(sum(sf::st_area(fp_poly))) / 1e4
+fp_pct_aoi      <- 100 * fp_area_ha / (aoi_area_km2 * 100)
+
+streams_in_fp    <- suppressWarnings(sf::st_intersection(streams_fp, fp_poly))
+streams_km_total <- as.numeric(sum(sf::st_length(streams_fp))) / 1e3
+streams_km_in_fp <- as.numeric(sum(sf::st_length(streams_in_fp))) / 1e3
+
+wb_in_fp    <- suppressWarnings(sf::st_intersection(wb_fp, fp_poly))
+lakes_n     <- sum(wb_in_fp$waterbody_type == "L", na.rm = TRUE)
+wetlands_n  <- sum(wb_in_fp$waterbody_type == "W", na.rm = TRUE)
+```
+
+### Floodplain Delineation
+
+Modelled functional floodplain in the Parsnip River Watershed Group covers `r format(round(fp_area_ha), big.mark = ",")` ha — `r sprintf("%.1f", fp_pct_aoi)` % of the `r format(round(aoi_area_km2), big.mark = ",")` km² watershed group — attached to `r format(round(streams_km_in_fp), big.mark = ",")` km of bull trout accessible order-3+ streams. The footprint contains `r lakes_n` lakes and `r format(wetlands_n, big.mark = ",")` mapped wetland polygons, the off-channel habitat units that lateral floodplain connectivity supports. The full metric table, watershed-scale map, and south-east detail map are in [Appendix - Floodplain Delineation](#app-floodplain).
+
+
+
 ## Fish Passage Assessemnts
 
 Field assessments were conducted between `r format(min(form_pscis$date), format="%B %d, %Y")` and `r format(max(form_pscis$date), format="%B %d, %Y")` by Allan Irvine, R.P.Bio. and Lucy Schick, B.Sc. A total of `r form_pscis |> filter(assess_type_phase1 == "Yes"|assess_type_reassessment == "Yes") |> nrow()` Fish Passage Assessments were completed, including `r n_distinct(pscis_phase1$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments.
