@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', toggle_R);
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -260,6 +261,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#habitat-modelling"><i class="fa fa-check"></i><b>3.2.1</b> Habitat Modelling</a></li>
 <li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#bull-trout-and-arctic-grayling-critical-habitat"><i class="fa fa-check"></i><b>3.2.2</b> Bull Trout and Arctic Grayling Critical Habitat</a></li>
+<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#floodplain-delineation"><i class="fa fa-check"></i><b>3.2.3</b> Floodplain Delineation</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.3</b> Fish Passage Assessments</a>
 <ul>
@@ -285,6 +287,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#planning-1"><i class="fa fa-check"></i><b>4.2</b> Planning</a>
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-modelling-1"><i class="fa fa-check"></i><b>4.2.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="4.2.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#floodplain-delineation-1"><i class="fa fa-check"></i><b>4.2.2</b> Floodplain Delineation</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-passage-assessemnts"><i class="fa fa-check"></i><b>4.3</b> Fish Passage Assessemnts</a></li>
 <li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-confirmation-assessments-1"><i class="fa fa-check"></i><b>4.4</b> Habitat Confirmation Assessments</a>
@@ -341,9 +344,16 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i><strong>Appendix - UAV Imagery</strong></a></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i><strong>Appendix - Floodplain Delineation</strong></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i><b>5.1</b> Floodplains and fish passage</a></li>
+<li class="chapter" data-level="5.2" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i><b>5.2</b> Methods</a></li>
+<li class="chapter" data-level="5.3" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i><b>5.3</b> Results</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i><strong>Appendix - Collaborative GIS Layers</strong></a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="attach-pdf-phase1-dat.html"><a href="attach-pdf-phase1-dat.html"><i class="fa fa-check"></i><strong>Attachment - Phase 1 Data and Photos</strong></a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i><strong>Attachment - Habitat Assessment and Fish Sampling Data</strong></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
@@ -549,16 +559,16 @@ Rearing Gradient Max (%)
 channel width (observed or predicted) into species specific linear spawning/rearing habitat models. In early 2021,
 Bayesian statistical methods were developed to predict channel width in all provincial freshwater atlas stream segments
 where width measurements had not previously been measured in the field. The model was based on the relationship between
-watershed area and mean annual precipitation weighted by upstream watershed area <span class="citation">(J. Thorley and Irvine 2021)</span>. In
-December of 2021, <span class="citation">J. Thorley and Irvine (2021)</span> methods were updated using a power model derived by
+watershed area and mean annual precipitation weighted by upstream watershed area <span class="citation">(Thorley and Irvine 2021)</span>. In
+December of 2021, <span class="citation">Thorley and Irvine (2021)</span> methods were updated using a power model derived by
 <span class="citation">Finnegan et al. (2005)</span> which relates stream discharge to watershed area and mean annual precipitation resulting
-in <span class="citation">J. L. Thorley, Norris, and Irvine (2021)</span> which was utilized for channel width estimates within <code>bcfishpass</code> modelling at the time
+in <span class="citation">Thorley et al. (2021)</span> which was utilized for channel width estimates within <code>bcfishpass</code> modelling at the time
 of reporting. More detailed documentation of the methodology used to facilitate both the data collection and statistical
-analysis can be sourced in <span class="citation">Irvine ([2021] 2022)</span> and <span class="citation">J. L. Thorley, Norris, and Irvine (2021)</span>.</p>
+analysis can be sourced in <span class="citation">Irvine ([2021] 2022)</span> and <span class="citation">Thorley et al. (2021)</span>.</p>
 <p><br></p>
 <p>In 2024, in collaboration with Poisson Consulting - stream discharge and temperature causal effects pathways were mapped
 with the intent of focusing aquatic restoration actions in areas of highest potential for positive impacts on fisheries
-values (ie. elimination of areas from intrinic models where water temperatures are likely too cold to support fish production). The project began with a custom mechanistic model (visually represented <a href="https://github.com/poissonconsulting/fish-passage-22b?tab=readme-ov-file#dags">here</a>), but the model struggled to converge. The project then shifted to the air2stream model, which offers a middle ground between fully mechanistic models—often data-intensive and reliant on quantities that are difficult to measure or estimate—and purely statistical models, which lack physical justification and perform poorly when extrapolated to new conditions (<span class="citation">Toffolon and Piccolroaz (2015)</span>). After several adaptations, the expected stream temperatures were best modeled using the four-parameter version of the air2stream model, with added random effects by site for each of the four parameters (<span class="citation">Hill, Thorley, and Irvine (2024)</span>).
+values (ie. elimination of areas from intrinic models where water temperatures are likely too cold to support fish production). The project began with a custom mechanistic model (visually represented <a href="https://github.com/poissonconsulting/fish-passage-22b?tab=readme-ov-file#dags">here</a>), but the model struggled to converge. The project then shifted to the air2stream model, which offers a middle ground between fully mechanistic models—often data-intensive and reliant on quantities that are difficult to measure or estimate—and purely statistical models, which lack physical justification and perform poorly when extrapolated to new conditions (<span class="citation">Toffolon and Piccolroaz (2015)</span>). After several adaptations, the expected stream temperatures were best modeled using the four-parameter version of the air2stream model, with added random effects by site for each of the four parameters (<span class="citation">Hill et al. (2024)</span>).
 The data used for the model were sourced from the following locations, for years 2019-2021:</p>
 <ul>
 <li>Water temperature data collected in the Nechako Watershed were downloaded from <a href="https://zenodo.org/records/6426024#.ZEAqr-zMI0Q">Zenodo</a> <span class="citation">(Gilbert et al. 2022)</span>.</li>
@@ -615,6 +625,10 @@ Data and Information (SEDIS) training conducted through WLRS.</p>
 <span id="cb26-5"><a href="methods.html#cb26-5" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> <span class="st">&#39;bcfishpass outputs and associated definitions&#39;</span>,</span>
 <span id="cb26-6"><a href="methods.html#cb26-6" tabindex="-1"></a>                 <span class="at">footnote_text =</span> <span class="fu">paste0</span>(model_species_name, <span class="st">&quot; uses a maximum gradient threshold of &quot;</span>, bt_network_gradient, <span class="st">&quot;% to determine whether access is likely possible&quot;</span>),</span>
 <span id="cb26-7"><a href="methods.html#cb26-7" tabindex="-1"></a>                 <span class="at">scroll =</span> F)</span></code></pre></div>
+</div>
+<div id="floodplain-delineation" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Floodplain Delineation<a href="methods.html#floodplain-delineation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Floodplain extent was modelled for the Parsnip River Watershed Group using the <a href="https://newgraphenvironment.github.io/flooded/"><code>flooded</code></a> R package, which combines a digital elevation model, the bull trout accessible stream network, and a modelled bankfull flood surface to identify low-relief ground reached at high flow. Inputs were the <a href="https://open.canada.ca/data/en/dataset/18752265-bda3-498c-a4ba-9dfe68cb98da">MRDEM-30</a> 30 m DEM, the bull trout accessible stream network (stream order ≥ 3) from <a href="https://github.com/smnorris/bcfishpass">bcfishpass</a>, and BC Freshwater Atlas lakes and wetlands attached to that network. We used the <strong>functional floodplain</strong> scenario (<code>ff04</code> in <code>flooded::fl_scenarios()</code>) — the recurrent-inundation footprint. Full methodology, parameter values, and citations are in <a href="app-floodplain.html#app-floodplain">Appendix - Floodplain Delineation</a>.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="methods.html#cb27-1" tabindex="-1"></a><span class="co">#to quantify upstream habitat potentially available for salmonids and facilitate stream line symbology based on stream morphology.</span></span>
 <span id="cb27-2"><a href="methods.html#cb27-2" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="methods.html#cb27-3" tabindex="-1"></a><span class="co"># while high gradient sections typically  present  upstream  migration  barriers  and  less  available  habitat.  Additionally, the size of the stream (indicated by channel width) is an important determinant for habitat suitability for different species as well as specific life stages of those species. </span></span>
@@ -687,7 +701,7 @@ No suitable spawning habitat, and habitat with low rearing potential (e.g., loca
 </tbody>
 </table>
 <p><br></p>
-<p>Fish passage potential was determined for each stream crossing identified as a closed bottom structure as per <span class="citation">MoE (2011)</span>. The combined scores from five criteria: depth and degree to which the structure is embedded, outlet drop, stream width ratio, culvert slope, and culvert length were used to screen whether each culvert was a likely barrier to some fish species and life stages (Table <a href="methods.html#tab:tab-barrier-scoring">3.3</a>, Table <a href="methods.html#tab:tab-barrier-result">3.4</a>). These criteria were developed based on data obtained from various studies and reflect an estimation for the passage of a juvenile salmon or small resident rainbow trout <span class="citation">(Clarkin et al. 2005 ; Bell 1991; Thompson 2013)</span>. For crossings determined to be potential barriers or barriers based on the data, a culvert fix and recommended diameter/span was proposed.</p>
+<p>Fish passage potential was determined for each stream crossing identified as a closed bottom structure as per <span class="citation">MoE (2011)</span>. The combined scores from five criteria: depth and degree to which the structure is embedded, outlet drop, stream width ratio, culvert slope, and culvert length were used to screen whether each culvert was a likely barrier to some fish species and life stages (Table <a href="methods.html#tab:tab-barrier-scoring">3.3</a>, Table <a href="methods.html#tab:tab-barrier-result">3.4</a>). These criteria were developed based on data obtained from various studies and reflect an estimation for the passage of a juvenile salmon or small resident rainbow trout <span class="citation">(Clarkin et al. 2005; Bell 1991; Thompson 2013)</span>. For crossings determined to be potential barriers or barriers based on the data, a culvert fix and recommended diameter/span was proposed.</p>
 <p><br></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="methods.html#cb29-1" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">t</span>(fpr_table_barrier_scoring)) <span class="sc">|&gt;</span></span>
 <span id="cb29-2"><a href="methods.html#cb29-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">V4 =</span> <span class="fu">names</span>(fpr_table_barrier_scoring)) <span class="sc">|&gt;</span></span>
@@ -1571,7 +1585,7 @@ Describe details and rational for priority rankings
 <h3><span class="header-section-number">3.4.2</span> Environmental DNA (eDNA) Sampling<a href="methods.html#environmental-dna-edna-sampling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="sample-collection-and-filtration" class="section level4 hasAnchor" number="3.4.2.1">
 <h4><span class="header-section-number">3.4.2.1</span> Sample Collection and Filtration<a href="methods.html#sample-collection-and-filtration" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Samples were collected using two approaches informed by <span class="citation">Hobbs, Helbing, and Goldberg (2025)</span>: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.</p>
+<p>Samples were collected using two approaches informed by <span class="citation">Hobbs et al. (2025)</span>: in-stream filtration with a Haltech EMOS sampler and grab-and-go bottle collection. For both methods, all water collected at a site (typically 1–3L) was filtered onto a single filter, yielding one replicate per site. Mixed cellulose ester (MCE) filters with 1µm pore size were used most commonly, with 0.45µm and 1.5µm filters of other materials used occasionally. Samples were typically collected upstream and downstream of each road–stream crossing, though in some cases only downstream samples were obtained.</p>
 <p>For in-stream filtration, Haltech reusable aluminum housings were pre-loaded with filters. In high-turbidity conditions, a Haltech pre-filter with a 100µm nitex screen was installed upstream to remove coarse material. For grab-and-go sampling, stream water was collected in sanitized 1L HDPE Nalgene bottles and filtered at the end of each day.</p>
 <p>After filtration, filters were removed from housings in a clean environment, placed in coin envelopes with silica desiccant inside labelled ziplock bags, and frozen until shipment. Aluminum housings and Nalgene bottles were sanitized with bleach solution between uses.</p>
 </div>
@@ -1596,7 +1610,7 @@ Describe details and rational for priority rankings
 </div>
 <div id="aerial-imagery" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> Aerial Imagery<a href="methods.html#aerial-imagery" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; stac-utils 2025; Simoes et al. 2021)</span>.</p>
+<p>Scripted processing and serving of UAV imagery collected during the project is available at <a href="https://github.com/NewGraphEnvironment/stac_uav_bc/" class="uri">https://github.com/NewGraphEnvironment/stac_uav_bc/</a> <span class="citation">(Irvine [2025] 2025)</span>. <a href="https://github.com/OpenDroneMap/ODM"><code>OpenDroneMap</code></a> was utilized to produce orthomosaics, digital surface models (DSMs), and digital terrain models (DTMs) <span class="citation">(OpenDroneMap Authors [2014] 2025)</span>. To support efficient web-based access - imagery products were converted to cloud-optimized GeoTIFFs (COGs) using <code>rio-cogeo</code>, then collated accordiong to the <a href="https://github.com/radiantearth/stac-spec">SpatioTemporal Asset Catalog (STAC)</a> specification with <code>pystac</code> and uploaded to S3 storage <span class="citation">Amazon Web Services (2025)</span>. A <code>titiler</code> tile server was set up to facilitate interactive viewing of the orthoimagery and an Application Program Interface (API) leveraging <code>stac-fastapi-pgstac</code> is served at <a href="https://images.a11s.one" class="uri">https://images.a11s.one</a> to enable linking of collection images through QGIS as well as remote spatial and temporal querying using open source software such as <code>rstac</code> <span class="citation">(Development Seed [2019] 2025; <span class="nocase">stac-utils</span> 2025; Simoes et al. 2021)</span>.</p>
 </div>
 </div>
 <div id="engineering-design" class="section level2 hasAnchor" number="3.5">
