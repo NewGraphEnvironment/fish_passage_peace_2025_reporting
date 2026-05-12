@@ -14,9 +14,9 @@ Port climate-departure analysis from the `cd` R package into the Peace 2025 repo
 - [ ] Verify 9 citation keys in Zotero
 
 ## Phase 3: Body methods + results
-- [ ] Add `### Climate Departure` methods in `0300-methods.Rmd`
-- [ ] Add `cd-rollup-body` quiet chunk in `0400-results.Rmd`
-- [ ] Add `### Climate Departure` results paragraph in `0400-results.Rmd`
+- [x] Add `### Climate Departure` methods in `0300-methods.Rmd`
+- [x] Add `cd-rollup-body` quiet chunk in `0400-results.Rmd`
+- [x] Add `### Climate Departure` results paragraph in `0400-results.Rmd`
 
 ## Phase 4: Package dependency + version bump + build
 - [ ] Add `cd` to renv
