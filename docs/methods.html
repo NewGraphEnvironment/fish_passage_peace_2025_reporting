@@ -241,9 +241,11 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.2</b> Tse’khene</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.3</b> Fisheries</a>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.5</b> Fisheries</a>
 <ul>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#bull-trout---saba"><i class="fa fa-check"></i>Bull Trout - sa’ba</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#arctic-grayling---duskihje"><i class="fa fa-check"></i>Arctic Grayling - dusk’ihje</a></li>
@@ -319,12 +321,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#watershed-groups-across-ecoregions"><i class="fa fa-check"></i>Watershed groups across ecoregions</a></li>
 <li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#interpretation-for-fish-passage"><i class="fa fa-check"></i>Interpretation for fish passage</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a>
-<ul>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i>Floodplains and fish passage</a></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i>Results</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html"><i class="fa fa-check"></i>Tributary To Parsnip River - 199663 - Appendix</a>
 <ul>
@@ -610,7 +607,8 @@ Data and Information (SEDIS) training conducted through WLRS.</p>
 </div>
 <div id="floodplain-delineation" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Floodplain Delineation<a href="methods.html#floodplain-delineation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Floodplain extent was modelled for the Parsnip River Watershed Group using the <a href="https://newgraphenvironment.github.io/flooded/"><code>flooded</code></a> R package, which combines a digital elevation model, the bull trout accessible stream network, and a modelled bankfull flood surface to identify low-relief ground reached at high flow. Inputs were the <a href="https://open.canada.ca/data/en/dataset/18752265-bda3-498c-a4ba-9dfe68cb98da">MRDEM-30</a> 30 m DEM, the bull trout accessible stream network (stream order ≥ 3) from <a href="https://github.com/smnorris/bcfishpass">bcfishpass</a>, and BC Freshwater Atlas lakes and wetlands attached to that network. We used the <strong>functional floodplain</strong> scenario (<code>ff04</code> in <code>flooded::fl_scenarios()</code>) — the recurrent-inundation footprint. Full methodology, parameter values, and citations are in <a href="app-floodplain.html#app-floodplain">Appendix - Floodplain Delineation</a>.</p>
+<p>To complement the linear barrier inventory, we mapped functional floodplain extent at watershed scale for the Parsnip River Watershed Group. Overlaying floodplain footprint on the crossing inventory lets us ask not just whether fish can pass a structure, but how much off-channel habitat sits within the affected corridor and whether infrastructure has compromised the lateral connectivity that sustains it.</p>
+<p>We used the <a href="https://newgraphenvironment.github.io/flooded/"><code>flooded</code></a> R package <span class="citation">(Nagel et al. 2014)</span>, which models the area a river actively inundates during regular high-flow events — the <strong>functional floodplain</strong>. This is distinct from the narrow active channel (the wetted perimeter at low flow) and the broader geologic valley bottom (which includes terraces untouched by water for centuries). The functional floodplain is the scale where off-channel habitat is created and maintained: where side channels form, seasonal flooding sustains wetlands, and riparian forests recruit. Bankfull depth is estimated from the regional regression of <span class="citation">Hall et al. (2007)</span>, calibrated against field-mapped floodplain sites in Pacific Northwest streams. Inputs were the <a href="https://open.canada.ca/data/en/dataset/18752265-bda3-498c-a4ba-9dfe68cb98da">MRDEM-30</a> 30 m DEM, the bull trout accessible stream network (stream order ≥ 3) from <a href="https://github.com/smnorris/bcfishpass">bcfishpass</a>, and BC Freshwater Atlas lakes and wetlands on that network. Full methodology and watershed-scale mapping are in <a href="app-floodplain.html#app-floodplain">Appendix - Floodplain Delineation</a>.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="methods.html#cb26-1" tabindex="-1"></a><span class="co">#to quantify upstream habitat potentially available for salmonids and facilitate stream line symbology based on stream morphology.</span></span>
 <span id="cb26-2"><a href="methods.html#cb26-2" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="methods.html#cb26-3" tabindex="-1"></a><span class="co"># while high gradient sections typically  present  upstream  migration  barriers  and  less  available  habitat.  Additionally, the size of the stream (indicated by channel width) is an important determinant for habitat suitability for different species as well as specific life stages of those species. </span></span>

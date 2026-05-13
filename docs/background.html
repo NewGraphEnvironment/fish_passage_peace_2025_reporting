@@ -241,9 +241,11 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.1</b> Project Location</a></li>
-<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.2</b> Tse’khene</a></li>
-<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.3</b> Fisheries</a>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.5</b> Fisheries</a>
 <ul>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#bull-trout---saba"><i class="fa fa-check"></i>Bull Trout - sa’ba</a></li>
 <li class="chapter" data-level="" data-path="background.html"><a href="background.html#arctic-grayling---duskihje"><i class="fa fa-check"></i>Arctic Grayling - dusk’ihje</a></li>
@@ -319,12 +321,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#watershed-groups-across-ecoregions"><i class="fa fa-check"></i>Watershed groups across ecoregions</a></li>
 <li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#interpretation-for-fish-passage"><i class="fa fa-check"></i>Interpretation for fish passage</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a>
-<ul>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#floodplains-and-fish-passage"><i class="fa fa-check"></i>Floodplains and fish passage</a></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#methods-1"><i class="fa fa-check"></i>Methods</a></li>
-<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html#results"><i class="fa fa-check"></i>Results</a></li>
-</ul></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html"><i class="fa fa-check"></i>Tributary To Parsnip River - 199663 - Appendix</a>
 <ul>
@@ -399,8 +396,20 @@ div.csl-indent {
 <h1><span class="header-section-number">2</span> Background<a href="background.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a><span class="co"># See https://github.com/NewGraphEnvironment/mybookdown-template/issues/64</span></span>
 <span id="cb9-2"><a href="background.html#cb9-2" tabindex="-1"></a> knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.path =</span> <span class="st">&quot;fig/background/&quot;</span>, <span class="at">dev =</span> <span class="st">&quot;png&quot;</span>)</span></code></pre></div>
-<div id="project-location" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Project Location<a href="background.html#project-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="approach" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Approach<a href="background.html#approach" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Fish passage assessments in British Columbia follow the provincial protocol <span class="citation">(MoE 2011)</span>, which scores barrier risk at road-stream crossings from structural parameters — culvert embedment, slope, outlet drop, and culvert diameter relative to channel width. The “Barrier” and “Potential Barrier” classifications represent passability for juvenile salmon or small resident rainbow trout under any flow conditions that may occur throughout the year <span class="citation">(Clarkin et al. 2005; Bell 1991; Thompson 2013)</span>. The thresholds are deliberately conservative, so the classifications are risk scores rather than determinations of whether fish actually move through. Many structures classified as “Barrier” still pass some species and life stages at some flows, and natural features in adjacent reaches can be as limiting as the structure itself. Passability can be quantified in other ways — fish length, swim speed, and species physiology all affect connectivity outcomes — and finer-grained scoring methods exist for structures already classified as barriers <span class="citation">(Bourne et al. 2011; Kemp and O’Hanley 2010; Washington Department of Fish &amp; Wildlife 2009)</span>. Whether a remediation changes outcomes for fish therefore depends on the habitat upstream, the species and life stages in question, and the broader condition of the reach the structure connects to — not the classification alone.</p>
+<p><br></p>
+<p>The provincial inventory contains thousands of structures on fish-bearing streams. Replacement at a typical forest road culvert is in the six-figure range; structural replacements on highway and rail corridors run into seven and eight figures. Funding for restoration is finite and split across multiple programs and partners. Prioritization across the inventory therefore carries more weight than any individual assessment — the assessment establishes what could be fixed, while prioritization decides what should be.</p>
+<p><br></p>
+<p>Authority and funding for these structures are distributed across rail authorities, highway ministries, forestry licensees, and private landowners. Each operates under its own mandate, performance metrics, and budget cycle. Advancing restoration involves working inside organizations whose primary mandate is moving goods, maintaining roads, or harvesting timber — not aquatic ecological outcomes. The work proceeds through shared data, sustained relationships, and incremental progress across multiple budget years and field seasons.</p>
+<p><br></p>
+<p>Many road and rail corridors were built without consideration of fish passage or floodplain function. Damage frequently extends beyond the structure at the crossing — channelized streams, dykes that sever lateral connection, drained wetlands, cleared riparian buffers. Replacing a culvert in-kind can restore longitudinal passage while leaving the broader corridor-scale disconnection unaddressed. Understanding where infrastructure constrains watershed function helps distinguish cases where structural replacement is sufficient from cases where remediation needs to address more than the structure itself.</p>
+<p><br></p>
+<p>This report compiles the layers used for prioritization in the watershed groups where the work is active: structural assessment data, habitat modelling, climate trajectory, and floodplain extent. Each layer contributes a piece of the picture — what is present, what it could support, how it is changing, and the surrounding watershed context. The work happens over many years across many partners; this report documents one year’s contribution to that effort.</p>
+</div>
+<div id="project-location" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Project Location<a href="background.html#project-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse’khene First Nations.
 In 2025, field assessments were completed with the Carp Lake, Crooked River, Nation River, Parsnip Arm, and Parsnip River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>).</p>
 <p><br></p>
@@ -415,8 +424,8 @@ Figure 2.1: Overview map of Study Area
 </div>
 <p><br></p>
 </div>
-<div id="tsekhene" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Tse’khene<a href="background.html#tsekhene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="tsekhene" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Tse’khene<a href="background.html#tsekhene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Parsnip River watershed is located within the south-eastern portion of the 108,000 km<sup>2</sup> traditional territory of the Tse’khene from the <a href="https://www.mlib.ca/about/History">McLeod Lake Indian Band</a>. The Tse’khene <em>“People of the Rocks”</em> are a south westerly extension of the Athabascan speaking people of northern Canada. They were nomadic hunters whose language belongs to the Beaver-Sarcee-Tse’khene branch of Athapaskan <span class="citation">(<span>“History <span>Who We Are</span>”</span> 2023)</span>. Extensive work is underway to preserve the language with resources such as First Voices available <a href="https://www.firstvoices.com/tsekhene-mcleod">online</a> and in <a href="https://apps.apple.com/us/app/tsekhene-mcleod-lake/id1503929250">app form</a> for iphone and ipad devices.</p>
 <p><br></p>
 <p>The continental divide separates watersheds flowing north into the Arctic Ocean via the Mackenzie River and south and west into the Pacific Ocean via the Fraser River (Figure <a href="background.html#fig:overview-map">2.1</a>). The Parsnip River is a 6th order stream with a watershed that drains an area of 5597km<sup>2</sup>. The mainstem of the river flows within the Rocky Mountain Trench in a north direction into Williston Reservoir starting from the continental divide adjacent to Arctic Lakes. Major tributaries include the Misinchinka, Colbourne, Reynolds, Anzac, Table, Hominka and Missinka sub-basins which drain the western slopes of the Hart Ranges of the Rocky Mountains. The Parsnip River has a mean annual discharge of 150.5 m<sup>3</sup>/s with flow patterns typical of high elevation watersheds on the west side of the northern Rocky Mountains which receive large amounts of precipitation as snow leading to peak levels of discharge during snowmelt, typically from May to July (Figure <a href="background.html#fig:fig-hydrology-plot-flow">2.2</a>).</p>
@@ -437,8 +446,14 @@ Figure 2.2: Hydrograph for Parsnip River above Misinchinka River (Station #07EE0
 </div>
 <p><br></p>
 </div>
-<div id="fisheries" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Fisheries<a href="background.html#fisheries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="floodplains-and-watershed-function" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Floodplains and Watershed Function<a href="background.html#floodplains-and-watershed-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Floodplains are the low-lying ground adjacent to stream channels that water reclaims during high-flow events. They are not idle margins — they are where rivers do geomorphic work: storing and sorting sediment, exchanging nutrients between terrestrial and aquatic systems, recruiting riparian vegetation, and delivering large woody debris to the channel. For fish, floodplain habitats — side channels, sloughs, beaver complexes, oxbow ponds, and connected wetlands — provide the off-channel conditions that drive freshwater productivity. Juvenile salmonids depend on these areas for low-velocity rearing, overwinter refuge when mainstem conditions become harsh, and high-flow shelter during freshet. In many systems, floodplain habitats are where freshwater survival is won or lost.</p>
+<p><br></p>
+<p>Floodplains are often the part of the watershed most compromised by the infrastructure legacy described above. Dykes sever lateral connection; channelization confines the active footprint; drainage eliminates wetland complexes. Mapping floodplain extent at watershed scale therefore complements the linear barrier inventory — prioritization can consider not just whether a structure passes fish but the condition and extent of the off-channel habitat in the reach the structure connects to.</p>
+</div>
+<div id="fisheries" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Fisheries<a href="background.html#fisheries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Fish species recorded in the BC Fisheries Information Summary System (FISS) in the Parsnip River watershed are detailed in Table <a href="background.html#tab:fiss-species-table">2.1</a> <span class="citation">(MoE 2024a)</span>. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed <span class="citation">(Hagen et al. 2015; Stamford et al. 2017; Hagen and Weber 2019; COSEWIC 2012)</span>. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in <span class="citation">Fish and Wildlife Compensation Program (2020)</span> with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.</p>
 <p><br></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_species_table.csv&#39;</span>))</span>

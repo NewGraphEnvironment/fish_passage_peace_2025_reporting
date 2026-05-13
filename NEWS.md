@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.4.0 (2026-05-13)
+
+* Add `## Approach` section to background framing fish passage work as risk classification under cost/scale/multi-agency constraints, with infrastructure-legacy context. Add `## Floodplains and Watershed Function` background section. Tighten floodplain methods/results paragraphs and merge appendix narrative (no separate Methods/Results subheadings). Add municipalities layer to build script and detail map. Remove duplicate protocol-context paragraph from results — now lives in Approach.
+
 # fish_passage_peace_2025_reporting 0.3.1 (2026-05-13)
 
 * Restructure GIS sections and appendix order; relocate AI disclosure to YAML and hide Acknowledgement from sidebar TOC. Move amalgamated results tables to new Assessment Data Summary appendix; remove `dff-2022` references throughout ([Issue #18](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/18))
