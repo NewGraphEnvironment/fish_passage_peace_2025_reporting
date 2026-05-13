@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.3.1 (2026-05-13)
+
+* Restructure GIS sections and appendix order; relocate AI disclosure to YAML and hide Acknowledgement from sidebar TOC. Move amalgamated results tables to new Assessment Data Summary appendix; remove `dff-2022` references throughout ([Issue #18](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/18))
+
 # fish_passage_peace_2025_reporting 0.3.0 (2026-05-12)
 
 * Add climate departure body section and appendix for FWCP Peace Region (`0880-appendix-climate-departure.Rmd`): ~16 figures and 5 tables covering temperature trends, precipitation, snowpack timing, spatial patterns, per-ecoregion variation, and watershed-group ecoregion mapping. Add methods and results paragraphs in main body under Planning with inline climate statistics. Port cached data via `scripts/cd_inputs_snapshot.R` from `cd` package v0.3.0 ([Issue #16](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/16))
