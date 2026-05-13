@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# **Appendix - Climate Departure** {-#app-climate-departure}
+# Appendix - Climate Departure {-#app-climate-departure}
 
 ```{r cd-setup, include = FALSE}
 library(cd)

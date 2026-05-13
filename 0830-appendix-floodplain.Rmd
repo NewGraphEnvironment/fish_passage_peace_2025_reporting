@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# **Appendix - Floodplain Delineation** {-#app-floodplain}
+# Appendix - Floodplain Delineation {-#app-floodplain}
 
 ```{r flood-setup, include = FALSE}
 library(terra)

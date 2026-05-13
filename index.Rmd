@@ -22,6 +22,8 @@ author: |
 date: |
  |
  | Version `r desc::desc_get_version()` `r format(Sys.Date(), "%Y-%m-%d")`
+ |
+ | *Claude Opus 4.7 (Anthropic) assisted with literature synthesis, drafting, and technical writing. All scientific interpretation, data analysis, and conclusions are the responsibility of the authors.*
 toc-title: Table of Contents
 site: bookdown::bookdown_site
 output: 
@@ -129,13 +131,8 @@ knitr::write_bib(c(
 
 # Acknowledgement {.front-matter .unnumbered}
 
-At New Graph Environment, we understand our well-being as inseparable from the health of the land and waters we work within. When we care for ecosystems, we care for ourselves and for the communities connected to them. 
+At New Graph Environment, we understand our well-being as inseparable from the health of the land and waters we work within. When we care for ecosystems, we care for ourselves and for the communities connected to them.
 
-
-
-# AI Disclosure {.front-matter .unnumbered}
-
-Report preparation was assisted by Claude (Anthropic Opus 4.7), a large language model, for literature synthesis and technical writing. All ecological assessments, professional judgments, and conclusions are the sole responsibility of teh authors, who independently verified all content.
 
 
 ```{js, logo-header, echo = FALSE, eval= T}

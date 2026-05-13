@@ -113,128 +113,9 @@ map
 ```
 
 
-## Site Assessment Data 
+## Site Assessment Data
 
-Fish passage assessment procedures conducted through SERNbc since `r params$project_start_year` are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`.
-
-<br>
-
-
-Since `r params$project_start_year`, orthoimagery and elevation model rasters have been generated and stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally - a tile service has been set up to facilitate viewing and downloading of individual images, provided in [Appendix - UAV Imagery](#app-uav).
-
-`r if(gitbook_on){knitr::asis_output("<br>")}`
-
-```{r ld-db}
-# Read the locally-snapshotted parquet (refreshed via
-# scripts/fp_inputs_snapshot.R; provenance in
-# data/fp_inputs_snapshot_manifest.txt). Lets the report build from a
-# fresh git clone with no DB or upstream-clone access at runtime.
-sites_all <- arrow::read_parquet("data/snapshots/fp_sites_tracking.parquet")
-
-```
-
-```{r summarize-sites}
-
-# unique(sites_all$watershed_group_name)
-# 
-# # here is a list of SERN wtershed groups
-# wsg <- c("Bulkley River",
-#               "Zymoetz River",
-#               "Kispiox River", 
-#               "Kalum River", 
-#               "Morice River", 
-#               "Parsnip River",
-#               "Carp Lake", 
-#               "Crooked River")
-
-# wsg <- c(
-#               "Parsnip River",
-#               "Carp Lake",
-#               "Crooked River"
-#               )
-
-wsg <- c(
-  "Lower Chilako River",
-  "Willow River",
-  "Tabor River",
-  "Lower Salmon River",
-  "Upper Fraser River",
-  "Nechako River",
-  "Morkill River",
-  "Francois Lake"
-)
-
-
-# more straight forward is new graph only watersheds
-# wsg_ng <- "Elk River"
-
-# here is a summary with Elk watershed group removed
-sites_all_summary <- sites_all |> 
-  # make a flag column for uav flights
-  dplyr::mutate(
-    uav = dplyr::case_when(
-      !is.na(link_uav1) ~ "yes",
-      T ~ NA_character_
-    )) |> 
-  # remove the elk counts
-  dplyr::filter(watershed_group %in% wsg) |>
-  dplyr::group_by(watershed_group) |> 
-  dplyr::summarise(
-    dplyr::across(assessment:fish_sampling, ~ sum(!is.na(.x))),
-    uav = sum(!is.na(uav))
-  ) |> 
-  sf::st_drop_geometry() |> 
-  # make pretty names
-  dplyr::rename_with(~ stringr::str_replace_all(., "_", " ") |> 
-                       stringr::str_to_title()) |> 
-  # annoying special case
-  dplyr::rename(
-    `Drone Imagery` = Uav) |> 
-  janitor::adorn_totals()
-```
-
-```{r tab-sites-sum-cap, results="asis"}
-my_caption = "Summary of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
-my_tab_caption()
-```
-
-```{r tab-sites-sum}
-sites_all_summary |> 
-  dplyr::mutate(dplyr::across(everything(), as.character)) |> 
-  my_dt_table(
-    page_length = 20,
-    cols_freeze_left = 0
-              )
-```
-
-<br>
-
-
-```{r tab-sites-cap, results="asis"}
-my_caption = "Details of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
-my_tab_caption(tip_flag = FALSE)
-```
-
-```{r tab-sites-all}
-sites_all |>
-  dplyr::filter(watershed_group %in% wsg) |>
-  sf::st_drop_geometry() |>
-  dplyr::mutate(dplyr::across(everything(), as.character)) |> 
-  dplyr::relocate(watershed_group, .after = my_crossing_reference) |> 
-  dplyr::select(-idx) |>
-  # make pretty names
-  dplyr::rename_with(~ . |>
-                       stringr::str_replace_all("_", " ") |>
-                       stringr::str_replace_all("repo", "Report") |>
-                       stringr::str_replace_all("uav", "Drone") |>
-                       stringr::str_to_title()) |> 
-  # dplyr::arrange(desc(stream_crossing_id)) |> 
-  
-  my_dt_table(
-    cols_freeze_left = 1,
-    escape = FALSE
-  )
-```
+A summary of fish passage assessment procedures conducted through SERNbc since `r params$project_start_year` — including assessments, habitat confirmations, design, remediation, monitoring, fish sampling, eDNA sampling, and drone imagery — is provided in [Appendix - Assessment Data Summary](#app-site-data).
 
 
 ```{r cd-rollup-body, include = FALSE}
@@ -271,7 +152,7 @@ Four findings from the regional climate-departure analysis carry to fish-passage
 
 For barrier prioritisation these signals cut both ways. Where upstream reaches are cold-limited, added growing-degree-days can raise the intrinsic potential of habitat above the barrier and *increase* the value of restoring passage; where upstream reaches sit closer to the upper edge of the cold-water thermal niche, the same warming reduces usable habitat and lowers the payoff. The watershed-group breakdown in [Appendix - Climate Departure](#app-climate-departure) maps the five-ecoregion signal onto the 16 FWCP Peace watershed groups.
 
-## Planning
+## Planning — Habitat, Connectivity and Floodplain Modelling
 
 ### Habitat Modelling
 Habitat modelling from `bcfishpass` including access model, linear spawning/rearing habitat model and lateral habitat
@@ -317,7 +198,7 @@ wetlands_n  <- sum(wb_in_fp$waterbody_type == "W", na.rm = TRUE)
 Modelled functional floodplain in the Parsnip River Watershed Group covers `r format(round(fp_area_ha), big.mark = ",")` ha — `r sprintf("%.1f", fp_pct_aoi)` % of the `r format(round(aoi_area_km2), big.mark = ",")` km² watershed group — attached to `r format(round(streams_km_in_fp), big.mark = ",")` km of bull trout accessible order-3+ streams. The footprint contains `r lakes_n` lakes and `r format(wetlands_n, big.mark = ",")` mapped wetland polygons, the off-channel habitat units that lateral floodplain connectivity supports. The full metric table, watershed-scale map, and south-east detail map are in [Appendix - Floodplain Delineation](#app-floodplain).
 
 
-## Fish Passage Assessemnts
+## Fish Passage Assessments
 
 Field assessments were conducted between `r format(min(form_pscis$date), format="%B %d, %Y")` and `r format(max(form_pscis$date), format="%B %d, %Y")` by Allan Irvine, R.P.Bio. and Lucy Schick, B.Sc. A total of `r form_pscis |> filter(assess_type_phase1 == "Yes"|assess_type_reassessment == "Yes") |> nrow()` Fish Passage Assessments were completed, including `r n_distinct(pscis_phase1$my_crossing_reference)` Phase 1 assessments and `r pscis_reassessments |> nrow()` reassessments.
 

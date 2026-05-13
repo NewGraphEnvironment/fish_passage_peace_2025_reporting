@@ -5,7 +5,7 @@ editor_options:
 ---
 
 
-# **Appendix - Environmental DNA Results** {-#app-edna}
+# Appendix - Environmental DNA Results {-#app-edna}
 
 This appendix contains site-level detail for the 2025 environmental DNA (eDNA) sampling program in the Peace project area. Headline per-species detection counts are presented in the main Results chapter; the tables below show which sites detected which species. Field blanks are tracked separately as quality-assurance samples — they test for protocol contamination, not site eDNA. Office blanks (samples filtered at the field accommodation rather than at site) are excluded from these tables because their UTM coordinates are inherited from related sites and do not represent real sampling locations.
 
