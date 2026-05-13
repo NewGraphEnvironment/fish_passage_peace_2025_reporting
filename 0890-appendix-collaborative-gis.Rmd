@@ -5,7 +5,7 @@ editor_options:
 ---
 
 
-# **Appendix - Collaborative GIS Layers** {-#app-gis}
+# Appendix - Collaborative GIS Layers {-#app-gis}
 
 This appendix lists background spatial layers and tables loaded to the collaborative GIS project (`r params$gis_project_name`) at the time of writing. The project serves as the spatial integration layer for fieldwork — viewable in QGIS in the office and synced to mobile devices for navigation and standardized data collection in the field via Mergin Maps.
 

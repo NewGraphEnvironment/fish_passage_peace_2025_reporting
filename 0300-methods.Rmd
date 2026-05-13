@@ -13,56 +13,6 @@ if (params$project_region == "peace") {
 
 ```
 
-## Collaborative GIS Environment 
-Geographical Information Systems are essential for developing and communicating restoration plans as well as the reasons
-they are required and how they are developed. Without the ability to visualize the landscape and the data that is used
-to make decisions, it is difficult to conduct and communicate the need for restoration, the details of past and future
-plans as well as and the potential results of physical works.
-
-<br>
-
-To facilitate the planning and implementation of restoration activities, a collaborative GIS environment has been
-established using [QGIS](https://qgis.org/en/site/) and is served on the cloud using source code stored
-[here](https://github.com/MerginMaps). This environment is intended to be a space where project team members can access,
-view, and contribute to the amalgamation of background spatial data and the development of restoration as well as
-monitoring for the project. The collaborative GIS environment allows users to view, edit, and analyze shared, up to date
-spatial data on personal computers in an office setting as well as on phones and tablets in the field. At the time of
-reporting, the environment was being used to develop and share maps, conduct spatial analyses, communicate restoration
-plans to stakeholders as well as to provide a central place to store methodologies and tools for conducting field
-assessments on standardized pre-developed digital forms. The platform can also be used to track the progress of
-restoration activities and monitor changes in the landscape over time, helping encourage the record keeping of past and
-future restoration activities in a coordinated manner.
-
-<br>
-
-The shared QGIS project was created using scripts currently kept in
-[`dff-2022`](https://github.com/NewGraphEnvironment/dff-2022) with the precise calls to project creation scripts tracked
-in the `project_creation_and_permissions.txt` document kept in the main QGIS project directory. Information about the scripts used for GIS project creation and updates can be viewed
-[here](https://github.com/NewGraphEnvironment/dff-2022/tree/master/scripts/qgis) with outcomes of their use summarized
-below:
-
-  - Download and clip user specified layers from the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/) as well as data layers stored in custom Amazon Web Services buckets for an area of interest defined by a list of watershed groups and load to a geopackage called `background_layers.gpkg` stored in the main directory of the project.  
-  - A project directory is created to hold the spatial data and `QGIS` project information (ie. layer symbology and naming conventions, metadata, etc.).
-  - Metadata for individual project spatial layers is kept in the `rfp_tracking` table within the `background_layers.gpkg` along with tables related to user supplied stream width/gradient inputs to `bcfishpass` to model potentially high value habitat that is accessible to fish species of interest. 
-  
-
-```{r}
-# this is good info but need to figure out where it appropriately sits
-# ### Issue Tracking
-# "Issues" logged on the online github platform are effective ways to track tasks, enhancements, and bugs related to project components.
-# They can be referenced with the scripts, text and actions used to address them by linking documentation to the issues with text comments
-# or programatically through `git` commit messages.  Issues for this project are kept `r ngr::ngr_str_link_url(url_base = params$repo_url, url_resource = "issues", anchor_text = "here")`.
-```
-
-
-### Mapping
-The workflows to produce the georeferenced  `pdf` maps include using a QGIS layer file
-defining and symbolizing all layers required and are continuously evolving. At the time of reporting - mapping scripts
-and associated layer file were kept under version control within `bcfishpass` [here](https://github.com/smnorris/bcfishpass/tree/main/qgis).
-Loading the QGIS layer file within a QGIS project, allows load and representation of all map component layers provided
-the user points to a postgresql database populated via `bcfishpass` outputs.
-
-
 ## Climate Departure
 
 Climate departure measures how far recent climate has shifted from a historical baseline — in this case, how much warmer, drier, or snowpack-altered the FWCP Peace Region has become relative to the pre-warming period (1951–1980). Where traditional fish-passage assessments focus on the physical structures in and around streams, climate departure adds the atmospheric and hydrologic context those structures sit inside: warming air temperatures that drive warmer water, shifting snowpack that reshapes the freshet, and atmospheric drying that reduces late-summer flows. Understanding these departures at the watershed scale lets us ask whether the habitat above a barrier is gaining or losing value as climate changes — and weight barrier prioritisation accordingly.
@@ -72,7 +22,7 @@ We examined 15 climate variables spanning temperature (annual mean, daytime maxi
 Climate departures were computed with the [`cd`](https://newgraphenvironment.com/cd/) R package, which reads ERA5-Land hourly reanalysis (1950–present, ~9 km native grid) aggregated to monthly, seasonal, and annual periods on a single grid covering British Columbia, served as Cloud-Optimised GeoTIFFs from a public S3 catalog. For each variable the package crops the published rasters to the area of interest, takes a yearly spatial mean, and computes anomalies against the 1951–1980 pre-warming reference period — the same base period @hansen_etal2012Perceptionclimate used for global temperature emergence. Long-term trends are tested with Mann-Kendall significance and quantified with Theil-Sen slopes; the recent-decade (2015–2025) versus pre-warming window comparison uses a Welch two-sample t-test on the annual values. The same pipeline runs at any polygon scale — region, ecoregion, or watershed group. The regional and ecoregion-level analyses are summarised in this section; the watershed-group breakdown feeds into the per-watershed barrier prioritisation that follows. [Appendix - Climate Departure](#app-climate-departure) carries the full set of plots and tables.
 
 
-## Planning
+## Planning — Habitat, Connectivity and Floodplain Modelling
 
 ### Habitat Modelling
 
@@ -421,7 +371,7 @@ Samples were shipped frozen to the University of Northern British Columbia (UNBC
 
 Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished using mtDNA-based assays. The Bull Trout assay also detects Dolly Varden, requiring geographic context to interpret results in areas where ranges overlap. Similarly, Rainbow Trout and Coastal Cutthroat assays may cross-react where these species co-occur or hybridize.
 
-To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An [assay mapping table](https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_assays.csv) cross-referencing species codes to assay identifiers and dye types was developed, along with [processing scripts](https://github.com/NewGraphEnvironment/dff-2022/blob/main/scripts/edna_unbc_plan.R) to generate sample groupings and a [run order configuration](https://github.com/NewGraphEnvironment/dff-2022/blob/main/data/edna_group_run_order.csv) specifying species order within each group. 
+To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An assay mapping table cross-referencing species codes to assay identifiers and dye types was developed, along with processing scripts to generate sample groupings and a run order configuration specifying species order within each group. 
 
 
 #### eDNA Extraction
@@ -448,19 +398,21 @@ Structure replacement was conducted by project specific contractors. If not alre
 
 ## Monitoring
 
-Monitoring of fish passage restoration sites — both proposed and completed - is essential to ensure restoration investments 
-lead to meaningful ecological outcomes. Monitoring enables evaluation of whether remediation actions improve connectivity 
+Monitoring of fish passage restoration sites — both proposed and completed - is essential to ensure restoration investments
+lead to meaningful ecological outcomes. Monitoring enables evaluation of whether remediation actions improve connectivity
 for fish and provides critical feedback to refine future prioritization and restoration strategies.
 
 <br>
 
-Baseline data collection, including fish sampling and aerial surveys via drone, are core components of this monitoring. 
-While detailed methods for these activities are included in the previous habitat confirmation section, they are also 
+Baseline data collection, including fish sampling and aerial surveys via drone, are core components of this monitoring.
+While detailed methods for these activities are included in the previous habitat confirmation section, they are also
 fundamental to effectiveness monitoring, as they provide context to not only facilitate prioritization and communications
 but also for detecting change following restoration.
 
 
-<br>
+## Collaborative GIS Environment
+
+A collaborative GIS environment (`r params$gis_project_name`) was established using [QGIS](https://qgis.org/en/site/) and [Mergin Maps](https://merginmaps.com/) to enable project team members to view, edit, and analyze shared spatial data on desktop computers and on mobile devices in the field. The environment integrates background layers from the [BC Data Catalogue](https://catalogue.data.gov.bc.ca/) and other sources with project-specific field data, providing a central platform for planning, standardized data collection, and progress tracking. A summary of layers loaded to the project is provided in [Appendix - Collaborative GIS Layers](#app-gis).
 
 To support consistent and targeted assessment, a custom field form was developed for routine effectiveness monitoring based
 loosely on @forestinvestmentaccount2003Guidelinesinstream but tailored specifically for fish passage projects. 
