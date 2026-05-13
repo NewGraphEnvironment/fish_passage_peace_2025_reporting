@@ -85,8 +85,10 @@ tab:tab-uav-imagery-cap
 tab:tab-rfp-tracking
 introduction
 background
+approach
 project-location
 tsekhene
+floodplains-and-watershed-function
 fisheries
 methods
 climate-departure
