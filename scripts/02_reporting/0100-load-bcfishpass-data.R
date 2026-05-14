@@ -24,22 +24,36 @@ my_funding_project_number <- params$pscis_funding_project_number
 
 
 # Check bcfishpass model version - skip rebuild if unchanged --------------------------
+# Portability: when `update_bcfishpass: FALSE` (default), skip the DB connection entirely
+# and use cached `data/bcfishpass.sqlite`. Set `update_bcfishpass: TRUE` to refresh from
+# the remote bcfishpass DB. After a release tag, leaving `FALSE` freezes the snapshot.
 # See https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/157
 version_file <- "data/bcfishpass_model_version.txt"
+update_bcfishpass <- isTRUE(params$update_bcfishpass)
 force_rebuild <- isTRUE(params$force_bcfishpass_rebuild)
 
-# Get current model version from remote
-current_model_version <- fpr::fpr_db_query(
-  "SELECT MAX(model_run_id) as model_run_id FROM bcfishpass.log_parameters_habitat_thresholds"
-)$model_run_id
+if (!update_bcfishpass && !force_rebuild) {
+  # Trust local cache. No DB connection attempted.
+  if (!file.exists("data/bcfishpass.sqlite")) {
+    stop("data/bcfishpass.sqlite not present and params$update_bcfishpass is FALSE. ",
+         "Set update_bcfishpass: TRUE in index.Rmd to fetch from the remote DB, ",
+         "or place a snapshot of bcfishpass.sqlite at data/bcfishpass.sqlite.")
+  }
+  message("Using cached data/bcfishpass.sqlite. Set params$update_bcfishpass: TRUE to refresh from DB.")
+  rebuild_needed <- FALSE
+} else {
+  # Connect to remote DB and check version
+  current_model_version <- fpr::fpr_db_query(
+    "SELECT MAX(model_run_id) as model_run_id FROM bcfishpass.log_parameters_habitat_thresholds"
+  )$model_run_id
 
-# Check if rebuild needed
-rebuild_needed <- TRUE
-if (!force_rebuild && file.exists(version_file) && file.exists("data/bcfishpass.sqlite")) {
-  local_version <- as.integer(readLines(version_file, n = 1))
-  if (identical(local_version, current_model_version)) {
-    message("bcfishpass model unchanged (version ", current_model_version, "), skipping rebuild. Set params$force_bcfishpass_rebuild: true to override.")
-    rebuild_needed <- FALSE
+  rebuild_needed <- TRUE
+  if (!force_rebuild && file.exists(version_file) && file.exists("data/bcfishpass.sqlite")) {
+    local_version <- as.integer(readLines(version_file, n = 1))
+    if (identical(local_version, current_model_version)) {
+      message("bcfishpass model unchanged (version ", current_model_version, "), skipping rebuild. Set params$force_bcfishpass_rebuild: true to override.")
+      rebuild_needed <- FALSE
+    }
   }
 }
 
