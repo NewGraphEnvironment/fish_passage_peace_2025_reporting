@@ -72,6 +72,15 @@ if (rebuild_needed) {
   ) |>
     sf::st_drop_geometry()
 
+  # Write the large bcfishpass crossings layer to parquet (git-friendly + smaller
+  # than sqlite at this WSG count). Reader switches to arrow::read_parquet().
+  arrow::write_parquet(
+    bcfishpass,
+    "data/bcfishpass_crossings_vw.parquet",
+    compression = "zstd",
+    compression_level = 9
+  )
+
   # grab the bcfishpass modelling parameters for the spawning and rearing tables and put in the database so it can be used to populate the methods
   # like solutions provided here https://github.com/smnorris/bcfishpass/issues/490
   bcfishpass_spawn_rear_model <- fpr::fpr_db_query(
@@ -141,9 +150,10 @@ if (rebuild_needed) {
   conn <- readwritesqlite::rws_connect("data/bcfishpass.sqlite")
 
   # Drop tables if they exist, then write new data (lngr_drop_table_if_exists from functions.R)
+  # `bcfishpass` (crossings_vw) is no longer written to sqlite — it lives in
+  # `data/bcfishpass_crossings_vw.parquet` (written above). Drop here to clear
+  # any legacy copy from prior sqlite builds.
   lngr_drop_table_if_exists("bcfishpass", conn)
-  readwritesqlite::rws_write(bcfishpass, exists = FALSE, delete = TRUE,
-                             conn = conn, x_name = "bcfishpass")
 
   lngr_drop_table_if_exists("bcfishpass_spawn_rear_model", conn)
   readwritesqlite::rws_write(bcfishpass_spawn_rear_model, exists = FALSE, delete = TRUE,
