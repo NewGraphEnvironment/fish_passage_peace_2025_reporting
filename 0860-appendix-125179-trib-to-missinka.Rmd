@@ -1,0 +1,123 @@
+---
+output: html_document
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+```{r setup-125179-mon, eval = F}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE)
+source('scripts/packages.R')
+source('scripts/tables.R')
+source('scripts/functions.R')
+```
+
+```{r load-data-125179-mon}
+my_site <- 125179
+```
+
+# Tributary to Missinka River - `r as.character(my_site)` - Monitoring Appendix {- #trib-to-missinka-2025}
+
+Effectiveness monitoring was conducted in `r params$project_year` at PSCIS crossing `r as.character(my_site)` on the Chuchinka-Missinka FSR. Site location, background, prior-year assessment and replacement history, and earlier effectiveness monitoring results are documented in @irvine2020ParsnipRiver, @irvine_winterscheidt2023RestoringFish, and @irvine_schick2025RestoringFish; the 2024 site appendix is available at [https://www.newgraphenvironment.com/fish_passage_peace_2024_reporting/trib-to-missinka.html](https://www.newgraphenvironment.com/fish_passage_peace_2024_reporting/trib-to-missinka.html).
+
+<br>
+
+## Monitoring Form {.unnumbered}
+
+`r params$project_year` effectiveness monitoring form results are summarized in Table \@ref(tab:tab-monitoring-125179).
+
+<br>
+
+```{r tab-monitoring-125179}
+tab_monitoring |>
+  dplyr::filter(`Pscis Crossing Id` == my_site) |>
+  dplyr::mutate(across(everything(), as.character)) |>
+  tidyr::pivot_longer(
+    cols = everything(),
+    names_to = "Variable",
+    values_to = "Value"
+  ) |>
+  fpr::fpr_kable(
+    caption_text = paste0("Summary of effectiveness monitoring form results for site ", my_site, " in ", params$project_year, "."),
+    scroll = gitbook_on
+  )
+```
+
+<br>
+
+## Fish Sampling {.unnumbered}
+
+Electrofishing was conducted downstream and upstream of PSCIS crossing `r as.character(my_site)` in `r params$project_year`. Per-site capture results are in Table \@ref(tab:tab-fish-site-125179-mon); densities are in Table \@ref(tab:tab-fish-dens-125179-mon) and Figure \@ref(fig:plot-fish-box-125179-mon).
+
+<br>
+
+```{r tab-fish-site-125179-mon, eval = T}
+fpr::fpr_table_fish_site()
+```
+
+<br>
+
+```{r tab-fish-dens-125179-mon, eval = T}
+fpr::fpr_table_fish_density()
+```
+
+<br>
+
+```{r plot-fish-box-125179-mon, fig.cap = my_caption, eval = T}
+my_caption <- paste0('Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, ' in ', params$project_year, '.')
+
+fish_abund |>
+  dplyr::filter(site == my_site, species_code != "NFC") |>
+  ggplot2::ggplot(ggplot2::aes(x = location, y = density_100m2, color = local_name, fill = local_name)) +
+  ggplot2::geom_boxplot(fill = "lightgray", color = "black", alpha = 0.7) +
+  ggplot2::geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 0.8) +
+  ggplot2::facet_grid(. ~ life_stage, scales = "fixed") +
+  ggplot2::theme_light() +
+  ggplot2::theme(
+    legend.position = "right",
+    axis.title.x = ggplot2::element_blank()
+  ) +
+  ggplot2::ylab(expression(Density ~ (fish/100 ~ m^2)))
+```
+
+<br>
+
+## Environmental DNA {.unnumbered}
+
+eDNA samples were collected upstream and downstream of PSCIS crossing `r as.character(my_site)` in `r params$project_year` as part of the program-wide eDNA sampling effort. The reference site at PSCIS crossing 125180, located on the same road as documented in @irvine_schick2025RestoringFish, was also sampled for eDNA in `r params$project_year`. Per-position detection results for both sites are presented in Table \@ref(tab:tab-edna-results-125179-mon). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran. Site-level detail across all sampled crossings is in [Appendix - Environmental DNA Results](#app-edna), and the `r ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "edna_unbc_results_2025_peace_map.html", anchor_text = "interactive Peace eDNA map")` provides a toggleable per-species view.
+
+<br>
+
+```{r tab-edna-results-125179-mon-prep, include=FALSE}
+edna_results_125179_mon <- edna_bystargets_peace |>
+  dplyr::filter(grepl(paste0("^", my_site, "|^125180"), site_id), !control_blank_field, !control_blank_office) |>
+  dplyr::group_by(site_id) |>
+  dplyr::summarise(
+    `UNBC ID`        = paste(sort(unique(unlist(strsplit(lab_ids, ", ")))), collapse = ", "),
+    `Detected`       = fmt_targets(target[any_clean], max_pos[any_clean], retested[any_clean]),
+    `Sub-threshold`  = fmt_targets(target[any_crude & !any_clean],
+                                   max_pos[any_crude & !any_clean],
+                                   retested[any_crude & !any_clean]),
+    `Not detected`   = fmt_targets(target[!any_crude],
+                                   max_pos[!any_crude],
+                                   retested[!any_crude]),
+    .groups = "drop"
+  ) |>
+  dplyr::rename(`Site ID` = site_id) |>
+  dplyr::arrange(`Site ID`)
+```
+
+```{r tab-edna-results-125179-mon}
+edna_results_125179_mon |>
+  fpr::fpr_kable(
+    caption_text = paste0("eDNA detection results at crossing ", my_site, "."),
+    scroll = FALSE
+  )
+```
+
+<br>
+
+## Conclusion {.unnumbered}
+
+At the time of reporting, the structure at PSCIS crossing `r as.character(my_site)` appears stable and the site is showing positive signals of recovery. Continued effectiveness monitoring at this site is recommended in future years to extend the multi-year time series of structure performance and fish use.

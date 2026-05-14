@@ -14,6 +14,7 @@ tab:tab-barrier-result
 tab:tab-cost-mult
 tab:tab-moti-params
 tab:tab-monitoring-metrics
+tab:tab-engage-partners
 fig:map-interactive
 tab:cost-est-phase-1
 tab:tab-overview
@@ -84,6 +85,20 @@ fig:photo-203605-03
 tab:tab-edna-per-site
 tab:tab-edna-field-blanks
 tab:tab-edna-retests
+tab:tab-monitoring-125179
+tab:tab-fish-site-125179-mon
+tab:tab-fish-dens-125179-mon
+fig:plot-fish-box-125179-mon
+tab:tab-edna-results-125179-mon
+tab:tab-monitoring-125231
+tab:tab-fish-site-125231-mon
+tab:tab-fish-dens-125231-mon
+fig:plot-fish-box-125231-mon
+tab:tab-edna-results-125231-mon
+tab:tab-fish-site-198692-mon
+tab:tab-fish-dens-198692-mon
+fig:plot-fish-box-198692-mon
+tab:tab-edna-results-198692-mon
 tab:tab-uav-imagery-cap
 tab:tab-rfp-tracking
 introduction
@@ -122,6 +137,7 @@ remediations
 monitoring
 collaborative-gis-environment
 results-and-discussion
+engage-partners
 site-assessment-data
 climate-departure-1
 planning-habitat-connectivity-and-floodplain-modelling-1
