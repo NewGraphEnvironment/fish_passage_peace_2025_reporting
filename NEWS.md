@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.4.1 (2026-05-13)
+
+* Modernize executive summary (drop stale Fraser fragments and outdated recommendations; lead with FWCP Peace Region + 2025 fieldwork WSGs; add FWCP 2026 funding commitments at PSCIS 199663 and 203597; add eDNA program context, 3-site monitoring with baseline/effectiveness distinction, and the two new analytical dimensions floodplain + climate departure). Collapse Intro past-reports list to inline citations. Site appendix conclusion updates for 199663 and 203597 capturing FWCP 2026 funding outcomes. eDNA map deployed to `docs/` so report links resolve. Fish sampling chunks enabled with narrative ([Issue #21](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/21) tracks the `run.R` refactor still pending)
+
 # fish_passage_peace_2025_reporting 0.4.0 (2026-05-13)
 
 * Add `## Approach` section to background framing fish passage work as risk classification under cost/scale/multi-agency constraints, with infrastructure-legacy context. Add `## Floodplains and Watershed Function` background section. Tighten floodplain methods/results paragraphs and merge appendix narrative (no separate Methods/Results subheadings). Add municipalities layer to build script and detail map. Remove duplicate protocol-context paragraph from results — now lives in Approach.
