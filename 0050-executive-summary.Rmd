@@ -49,7 +49,7 @@ Two analytical dimensions are new to the program this year. A floodplain delinea
 
 <br>
 
-Fish passage work in this region operates inside the constraints described in the [Approach](#approach) section of the background: thousands of structures across multiple jurisdictions and tenure holders, six-to-eight-figure remediation costs, and a finite funding envelope. Decisions about which crossings to advance are made opportunistically — pursuing simpler, lower-cost options to maintain momentum, while building the multi-year relationships and shared data that larger commitments require.
+Fish passage work in this region operates inside the constraints described in the [Approach](#approach) section of the background: thousands of structures across multiple jurisdictions and tenure holders, six-to-eight-figure remediation costs, and a finite funding envelope. Decisions about which crossings to advance are made opportunistically — pursuing simpler, lower-cost options to maintain momentum, while building the multi-year relationships and shared data that larger commitments require. The breadth of `r params$project_year` partner engagement is summarised in [Engage Partners](#engage-partners).
 
 <!-- Project specific above -->
 

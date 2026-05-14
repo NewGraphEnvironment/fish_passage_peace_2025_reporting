@@ -1,5 +1,20 @@
 # Results and Discussion
 
+## Engage Partners
+
+Project advancement in `r params$project_year` depended on engagement with partners across multiple agencies, Nations, industrial tenure holders, funders, and collaborators. Touchpoints during the year (email, video calls, meetings, field-based coordination, and contract administration) are summarised in Table \@ref(tab:tab-engage-partners).
+
+```{r tab-engage-partners}
+readr::read_csv("data/communications/partners_2025.csv", show_col_types = FALSE) |>
+  dplyr::select(`Organization / Role` = affiliation, `Topic / Focus` = topic) |>
+  fpr::fpr_kable(
+    caption_text = paste0("Project partners engaged in ", params$project_year, "."),
+    scroll = gitbook_on
+  )
+```
+
+<br>
+
 `r if(gitbook_on){knitr::asis_output("Results of Phase 1 and Phase 2 assessments are summarized in Figure \\@ref(fig:map-interactive) with additional details provided in sections below.")}`
 
 <br>
@@ -594,11 +609,15 @@ for the 50% costs of replacing structures.  All sites with a design for remediat
 
 ## Monitoring
 
-In `r params$project_year`, baseline or follow up monitoring data was gathered through completion of an effectivness montoring form (sites where remediation has been completed) and/or through baseline fish sampling and aquistion of aerial imagery at the following sites (Table \@ref(tab:tab-mon-overview):
+In `r params$project_year`, effectiveness monitoring was conducted at two previously remediated crossings, and baseline data collection (fish sampling and eDNA only — no effectiveness form) was completed at one site ahead of planned remediation:
 
-- In `r params$project_year`, effectiveness monitoring and eDNA sampling was conducted on Tributary to Table River (PSCIS crossing 125231) on Table FSR. The initial habitat confirmation for the site is documented in @irvine2020ParsnipRiver [here](https://www.newgraphenvironment.com/Parsnip_Fish_Passage/). Baseline monitoring from 2023-2025 can be reviewed in  [here](https://www.newgraphenvironment.com/fish_passage_peace_2023_reporting/tributary-to-the-table-river---125231---appendix.html).
+- **Tributary to Missinka River (PSCIS 125179)** on Chuchinka-Missinka FSR — effectiveness monitoring (form + fish sampling + eDNA), extending the multi-year baseline established in @irvine_winterscheidt2023RestoringFish and @irvine_schick2025RestoringFish. Detail in [Appendix - Tributary to Missinka River](#trib-to-missinka-2025).
 
--  In `r params$project_year`, effectiveness monitoring and eDNA sampling was conducted on Tributary to Missinka River (PSCIS crossing 125179) on Chuchinka-Missinka FSR. Background information regarding the site can be reviewed [here](https://www.newgraphenvironment.com/fish_passage_peace_2022_reporting/) with `r params$project_year` results added to this memo here [here](https://www.newgraphenvironment.com/fish_passage_peace_2024_reporting/trib-to-missinka.html). 
+- **Tributary to the Table River (PSCIS 125231)** on Chuchinka-Table FSR — effectiveness monitoring (form + fish sampling + eDNA) following the 2023 replacement of the crossing with a clear-span bridge by Canfor with FWCP funding via SERNbc coordination [@irvine_winterscheidt2024RestoringFish]. Detail in [Appendix - Tributary to the Table River](#trib-to-table-2025).
+
+- **Tributary to Kerry Lake (PSCIS 198692)** — pre-remediation baseline (fish sampling and eDNA) to inform future effectiveness monitoring once the crossing is upgraded. The 2024 habitat confirmation is documented in @irvine_schick2025RestoringFish. Detail in [Appendix - Tributary to Kerry Lake](#trib-to-kerry-2025).
+
+A summary of effectiveness monitoring form metrics across the two effectiveness sites is presented in Table \@ref(tab:tab-mon-overview).
 
 <br>
 
