@@ -1,0 +1,72 @@
+---
+output: html_document
+editor_options:
+  chunk_output_type: console
+  markdown:
+    wrap: 72
+---
+
+# Appendix - Fish Species by Watershed Group {-#app-fish-species}
+
+Historical fish observations by watershed group are recorded in the BC Fisheries Information Summary System (FISS) [@moe2024KnownBC]. Per-species presence across the watershed groups in this study area is summarised in Table \@ref(tab:tab-fiss-species). In the interactive (gitbook) version of this report the table shows one column per watershed group; in the PDF version the watershed-group columns are collapsed to a single comma-separated list of watershed-group codes per species to fit page width.
+
+<br>
+
+```{r tab-fiss-species}
+fiss_species_table <- readr::read_csv(
+  "data/inputs_extracted/fiss_species_table.csv",
+  show_col_types = FALSE
+)
+
+my_caption <- paste0(
+  "Fish species recorded in the ",
+  knitr::asis_output(wsg_names) |> knitr::combine_words(),
+  " watershed groups."
+)
+
+my_footnote <- 'COSEWIC abbreviations :
+                SC - Special concern
+                DD - Data deficient
+                NAR - Not at risk
+                E - Endangered
+                T - Threatened
+
+                BC List definitions :
+                Yellow - Species that is apparently secure
+                Blue - Species that is of special concern
+                Exotic - Species that have been moved beyond their natural range as a result of human activity
+
+                Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].
+                '
+
+if (gitbook_on) {
+  fiss_species_table |>
+    fpr::fpr_kable(
+      caption_text = my_caption,
+      footnote_text = my_footnote,
+      scroll = TRUE
+    )
+} else {
+  meta_cols <- c("Scientific Name", "Species Name", "BC List", "COSEWIC")
+  wsg_cols  <- setdiff(names(fiss_species_table), meta_cols)
+
+  fiss_species_table_pdf <- fiss_species_table |>
+    dplyr::rowwise() |>
+    dplyr::mutate(
+      `Present in WSGs` = paste(
+        wsg_cols[dplyr::c_across(dplyr::all_of(wsg_cols)) == "Yes" &
+                 !is.na(dplyr::c_across(dplyr::all_of(wsg_cols)))],
+        collapse = ", "
+      )
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::select(dplyr::all_of(meta_cols), `Present in WSGs`)
+
+  fiss_species_table_pdf |>
+    fpr::fpr_kable(
+      caption_text = my_caption,
+      footnote_text = my_footnote,
+      scroll = FALSE
+    )
+}
+```

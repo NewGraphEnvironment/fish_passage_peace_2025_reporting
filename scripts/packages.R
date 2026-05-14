@@ -39,7 +39,7 @@ pkgs_all <- c(pkgs_cran,
 
 # install or upgrade all the packages with pak
 # install or upgrade all the packages with pak
-if(params$update_packages){
+if(exists("params") && isTRUE(params$update_packages)){
   lapply(pkgs_all, pak::pkg_install, ask = FALSE)
 }
 

@@ -1,3 +1,9 @@
+# fish_passage_peace_2025_reporting 0.6.0 (2026-05-14)
+
+* Move FISS species table out of body Background into a new dedicated appendix (`0700-appendix-fish-species.Rmd`) with conditional gitbook/PDF render. Gitbook shows wide one-column-per-WSG table; PDF collapses presence to a comma-separated `Present in WSGs` list — unblocks paged.js PDF builds at 16 WSGs (was overflowing at this scope). Preserves Peace-specific Dolly Varden footnote. Ports template PR #190 / template #188. ([#27](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/27))
+* Update `scripts/run_pagedown_iter.R` — `bookdown::render_book(envir = globalenv())` instead of `rmarkdown::render_site` so fresh-Rscript PDF builds don't fail on lazy-default lookups in `fpr::fpr_kable(font = font_set)` / `my_tab_caption()`. See [soul `bookdown.md`](https://github.com/NewGraphEnvironment/soul/commit/f970830) for the convention.
+* `scripts/packages.R` — guard `if(params$update_packages)` with `exists("params")` so the script sources cleanly outside a render with `params` bound.
+
 # fish_passage_peace_2025_reporting 0.5.1 (2026-05-14)
 
 * Add `update_bcfishpass` YAML switch for build portability and post-release freezing — three refresh triggers (YAML flip, missing version file, or `force_bcfishpass_rebuild`); otherwise builds read cached files with no DB connection. Migrate `bcfishpass_crossings_vw` from sqlite to parquet (zstd-9; sqlite shrunk from 26.8 MB to 2.6 MB). Expand WSG list to FWCP Peace Region full extent (16 WSGs) — matches the climate departure appendix scope. Source `0100-load-bcfishpass-data.R` from `index.Rmd` so the switch affects builds. ([Issue #186 in template](https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/186))

@@ -82,29 +82,7 @@ Floodplains are often the part of the watershed most compromised by the infrastr
 
 
 ## Fisheries
-Fish species recorded in the BC Fisheries Information Summary System (FISS) in the Parsnip River watershed are detailed in Table \@ref(tab:fiss-species-table) [@moe2024KnownBC]. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed  [@hagen_etal2015Criticalhabitats; @stamford_etal2017FWCPArctic; @hagen_weber2019Limitingfactors; @cosewic2012COSEWICassessment]. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in @fishandwildlifecompensationprogram2020PeaceRegion with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.
-
-<br>
-
-
-```{r fiss-species-table}
-fiss_species_table <- readr::read_csv(paste0(getwd(), '/data/inputs_extracted/fiss_species_table.csv'))
-
-fiss_species_table %>% 
-  fpr::fpr_kable(caption_text = 'Fish species recorded in FISS in the Parsnip River, Carp Lake, and Crooked River watershed groups.', 
-                 footnote_text = 'COSEWIC abbreviations : 
-                 SC - Special concern 
-                 DD - Data deficient
-                 NAR - Not at risk
-                 
-                 BC List definitions : 
-                 Yellow - Species that is apparently secure 
-                 Blue - Species that is of special concern
-                 Exotic - Species that have been moved beyond their natural range as a result of human activity \n
-                 Dolly Varden are documented in all three study watersheds—Carp, Crooked, and Parsnip—but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].',
-                 scroll = gitbook_on)
-
-```
+Fish species recorded in the BC Fisheries Information Summary System (FISS) for the watershed groups in this study area are summarised in [Appendix - Fish Species by Watershed Group](#app-fish-species) [@moe2024KnownBC]. In addition to flooding related to the formation of the Williston Reservoir, transmission lines, gas pipelines, rail, road networks, forestry, elevated water temperatures, interrupted connectivity, invasion from non-native species and insect infestations affecting forested areas pose threats to fisheries values in the Parsnip River watershed  [@hagen_etal2015Criticalhabitats; @stamford_etal2017FWCPArctic; @hagen_weber2019Limitingfactors; @cosewic2012COSEWICassessment]. A brief summary of trends and knowledge status related to Arctic grayling, bull trout, kokanee, mountain whitefish and rainbow trout in Williston Watershed streams is provided in @fishandwildlifecompensationprogram2020PeaceRegion with a more detailed review of the state of knowledge for Parsnip River watershed populations of Arctic grayling and bull trout provided below.
 
 <br>
 
