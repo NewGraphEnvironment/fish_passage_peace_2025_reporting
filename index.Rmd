@@ -48,7 +48,7 @@ params:
   update_form_fiss_site: FALSE
   update_form_monitoring: TRUE
   update_form_edna: FALSE
-  update_bib: TRUE
+  update_bib: FALSE  # Temporarily FALSE for v0.7.0: hill_etal2025Spatialstream is hand-bombed in references.bib pending proper Zotero add (see #27 follow-up). Flip back to TRUE once the key is registered via BBT.
   update_gis: FALSE
   update_bcfishpass: FALSE
   pscis_funding_project_number: "peace_2025_phase1"

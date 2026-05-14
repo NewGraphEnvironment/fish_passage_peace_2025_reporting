@@ -105,9 +105,12 @@ methods
 climate-departure
 planning-habitat-connectivity-and-floodplain-modelling
 habitat-modelling
-statistical-support-for-bcfishpass-fish-habitat-modelling-updates
 bull-trout-and-arctic-grayling-critical-habitat
 floodplain-delineation
+statistical-support-for-habitat-modelling
+channel-width
+stream-temperature-and-growing-season-degree-days
+habitat-modelling-framework-trajectory
 fish-passage-assessments
 natural-barriers-to-fish-passage
 road-stream-crossings
@@ -135,8 +138,9 @@ site-assessment-data
 climate-departure-1
 planning-habitat-connectivity-and-floodplain-modelling-1
 habitat-modelling-1
-statistical-support-for-bcfishpass-fish-habitat-modelling-updates-1
+statistical-support-for-bcfishpass-fish-habitat-modelling-updates
 floodplain-delineation-1
+statistical-habitat-modelling-outputs
 fish-passage-assessments-1
 habitat-confirmation-assessments-1
 fish-sampling-1

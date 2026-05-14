@@ -1,3 +1,10 @@
+# fish_passage_peace_2025_reporting 0.7.0 (2026-05-14)
+
+* Modernize "Statistical Support for Habitat Modelling" — promoted from H4 under `## Planning — Habitat, Connectivity and Floodplain Modelling > ### Habitat Modelling` in `0300-methods.Rmd` to a top-level H2 sibling of Fish Passage Assessments. New content covers: Channel Width Bayesian work (Thorley & Irvine 2021), Bayesian SSN + air2stream stream-temperature modelling with Poisson Consulting citing both `@hill_etal2024Spatialstream` (Nechako 2022b) and `@hill_etal2025Spatialstream` (Skeena 2025), Growing-Season Degree Days as productivity-relevant metric, `water-temp-bc` as canonical hydrometric / water-quality data layer, and a forward-looking paragraph naming `fresh` + `link` + `water-temp-bc` + `bcfishobs` as the trajectory. Frames as extension-not-supersession of canonical `bcfishpass` + `fwapg` + `bcfishobs` stack. Ports template PR #193 / template #191.
+* Add `## Statistical Habitat Modelling Outputs` H2 in `0400-results.Rmd` describing methods → downstream consumers and previewing Arctic grayling intrinsic-habitat + calibration-against-`bcfishobs` trajectory.
+* Add Executive Summary callout naming the habitat-modelling framework + version-URL framing so reviewers know the live URL serves the latest tagged version (submit-PDF-is-a-snapshot framing).
+* Bib: add `@misc{hill_etal2025Spatialstream,...}` (Poisson Skeena 2025 report) — hand-bombed to references.bib alongside `update_bib: FALSE` interim (key not yet registered in Zotero/BBT; proper add tracked as follow-up).
+
 # fish_passage_peace_2025_reporting 0.6.0 (2026-05-14)
 
 * Move FISS species table out of body Background into a new dedicated appendix (`0700-appendix-fish-species.Rmd`) with conditional gitbook/PDF render. Gitbook shows wide one-column-per-WSG table; PDF collapses presence to a comma-separated `Present in WSGs` list — unblocks paged.js PDF builds at 16 WSGs (was overflowing at this scope). Preserves Peace-specific Dolly Varden footnote. Ports template PR #190 / template #188. ([#27](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/27))
