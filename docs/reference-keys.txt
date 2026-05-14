@@ -22,6 +22,9 @@ tab:cost-est-phase-2
 tab:tab-habitat-summary
 tab:tab-wshd-sum-all
 fig:plot-model-all
+tab:tab-fish-site-summary
+fig:plot-fish-all
+fig:fish-histogram
 tab:tab-edna-summary
 tab:tab-mon-overview
 tab:tab-sites-sum-cap
@@ -127,6 +130,7 @@ statistical-support-for-bcfishpass-fish-habitat-modelling-updates-1
 floodplain-delineation-1
 fish-passage-assessments-1
 habitat-confirmation-assessments-1
+fish-sampling-1
 environmental-dna-edna-sampling-1
 engineering-design-1
 monitoring-1

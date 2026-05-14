@@ -21,9 +21,6 @@ my_site <- 199663
 
 
 ## Site Location {.unnumbered}
-
-COST ESTIMATEs, CORRECT BCFISHPASS HABITAT MODELLING, and memo map (needs to be updated) SHOULD WORK ONCE THIS IS FIXED https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/142
-
 PSCIS crossing `r as.character(my_site)` is located on `r fpr::fpr_my_pscis_info()`, approximately 20km northeast of community of McLeod Lake, BC, in the Parsnip River watershed group (Figure \@ref(fig:map-199663)). The crossing is located 780m upstream of the stream’s confluence with the Parsnip River on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` road which is the responsibility of BC Timber Sales.
 
 <br>
@@ -141,9 +138,13 @@ form_edna |>filter(site == my_site & location == 'us') |>pull(comments_lab)
 ```
 
 
-## Environmental DNA Sampling {.unnumbered}
+## Environmental DNA {.unnumbered}
 
-eDNA samples were collected both upstream and downstream of crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, with sampling techniques summarized in Table \@ref(tab:tab-edna-199663).
+eDNA samples were collected both upstream and downstream of crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, with sampling techniques summarized in Table \@ref(tab:tab-edna-199663). Samples were submitted to UNBC for ddPCR analysis against Bull Trout, Arctic Grayling, Rainbow Trout, Kokanee, and Burbot assays (Burbot was tested only at this crossing among the Peace 2025 sites). Per-position results are summarized in Table \@ref(tab:tab-edna-results-199663). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran.
+
+<br>
+
+Site-level detail across all sampled crossings is in [Appendix - Environmental DNA Results](#app-edna). as well as within the `r ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "edna_unbc_results_2025_peace_map.html", anchor_text = "interactive Peace eDNA map")`.
 
 <br>
 
@@ -159,10 +160,8 @@ tab_edna |>
 ```
 
 
-
 <br>
 
-## Environmental DNA Results {.unnumbered}
 
 ```{r tab-edna-results-199663-prep, include=FALSE}
 edna_results_199663 <- edna_bystargets_peace |>
@@ -183,8 +182,6 @@ edna_results_199663 <- edna_bystargets_peace |>
   dplyr::arrange(`Site ID`)
 ```
 
-eDNA samples were collected upstream and downstream of crossing `r as.character(my_site)` and submitted to UNBC for ddPCR analysis against Bull Trout, Arctic Grayling, Rainbow Trout, Kokanee, and Burbot assays (Burbot was tested only at this crossing among the Peace 2025 sites). The SOCK ddPCR assay does not distinguish between anadromous Sockeye Salmon and landlocked Kokanee; in Peace tributaries above the Peace Canyon Dam, any SOCK detection would be Kokanee. Per-position results are summarized in Table \@ref(tab:tab-edna-results-199663). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran.
-
 <br>
 
 ```{r tab-edna-results-199663}
@@ -195,22 +192,23 @@ edna_results_199663 |>
   )
 ```
 
-<br>
-
-Site-level detail across all sampled crossings is in [Appendix - Environmental DNA Results](#app-edna). The `r ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "edna_unbc_results_2025_peace_map.html", anchor_text = "interactive Peace eDNA map")` shows toggleable per-species layers.
 
 <br>
 
 ## Structure Remediation and Cost Estimate {.unnumbered}
 
-Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a streambed simulation (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m span) is recommended. At the time of reporting in 2026, the cost of the work is estimated at \$`r format(fpr::fpr_my_cost_estimate(), big.mark = ',')`.
+Should restoration/maintenance activities proceed, replacement of the `r fpr_my_pscis_info(col_pull = road_name)` crossing (`r as.character(my_site)`) with a streambed simulation (`r fpr::fpr_my_pscis_info(col_pull = recommended_diameter_or_span_meters)`m span) is recommended. At the time of reporting in 2026, the cost of the work is estimated at \$300,000.
 
 <br>
 
 
 ## Conclusion {.unnumbered}
 
-The habitat upstream of PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was documented as medium value for salmonid spawning and rearing, and the crossing is rated as a `r fpr_my_pscis_info(col_pull = my_priority, site = my_site)` priority for replacement due to the large outlet drop. 
+The habitat upstream of PSCIS crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)` was documented as medium value for salmonid spawning and rearing, and the crossing is rated as a `r fpr_my_pscis_info(col_pull = my_priority, site = my_site)` priority for replacement due to the large outlet drop. Environmental DNA sampling at the site confirmed rainbow trout both upstream and downstream of the crossing; no bull trout were detected. Burbot were detected downstream but not upstream.
+
+<br>
+
+Since the assessment season, the FWCP 2026 proposal for replacement of this crossing was accepted and 50% project funding is confirmed. Replacement is targeted for 2026 in coordination with BC Timber Sales; an engineering firm is expected to collect the data required for the site plan. 
 
 `r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
 
