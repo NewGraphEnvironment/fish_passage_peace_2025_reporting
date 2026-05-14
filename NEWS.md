@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.5.1 (2026-05-14)
+
+* Add `update_bcfishpass` YAML switch for build portability and post-release freezing — three refresh triggers (YAML flip, missing version file, or `force_bcfishpass_rebuild`); otherwise builds read cached files with no DB connection. Migrate `bcfishpass_crossings_vw` from sqlite to parquet (zstd-9; sqlite shrunk from 26.8 MB to 2.6 MB). Expand WSG list to FWCP Peace Region full extent (16 WSGs) — matches the climate departure appendix scope. Source `0100-load-bcfishpass-data.R` from `index.Rmd` so the switch affects builds. ([Issue #186 in template](https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/186))
+
 # fish_passage_peace_2025_reporting 0.5.0 (2026-05-13)
 
 * Add three monitoring appendices (PSCIS 125179 Trib to Missinka, 125231 Trib to Table, 198692 Kerry Lake) with lean structure: intro + Monitoring Form + Fish Sampling + eDNA per-position table + Conclusion. Kerry framed as pre-remediation baseline. 125179 includes 125180 reference-site eDNA. Add `## Engage Partners` section at top of Results pulling `data/communications/partners_2025.csv` (organization + topic columns; personal-name detail kept in CSV for reference). Rewrite Results Monitoring section with internal anchors + effectiveness/baseline distinction. Exec summary closing paragraph cross-refs Engage Partners. Site-ID correction: 125231 (not 125131) per the 2023 prior-year appendix ([Issue #24](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/24))
