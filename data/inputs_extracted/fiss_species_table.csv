@@ -1,40 +1,47 @@
-Scientific Name,Species Name,BC List,COSEWIC,Carp Lake,Crooked,Nation,Parsnip Arm,Parsnip
-Catostomus catostomus,Longnose Sucker,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Catostomus columbianus,Bridgelip Sucker,Yellow,NA,NA,Yes,NA,NA,NA
-Catostomus commersonii,White Sucker,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Catostomus macrocheilus,Largescale Sucker,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Coregonus clupeaformis,Lake Whitefish,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Cottus aleuticus,Coastrange Sculpin (formerly Aleutian Sculpin),Yellow,NA,NA,NA,NA,NA,Yes
-Cottus asper,Prickly Sculpin,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Cottus cognatus,Slimy Sculpin,Yellow,NA,Yes,NA,Yes,Yes,Yes
-Cottus ricei,Spoonhead Sculpin,Yellow,NAR (May 1989),NA,NA,NA,Yes,NA
-Couesius plumbeus,Lake Chub,Yellow,DD,Yes,Yes,Yes,Yes,Yes
-Esox lucius,Northern Pike,Yellow,NA,NA,Yes,NA,NA,NA
-Hybognathus hankinsoni,Brassy Minnow,No Status,NA,Yes,Yes,Yes,Yes,NA
-Lota lota,Burbot,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Mylocheilus caurinus,Peamouth Chub,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Oncorhynchus mykiss,Rainbow Trout,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Oncorhynchus nerka,Kokanee,Not Reviewed,NA,NA,NA,Yes,Yes,Yes
-Osmerus dentex,Rainbow Smelt,Unknown,NA,NA,NA,Yes,NA,Yes
-Prosopium coulterii,Pygmy Whitefish,Yellow,NAR (Nov 2016),NA,NA,Yes,Yes,Yes
-Prosopium cylindraceum,Round Whitefish,Yellow,NA,NA,NA,NA,NA,Yes
-Prosopium williamsoni,Mountain Whitefish,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Ptychocheilus oregonensis,Northern Pikeminnow,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Rhinichthys cataractae,Longnose Dace,Yellow,NA,NA,Yes,Yes,Yes,Yes
-Richardsonius balteatus,Redside Shiner,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Salvelinus confluentus,Bull Trout,Blue,SC (Nov 2012),Yes,Yes,Yes,Yes,Yes
-Salvelinus fontinalis,Brook Trout,Exotic,NA,NA,Yes,NA,Yes,NA
-Salvelinus malma,Dolly Varden,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Salvelinus namaycush,Lake Trout,Yellow,NA,Yes,Yes,Yes,Yes,Yes
-Thymallus arcticus,Arctic Grayling,Yellow,NA,NA,NA,Yes,Yes,Yes
-NA,Chub (General),NA,NA,Yes,Yes,NA,Yes,Yes
-NA,Dace (General),NA,NA,NA,NA,NA,Yes,Yes
-NA,Lamprey (General),NA,NA,NA,NA,Yes,NA,NA
-NA,Minnow (General),NA,NA,Yes,Yes,NA,Yes,Yes
-NA,Mottled Sculpin,NA,NA,NA,NA,Yes,NA,Yes
-NA,Salmon (General),NA,NA,NA,NA,Yes,NA,NA
-NA,Sculpin (General),NA,NA,Yes,Yes,Yes,Yes,Yes
-NA,Smelt (General),NA,NA,NA,NA,NA,Yes,NA
-NA,Squanga,NA,NA,NA,Yes,NA,NA,NA
-NA,Sucker (General),NA,NA,Yes,Yes,Yes,Yes,Yes
-NA,Whitefish (General),NA,NA,Yes,Yes,Yes,Yes,Yes
+Scientific Name,Species Name,BC List,COSEWIC,Carp Lake,Crooked,Finlay Arm,Finlay,Firesteel,Fox,Ingenika,Lower Omineca,Mesilinka,Nation,Ospika,Parsnip Arm,Parsnip,Peace Arm,Toodoggone,Upper Omineca
+Catostomus catostomus,Longnose Sucker,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Catostomus columbianus,Bridgelip Sucker,Yellow,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Catostomus commersonii,White Sucker,Yellow,NA,Yes,Yes,Yes,Yes,NA,Yes,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,NA,Yes
+Catostomus macrocheilus,Largescale Sucker,Yellow,NA,Yes,Yes,Yes,NA,NA,NA,Yes,NA,Yes,Yes,NA,Yes,Yes,Yes,Yes,NA
+Coregonus clupeaformis,Lake Whitefish,Yellow,NA,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes
+Cottus aleuticus,Coastrange Sculpin (formerly Aleutian Sculpin),Yellow,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA
+Cottus asper,Prickly Sculpin,Yellow,NA,Yes,Yes,Yes,Yes,NA,NA,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes
+Cottus cognatus,Slimy Sculpin,Yellow,NA,Yes,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Cottus ricei,Spoonhead Sculpin,Yellow,NAR (May 1989),NA,NA,Yes,NA,NA,NA,NA,Yes,NA,NA,NA,Yes,NA,NA,NA,Yes
+Couesius plumbeus,Lake Chub,Yellow,DD,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes
+Esox lucius,Northern Pike,Yellow,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hybognathus hankinsoni,Brassy Minnow,No Status,NA,Yes,Yes,Yes,NA,NA,NA,NA,NA,NA,Yes,NA,Yes,NA,NA,NA,NA
+Lota lota,Burbot,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes
+Mylocheilus caurinus,Peamouth Chub,Yellow,NA,Yes,Yes,Yes,Yes,NA,NA,Yes,NA,Yes,Yes,NA,Yes,Yes,Yes,NA,Yes
+Oncorhynchus clarkii,Cutthroat Trout,No Status,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA
+Oncorhynchus clarkii clarkii,Coastal Cutthroat Trout,Blue,NA,NA,NA,NA,Yes,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA
+Oncorhynchus kisutch,Coho Salmon,Not Reviewed,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA
+Oncorhynchus mykiss,Rainbow Trout,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Oncorhynchus mykiss,Steelhead,Yellow,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA
+Oncorhynchus mykiss,Steelhead (Winter-run),Yellow,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Oncorhynchus nerka,Kokanee,Not Reviewed,NA,NA,NA,Yes,Yes,Yes,NA,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes,Yes,NA
+Oncorhynchus nerka,Sockeye Salmon,Not Reviewed,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA
+Osmerus dentex,Rainbow Smelt,Unknown,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,Yes,NA,NA,Yes,NA,NA,NA
+Prosopium coulterii,Pygmy Whitefish,Yellow,NAR (Nov 2016),NA,NA,Yes,NA,NA,Yes,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,NA,Yes
+Prosopium cylindraceum,Round Whitefish,Yellow,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA
+Prosopium williamsoni,Mountain Whitefish,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Ptychocheilus oregonensis,Northern Pikeminnow,Yellow,NA,Yes,Yes,Yes,NA,NA,NA,NA,Yes,NA,Yes,NA,Yes,Yes,Yes,NA,NA
+Rhinichthys cataractae,Longnose Dace,Yellow,NA,NA,Yes,Yes,Yes,Yes,NA,NA,NA,Yes,Yes,Yes,Yes,Yes,NA,Yes,Yes
+Richardsonius balteatus,Redside Shiner,Yellow,NA,Yes,Yes,Yes,Yes,NA,Yes,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,NA,Yes
+Salvelinus confluentus,Bull Trout,Blue,SC (Nov 2012),Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Salvelinus fontinalis,Brook Trout,Exotic,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,Yes,NA,NA,NA
+Salvelinus malma,Dolly Varden,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+Salvelinus namaycush,Lake Trout,Yellow,NA,Yes,Yes,Yes,Yes,Yes,Yes,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,Yes
+Thymallus arcticus,Arctic Grayling,Yellow,NA,NA,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+NA,Arctic Char,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,Chub (General),NA,NA,Yes,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,Yes,NA,NA,NA
+NA,Dace (General),NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,Yes,Yes,NA,NA,NA
+NA,Lamprey (General),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA
+NA,Minnow (General),NA,NA,Yes,Yes,Yes,NA,NA,Yes,NA,NA,NA,NA,NA,Yes,Yes,NA,NA,Yes
+NA,Mottled Sculpin,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,Yes,NA,NA,Yes,NA,NA,NA
+NA,Salmon (General),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA
+NA,Sculpin (General),NA,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,NA
+NA,Smelt (General),NA,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,Yes,NA,NA,NA,NA
+NA,Squanga,NA,NA,NA,Yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,Sucker (General),NA,NA,Yes,Yes,Yes,Yes,Yes,NA,NA,Yes,Yes,Yes,NA,Yes,Yes,Yes,Yes,NA
+NA,Whitefish (General),NA,NA,Yes,Yes,NA,NA,NA,NA,NA,Yes,Yes,Yes,Yes,Yes,Yes,Yes,NA,NA

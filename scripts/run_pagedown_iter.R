@@ -44,6 +44,17 @@ input_html_stem <- yml$book_filename             # what pagedown actually produc
 idx_yml  <- rmarkdown::yaml_front_matter("index.Rmd")
 output_pdf_stem <- basename(idx_yml$params$repo_url)  # what we want the PDF named
 
+# Preload PDF render-time globals so chunks that consume them via lazy defaults
+# (e.g. `fpr_kable(font = font_set)`) resolve them via the function's closure
+# chain. We pass `envir = globalenv()` to bookdown::render_book below — that
+# lets chunks ALSO see these names because globalenv is now the knit env. We
+# deliberately do NOT preload `params`: bookdown injects params from YAML into
+# the knit env at render time, and pre-binding here would trip the "params
+# object already exists in knit environment" guard.
+font_set    <<- 9
+photo_width <<- "80%"
+gitbook_on  <<- FALSE
+
 input_html  <- paste0(input_html_stem, ".html")
 output_pdf  <- file.path("docs", paste0(output_pdf_stem, ".pdf"))
 
@@ -94,7 +105,17 @@ on.exit({
 }, add = TRUE)
 
 # --- Render pagedown HTML ------------------------------------------------
-rmarkdown::render_site(output_format = 'pagedown::html_paged', encoding = 'UTF-8')
+# Use bookdown::render_book so we can pass `envir = globalenv()` — fresh-Rscript
+# renders otherwise put chunk-assigned vars (e.g. `my_caption`) in a sibling
+# knit_global that helpers sourced into globalenv can't see via their lazy-
+# default lookup chain. The interactive run.R flow side-stepped this because
+# globalenv was already pre-populated by prior chunk runs in the same session.
+bookdown::render_book(
+  input         = "index.Rmd",
+  output_format = "pagedown::html_paged",
+  encoding      = "UTF-8",
+  envir         = globalenv()
+)
 
 # --- Restore 0600 appendix ----------------------------------------------
 cat("\n=== Restoring 0600 appendix from hold/ ===\n")
