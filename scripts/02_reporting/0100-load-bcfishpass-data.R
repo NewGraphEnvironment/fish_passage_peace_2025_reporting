@@ -24,22 +24,27 @@ my_funding_project_number <- params$pscis_funding_project_number
 
 
 # Check bcfishpass model version - skip rebuild if unchanged --------------------------
-# Portability: when `update_bcfishpass: FALSE` (default), skip the DB connection entirely
-# and use cached `data/bcfishpass.sqlite`. Set `update_bcfishpass: TRUE` to refresh from
-# the remote bcfishpass DB. After a release tag, leaving `FALSE` freezes the snapshot.
-# See https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/157
+# Portability + freezing: three triggers for a DB refresh:
+#   1. params$update_bcfishpass: TRUE          (explicit YAML flip)
+#   2. data/bcfishpass_model_version.txt missing  (delete to force refresh)
+#   3. params$force_bcfishpass_rebuild: TRUE   (explicit YAML flip)
+# Otherwise the cached parquet + sqlite are used and no DB connection is attempted.
+# After a release tag, leaving the version file in place freezes the snapshot.
+# See https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/186
 version_file <- "data/bcfishpass_model_version.txt"
 update_bcfishpass <- isTRUE(params$update_bcfishpass)
 force_rebuild <- isTRUE(params$force_bcfishpass_rebuild)
+version_file_missing <- !file.exists(version_file)
 
-if (!update_bcfishpass && !force_rebuild) {
+if (!update_bcfishpass && !force_rebuild && !version_file_missing) {
   # Trust local cache. No DB connection attempted.
-  if (!file.exists("data/bcfishpass.sqlite")) {
-    stop("data/bcfishpass.sqlite not present and params$update_bcfishpass is FALSE. ",
+  if (!file.exists("data/bcfishpass.sqlite") || !file.exists("data/bcfishpass_crossings_vw.parquet")) {
+    stop("Cached data files missing (data/bcfishpass.sqlite and/or data/bcfishpass_crossings_vw.parquet). ",
          "Set update_bcfishpass: TRUE in index.Rmd to fetch from the remote DB, ",
-         "or place a snapshot of bcfishpass.sqlite at data/bcfishpass.sqlite.")
+         "or delete data/bcfishpass_model_version.txt to force a refresh on next build, ",
+         "or place snapshots of these files in data/.")
   }
-  message("Using cached data/bcfishpass.sqlite. Set params$update_bcfishpass: TRUE to refresh from DB.")
+  message("Using cached data/bcfishpass.sqlite + parquet. Set params$update_bcfishpass: TRUE or delete data/bcfishpass_model_version.txt to refresh from DB.")
   rebuild_needed <- FALSE
 } else {
   # Connect to remote DB and check version
