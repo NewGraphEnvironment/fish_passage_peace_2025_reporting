@@ -381,11 +381,15 @@ bcfishpass_phase2_plot_prep |>
 
 ```
 
+
+### Fish Sampling
+
+Fish sampling was conducted at `r tab_fish_sites_sum |> n_distinct()` sites within 6 streams, with a total of `r tab_fish_summary |> dplyr::pull(count_fish) |> sum(na.rm = TRUE)` fish captured. Fork length, weight, and species were documented for each fish. Salmonids with fork lengths >60mm were PIT-tagged to facilitate long-term tracking of health and movement. Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm), and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram). A summary of sites assessed is included in Table \@ref(tab:tab-fish-site-summary), and raw data is provided in [Attachment - Data](#attach-dat). A summary of density results is also presented in Figure \@ref(fig:plot-fish-all).
+
+
 ```{r fish-sampling-text, eval = F}
 
-# ### Fish Sampling
-# 
-# Fish sampling was conducted at `r tab_fish_sites_sum |> n_distinct()` sites within 6 streams, with a total of `r tab_fish_summary |> dplyr::pull(count_fish) |> sum(na.rm = TRUE)` fish captured. Fork length, weight, and species were documented for each fish. Salmonids with fork lengths >60mm were PIT-tagged to facilitate long-term tracking of health and movement. Fork length data was used to delineate salmonids based on life stages: fry (0 to 65mm), parr (>65 to 110mm), juvenile (>110mm to 140mm), and adult (>140mm) by visually assessing the histograms presented in Figure \@ref(fig:fish-histogram). A summary of sites assessed is included in Table \@ref(tab:tab-fish-site-summary), and raw data is provided in [Attachment - Data](#attach-dat). A summary of density results is also presented in Figure \@ref(fig:plot-fish-all).
+
 # 
 # <br>
 # 
@@ -401,14 +405,14 @@ bcfishpass_phase2_plot_prep |>
 ```
 
 
-```{r tab-fish-site-summary, eval=FALSE}
+```{r tab-fish-site-summary, eval=TRUE}
 tab_fish_sites_sum |> 
   fpr::fpr_kable(caption_text = 'Summary of electrofishing sites.')
 ```
 
 <br>
 
-```{r plot-fish-all, fig.cap='Boxplots of densities (fish/100m2) of fish captured downstream (ds) and upstream (us) by electrofishing.', eval=FALSE}
+```{r plot-fish-all, fig.cap='Boxplots of densities (fish/100m2) of fish captured downstream (ds) and upstream (us) by electrofishing.', eval=TRUE}
 
 plot_fish_box_all <- fish_abund |> 
   dplyr::filter(
@@ -436,7 +440,7 @@ plot_fish_box_all
 
 <br>
 
-```{r fish-histogram, fig.cap= 'Histograms of fish lengths by species.  Fish captured by electrofishing during habitat confirmation assessments.', eval = FALSE}
+```{r fish-histogram, fig.cap= 'Histograms of fish lengths by species.  Fish captured by electrofishing during habitat confirmation assessments.', eval = TRUE}
 
 # Fish histogram -----------------------------------------------------------------------
 bin_1 <- floor(min(fish_data_complete$length, na.rm = TRUE) / 5) * 5

@@ -11,7 +11,7 @@
 ```{r proj-partners-text-exec, results='asis'}
 
 project_partners_text <- dplyr::case_when(params$project_region == "fraser" ~ "Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with support from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups which are sub-basins of the Upper Fraser River watershed. ",
-                                          params$project_region == "peace" ~ "The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the Parsnip River, Carp River and Crooked River watershed groups. ",
+                                          params$project_region == "peace" ~ "The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the FWCP Peace Region. ",
                                           params$project_region == "skeena" ~ "Since 2020, the Society for Ecosystem Restoration Northern British Columbia (SERNbc) has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Bulkley River and Morice River watershed groups, which are sub-basins of the Skeena River watershed. In 2022, the study area was expanded to include the Zymoetz River watershed group and the Kispiox River watershed group, followed by an extension in 2023 to encompass sections of the Kitsumkalum River watershed group, particularly where Highway 16 intersects the watershed."
 )
 
@@ -25,102 +25,32 @@ The primary objective of this project is to identify and prioritize fish passage
 <br>
 
 
-Although the main purpose of this report is to document `r cat(params$project_year)` field work data and results, it also builds on reporting 
-from past field activities and all reports can be considered living documents that can be updated and improved over time. In addition to the numerous assessments at sites undocumented in past years of the project, field activities in 2024 were also conducted at sites where habitat confirmations were previously documented within the reports linked below. The reports for these sites were edited and updated with `r cat(params$project_year)` data.
-
-
-```{r previous-work-exec, results='asis'}
-if (params$project_region == "peace") {
-
-  cat("
-- [Parsnip River Watershed – Fish Habitat Confirmations (PEA-F20-F-2967)](https://newgraphenvironment.github.io/Parsnip_Fish_Passage/){target=\"_blank\"}
-- [PEA-F22-F-3577-DCA Restoring Fish Passage in the Peace Region](https://www.newgraphenvironment.com/fish_passage_parsnip_2021_reporting/){target=\"_blank\"}
-- [Restoring Fish Passage in the Peace Region - 2022 - PEA-F23-F-3761-DCA](https://newgraphenvironment.github.io/fish_passage_peace_2022_reporting/){target=\"_blank\"}
-- [Restoring Fish Passage in the Peace Region - 2023](https://newgraphenvironment.github.io/fish_passage_peace_2023_reporting/){target=\"_blank\"}
-- [Restoring Fish Passage in the Peace Region - 2024](https://newgraphenvironment.github.io/fish_passage_peace_2024_reporting/){target=\"_blank\"}
-")
-
-  
-} else if (params$project_region == "fraser") {
-
-  cat("
-- [Restoring Fish Passage in the Fraser Region - 2023](https://www.newgraphenvironment.com/fish_passage_fraser_2023_reporting/){target=\"_blank\"}
-")
-
-  
-} else if (params$project_region == "skeena") {
-
-  cat("
-- [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning (2020)](https://newgraphenvironment.github.io/fish_passage_bulkley_2020_reporting/)
-- [Bulkley River and Morice River Watershed Groups Fish Passage Restoration Planning 2021](https://newgraphenvironment.github.io/fish_passage_skeena_2021_reporting/)
-- [Bulkley River Watershed Fish Passage Restoration Planning 2022](https://newgraphenvironment.github.io/fish_passage_bulkley_2022_reporting/)
-- [Skeena Watershed Fish Passage Restoration Planning 2022](https://newgraphenvironment.github.io/fish_passage_skeena_2022_reporting/)
-- [Skeena Watershed Fish Passage Restoration Planning 2023](https://newgraphenvironment.github.io/fish_passage_skeena_2023_reporting/)
-- [Skeena Watershed Fish Passage Restoration Planning 2024](https://newgraphenvironment.github.io/fish_passage_skeena_2024_reporting/)
-")
-
-}
-```
+Although the main purpose of this report is to document `r params$project_year` field work data and results, it also builds on multiple prior years of SERNbc fish passage reporting; per-site links to the relevant prior reports are in the [Assessment Data Summary](#app-site-data) appendix.
 
 <!-- Project specific below -->
 
-Fish passage assessment procedures conducted through SERNbc in the Upper Fraser River Watershed since 2023 are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`
-which includes links to project reporting for each site.  
+Fish passage assessment procedures conducted through SERNbc in the FWCP Peace Region since `r params$project_start_year` are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`, which includes links to project reporting for each site.
 
 <br>
 
-In 2025, the project area was expanded to include the Willow river, Lower Salmon River, and Tabor River watershed groups. Fish passage assessments were completed at 12 new sites, focusing on structures with potential barriers to upstream fish movement using standard provincial criteria.
-
-<br>
-  
-Habitat confirmation assessments were conducted at multiple sites within the Willow river and Tabor River watersheds, 
-  covering over XX km of stream length. Detailed habitat metrics were 
-  documented alongside eDNA samples to evaluate habitat quality and presence of fish species. 
+In `r params$project_year`, fieldwork activities took place within the Parsnip River, Parsnip Arm, Carp River, and Nation River watershed groups. Fish passage assessments and habitat confirmations were completed at new and previously identified crossings, with site-level results documented per-crossing in the appendices. Two crossings advanced to FWCP-funded `r as.integer(params$project_year) + 1` implementation following this year's work: PSCIS 199663 (Kennedy Siding, tributary to the Parsnip River — replacement with a streambed simulation in coordination with BC Timber Sales) and PSCIS 203597 (THUT15000 Deactivation, tributary to the Nation River — riparian enhancements including soil decompaction, native planting, and coarse woody debris placement).
 
 <br>
 
-
-New in 2025, environmental DNA (eDNA) sampling was incorporated into the program at both previously assessed and newly added sites. A total of `r form_edna |> nrow()` samples were collected across `r form_edna |> dplyr::distinct(stream_name) |> nrow()` streams.
-
-<br>
-
- 
-  Monitoring was conducted at two sites, including post-remediation evaluations at PSCIS crossings 196085 and 196200. Monitoring included eDNA sampling and habitat observations. A custom effectiveness monitoring form tailored to fish passage projects 
-  was used and metrics assessed included flow velocity, substrate condition, channel constriction, riparian condition, and cover 
-  availability. 
-  
-  <!-- Project specific above -->
-  
-  <br>
-
-  
-A major challenge in advancing fish passage restoration is the complexity of working across jurisdictions and with multiple stakeholders—rail and highway authorities, forestry ministries, licensees, and private landowners. These partners are often being asked to accommodate priorities that originate outside their mandates and budgets. Convincing them to invest in difficult, high-cost interventions—like modifying crossings or relocating infrastructure—requires navigating uncertainty about costs and ecological outcomes, as well as a disconnect between the benefits to watershed health and the internal pressures or performance goals of these agencies. It’s a tough ask: to take on massive, uncertain projects when they’re already stretched thin with their own responsibilities.
+Environmental DNA (eDNA) sampling was incorporated at program scale this year. A total of `r form_edna |> nrow()` samples were collected across `r form_edna |> dplyr::distinct(stream_name) |> nrow()` streams in partnership with the University of Northern British Columbia (UNBC) for ddPCR analysis. Per-species detection results informed crossing prioritization and partner conversations, and are summarized in [Appendix - Environmental DNA Results](#app-edna) and visualized in the interactive Peace eDNA map.
 
 <br>
 
-Fish passage restoration  across British Columbia is further complicated by the legacy of infrastructure deeply embedded in the landscape. Roads, railways, highways, community infrastructure and private assets often constrain floodplains and disrupt natural hydrological processes. While targeted repairs to individual barriers are essential, they won’t resolve the broader systemic issues without rethinking and restructuring how infrastructure interacts with watershed function. Loss of riparian vegetation and intensive beaver management only add to the degradation. Addressing these challenges means making strategic, well-communicated choices—picking battles carefully, building trust, and staying committed to a longer-term transformation.
+Fish sampling and PIT-tagging was completed at three monitoring sites using a custom fish-passage effectiveness monitoring form standardized across the program. Ongoing effectiveness monitoring continued at PSCIS 125179 (Tributary to Missinka River) and PSCIS 125131 (Tributary to Table River), extending multi-year baselines from prior reports; baseline monitoring was initiated this year at PSCIS 198692 (Kerry Lake) ahead of planned remediation. eDNA sampling was integrated at all three sites as part of both the baseline and the ongoing effectiveness components of the monitoring protocol.
 
 <br>
 
-While preliminary top remediation priorities are provided by watershed group, these rankings are inherently subjective and can depend on the capacity and willingness of infrastructure owners and tenure holders to support implementation—both financially and over the often multi-year project timelines. In practice, we must often act opportunistically, pursuing simpler, lower-cost options to maintain momentum and achieve near-term progress.
+Two analytical dimensions are new to the program this year. A floodplain delineation pilot was completed for the Parsnip River Watershed Group using the [`flooded`](https://newgraphenvironment.github.io/flooded/) R package, mapping the functional floodplain footprint and the off-channel habitat units (lakes, wetlands, side channels) that lateral connectivity supports — see [Appendix - Floodplain Delineation](#app-floodplain). A climate departure analysis was completed for the FWCP Peace Region using the [`cd`](https://newgraphenvironment.github.io/cd/) R package, quantifying temperature, precipitation, snowpack, and atmospheric drying trends since 1951 across the region's ecoregions — see [Appendix - Climate Departure](#app-climate-departure). Both layers complement the structural barrier inventory by providing the watershed context that prioritization decisions depend on.
 
 <br>
 
-  <!-- Project specific below -->
-  
-  NEEDS TO BE UPDATED
-  
-To enhance fish passage restoration in the FWCP Peace Region:
+Fish passage work in this region operates inside the constraints described in the [Approach](#approach) section of the background: thousands of structures across multiple jurisdictions and tenure holders, six-to-eight-figure remediation costs, and a finite funding envelope. Decisions about which crossings to advance are made opportunistically — pursuing simpler, lower-cost options to maintain momentum, while building the multi-year relationships and shared data that larger commitments require.
 
-- Maintain strong partnerships to support funding, site selection, remediation, and monitoring through adaptive management informed by traditional knowledge and real-time data.
-- Prioritize detailed assessments in areas with blockages and high habitat potential, especially near McLeod Lake.
-- Use climate modeling to prioritize crossings that enable access to cold, drought-resistant habitats.
-- Secure financial commitments for Fern Creek remediation despite uncertainties in harvest planning.
-- Continue effectiveness monitoring at key sites using fish sampling, eDNA, PIT tagging, temperature data, and aerial imagery.
-- Continue to develop a cost-effective monitoring framework to assess productivity gains from improved passage.
-- Collaborate with WLRS, UNC, local fisheries experts, FWCP, and the CEMPRA Project working group.
-- Utilize environmental DNA (eDNA) to better understand bull trout and Arctic grayling habitat use at both potential and remediated sites. This will refine prioritization and assess fish passage effectiveness.  
-
-  <!-- Project specific above -->
+<!-- Project specific above -->
 
 

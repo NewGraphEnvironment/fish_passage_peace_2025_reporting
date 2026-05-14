@@ -139,9 +139,9 @@ form_edna |>filter(site == my_site & location == 'us') |>pull(comments_lab)
 ```
 
 
-## Environmental DNA Sampling {.unnumbered}
+## Environmental DNA {.unnumbered}
 
-eDNA samples were collected both upstream and downstream of crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, with sampling techniques summarized in Table \@ref(tab:tab-edna-203605).
+eDNA samples were collected both upstream and downstream of crossing `r as.character(my_site)` on `r fpr_my_pscis_info(col_pull = road_name, site = my_site)`, with sampling techniques summarized in Table \@ref(tab:tab-edna-203605).  Samples were submitted to UNBC for ddPCR analysis against Bull Trout, Arctic Grayling, Rainbow Trout, and Kokanee assays. Per-position results are summarized in Table \@ref(tab:tab-edna-results-203605). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran. Sub-threshold signals (1-3 droplets) are tracked separately as they are not interpretable as species presence per ddPCR convention.
 
 <br>
 
@@ -156,9 +156,6 @@ tab_edna |>
 
 ```
 
-<br>
-
-## Environmental DNA Results {.unnumbered}
 
 ```{r tab-edna-results-203605-prep, include=FALSE}
 edna_results_203605 <- edna_bystargets_peace |>
@@ -179,7 +176,6 @@ edna_results_203605 <- edna_bystargets_peace |>
   dplyr::arrange(`Site ID`)
 ```
 
-eDNA samples were collected upstream and downstream of crossing `r as.character(my_site)` and submitted to UNBC for ddPCR analysis against Bull Trout, Arctic Grayling, Rainbow Trout, and Kokanee assays (the SOCK ddPCR assay does not distinguish between anadromous Sockeye Salmon and landlocked Kokanee; in Peace tributaries above the Peace Canyon Dam, any SOCK detection would be Kokanee). Per-position results are summarized in Table \@ref(tab:tab-edna-results-203605). Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is `CODE(max_droplets)`, with `*` flagging samples UNBC reran. Sub-threshold signals (1-3 droplets) are tracked separately as they are not interpretable as species presence per ddPCR convention.
 
 <br>
 
