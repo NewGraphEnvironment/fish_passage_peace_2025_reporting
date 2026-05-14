@@ -177,10 +177,8 @@ crossing structure are also included within an `sqlite` database within this yea
 
 
 #### Statistical Support for `bcfishpass` Fish Habitat Modelling Updates
-Initial mapping of stream discharge and temperature causal effects pathways for the future purpose of focusing aquatic restoration
-actions in areas of highest potential for positive impacts on fisheries values (ie. elimination of areas from intrinsic models
-where water temperatures are likely too cold to support fish production) are detailed in @hill_etal2024Spatialstream which is
-included as [Attachment - Water Temperature Modelling](#attach-bayes).
+
+The statistical-modelling methodology — channel-width prediction, stream-temperature SSN modelling with Poisson Consulting [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream], the broader `fresh` + `link` habitat-modelling framework, and the calibration-against-`bcfishobs` trajectory — is described in the Methods chapter under Statistical Support for Habitat Modelling. The outputs feeding intrinsic-habitat and connectivity prioritization are summarised below under Statistical Habitat Modelling Outputs.
 
 
 
@@ -211,6 +209,17 @@ wetlands_n  <- sum(wb_in_fp$waterbody_type == "W", na.rm = TRUE)
 ### Floodplain Delineation
 
 Modelled functional floodplain in the Parsnip River Watershed Group covers `r format(round(fp_area_ha), big.mark = ",")` ha — `r sprintf("%.1f", fp_pct_aoi)` % of the `r format(round(aoi_area_km2), big.mark = ",")` km² watershed group — attached to `r format(round(streams_km_in_fp), big.mark = ",")` km of bull trout accessible order-3+ streams. Within that footprint sit `r lakes_n` lakes and `r format(wetlands_n, big.mark = ",")` mapped wetland polygons — the off-channel inventory that crossing remediations in these reaches stand to reconnect or leave severed, depending on whether design accounts for the floodplain context around the structure. The full metric table, watershed-scale map, and south-east detail map are in [Appendix - Floodplain Delineation](#app-floodplain).
+
+
+## Statistical Habitat Modelling Outputs
+
+Outputs from the statistical-modelling work described in the methods (Channel Width, Stream Temperature and GSDD, and the broader habitat-modelling framework) feed downstream into our intrinsic-habitat-potential and connectivity-prioritization layers — both for `bcfishpass` (channel-width estimates contribute to species-specific linear spawning/rearing habitat models across BC) and for the project-specific work we run on top via [`fresh`](https://github.com/NewGraphEnvironment/fresh) and [`link`](https://github.com/NewGraphEnvironment/link). Stream-temperature predictions can exclude habitat reaches likely to be thermally limiting from intrinsic models, and Growing-Season Degree Days [@hill_etal2025Spatialstream] provides a productivity-relevant metric that ties habitat suitability to age-0 salmonid growth potential. The hydrometric / water-quality station network underpinning these analyses — organized through [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc) — will be documented in a forthcoming appendix listing the stations available in this study area along with their period-of-record and variable coverage.
+
+<br>
+
+The first concrete application of this framework is an Arctic grayling intrinsic-habitat and connectivity model for the FWCP Peace region, in development at the time of this report. Once published, the model layer will be added to the project's collaborative GIS environment for review and iteration, and predictions will be calibrated against known fish-presence observations from [`bcfishobs`](https://github.com/smnorris/bcfishobs) to quantify model uncertainty and surface opportunities for fish-passage restoration. Subsequent versions of this report (tagged at the URL referenced in the executive summary) will incorporate model outputs, calibration narrative, and figures as the work matures.
+
+<br>
 
 
 ## Fish Passage Assessments

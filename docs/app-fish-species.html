@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendix - Environmental DNA Results | Restoring Fish Passage in the Peace Region - 2025</title>
+  <title>Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025</title>
   <meta name="description" content="My Description." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendix - Environmental DNA Results | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta property="og:title" content="Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="My Description." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendix - Environmental DNA Results | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta name="twitter:title" content="Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025" />
   
   <meta name="twitter:description" content="My Description." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tributary-to-williston-reservoir---203605---appendix.html"/>
-<link rel="next" href="trib-to-missinka-2025.html"/>
+<link rel="prev" href="recommendations.html"/>
+<link rel="next" href="app-site-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -419,1430 +419,3007 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="app-edna" class="section level1 unnumbered hasAnchor">
-<h1>Appendix - Environmental DNA Results<a href="app-edna.html#app-edna" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This appendix contains site-level detail for the 2025 environmental DNA (eDNA) sampling program in the Peace project area. Headline per-species detection counts are presented in the main Results chapter; the tables below show which sites detected which species. Field blanks are tracked separately as quality-assurance samples — they test for protocol contamination, not site eDNA. Office blanks (samples filtered at the field accommodation rather than at site) are excluded from these tables because their UTM coordinates are inherited from related sites and do not represent real sampling locations.</p>
-<p>The interactive map of these results is linked from the main Results chapter and at the end of this appendix.</p>
-<div id="per-site-detection-results" class="section level2 unnumbered hasAnchor">
-<h2>Per-site detection results<a href="app-edna.html#per-site-detection-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Format: <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples that UNBC reran. Detected = ≥4 positive droplets per the standard ddPCR call threshold; Sub-threshold = 1-3 droplets, not interpretable as species presence per ddPCR convention; Not detected = 0 droplets across all runs.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="app-edna.html#cb132-1" tabindex="-1"></a>edna_per_site <span class="sc">|&gt;</span></span>
-<span id="cb132-2"><a href="app-edna.html#cb132-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb132-3"><a href="app-edna.html#cb132-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="st">&quot;Site-level eDNA detection results across real environmental samples in the Peace project area. UNBC ID is the lab sample identifier; Pos. control = TRUE indicates the sample was collected at a site where the target species was also confirmed by electrofishing.&quot;</span>,</span>
-<span id="cb132-4"><a href="app-edna.html#cb132-4" tabindex="-1"></a>    <span class="at">scroll =</span> gitbook_on</span>
-<span id="cb132-5"><a href="app-edna.html#cb132-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="app-fish-species" class="section level1 unnumbered hasAnchor">
+<h1>Appendix - Fish Species by Watershed Group<a href="app-fish-species.html#app-fish-species" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Historical fish observations by watershed group are recorded in the BC Fisheries Information Summary System (FISS) <span class="citation">(MoE 2024a)</span>. Per-species presence across the watershed groups in this study area is summarised in Table <a href="app-fish-species.html#tab:tab-fiss-species">5.1</a>. In the interactive (gitbook) version of this report the table shows one column per watershed group; in the PDF version the watershed-group columns are collapsed to a single comma-separated list of watershed-group codes per species to fit page width.</p>
+<p><br></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="app-fish-species.html#cb48-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb48-2"><a href="app-fish-species.html#cb48-2" tabindex="-1"></a>  <span class="st">&quot;data/inputs_extracted/fiss_species_table.csv&quot;</span>,</span>
+<span id="cb48-3"><a href="app-fish-species.html#cb48-3" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
+<span id="cb48-4"><a href="app-fish-species.html#cb48-4" tabindex="-1"></a>)</span>
+<span id="cb48-5"><a href="app-fish-species.html#cb48-5" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="app-fish-species.html#cb48-6" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb48-7"><a href="app-fish-species.html#cb48-7" tabindex="-1"></a>  <span class="st">&quot;Fish species recorded in the &quot;</span>,</span>
+<span id="cb48-8"><a href="app-fish-species.html#cb48-8" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">asis_output</span>(wsg_names) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">combine_words</span>(),</span>
+<span id="cb48-9"><a href="app-fish-species.html#cb48-9" tabindex="-1"></a>  <span class="st">&quot; watershed groups.&quot;</span></span>
+<span id="cb48-10"><a href="app-fish-species.html#cb48-10" tabindex="-1"></a>)</span>
+<span id="cb48-11"><a href="app-fish-species.html#cb48-11" tabindex="-1"></a></span>
+<span id="cb48-12"><a href="app-fish-species.html#cb48-12" tabindex="-1"></a>my_footnote <span class="ot">&lt;-</span> <span class="st">&#39;COSEWIC abbreviations :</span></span>
+<span id="cb48-13"><a href="app-fish-species.html#cb48-13" tabindex="-1"></a><span class="st">                SC - Special concern</span></span>
+<span id="cb48-14"><a href="app-fish-species.html#cb48-14" tabindex="-1"></a><span class="st">                DD - Data deficient</span></span>
+<span id="cb48-15"><a href="app-fish-species.html#cb48-15" tabindex="-1"></a><span class="st">                NAR - Not at risk</span></span>
+<span id="cb48-16"><a href="app-fish-species.html#cb48-16" tabindex="-1"></a><span class="st">                E - Endangered</span></span>
+<span id="cb48-17"><a href="app-fish-species.html#cb48-17" tabindex="-1"></a><span class="st">                T - Threatened</span></span>
+<span id="cb48-18"><a href="app-fish-species.html#cb48-18" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="app-fish-species.html#cb48-19" tabindex="-1"></a><span class="st">                BC List definitions :</span></span>
+<span id="cb48-20"><a href="app-fish-species.html#cb48-20" tabindex="-1"></a><span class="st">                Yellow - Species that is apparently secure</span></span>
+<span id="cb48-21"><a href="app-fish-species.html#cb48-21" tabindex="-1"></a><span class="st">                Blue - Species that is of special concern</span></span>
+<span id="cb48-22"><a href="app-fish-species.html#cb48-22" tabindex="-1"></a><span class="st">                Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
+<span id="cb48-23"><a href="app-fish-species.html#cb48-23" tabindex="-1"></a></span>
+<span id="cb48-24"><a href="app-fish-species.html#cb48-24" tabindex="-1"></a><span class="st">                Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].</span></span>
+<span id="cb48-25"><a href="app-fish-species.html#cb48-25" tabindex="-1"></a><span class="st">                &#39;</span></span>
+<span id="cb48-26"><a href="app-fish-species.html#cb48-26" tabindex="-1"></a></span>
+<span id="cb48-27"><a href="app-fish-species.html#cb48-27" tabindex="-1"></a><span class="cf">if</span> (gitbook_on) {</span>
+<span id="cb48-28"><a href="app-fish-species.html#cb48-28" tabindex="-1"></a>  fiss_species_table <span class="sc">|&gt;</span></span>
+<span id="cb48-29"><a href="app-fish-species.html#cb48-29" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb48-30"><a href="app-fish-species.html#cb48-30" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
+<span id="cb48-31"><a href="app-fish-species.html#cb48-31" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
+<span id="cb48-32"><a href="app-fish-species.html#cb48-32" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">TRUE</span></span>
+<span id="cb48-33"><a href="app-fish-species.html#cb48-33" tabindex="-1"></a>    )</span>
+<span id="cb48-34"><a href="app-fish-species.html#cb48-34" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb48-35"><a href="app-fish-species.html#cb48-35" tabindex="-1"></a>  meta_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Scientific Name&quot;</span>, <span class="st">&quot;Species Name&quot;</span>, <span class="st">&quot;BC List&quot;</span>, <span class="st">&quot;COSEWIC&quot;</span>)</span>
+<span id="cb48-36"><a href="app-fish-species.html#cb48-36" tabindex="-1"></a>  wsg_cols  <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(fiss_species_table), meta_cols)</span>
+<span id="cb48-37"><a href="app-fish-species.html#cb48-37" tabindex="-1"></a></span>
+<span id="cb48-38"><a href="app-fish-species.html#cb48-38" tabindex="-1"></a>  fiss_species_table_pdf <span class="ot">&lt;-</span> fiss_species_table <span class="sc">|&gt;</span></span>
+<span id="cb48-39"><a href="app-fish-species.html#cb48-39" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-40"><a href="app-fish-species.html#cb48-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb48-41"><a href="app-fish-species.html#cb48-41" tabindex="-1"></a>      <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(</span>
+<span id="cb48-42"><a href="app-fish-species.html#cb48-42" tabindex="-1"></a>        wsg_cols[dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)) <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb48-43"><a href="app-fish-species.html#cb48-43" tabindex="-1"></a>                 <span class="sc">!</span><span class="fu">is.na</span>(dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)))],</span>
+<span id="cb48-44"><a href="app-fish-species.html#cb48-44" tabindex="-1"></a>        <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span></span>
+<span id="cb48-45"><a href="app-fish-species.html#cb48-45" tabindex="-1"></a>      )</span>
+<span id="cb48-46"><a href="app-fish-species.html#cb48-46" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb48-47"><a href="app-fish-species.html#cb48-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-48"><a href="app-fish-species.html#cb48-48" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(meta_cols), <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span>)</span>
+<span id="cb48-49"><a href="app-fish-species.html#cb48-49" tabindex="-1"></a></span>
+<span id="cb48-50"><a href="app-fish-species.html#cb48-50" tabindex="-1"></a>  fiss_species_table_pdf <span class="sc">|&gt;</span></span>
+<span id="cb48-51"><a href="app-fish-species.html#cb48-51" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb48-52"><a href="app-fish-species.html#cb48-52" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
+<span id="cb48-53"><a href="app-fish-species.html#cb48-53" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
+<span id="cb48-54"><a href="app-fish-species.html#cb48-54" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb48-55"><a href="app-fish-species.html#cb48-55" tabindex="-1"></a>    )</span>
+<span id="cb48-56"><a href="app-fish-species.html#cb48-56" tabindex="-1"></a>}</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-edna-per-site">Table 5.28: </span>Site-level eDNA detection results across real environmental samples in the Peace project area. UNBC ID is the lab sample identifier; Pos. control = TRUE indicates the sample was collected at a site where the target species was also confirmed by electrofishing.
+<span id="tab:tab-fiss-species">Table 5.1: </span>Fish species recorded in the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Site ID
+Scientific Name
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Stream
+Species Name
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-UNBC ID
+BC List
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Pos. control
+COSEWIC
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Detected
+Carp Lake
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Sub-threshold
+Crooked
 </th>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Not detected
+Finlay Arm
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Finlay
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Firesteel
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Fox
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Ingenika
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Lower Omineca
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Mesilinka
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Nation
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Ospika
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Parsnip Arm
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Parsnip
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Peace Arm
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Toodoggone
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Upper Omineca
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-125000_ds_ed1
+Catostomus catostomus
 </td>
 <td style="text-align:left;">
-Tributary To Parsnip River
+Longnose Sucker
 </td>
 <td style="text-align:left;">
-M41347
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-RAIN(980)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125000_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Parsnip River
-</td>
-<td style="text-align:left;">
-M41348
+Yellow
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(143)
+Yes
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-125179_ds_ed1a
+Catostomus columbianus
 </td>
 <td style="text-align:left;">
-Tributary To Missinka River
+Bridgelip Sucker
 </td>
 <td style="text-align:left;">
-M41349
+Yellow
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(309)
+–
 </td>
 <td style="text-align:left;">
-BULT(1)*
-</td>
-<td style="text-align:left;">
-GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125179_us_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-M41351
-</td>
-<td style="text-align:left;">
-yes
-</td>
-<td style="text-align:left;">
-RAIN(383)*
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125180_ds_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-M41353
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-BULT(4), RAIN(330)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125180_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-M41354
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-RAIN(293)
-</td>
-<td style="text-align:left;">
-BULT(3)
-</td>
-<td style="text-align:left;">
-GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125194_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-M21242
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(1), RAIN(3)*
-</td>
-<td style="text-align:left;">
-—
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125231_ds_ed1c
-</td>
-<td style="text-align:left;">
-Tributary To Table River
-</td>
-<td style="text-align:left;">
-M41356
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(205)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125231_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Table River
-</td>
-<td style="text-align:left;">
-M41357
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(5)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125261_ds_ed1
-</td>
-<td style="text-align:left;">
-Fern Creek
-</td>
-<td style="text-align:left;">
-M41358
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(258)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125261_us_ed1a
-</td>
-<td style="text-align:left;">
-Fern Creek
-</td>
-<td style="text-align:left;">
-M41359
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(533)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125261_us_ed1b
-</td>
-<td style="text-align:left;">
-Fern Creek
-</td>
-<td style="text-align:left;">
-M41360
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(567)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-M41362
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(119)
-</td>
-<td style="text-align:left;">
-BULT(1)
-</td>
-<td style="text-align:left;">
-GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed2
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-M41363
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(630)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
+–
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-198692_us_ed1
+Catostomus commersonii
 </td>
 <td style="text-align:left;">
-Tributary To Kerry Lake
+White Sucker
 </td>
 <td style="text-align:left;">
-M41364
+Yellow
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(235)
+Yes
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-199663_ds_ed1
+Yes
 </td>
 <td style="text-align:left;">
-Tributary To Parsnip River
-</td>
-<td style="text-align:left;">
-M10139
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-BURB(195), RAIN(112)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-199663_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Parsnip River
-</td>
-<td style="text-align:left;">
-M10140
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(65)
+Yes
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-BULT(0), BURB(0), GRAY(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-M41366
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-RAIN(173)*
-</td>
-<td style="text-align:left;">
-BULT(3)*
-</td>
-<td style="text-align:left;">
-GRAY(0)<em>, SOCK(0)</em>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-M41367
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-RAIN(213)*
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0)<em>, GRAY(0)</em>, SOCK(0)*
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203605_ds_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Williston Reservoir
-</td>
-<td style="text-align:left;">
-M41368
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(455)
+Yes
 </td>
 <td style="text-align:left;">
-BULT(3)*
+Yes
 </td>
 <td style="text-align:left;">
-GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203605_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Williston Reservoir
-</td>
-<td style="text-align:left;">
-M41369
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(429)
-</td>
-<td style="text-align:left;">
-BULT(1)
-</td>
-<td style="text-align:left;">
-GRAY(0), SOCK(0)
+Yes
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-24718557_ed1
+Catostomus macrocheilus
 </td>
 <td style="text-align:left;">
-Missinka River
+Largescale Sucker
 </td>
 <td style="text-align:left;">
-M41370
+Yellow
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(4)
+Yes
 </td>
 <td style="text-align:left;">
-BULT(2)<em>, GRAY(1)</em>
+Yes
 </td>
 <td style="text-align:left;">
-SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-57690_ds_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Wichcika Creek
-</td>
-<td style="text-align:left;">
-M41371
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-RAIN(10)
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-57690_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Wichcika Creek
-</td>
-<td style="text-align:left;">
-M41372
+–
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), RAIN(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-57695_ds_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Wichcika Creek
-</td>
-<td style="text-align:left;">
-M41373
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), RAIN(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-57695_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Wichcika Creek
-</td>
-<td style="text-align:left;">
-M21244
+Yes
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-RAIN(1)
+Yes
 </td>
 <td style="text-align:left;">
-BULT(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-57696_ds_ed1
+Yes
 </td>
 <td style="text-align:left;">
-Tributary To Wichcika Creek
+Yes
 </td>
 <td style="text-align:left;">
-M21245
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), RAIN(0)
+–
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-57696_us_ed1
+Coregonus clupeaformis
 </td>
 <td style="text-align:left;">
-Tributary To Wichcika Creek
+Lake Whitefish
 </td>
 <td style="text-align:left;">
-M21246
+Yellow
 </td>
 <td style="text-align:left;">
+–
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-—
+Yes
 </td>
 <td style="text-align:left;">
-BULT(0), RAIN(0)
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cottus aleuticus
+</td>
+<td style="text-align:left;">
+Coastrange Sculpin (formerly Aleutian Sculpin)
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cottus asper
+</td>
+<td style="text-align:left;">
+Prickly Sculpin
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cottus cognatus
+</td>
+<td style="text-align:left;">
+Slimy Sculpin
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cottus ricei
+</td>
+<td style="text-align:left;">
+Spoonhead Sculpin
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+NAR (May 1989)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Couesius plumbeus
+</td>
+<td style="text-align:left;">
+Lake Chub
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+DD
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Esox lucius
+</td>
+<td style="text-align:left;">
+Northern Pike
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hybognathus hankinsoni
+</td>
+<td style="text-align:left;">
+Brassy Minnow
+</td>
+<td style="text-align:left;">
+No Status
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Lota lota
+</td>
+<td style="text-align:left;">
+Burbot
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Mylocheilus caurinus
+</td>
+<td style="text-align:left;">
+Peamouth Chub
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus clarkii
+</td>
+<td style="text-align:left;">
+Cutthroat Trout
+</td>
+<td style="text-align:left;">
+No Status
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus clarkii clarkii
+</td>
+<td style="text-align:left;">
+Coastal Cutthroat Trout
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus kisutch
+</td>
+<td style="text-align:left;">
+Coho Salmon
+</td>
+<td style="text-align:left;">
+Not Reviewed
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus mykiss
+</td>
+<td style="text-align:left;">
+Rainbow Trout
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus mykiss
+</td>
+<td style="text-align:left;">
+Steelhead
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus mykiss
+</td>
+<td style="text-align:left;">
+Steelhead (Winter-run)
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus nerka
+</td>
+<td style="text-align:left;">
+Kokanee
+</td>
+<td style="text-align:left;">
+Not Reviewed
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Oncorhynchus nerka
+</td>
+<td style="text-align:left;">
+Sockeye Salmon
+</td>
+<td style="text-align:left;">
+Not Reviewed
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Osmerus dentex
+</td>
+<td style="text-align:left;">
+Rainbow Smelt
+</td>
+<td style="text-align:left;">
+Unknown
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prosopium coulterii
+</td>
+<td style="text-align:left;">
+Pygmy Whitefish
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+NAR (Nov 2016)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prosopium cylindraceum
+</td>
+<td style="text-align:left;">
+Round Whitefish
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prosopium williamsoni
+</td>
+<td style="text-align:left;">
+Mountain Whitefish
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ptychocheilus oregonensis
+</td>
+<td style="text-align:left;">
+Northern Pikeminnow
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Rhinichthys cataractae
+</td>
+<td style="text-align:left;">
+Longnose Dace
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Richardsonius balteatus
+</td>
+<td style="text-align:left;">
+Redside Shiner
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Salvelinus confluentus
+</td>
+<td style="text-align:left;">
+Bull Trout
+</td>
+<td style="text-align:left;">
+Blue
+</td>
+<td style="text-align:left;">
+SC (Nov 2012)
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Salvelinus fontinalis
+</td>
+<td style="text-align:left;">
+Brook Trout
+</td>
+<td style="text-align:left;">
+Exotic
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Salvelinus malma
+</td>
+<td style="text-align:left;">
+Dolly Varden
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Salvelinus namaycush
+</td>
+<td style="text-align:left;">
+Lake Trout
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Thymallus arcticus
+</td>
+<td style="text-align:left;">
+Arctic Grayling
+</td>
+<td style="text-align:left;">
+Yellow
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Arctic Char
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Chub (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Dace (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Lamprey (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Minnow (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Mottled Sculpin
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Salmon (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Sculpin (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Smelt (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Squanga
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Sucker (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Whitefish (General)
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+–
 </td>
 </tr>
 </tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup>*</sup> COSEWIC abbreviations :<br> SC - Special concern<br> DD - Data deficient<br> NAR - Not at risk<br> E - Endangered<br> T - Threatened<br><br> BC List definitions :<br> Yellow - Species that is apparently secure<br> Blue - Species that is of special concern<br> Exotic - Species that have been moved beyond their natural range as a result of human activity<br><br> Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout <span class="citation">(COSEWIC 2012)</span>.<br>
+</td>
+</tr>
+</tfoot>
 </table>
 </div>
-<p><br></p>
-</div>
-<div id="field-blanks" class="section level2 unnumbered hasAnchor">
-<h2>Field blanks<a href="app-edna.html#field-blanks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Field blanks filter distilled water at the field site to test for protocol contamination during collection and processing. <strong>Detections in blanks indicate potential cross-contamination, not species presence at the location</strong> — these rows are presented for QA transparency only, not as eDNA detections.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="app-edna.html#cb133-1" tabindex="-1"></a>edna_field_blanks <span class="sc">|&gt;</span></span>
-<span id="cb133-2"><a href="app-edna.html#cb133-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb133-3"><a href="app-edna.html#cb133-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="st">&quot;Field blanks collected during the 2025 eDNA program in the Peace project area. Detections in blanks reflect protocol-side contamination, not site eDNA.&quot;</span>,</span>
-<span id="cb133-4"><a href="app-edna.html#cb133-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb133-5"><a href="app-edna.html#cb133-5" tabindex="-1"></a>  )</span></code></pre></div>
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:tab-edna-field-blanks">Table 5.29: </span>Field blanks collected during the 2025 eDNA program in the Peace project area. Detections in blanks reflect protocol-side contamination, not site eDNA.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Site ID
-</th>
-<th style="text-align:left;">
-Stream
-</th>
-<th style="text-align:left;">
-UNBC ID
-</th>
-<th style="text-align:left;">
-Detected
-</th>
-<th style="text-align:left;">
-Sub-threshold
-</th>
-<th style="text-align:left;">
-Clean (0 droplets)
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-125231_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Table River
-</td>
-<td style="text-align:left;">
-M41355
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0), GRAY(0), RAIN(0), SOCK(0)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-M41361
-</td>
-<td style="text-align:left;">
-RAIN(5)*
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0)<em>, GRAY(0)</em>, SOCK(0)*
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-M41365
-</td>
-<td style="text-align:left;">
-RAIN(4)*
-</td>
-<td style="text-align:left;">
-—
-</td>
-<td style="text-align:left;">
-BULT(0)<em>, GRAY(0)</em>, SOCK(0)*
-</td>
-</tr>
-</tbody>
-</table>
-<p><br></p>
-</div>
-<div id="retests" class="section level2 unnumbered hasAnchor">
-<h2>Retests<a href="app-edna.html#retests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>UNBC reran a subset of samples to confirm borderline results. The table below lists every (site × species) combination that was rerun, including reruns from both real environmental samples and field blanks.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="app-edna.html#cb134-1" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(edna_retests) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb134-2"><a href="app-edna.html#cb134-2" tabindex="-1"></a>  edna_retests <span class="sc">|&gt;</span></span>
-<span id="cb134-3"><a href="app-edna.html#cb134-3" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb134-4"><a href="app-edna.html#cb134-4" tabindex="-1"></a>      <span class="at">caption_text =</span> <span class="st">&quot;UNBC retests for the 2025 Peace eDNA samples. Runs is the total number of times the sample x species combination was assayed; Max droplets is the highest positive-droplet count observed across all runs.&quot;</span>,</span>
-<span id="cb134-5"><a href="app-edna.html#cb134-5" tabindex="-1"></a>      <span class="at">scroll =</span> gitbook_on</span>
-<span id="cb134-6"><a href="app-edna.html#cb134-6" tabindex="-1"></a>    )</span>
-<span id="cb134-7"><a href="app-edna.html#cb134-7" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb134-8"><a href="app-edna.html#cb134-8" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;No retests in the Peace 2025 batch.</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb134-9"><a href="app-edna.html#cb134-9" tabindex="-1"></a>}</span></code></pre></div>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">
-<span id="tab:tab-edna-retests">Table 5.30: </span>UNBC retests for the 2025 Peace eDNA samples. Runs is the total number of times the sample x species combination was assayed; Max droplets is the highest positive-droplet count observed across all runs.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Site ID
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Stream
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Species
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Code
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Sample type
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-Runs
-</th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
-Max droplets
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Result
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-125179_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125179_us_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-383
-</td>
-<td style="text-align:left;">
-Detected (≥4 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-125194_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Missinka River
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-GRAY
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:left;">
-Detected (≥4 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-198692_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Kerry Lake
-</td>
-<td style="text-align:left;">
-Kokanee
-</td>
-<td style="text-align:left;">
-SOCK
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-GRAY
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:left;">
-Detected (≥4 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1a
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Kokanee
-</td>
-<td style="text-align:left;">
-SOCK
-</td>
-<td style="text-align:left;">
-field blank
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-GRAY
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-173
-</td>
-<td style="text-align:left;">
-Detected (≥4 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_ds_ed1b
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Kokanee
-</td>
-<td style="text-align:left;">
-SOCK
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-GRAY
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Rainbow Trout
-</td>
-<td style="text-align:left;">
-RAIN
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-213
-</td>
-<td style="text-align:left;">
-Detected (≥4 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203597_us_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Nation River
-</td>
-<td style="text-align:left;">
-Kokanee
-</td>
-<td style="text-align:left;">
-SOCK
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-No detection (0 droplets)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-203605_ds_ed1
-</td>
-<td style="text-align:left;">
-Tributary To Williston Reservoir
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-24718557_ed1
-</td>
-<td style="text-align:left;">
-Missinka River
-</td>
-<td style="text-align:left;">
-Bull Trout
-</td>
-<td style="text-align:left;">
-BULT
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-24718557_ed1
-</td>
-<td style="text-align:left;">
-Missinka River
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-GRAY
-</td>
-<td style="text-align:left;">
-environmental
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Sub-threshold (1-3 droplets, NOT a detection)
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><br></p>
-</div>
-<div id="interactive-map" class="section level2 unnumbered hasAnchor">
-<h2>Interactive map<a href="app-edna.html#interactive-map" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The interactive Peace eDNA map shows site-level detection results with toggleable per-species layers, an opt-in sub-threshold-signals layer (off by default), and an opt-in Controls layer for field blanks. See the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a>.</p>
 
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="app-edna.html#cb135-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb135-2"><a href="app-edna.html#cb135-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb135-3"><a href="app-edna.html#cb135-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb135-4"><a href="app-edna.html#cb135-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="app-edna.html#cb136-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">125179</span></span></code></pre></div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="tributary-to-williston-reservoir---203605---appendix.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="trib-to-missinka-2025.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="recommendations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-site-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -24,6 +24,10 @@ The primary objective of this project is to identify and prioritize fish passage
 
 <br>
 
+Underpinning this work is a parameterizable habitat-suitability and connectivity modelling framework that extends — rather than supersedes — the canonical BC freshwater stack ([`bcfishpass`](https://github.com/smnorris/bcfishpass), [`fwapg`](https://github.com/smnorris/fwapg), [`bcfishobs`](https://github.com/smnorris/bcfishobs)). Built on our open-source R packages [`fresh`](https://github.com/NewGraphEnvironment/fresh) and [`link`](https://github.com/NewGraphEnvironment/link), it integrates statistical stream-temperature and Growing-Season Degree Days predictions [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream] from collaborative modelling with Poisson Consulting, water-temperature observations centralized through [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc), and calibration of model predictions against known fish-presence records from `bcfishobs`. An initial Arctic grayling intrinsic-habitat layer for the FWCP Peace region is in development and will be published in subsequent versions of this report and as standalone GIS layers in the project's collaborative GIS environment. Each release of this report is tagged so reviewers can navigate between the submitted snapshot and current state — the latest version is served at the report URL referenced above.
+
+<br>
+
 
 Although the main purpose of this report is to document `r params$project_year` field work data and results, it also builds on multiple prior years of SERNbc fish passage reporting; per-site links to the relevant prior reports are in the [Assessment Data Summary](#app-site-data) appendix.
 
