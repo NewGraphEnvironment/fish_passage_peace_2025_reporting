@@ -133,7 +133,7 @@ knitr::write_bib(c(
 
 # Acknowledgement {.front-matter .unnumbered}
 
-At New Graph Environment, we understand our well-being as inseparable from the health of the land and waters we work within. When we care for ecosystems, we care for ourselves and for the communities connected to them.
+We understand our well-being as inseparable from the health of the land and waters we work within. When we care for ecosystems, we care for ourselves and for the communities connected to them.
 
 
 
