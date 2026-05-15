@@ -8,7 +8,7 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
       collapse: section
-    download: ["fish_passage_peace_reporting_2025.pdf", "fish_passage_peace_reporting_2025.html"]
+    download: ["fish_passage_peace_2025_reporting.pdf", "fish_passage_peace_2025_reporting.html"]
     fontsettings:
       theme: white
       family: sans
