@@ -16,6 +16,11 @@ a[href^="http"]:not([class="uri"])::after {
   content: "";
 }
 
+/*stop the "(page N)" page-link suffix on internal anchor cross-refs*/
+a[href^="#"]::after {
+  content: "" !important;
+}
+
 @page {
 size: 8.5in 11in;
 }

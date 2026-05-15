@@ -27,8 +27,7 @@ fig:fish-histogram
 tab:tab-edna-summary
 tab:tab-mon-overview
 tab:tab-fiss-species
-tab:tab-sites-sum-cap
-tab:tab-sites-cap
+tab:tab-sites-sum-kable
 fig:cd-map-aoi
 tab:cd-compare-table
 tab:cd-trend-table
@@ -92,7 +91,6 @@ fig:plot-fish-box-125231-mon
 tab:tab-edna-results-125231-mon
 tab:tab-fish-site-198692-mon
 tab:tab-fish-dens-198692-mon
-fig:plot-fish-box-198692-mon
 tab:tab-edna-results-198692-mon
 introduction
 background
@@ -105,6 +103,7 @@ methods
 climate-departure
 planning-habitat-connectivity-and-floodplain-modelling
 habitat-modelling
+contributions-to-provincial-connectivity-models
 bull-trout-and-arctic-grayling-critical-habitat
 floodplain-delineation
 statistical-support-for-habitat-modelling

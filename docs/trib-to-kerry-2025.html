@@ -427,7 +427,7 @@ div.csl-indent {
 <h2>Fish Sampling<a href="trib-to-kerry-2025.html#fish-sampling-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Electrofishing was conducted downstream and upstream of PSCIS crossing 198692 in 2025 to establish a pre-remediation baseline. Per-site capture results are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-site-198692-mon">5.39</a>; densities are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-dens-198692-mon">5.40</a> and Figure <a href="trib-to-kerry-2025.html#fig:plot-fish-box-198692-mon">5.31</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="trib-to-kerry-2025.html#cb151-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="trib-to-kerry-2025.html#cb152-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-site-198692-mon">Table 5.39: </span>Fish sampling site summary for 198692.
@@ -538,7 +538,7 @@ open
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="trib-to-kerry-2025.html#cb152-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="trib-to-kerry-2025.html#cb153-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-dens-198692-mon">Table 5.40: </span>Fish sampling density results summary for 198692.
@@ -736,26 +736,26 @@ FALSE
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="trib-to-kerry-2025.html#cb153-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;. Densities are shown where wetted-area data are available; some surveys at this site had no recorded width.&#39;</span>)</span>
-<span id="cb153-2"><a href="trib-to-kerry-2025.html#cb153-2" tabindex="-1"></a></span>
-<span id="cb153-3"><a href="trib-to-kerry-2025.html#cb153-3" tabindex="-1"></a>fish_abund_198692 <span class="ot">&lt;-</span> fish_abund <span class="sc">|&gt;</span></span>
-<span id="cb153-4"><a href="trib-to-kerry-2025.html#cb153-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>, <span class="sc">!</span><span class="fu">is.na</span>(density_100m2), <span class="sc">!</span><span class="fu">is.na</span>(life_stage))</span>
-<span id="cb153-5"><a href="trib-to-kerry-2025.html#cb153-5" tabindex="-1"></a></span>
-<span id="cb153-6"><a href="trib-to-kerry-2025.html#cb153-6" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(fish_abund_198692) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb153-7"><a href="trib-to-kerry-2025.html#cb153-7" tabindex="-1"></a>  fish_abund_198692 <span class="sc">|&gt;</span></span>
-<span id="cb153-8"><a href="trib-to-kerry-2025.html#cb153-8" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
-<span id="cb153-9"><a href="trib-to-kerry-2025.html#cb153-9" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb153-10"><a href="trib-to-kerry-2025.html#cb153-10" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb153-11"><a href="trib-to-kerry-2025.html#cb153-11" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb153-12"><a href="trib-to-kerry-2025.html#cb153-12" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
-<span id="cb153-13"><a href="trib-to-kerry-2025.html#cb153-13" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb153-14"><a href="trib-to-kerry-2025.html#cb153-14" tabindex="-1"></a>      <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
-<span id="cb153-15"><a href="trib-to-kerry-2025.html#cb153-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb153-16"><a href="trib-to-kerry-2025.html#cb153-16" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb153-17"><a href="trib-to-kerry-2025.html#cb153-17" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb153-18"><a href="trib-to-kerry-2025.html#cb153-18" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb153-19"><a href="trib-to-kerry-2025.html#cb153-19" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">label =</span> <span class="st">&quot;Density plot not shown — wetted-area data unavailable for this site.&quot;</span>)</span>
-<span id="cb153-20"><a href="trib-to-kerry-2025.html#cb153-20" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="trib-to-kerry-2025.html#cb154-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;. Densities are shown where wetted-area data are available; some surveys at this site had no recorded width.&#39;</span>)</span>
+<span id="cb154-2"><a href="trib-to-kerry-2025.html#cb154-2" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="trib-to-kerry-2025.html#cb154-3" tabindex="-1"></a>fish_abund_198692 <span class="ot">&lt;-</span> fish_abund <span class="sc">|&gt;</span></span>
+<span id="cb154-4"><a href="trib-to-kerry-2025.html#cb154-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>, <span class="sc">!</span><span class="fu">is.na</span>(density_100m2), <span class="sc">!</span><span class="fu">is.na</span>(life_stage))</span>
+<span id="cb154-5"><a href="trib-to-kerry-2025.html#cb154-5" tabindex="-1"></a></span>
+<span id="cb154-6"><a href="trib-to-kerry-2025.html#cb154-6" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nrow</span>(fish_abund_198692) <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
+<span id="cb154-7"><a href="trib-to-kerry-2025.html#cb154-7" tabindex="-1"></a>  fish_abund_198692 <span class="sc">|&gt;</span></span>
+<span id="cb154-8"><a href="trib-to-kerry-2025.html#cb154-8" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
+<span id="cb154-9"><a href="trib-to-kerry-2025.html#cb154-9" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb154-10"><a href="trib-to-kerry-2025.html#cb154-10" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb154-11"><a href="trib-to-kerry-2025.html#cb154-11" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb154-12"><a href="trib-to-kerry-2025.html#cb154-12" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
+<span id="cb154-13"><a href="trib-to-kerry-2025.html#cb154-13" tabindex="-1"></a>      <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb154-14"><a href="trib-to-kerry-2025.html#cb154-14" tabindex="-1"></a>      <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
+<span id="cb154-15"><a href="trib-to-kerry-2025.html#cb154-15" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb154-16"><a href="trib-to-kerry-2025.html#cb154-16" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb154-17"><a href="trib-to-kerry-2025.html#cb154-17" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb154-18"><a href="trib-to-kerry-2025.html#cb154-18" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>() <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb154-19"><a href="trib-to-kerry-2025.html#cb154-19" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">label =</span> <span class="st">&quot;Density plot not shown — wetted-area data unavailable for this site.&quot;</span>)</span>
+<span id="cb154-20"><a href="trib-to-kerry-2025.html#cb154-20" tabindex="-1"></a>}</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plot-fish-box-198692-mon"></span>
 <img src="fig/background/plot-fish-box-198692-mon-1.png" alt="Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing 198692 in 2025. Densities are shown where wetted-area data are available; some surveys at this site had no recorded width." width="100%" />
 <p class="caption">
@@ -768,11 +768,11 @@ Figure 5.31: Densities of fish (fish/100m2) captured upstream and downstream of 
 <h2>Environmental DNA<a href="trib-to-kerry-2025.html#environmental-dna-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>eDNA samples were collected upstream and downstream of PSCIS crossing 198692 in 2025 as part of the program-wide eDNA sampling effort. Per-position detection results are presented in Table <a href="trib-to-kerry-2025.html#tab:tab-edna-results-198692-mon">5.41</a>. Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples UNBC reran. Site-level detail across all sampled crossings is in <a href="app-edna.html#app-edna">Appendix - Environmental DNA Results</a>, and the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a> provides a toggleable per-species view.</p>
 <p><br></p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="trib-to-kerry-2025.html#cb154-1" tabindex="-1"></a>edna_results_198692_mon <span class="sc">|&gt;</span></span>
-<span id="cb154-2"><a href="trib-to-kerry-2025.html#cb154-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb154-3"><a href="trib-to-kerry-2025.html#cb154-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb154-4"><a href="trib-to-kerry-2025.html#cb154-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb154-5"><a href="trib-to-kerry-2025.html#cb154-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="trib-to-kerry-2025.html#cb155-1" tabindex="-1"></a>edna_results_198692_mon <span class="sc">|&gt;</span></span>
+<span id="cb155-2"><a href="trib-to-kerry-2025.html#cb155-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb155-3"><a href="trib-to-kerry-2025.html#cb155-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb155-4"><a href="trib-to-kerry-2025.html#cb155-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb155-5"><a href="trib-to-kerry-2025.html#cb155-5" tabindex="-1"></a>  )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-edna-results-198692-mon">Table 5.41: </span>eDNA detection results at crossing 198692.

@@ -7,7 +7,7 @@ editor_options:
 
 # Appendix - Collaborative GIS Layers {-#app-gis}
 
-This appendix lists background spatial layers and tables loaded to the collaborative GIS project (`r params$gis_project_name`) at the time of writing. The project serves as the spatial integration layer for fieldwork — viewable in QGIS in the office and synced to mobile devices for navigation and standardized data collection in the field via Mergin Maps.
+Background spatial layers and tables loaded to the collaborative GIS project (`r params$gis_project_name`) at the time of writing are listed `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Collaborative GIS Layers appendix of this report found ", ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "app-gis.html", anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-rfp-tracking)")}`. The project serves as the spatial integration layer for fieldwork — viewable in QGIS in the office and synced to mobile devices for navigation and standardized data collection in the field via Mergin Maps.
 
 ```{r rfp-metadata, eval = params$update_gis}
 # grab the metadata

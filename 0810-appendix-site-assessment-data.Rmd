@@ -7,7 +7,7 @@ editor_options:
 
 # Appendix - Assessment Data Summary {-#app-site-data}
 
-Fish passage assessment procedures conducted through SERNbc since `r params$project_start_year` are amalgamated in Tables \@ref(tab:tab-sites-sum-cap) - \@ref(tab:tab-sites-cap). Since `r params$project_start_year`, orthoimagery and elevation model rasters have been generated and stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally, a tile service has been set up to facilitate viewing and downloading of individual images, provided in [Appendix - UAV Imagery](#app-uav).
+Fish passage assessment procedures conducted through SERNbc since `r params$project_start_year` are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("within Table \\@ref(tab:tab-sites-sum-kable) — with detailed per-site outputs located online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-kable) - \\@ref(tab:tab-sites-cap)")}`. Since `r params$project_start_year`, orthoimagery and elevation model rasters have been generated and stored as Cloud Optimized Geotiffs on a cloud service provider (AWS) with select imagery linked to in the collaborative GIS project. Additionally, a tile service has been set up to facilitate viewing and downloading of individual images, provided in [Appendix - UAV Imagery](#app-uav).
 
 `r if(gitbook_on){knitr::asis_output("<br>")}`
 
@@ -17,17 +17,9 @@ sites_all <- arrow::read_parquet("data/snapshots/fp_sites_tracking.parquet")
 ```
 
 ```{r summarize-sites}
-
-wsg <- c(
-  "Lower Chilako River",
-  "Willow River",
-  "Tabor River",
-  "Lower Salmon River",
-  "Upper Fraser River",
-  "Nechako River",
-  "Morkill River",
-  "Francois Lake"
-)
+# Use the project-wide watershed-group name vector from 0105-params-derived.R
+# (derived from params$wsg_code via xref_wsg) rather than a hardcoded list —
+# keeps this appendix region-agnostic across template / Peace / Fraser builds.
 
 sites_all_summary <- sites_all |>
   dplyr::mutate(
@@ -35,7 +27,7 @@ sites_all_summary <- sites_all |>
       !is.na(link_uav1) ~ "yes",
       T ~ NA_character_
     )) |>
-  dplyr::filter(watershed_group %in% wsg) |>
+  dplyr::filter(watershed_group %in% wsg_names) |>
   dplyr::group_by(watershed_group) |>
   dplyr::summarise(
     dplyr::across(assessment:fish_sampling, ~ sum(!is.na(.x))),
@@ -46,34 +38,44 @@ sites_all_summary <- sites_all |>
                        stringr::str_to_title()) |>
   dplyr::rename(
     `Drone Imagery` = Uav) |>
-  janitor::adorn_totals()
+  janitor::adorn_totals() |>
+  dplyr::mutate(dplyr::across(everything(), as.character))
 ```
 
-```{r tab-sites-sum-cap, results="asis"}
-my_caption = "Summary of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
-my_tab_caption()
+```{r tab-sites-sum-cap, results="asis", eval = F}
+my_caption = "Summary of fish passage assessment procedures conducted in the FWCP Peace Region."
+my_tab_caption(tip_flag = F)
 ```
 
-```{r tab-sites-sum}
+```{r tab-sites-sum, eval = F}
 sites_all_summary |>
-  dplyr::mutate(dplyr::across(everything(), as.character)) |>
   my_dt_table(
     page_length = 20,
     cols_freeze_left = 0
               )
 ```
 
-<br>
+```{r tab-sites-sum-kable}
+my_caption = "Summary of fish passage assessment procedures conducted by SERNbc in the FWCP Peace Region."
+sites_all_summary |>
+  fpr::fpr_kable(
+    caption_text = my_caption,
+    scroll = gitbook_on,
+    scroll_box_height = "200px"
+  )
+```
+
+`r if(gitbook_on){knitr::asis_output("<br>")}`
 
 
-```{r tab-sites-cap, results="asis"}
-my_caption = "Details of fish passage assessment procedures conducted in northern British Columbia through SERNbc."
+```{r tab-sites-cap, results="asis", eval = gitbook_on}
+my_caption = "Details of fish passage assessment procedures conducted by SERNbc in the FWCP Peace Region."
 my_tab_caption(tip_flag = FALSE)
 ```
 
-```{r tab-sites-all}
+```{r tab-sites-all, eval = gitbook_on}
 sites_all |>
-  dplyr::filter(watershed_group %in% wsg) |>
+  dplyr::filter(watershed_group %in% wsg_names) |>
   sf::st_drop_geometry() |>
   dplyr::mutate(dplyr::across(everything(), as.character)) |>
   dplyr::relocate(watershed_group, .after = my_crossing_reference) |>

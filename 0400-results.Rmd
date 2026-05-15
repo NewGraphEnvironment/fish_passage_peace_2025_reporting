@@ -6,6 +6,7 @@ Project advancement in `r params$project_year` depended on engagement with partn
 
 ```{r tab-engage-partners}
 readr::read_csv("data/communications/partners_2025.csv", show_col_types = FALSE) |>
+  dplyr::arrange(affiliation) |>
   dplyr::select(`Organization / Role` = affiliation, `Topic / Focus` = topic) |>
   fpr::fpr_kable(
     caption_text = paste0("Project partners engaged in ", params$project_year, "."),
@@ -178,7 +179,7 @@ crossing structure are also included within an `sqlite` database within this yea
 
 #### Statistical Support for `bcfishpass` Fish Habitat Modelling Updates
 
-The statistical-modelling methodology — channel-width prediction, stream-temperature SSN modelling with Poisson Consulting [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream], the broader `fresh` + `link` habitat-modelling framework, and the calibration-against-`bcfishobs` trajectory — is described in the Methods chapter under Statistical Support for Habitat Modelling. The outputs feeding intrinsic-habitat and connectivity prioritization are summarised below under Statistical Habitat Modelling Outputs.
+The statistical-modelling methodology — channel-width prediction, stream-temperature SSN modelling with Poisson Consulting [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream], the broader `fresh` + `link` habitat-modelling framework, and the calibration trajectory against `bcfishobs` and research activities targeting known high-value spawning and rearing — is described in the Methods chapter under Statistical Support for Habitat Modelling. The outputs feeding intrinsic-habitat and connectivity prioritization are summarised below under Statistical Habitat Modelling Outputs.
 
 
 
@@ -213,11 +214,11 @@ Modelled functional floodplain in the Parsnip River Watershed Group covers `r fo
 
 ## Statistical Habitat Modelling Outputs
 
-Outputs from the statistical-modelling work described in the methods (Channel Width, Stream Temperature and GSDD, and the broader habitat-modelling framework) feed downstream into our intrinsic-habitat-potential and connectivity-prioritization layers — both for `bcfishpass` (channel-width estimates contribute to species-specific linear spawning/rearing habitat models across BC) and for the project-specific work we run on top via [`fresh`](https://github.com/NewGraphEnvironment/fresh) and [`link`](https://github.com/NewGraphEnvironment/link). Stream-temperature predictions can exclude habitat reaches likely to be thermally limiting from intrinsic models, and Growing-Season Degree Days [@hill_etal2025Spatialstream] provides a productivity-relevant metric that ties habitat suitability to age-0 salmonid growth potential. The hydrometric / water-quality station network underpinning these analyses — organized through [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc) — will be documented in a forthcoming appendix listing the stations available in this study area along with their period-of-record and variable coverage.
+Connectivity modelling now runs weekly with automated updates across all 16 watershed groups in the FWCP Peace area, driven by `bcfishpass` outputs using channel width, gradient, and provincial / federal barrier inventories — channel-width estimates are themselves a product of the Bayesian statistical work described in the methods [@thorley_irvine2021ChannelWidtha; @thorley_etal2021ChannelWidthc]. Field assessments were completed this year in five of those watershed groups (Parsnip River, Crooked River, Carp River, Nation River, and Parsnip Arm) to maintain momentum and surface candidate sites and partners. The work has the support of the Provincial Fish Passage Technical Working Group (FPTWG) — a partnership between the Province of British Columbia (WLRS, MOF, MOE, MOTI) and Fisheries and Oceans Canada.
 
 <br>
 
-The first concrete application of this framework is an Arctic grayling intrinsic-habitat and connectivity model for the FWCP Peace region, in development at the time of this report. Once published, the model layer will be added to the project's collaborative GIS environment for review and iteration, and predictions will be calibrated against known fish-presence observations from [`bcfishobs`](https://github.com/smnorris/bcfishobs) to quantify model uncertainty and surface opportunities for fish-passage restoration. Subsequent versions of this report (tagged at the URL referenced in the executive summary) will incorporate model outputs, calibration narrative, and figures as the work matures.
+Alongside the weekly automated updates, we use our open-source R packages `fresh` and `link` to expand, experiment with, and develop new project-specific habitat-modelling outputs. The first concrete application is an Arctic grayling intrinsic-habitat and connectivity model for the FWCP Peace area, in development at the time of this report and parameterized on stream size and gradient only — temperature, water-quality, and other covariates remain on the trajectory rather than in the current version. Stream-temperature predictions and GSDD from the Poisson Consulting work [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream] — alongside the broader water-temperature and water-quality observational layer in `water-temp-bc` — are not yet wired into intrinsic-habitat outputs in this report; the framework is designed to accept them when the integration and validation work matures. Once the Arctic grayling layer is published it will be added to the project's collaborative GIS environment for review and iteration, and predictions will be calibrated against fish-presence observations from `bcfishobs` together with research activities (some commissioned for FWCP Peace) that identify areas of known high-value spawning and rearing — to quantify model uncertainty and surface opportunities for fish-passage restoration. Subsequent versions of this report (tagged at the URL referenced in the executive summary) will incorporate model outputs, calibration narrative, and figures as the work matures.
 
 <br>
 
@@ -596,10 +597,11 @@ edna_summary_peace |>
 
 ## Engineering Design
 
-MIGHT NEED TO UPDATE
+In `r params$project_year`, the engineering-design pipeline shifted in two ways. The proposed Kerry Lake FSR structure replacement at PSCIS 198692, originally scoped for 2024/25, was shelved after Sinclar Forest Products and project partners agreed that road decommissioning and structure removal at both PSCIS 198692 (km 9) and PSCIS 198693 (km 8) is a better outcome on both economic and ecological grounds; Sinclar will cover removal and deactivation to minimum provincial standards in 2025/26 (baseline-monitoring context in [Appendix - Tributary to Kerry Lake](#trib-to-kerry-2025)).
 
-No new designs were commissioned in `r cat(params$project_year)` due to uncertainty related to forest harvesting activities and lack of funding
-for the 50% costs of replacing structures.  All sites with a design for remediation of fish passage can be found `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-sites-cap) by filtering using Design = yes")}`.
+BC Timber Sales (BCTS) shared road-deactivation plans for the Tributary to Nation River crossings deactivated in fall 2025 — used to scope above-minimum-standards riparian restoration (soil decompaction, riparian planting, coarse woody debris placement) for 2026/27. BCTS is also lining up Kennedy Siding (PSCIS 199663) on the Chuchinka-Colbourne FSR for a site plan and engineering design in spring 2026, with the project providing modelled habitat and connectivity context to inform the design scope.
+
+All sites with a design for remediation of fish passage can be found `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-sites-cap) by filtering using Design = yes")}`.
 
 
 ```{r remediations-text, eval=F}
@@ -624,7 +626,7 @@ In `r params$project_year`, effectiveness monitoring was conducted at two previo
 
 - **Tributary to the Table River (PSCIS 125231)** on Chuchinka-Table FSR — effectiveness monitoring (form + fish sampling + eDNA) following the 2023 replacement of the crossing with a clear-span bridge by Canfor with FWCP funding via SERNbc coordination [@irvine_winterscheidt2024RestoringFish]. Detail in [Appendix - Tributary to the Table River](#trib-to-table-2025).
 
-- **Tributary to Kerry Lake (PSCIS 198692)** — pre-remediation baseline (fish sampling and eDNA) to inform future effectiveness monitoring once the crossing is upgraded. The 2024 habitat confirmation is documented in @irvine_schick2025RestoringFish. Detail in [Appendix - Tributary to Kerry Lake](#trib-to-kerry-2025).
+- **Tributary to Kerry Lake (PSCIS 198692)** — pre-remediation baseline (fish sampling and eDNA) to inform future effectiveness monitoring. The remediation plan has pivoted: where the 2024/25 work envisaged a structure replacement, Sinclar Forest Products — as the tenure holder for the Kerry Lake FSR — has now committed to road decommissioning and removal of both PSCIS 198692 (km 9) and PSCIS 198693 (km 8) in 2025/26 to minimum provincial deactivation standards. The 2024 habitat confirmation is documented in @irvine_schick2025RestoringFish; the 2024–2025 baseline at km 8 (this site) becomes the pre-removal reference for post-removal effectiveness monitoring. Restoration above the minimum deactivation standards (soil decompaction, riparian planting, coarse woody debris placement) is being scoped through the 2026/27 proposal process. Detail in [Appendix - Tributary to Kerry Lake](#trib-to-kerry-2025).
 
 A summary of effectiveness monitoring form metrics across the two effectiveness sites is presented in Table \@ref(tab:tab-mon-overview).
 

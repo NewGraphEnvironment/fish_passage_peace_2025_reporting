@@ -7,7 +7,7 @@ editor_options:
 
 # Appendix - UAV Imagery {-#app-uav}
 
-This appendix lists the UAV (drone) imagery products generated for the Peace project area since `r params$project_start_year` and stored as Cloud Optimized GeoTIFFs on AWS. Each row links to a tile-service viewer for in-browser inspection alongside a direct download link to the source raster.
+UAV (drone) imagery products generated for the Peace project area since `r params$project_start_year` are stored as Cloud Optimized GeoTIFFs on AWS. Per-image tile-service viewer and direct download links are provided `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the UAV Imagery appendix of this report found ", ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "app-uav.html", anchor_text = "here")))}else{knitr::asis_output("in Table \\@ref(tab:tab-uav-imagery-cap)")}`.
 
 ```{r api1, eval = F}
 
