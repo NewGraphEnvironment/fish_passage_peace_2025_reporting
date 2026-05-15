@@ -8,6 +8,9 @@ output:
     front_cover: null
     back_cover: null
     toc: false
+bibliography: references.bib
+biblio-style: apalike
+link-citations: no
 params:
   report_url: 'https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/'
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting'
