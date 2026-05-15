@@ -25,7 +25,7 @@ Baseline monitoring was conducted in `r params$project_year` at PSCIS crossing `
 
 ## Fish Sampling {.unnumbered}
 
-Electrofishing was conducted downstream and upstream of PSCIS crossing `r as.character(my_site)` in `r params$project_year` to establish a pre-remediation baseline. Per-site capture results are in Table \@ref(tab:tab-fish-site-198692-mon); densities are in Table \@ref(tab:tab-fish-dens-198692-mon) and Figure \@ref(fig:plot-fish-box-198692-mon).
+Electrofishing was conducted downstream and upstream of PSCIS crossing `r as.character(my_site)` in `r params$project_year` to establish a pre-remediation baseline. Per-site capture results are in Table \@ref(tab:tab-fish-site-198692-mon); densities are in Table \@ref(tab:tab-fish-dens-198692-mon).
 
 <br>
 
@@ -37,31 +37,6 @@ fpr::fpr_table_fish_site()
 
 ```{r tab-fish-dens-198692-mon, eval = T}
 fpr::fpr_table_fish_density()
-```
-
-<br>
-
-```{r plot-fish-box-198692-mon, fig.cap = my_caption, eval = T}
-my_caption <- paste0('Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing ', my_site, ' in ', params$project_year, '. Densities are shown where wetted-area data are available; some surveys at this site had no recorded width.')
-
-fish_abund_198692 <- fish_abund |>
-  dplyr::filter(site == my_site, species_code != "NFC", !is.na(density_100m2), !is.na(life_stage))
-
-if (nrow(fish_abund_198692) > 0) {
-  fish_abund_198692 |>
-    ggplot2::ggplot(ggplot2::aes(x = location, y = density_100m2, color = local_name, fill = local_name)) +
-    ggplot2::geom_boxplot(fill = "lightgray", color = "black", alpha = 0.7) +
-    ggplot2::facet_grid(. ~ life_stage, scales = "fixed") +
-    ggplot2::theme_light() +
-    ggplot2::theme(
-      legend.position = "right",
-      axis.title.x = ggplot2::element_blank()
-    ) +
-    ggplot2::ylab(expression(Density ~ (fish/100 ~ m^2)))
-} else {
-  ggplot2::ggplot() + ggplot2::theme_void() +
-    ggplot2::annotate("text", x = 0, y = 0, label = "Density plot not shown — wetted-area data unavailable for this site.")
-}
 ```
 
 <br>

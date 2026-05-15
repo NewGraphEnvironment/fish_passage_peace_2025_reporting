@@ -17,11 +17,43 @@ Government, community groups, landowners, non-profits, industry and other stakeh
 
 To enhance fish passage restoration in the FWCP Peace Region:
 
-- Maintain strong partnerships to support funding, site selection, remediation, and monitoring through adaptive management informed by traditional knowledge and real-time data.
-- Prioritize detailed assessments in areas with blockages and high habitat potential, especially near McLeod Lake.
-- Use climate modeling to prioritize crossings that enable access to cold, drought-resistant habitats.
-- Secure financial commitments for Fern Creek remediation despite uncertainties in harvest planning.
-- Continue effectiveness monitoring at key sites using fish sampling, eDNA, PIT tagging, temperature data, and aerial imagery.
-- Continue to develop a cost-effective monitoring framework to assess productivity gains from improved passage.
-- Collaborate with WLRS, UNC, local fisheries experts, FWCP, and the CEMPRA Project working group.
-- Utilize environmental DNA (eDNA) to better understand bull trout and Arctic grayling habitat use at both potential and remediated sites. This will refine prioritization and assess fish passage effectiveness.  
+**Site-specific restoration and remediation actions**
+
+- Advance the replacement of crossing 199663 (Tributary to the Parsnip River) on the Chuchinka-Colbourne FSR in partnership with BC Timber Sales (BCTS), building on the 2025 assessment work and ongoing prioritization conversations with the licensee.
+- Deliver above-minimum-standards habitat restoration on the two Tributary to Nation River crossings (PSCIS 15201563 and 15201146) deactivated by BCTS in fall 2025 — soil decompaction, riparian planting, and coarse woody debris placement to convert minimum deactivation outcomes into measurable aquatic-habitat improvement.
+- Support Sinclar Forest Products' planned road decommissioning and removal of crossings 198692 and 198693 on the Kerry Lake FSR (km 9 and km 8) in 2025/26, layering riparian restoration and habitat enhancement on top of the minimum provincial deactivation standards Sinclar will cover. Use both the Kerry Lake and Tributary to Nation River riparian / deactivation sites as field sites for the University of Northern British Columbia (UNBC) and College of New Caledonia (CNC) seed-bank and native-plant-propagation collaboration described below.
+- Maintain progress on Fern Creek (PSCIS 125261) — replacement is a high priority given the size of the system and the absence of other downstream anthropogenic barriers. Canfor has procured preliminary engineering designs; finalize partnership financing despite harvest-planning uncertainty.
+
+**Capacity building and partner integration**
+
+- Build a local native-seed and plant-propagation supply chain for FWCP Peace fish-passage restoration sites in collaboration with Shelby Roberts (CNC / UNBC) — connected to native seed collection, nursery stock, and plant production programs in the Peace region — and with Lisa Wood (UNBC) who runs the UNBC seed bank and Food HUB initiative. Locally-sourced conifer seedlings, understory species, and cottonwood / willow material for riparian restoration at Kerry Lake and Nation River tributary sites strengthens the restoration outcomes while giving these UNBC / CNC programs a concrete field application.
+- Continue to collaborate with WLRS, UNBC, local fisheries experts, FWCP, the Provincial Fish Passage Technical Working Group (FPTWG), and the CEMPRA Project working group to align prioritization, monitoring, and restoration practice across the region.
+- Maintain strong partnerships with rail, highway, forestry, mining, and Nations tenure holders to support funding, site selection, remediation, and monitoring through adaptive management informed by traditional knowledge and real-time data.
+
+**Prioritization and modelling integration**
+
+- Continue using climate modelling (climate-departure analyses, this report's [Appendix - Climate Departure](#app-climate-departure); thermal-regime modelling) to prioritize crossings that enable access to cold, drought-resistant habitats and to anchor adaptation strategies to the watershed-scale climate signal.
+- Integrate stream-temperature predictions and Growing-Season Degree Days from the collaborative Bayesian Spatial Stream Network modelling [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream] into intrinsic-habitat modelling for prioritization, surfacing the thermal regime alongside connectivity, gradient, and channel-width signals.
+- Calibrate bull trout and Arctic grayling intrinsic-habitat models against areas of known high-value spawning and rearing identified through fish-presence observations in [`bcfishobs`](https://github.com/smnorris/bcfishobs) together with research activities (some commissioned for FWCP Peace) — quantifying model uncertainty and refining prioritization.
+- Dovetail cumulative-effects modelling (CEMPRA framework and related provincial efforts) into the prioritization process so cross-watershed pressures — forestry, mining, climate, hydro — are weighted alongside per-crossing barrier evaluation.
+- Prioritize detailed assessments in areas with blockages and high habitat potential.
+
+**Watershed-scale context — climate departure and floodplain delineation**
+
+- Continue the climate-departure analysis ([Appendix - Climate Departure](#app-climate-departure)) — extend the watershed-group ecoregion mapping that bridges regional climate signal to per-watershed barrier prioritisation, refine the per-WSG weighting, and add the variables and seasonal-period breakdowns that surface the climate-driven differences in habitat trajectory across the 16 watershed groups.
+- Extend functional-floodplain mapping ([Appendix - Floodplain Delineation](#app-floodplain)) from the Parsnip River Watershed Group to additional FWCP Peace watersheds so the off-channel habitat inventory — side channels, wetlands, riparian recruitment areas — is available everywhere barrier prioritisation gets done in the region.
+- Build capacity in partner organizations (Nations, industry, regulators, researchers, community groups) to interpret and use the climate-departure and floodplain layers — through workshops, partner-facing outreach materials, and the public webmap interface — so the opportunities and challenges these analyses surface are visible to the people whose decisions shape watershed-scale outcomes.
+- Use these watershed-scale context layers to position fish passage where it belongs — inside the broader atmospheric, hydrologic, and geomorphic system that determines whether the habitat above a barrier is gaining or losing value. The per-crossing inventory is the action surface; climate departure and floodplain context provide the weighting and the narrative arc that lets reviewers, funders, and partners understand why a specific barrier matters in its watershed.
+
+**Monitoring continuation**
+
+- Continue effectiveness monitoring at key sites using fish sampling, eDNA, PIT tagging, water-temperature data, and aerial imagery — extending the multi-year baselines at Tributary to Missinka River (PSCIS 125179), Tributary to the Table River (PSCIS 125231), and Tributary to Kerry Lake (PSCIS 198692, now repurposed as pre-removal baseline per Sinclar's pivot).
+- Expand water-temperature monitoring as the foundation for understanding climate-change impacts and shaping adaptation strategies — both within our own program and in support of the largest regional initiatives (FWCP-funded thermal-ecology research on grayling and bull trout, UNBC-led work on critical habitats, and partner monitoring programs).
+- Continue to develop a cost-effective monitoring framework that ties baseline + post-remediation data to measurable productivity gains from improved passage.
+
+**Data infrastructure for research and collaboration**
+
+- Develop a public webmap interface to communicate fish-passage priorities, baseline conditions, restoration outcomes, and partner activities to FWCP collaborators, First Nations, industry, regulators, and the public.
+- Position [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc) as an example of a data-portal model that can be extended or replicated to incorporate other past and future datasets collected by UNBC, cumulative-effects monitoring initiatives, FWCP-funded research, regional Nations, industry tenure holders, and others. Many programs have been generating water-temperature and water-quality records in the region for years; the goal is not to ask partners to hand over their data but to make the data discoverable and queryable through a shared interface so researchers can ask basin-scale questions without per-source data hunts or permission gates.
+- Build a community of practice around regional water-temperature data with UNBC, cumulative-effects monitoring leads, FWCP partners, and other researchers — focused on collective capacity to ask and answer holistic regional questions about thermal regime, climate-change response, and habitat suitability, rather than every program reconstructing the same regional picture from fragmented sources.
+- Model and extend the same open-access pattern for eDNA data across UNBC, FWCP partners, and the broader research community — making detections, samples, methods, and metadata queryable in a shared interface rather than scattered across project repositories.

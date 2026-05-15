@@ -11,7 +11,7 @@
 ```{r proj-partners-text-exec, results='asis'}
 
 project_partners_text <- dplyr::case_when(params$project_region == "fraser" ~ "Since 2023, the Society for Ecosystem Restoration Northern British Columbia (SERNbc), with support from the Ministry of Transportation and Infrastructure, has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Nechako River, Lower Chilako River, Morkhill River, Upper Fraser River, and François Lake watershed groups which are sub-basins of the Upper Fraser River watershed. ",
-                                          params$project_region == "peace" ~ "The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road crossing structure barriers within the FWCP Peace Region. ",
+                                          params$project_region == "peace" ~ "The Society for Ecosystem Restoration in Northern BC (SERNbc) is working together with the McLeod Lake Indian Band, the Peace Region Fish and Wildlife Compensation Program (FWCP), the Provincial Fish Passage Technical Working Group (FPTWG), road/rail tenure holders and other stakeholders/partners to prioritize, plan and fund the restoration of fish passage at road and rail crossing structure barriers within the FWCP Peace Region. ",
                                           params$project_region == "skeena" ~ "Since 2020, the Society for Ecosystem Restoration Northern British Columbia (SERNbc) has been actively involved in planning, coordinating, and conducting fish passage restoration efforts within the Bulkley River and Morice River watershed groups, which are sub-basins of the Skeena River watershed. In 2022, the study area was expanded to include the Zymoetz River watershed group and the Kispiox River watershed group, followed by an extension in 2023 to encompass sections of the Kitsumkalum River watershed group, particularly where Highway 16 intersects the watershed."
 )
 
@@ -24,7 +24,17 @@ The primary objective of this project is to identify and prioritize fish passage
 
 <br>
 
-Underpinning this work is a parameterizable habitat-suitability and connectivity modelling framework that extends — rather than supersedes — the canonical BC freshwater stack ([`bcfishpass`](https://github.com/smnorris/bcfishpass), [`fwapg`](https://github.com/smnorris/fwapg), [`bcfishobs`](https://github.com/smnorris/bcfishobs)). Built on our open-source R packages [`fresh`](https://github.com/NewGraphEnvironment/fresh) and [`link`](https://github.com/NewGraphEnvironment/link), it integrates statistical stream-temperature and Growing-Season Degree Days predictions [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream] from collaborative modelling with Poisson Consulting, water-temperature observations centralized through [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc), and calibration of model predictions against known fish-presence records from `bcfishobs`. An initial Arctic grayling intrinsic-habitat layer for the FWCP Peace region is in development and will be published in subsequent versions of this report and as standalone GIS layers in the project's collaborative GIS environment. Each release of this report is tagged so reviewers can navigate between the submitted snapshot and current state — the latest version is served at the report URL referenced above.
+The project engages FWCP partners and stakeholders to clearly communicate fish passage issues in FWCP Peace Region watersheds while collaboratively planning and executing the steps necessary to achieve fish passage restorations. The work completed and ongoing aligns with the Fish and Wildlife Compensation Program Rivers, Lakes and Reservoirs Action Plan [@fishandwildlifecompensationprogram2020PeaceRegion] sub-objective 6 of addressing fish passage issues in streams to enhance the productivity of priority species. Project activities undertaken address the following actions:
+
+- PEA.RLR.S06.RI.20 — Conducting engagement to prioritize options for fish passage improvement (P1)
+- PEA.RLR.S06.RI.19 — Conducting research to prioritize fish passage actions (P1)
+- PEA.RLR.S06.HB.21 — Restoring fish access to streams (P1)
+
+<br>
+
+Connectivity modelling now runs weekly with automated updates across all 16 watershed groups in the FWCP Peace area, driven by [`bcfishpass`](https://smnorris.github.io/bcfishpass/) outputs using channel width, gradient, and provincial / federal barrier inventories. Field assessments were completed this year within five of those watershed groups — Parsnip River, Crooked River, Carp River, Nation River, and Parsnip Arm — to maintain momentum and identify candidate sites and partners. In parallel, we contribute desktop and field corrections back to the provincial `bcfishpass` modelled-crossing inventory — 282 records since April 1, 2025 across the FWCP Peace Region — refining the inputs the weekly model consumes and the same inventory other analyses across BC rely on (see the Methods chapter for details). The work and its forward proposal have the support of the Provincial Fish Passage Technical Working Group (FPTWG) — a partnership between the Province of British Columbia (WLRS, MOF, MOE, MOTI) and Fisheries and Oceans Canada.
+
+Alongside the automated weekly updates, we use our open-source R packages [`fresh`](https://newgraphenvironment.github.io/fresh/) and [`link`](https://newgraphenvironment.github.io/link/) to expand, experiment with, and develop new project-specific habitat-modelling outputs — most recently an initial Arctic grayling intrinsic-habitat layer for the FWCP Peace area, parameterized on stream size and gradient. The framework is designed to take additional covariates as data and methods mature: stream-temperature and Growing-Season Degree Days predictions from collaborative modelling with Poisson Consulting [@hill_etal2024Spatialstream; @hill_etal2025Spatialstream], water-temperature observations via `water-temp-bc`, and calibration of predictions against fish-presence observations in `bcfishobs` together with research activities (some commissioned for FWCP Peace) that identify areas of known high-value spawning and rearing habitat. Each release of this report is tagged so reviewers can navigate between the submitted snapshot and current state at the report URL referenced above.
 
 <br>
 
@@ -33,7 +43,7 @@ Although the main purpose of this report is to document `r params$project_year` 
 
 <!-- Project specific below -->
 
-Fish passage assessment procedures conducted through SERNbc in the FWCP Peace Region since `r params$project_start_year` are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-cap) - \\@ref(tab:tab-sites-cap)")}`, which includes links to project reporting for each site.
+Fish passage assessment procedures conducted through SERNbc in the FWCP Peace Region since `r params$project_start_year` are amalgamated `r if(identical(gitbook_on, FALSE)){knitr::asis_output(paste0("online within the Results and Discussion section of the report found ", ngr::ngr_str_link_url(url_base = params$report_url, anchor_text = "here")))}else{knitr::asis_output("in Tables \\@ref(tab:tab-sites-sum-kable) - \\@ref(tab:tab-sites-cap)")}`, which includes links to project reporting for each site.
 
 <br>
 
@@ -45,7 +55,7 @@ Environmental DNA (eDNA) sampling was incorporated at program scale this year. A
 
 <br>
 
-Fish sampling and PIT-tagging was completed at three monitoring sites using a custom fish-passage effectiveness monitoring form standardized across the program. Ongoing effectiveness monitoring continued at PSCIS 125179 (Tributary to Missinka River) and PSCIS 125131 (Tributary to Table River), extending multi-year baselines from prior reports; baseline monitoring was initiated this year at PSCIS 198692 (Kerry Lake) ahead of planned remediation. eDNA sampling was integrated at all three sites as part of both the baseline and the ongoing effectiveness components of the monitoring protocol.
+Fish sampling and PIT-tagging was completed at three monitoring sites using a custom fish-passage effectiveness monitoring form standardized across the program. Ongoing effectiveness monitoring continued at PSCIS 125179 (Tributary to Missinka River) and PSCIS 125131 (Tributary to Table River), extending multi-year baselines from prior reports; baseline monitoring was initiated this year at PSCIS 198692 (Kerry Lake) — originally framed as pre-replacement, now repurposed as pre-removal: Sinclar Forest Products, as the Kerry Lake FSR tenure holder, has pivoted from structure replacement (24/25) to road decommissioning and removal of PSCIS 198692 (km 9) and the adjacent PSCIS 198693 (km 8) in 25/26. eDNA sampling was integrated at all three sites as part of both the baseline and the ongoing effectiveness components of the monitoring protocol.
 
 <br>
 
@@ -54,6 +64,19 @@ Two analytical dimensions are new to the program this year. A floodplain delinea
 <br>
 
 Fish passage work in this region operates inside the constraints described in the [Approach](#approach) section of the background: thousands of structures across multiple jurisdictions and tenure holders, six-to-eight-figure remediation costs, and a finite funding envelope. Decisions about which crossings to advance are made opportunistically — pursuing simpler, lower-cost options to maintain momentum, while building the multi-year relationships and shared data that larger commitments require. The breadth of `r params$project_year` partner engagement is summarised in [Engage Partners](#engage-partners).
+
+<br>
+
+Looking ahead, the [Recommendations](#recommendations) chapter outlines a coordinated set of next steps. Headline themes:
+
+- Advance site-specific work in 2026/27 — replacement of crossing 199663 (Tributary to the Parsnip River) on the Chuchinka-Colbourne FSR with BC Timber Sales (BCTS); above-minimum-standards riparian restoration on the Tributary to Nation River deactivations with BCTS; and support for Sinclar Forest Products' planned road decommissioning and structure removals at PSCIS 198692 and 198693 on the Kerry Lake FSR — with both the Kerry Lake and Tributary to Nation River riparian / deactivation sites acting as field sites for a native-seed and plant-propagation collaboration with the University of Northern British Columbia (UNBC) and the College of New Caledonia (CNC).
+- Continue effectiveness monitoring (fish sampling, electrofishing with PIT tagging, eDNA, water-temperature data, and aerial imagery) extending multi-year baselines at the Missinka, Table, and Kerry Lake sites.
+- Push the climate-departure and floodplain-delineation analyses forward — extending the watershed-group ecoregion mapping that anchors barrier prioritisation in regional climate signal, expanding the functional-floodplain footprint to additional FWCP Peace watersheds, and building partner capacity to interpret and act on what these layers reveal.
+- Develop a public webmap interface for fish-passage priorities and outcomes.
+- Position [`water-temp-bc`](https://www.newgraphenvironment.com/water-temp-bc) as an example of a data-portal model that can be extended or replicated to incorporate other past and future datasets collected by UNBC, cumulative-effects monitoring initiatives, FWCP-funded research, and others.
+- Model and extend the same open-access pattern for eDNA data across the broader research community.
+
+The intent across all of these is to anchor per-crossing fish-passage decisions inside the watershed-scale context they belong in, and to build a community of practice that can address basin-scale questions together.
 
 <!-- Project specific above -->
 
