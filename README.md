@@ -1,6 +1,6 @@
 # Restoring Fish Passage in the Peace Region — 2025
 
-> Reproducible, web-first fish-passage restoration-planning report for the Peace Region, prepared on behalf of the Society for Ecosystem Restoration in Northern BC (SERN) for the [Fish & Wildlife Compensation Program (FWCP)](https://fwcp.ca/) and its program partners (BC Hydro, the Province of BC, Fisheries and Oceans Canada, First Nations, and public stakeholders).
+> Fish-passage restoration-planning report for the Peace Region, prepared on behalf of the Society for Ecosystem Restoration in Northern BC (SERN) for the [Fish & Wildlife Compensation Program (FWCP)](https://fwcp.ca/) and its program partners (BC Hydro, the Province of BC, Fisheries and Oceans Canada, First Nations, and public stakeholders).
 
 **Read the report:** <https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting>
 &middot; **Source:** [`NewGraphEnvironment/fish_passage_peace_2025_reporting`](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting)
