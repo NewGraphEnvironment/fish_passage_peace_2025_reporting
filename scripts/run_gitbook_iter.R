@@ -27,16 +27,16 @@ mapply(file.rename, from = files_to_move, to = files_destination)
 # Hide pre-existing phase 1 appendix HTML (rebuilt separately via run.R block 3)
 if (file.exists("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html")) {
   file.rename(
-    "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html",
-    "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
+    "docs/2300-Attachment_pdf_phase_1_dat.Rmd",
+    "hold/2300-Attachment_pdf_phase_1_dat.Rmd"
   )
 }
 
-fs::file_copy(
-  'hold/0600-appendix-placeholder.Rmd',
-  '0600-appendix-placeholder.Rmd',
-  overwrite = TRUE
-)
+# fs::file_copy(
+#   'hold/0600-appendix-placeholder.Rmd',
+#   '0600-appendix-placeholder.Rmd',
+#   overwrite = TRUE
+# )
 
 # Build
 rmarkdown::render_site(output_format = 'bookdown::gitbook', encoding = 'UTF-8')
@@ -61,17 +61,17 @@ for (i in seq_along(files_destination)) {
 }
 
 # Restore the pre-existing phase 1 appendix HTML
-phase1_src <- "hold/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
-phase1_dst <- "docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html"
+phase1_src <- "hold/2300-Attachment_pdf_phase_1_dat.Rmd"
+phase1_dst <- "docs/2300-Attachment_pdf_phase_1_dat.Rmd"
 if (file.exists(phase1_src)) {
   ok <- fs::file_copy(phase1_src, phase1_dst, overwrite = TRUE)
   cat(sprintf("  Phase 1 appendix HTML restored: %s\n", as.character(ok)))
 }
 
 # Move the placeholder back to hold/
-if (file.exists('0600-appendix-placeholder.Rmd')) {
-  file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
-}
+# if (file.exists('0600-appendix-placeholder.Rmd')) {
+#   file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
+# }
 
 # Auto-open results chapter (or fall back to index.html)
 results_html <- list.files("docs", pattern = "^results", ignore.case = TRUE, full.names = TRUE)[1]
