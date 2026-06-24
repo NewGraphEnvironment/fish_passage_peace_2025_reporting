@@ -1,16 +1,16 @@
-# Fast pagedown PDF build for iterating on PDF rendering.
+# Build the pagedown (print PDF) version of the report.
 #
-# Mirrors `scripts/run.R` block 2 with the same robustness fixes the
-# gitbook iter has: explicit CRAN mirror, defensive cleanup, auto-open
-# of the rendered PDF. Auto-toggles `gitbook_on` FALSE in index.Rmd at
-# start and restores TRUE via `on.exit` so a crash doesn't leave the
-# repo in PDF mode.
+# Swaps the heavy inline Phase 1 appendix (0835-...) out for the slim link-
+# stub (2300-...) so the PDF stays light, then renders. Explicit CRAN mirror,
+# defensive cleanup, auto-open of the rendered PDF. Auto-toggles `gitbook_on`
+# FALSE in index.Rmd at start and restores TRUE via `on.exit` so a crash
+# doesn't leave the repo in PDF mode.
 #
 # Usage:
-#   Rscript scripts/run_pagedown_iter.R
+#   Rscript scripts/run_pagedown.R
 #
-# When verifying full ship readiness, use scripts/run.R instead — it
-# also rebuilds the heavy Phase 1 appendix subset.
+# To regenerate the standalone Phase 1 attachment PDF (docs/Appendix_1.pdf)
+# that the 2300 stub links to, use scripts/run_pagedown_app1.R.
 
 options(repos = c(CRAN = "https://cloud.r-project.org"))
 
@@ -58,9 +58,8 @@ gitbook_on  <<- FALSE
 input_html  <- paste0(input_html_stem, ".html")
 output_pdf  <- file.path("docs", paste0(output_pdf_stem, ".pdf"))
 
-# --- Move 0600 appendix out (per run.R block 2: too big for PDF) ---------
-# Defensive: report each rename outcome (matches gitbook iter pattern after
-# bare mapply was observed to silently no-op).
+# --- Defensive move helpers (report each rename outcome) ----------------
+# matches gitbook iter pattern after bare mapply was observed to silently no-op.
 move_to_hold <- function(path) {
   if (!file.exists(path)) {
     cat(sprintf("  WARN: %s missing, skipping move-to-hold\n", path))
@@ -90,25 +89,32 @@ move_back_from_hold <- function(path) {
   invisible(ok)
 }
 
-cat("\n=== Moving 0600 appendix out (too big for PDF) ===\n")
-# If a previous PDF run left 0600 in hold/, restore first so move-to-hold is symmetric
-if (file.exists('hold/0600-appendix.Rmd') && !file.exists('0600-appendix.Rmd')) {
-  move_back_from_hold('0600-appendix.Rmd')
-}
-move_to_hold('0600-appendix.Rmd')
+# --- Swap Phase 1 appendix: inline (gitbook) -> link-stub (PDF) ----------
+# Gitbook renders the full inline Phase 1 data+photos appendix (0835-...),
+# which is huge and would land mid-report in the PDF. For the PDF we swap it
+# for the slim link-stub (2300-...) that points at the online gitbook page +
+# Appendix_1.pdf. Resting state: 0835 at root, 2300 in hold/.
+appendix_inline <- "0835-appendix-phase1-data-photos.Rmd"
+appendix_stub   <- "2300-Attachment_pdf_phase_1_dat.Rmd"
 
-# Crash-safe restore (so the repo doesn't get stranded if render fails)
-on.exit({
-  if (file.exists('hold/0600-appendix.Rmd') && !file.exists('0600-appendix.Rmd')) {
-    move_back_from_hold('0600-appendix.Rmd')
-  }
-}, add = TRUE)
+restore_appendix_layout <- function() {
+  if (file.exists(appendix_stub)) move_to_hold(appendix_stub)               # 2300 -> hold
+  if (file.exists(file.path("hold", appendix_inline)))
+    move_back_from_hold(appendix_inline)                                    # 0835 -> root
+}
+
+cat("\n=== Swapping Phase 1 appendix (inline -> link-stub) for PDF ===\n")
+move_to_hold(appendix_inline)         # 0835 root -> hold
+move_back_from_hold(appendix_stub)    # 2300 hold -> root
+
+# Crash-safe restore to resting state (0835 root, 2300 hold)
+on.exit(restore_appendix_layout(), add = TRUE)
 
 # --- Render pagedown HTML ------------------------------------------------
 # Use bookdown::render_book so we can pass `envir = globalenv()` — fresh-Rscript
 # renders otherwise put chunk-assigned vars (e.g. `my_caption`) in a sibling
 # knit_global that helpers sourced into globalenv can't see via their lazy-
-# default lookup chain. The interactive run.R flow side-stepped this because
+# default lookup chain. The old interactive sourced-line-by-line flow side-stepped this because
 # globalenv was already pre-populated by prior chunk runs in the same session.
 bookdown::render_book(
   input         = "index.Rmd",
@@ -117,9 +123,9 @@ bookdown::render_book(
   envir         = globalenv()
 )
 
-# --- Restore 0600 appendix ----------------------------------------------
-cat("\n=== Restoring 0600 appendix from hold/ ===\n")
-move_back_from_hold('0600-appendix.Rmd')
+# --- Restore resting appendix layout (0835 root, 2300 hold) -------------
+cat("\n=== Restoring Phase 1 appendix layout (inline at root) ===\n")
+restore_appendix_layout()
 
 # --- Chrome print HTML -> PDF -------------------------------------------
 cat(sprintf("\nPrinting %s -> %s ...\n", input_html, output_pdf))

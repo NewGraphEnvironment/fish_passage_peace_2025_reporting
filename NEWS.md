@@ -1,3 +1,11 @@
+# fish_passage_peace_2025_reporting 0.9.0 (2026-06-24)
+
+* Reorganize the appendices so all thematic `Appendix -` chapters are grouped first — ordered by where they are first referenced in the body (Assessment Data Summary, Fish Species, Climate Departure, Floodplain, UAV Imagery, Collaborative GIS, Phase 1 Data and Photos, Environmental DNA) — followed by the per-site Phase 2 habitat-confirmation memos and then the effectiveness-monitoring memos. Renumbered six thematic appendix files; UAV Imagery and Collaborative GIS no longer trail after the site-specific memos and UAV is out of the `0860` site-memo prefix. Moved the eDNA appendix to `0837` so it sits with the other thematic appendices.
+* Results: add explicit named links to the three Phase 2 habitat-confirmation appendices (Tributary to Parsnip River 199663, Nation River 203597, Williston Reservoir 203605) from the Habitat Confirmation Assessments section so the reader is directed to each, matching the effectiveness-monitoring memo treatment. Methods: link the previously-orphaned UAV Imagery appendix from the Aerial Imagery section.
+* Table 4.8 (Summary of electrofishing sites) — set `scroll = FALSE` so it renders fully in the PDF.
+* Build scripts: rename `run_gitbook_iter.R` → `run_gitbook.R` and `run_pagedown_iter.R` → `run_pagedown.R`; fix the gitbook/PDF Phase 1 appendix swap so the web build carries the full inline appendix (`0835`) while the PDF carries the slim link-stub (`2300`). Split the monolithic `run.R` into a standalone Phase 1 attachment builder `run_pagedown_app1.R` (produces `docs/Appendix_1.pdf`) and removed `run.R`. Updated the README build instructions to the three scripts.
+* Gate the species/params derivation block behind a renamed `derive_params` param (was `derive_species`), set `FALSE`, so a routine rebuild does not require a live database connection.
+
 # fish_passage_peace_2025_reporting 0.8.0 (2026-05-14)
 
 * Restore attribution in Statistical Support for Habitat Modelling — names this project + prior SERNbc work as contributor to the statistical-modelling lineage, not just a downstream user. Drops "Poisson" from the methods Stream Temperature lead-ins. Expands the Nechako 2024 paragraph with the causal-pathways / air2stream pivot narrative.

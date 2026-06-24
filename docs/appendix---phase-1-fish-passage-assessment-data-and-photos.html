@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025</title>
+  <title>Appendix - Phase 1 Fish Passage Assessment Data and Photos | Restoring Fish Passage in the Peace Region - 2025</title>
   <meta name="description" content="My Description." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta property="og:title" content="Appendix - Phase 1 Fish Passage Assessment Data and Photos | Restoring Fish Passage in the Peace Region - 2025" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="My Description." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Appendix - Fish Species by Watershed Group | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta name="twitter:title" content="Appendix - Phase 1 Fish Passage Assessment Data and Photos | Restoring Fish Passage in the Peace Region - 2025" />
   
   <meta name="twitter:description" content="My Description." />
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="app-site-data.html"/>
-<link rel="next" href="app-climate-departure.html"/>
+<link rel="prev" href="app-gis.html"/>
+<link rel="next" href="app-edna.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -418,255 +418,91 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="app-fish-species" class="section level1 unnumbered hasAnchor">
-<h1>Appendix - Fish Species by Watershed Group<a href="app-fish-species.html#app-fish-species" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Historical fish observations by watershed group are recorded in the BC Fisheries Information Summary System (FISS) <span class="citation">(MoE 2024a)</span>. Per-species presence across the watershed groups in this study area is summarised in Table <a href="app-fish-species.html#tab:tab-fiss-species">5.3</a>. In the interactive (gitbook) version of this report the table shows one column per watershed group; in the PDF version the watershed-group columns are collapsed to a single comma-separated list of watershed-group codes per species to fit page width.</p>
-<p><br></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="app-fish-species.html#cb55-1" tabindex="-1"></a>fiss_species_table <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb55-2"><a href="app-fish-species.html#cb55-2" tabindex="-1"></a>  <span class="st">&quot;data/inputs_extracted/fiss_species_table.csv&quot;</span>,</span>
-<span id="cb55-3"><a href="app-fish-species.html#cb55-3" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
-<span id="cb55-4"><a href="app-fish-species.html#cb55-4" tabindex="-1"></a>)</span>
-<span id="cb55-5"><a href="app-fish-species.html#cb55-5" tabindex="-1"></a></span>
-<span id="cb55-6"><a href="app-fish-species.html#cb55-6" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb55-7"><a href="app-fish-species.html#cb55-7" tabindex="-1"></a>  <span class="st">&quot;Fish species recorded in the &quot;</span>,</span>
-<span id="cb55-8"><a href="app-fish-species.html#cb55-8" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">asis_output</span>(wsg_names) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">combine_words</span>(),</span>
-<span id="cb55-9"><a href="app-fish-species.html#cb55-9" tabindex="-1"></a>  <span class="st">&quot; watershed groups.&quot;</span></span>
-<span id="cb55-10"><a href="app-fish-species.html#cb55-10" tabindex="-1"></a>)</span>
-<span id="cb55-11"><a href="app-fish-species.html#cb55-11" tabindex="-1"></a></span>
-<span id="cb55-12"><a href="app-fish-species.html#cb55-12" tabindex="-1"></a>my_footnote <span class="ot">&lt;-</span> <span class="st">&#39;COSEWIC abbreviations :</span></span>
-<span id="cb55-13"><a href="app-fish-species.html#cb55-13" tabindex="-1"></a><span class="st">                SC - Special concern</span></span>
-<span id="cb55-14"><a href="app-fish-species.html#cb55-14" tabindex="-1"></a><span class="st">                DD - Data deficient</span></span>
-<span id="cb55-15"><a href="app-fish-species.html#cb55-15" tabindex="-1"></a><span class="st">                NAR - Not at risk</span></span>
-<span id="cb55-16"><a href="app-fish-species.html#cb55-16" tabindex="-1"></a><span class="st">                E - Endangered</span></span>
-<span id="cb55-17"><a href="app-fish-species.html#cb55-17" tabindex="-1"></a><span class="st">                T - Threatened</span></span>
-<span id="cb55-18"><a href="app-fish-species.html#cb55-18" tabindex="-1"></a></span>
-<span id="cb55-19"><a href="app-fish-species.html#cb55-19" tabindex="-1"></a><span class="st">                BC List definitions :</span></span>
-<span id="cb55-20"><a href="app-fish-species.html#cb55-20" tabindex="-1"></a><span class="st">                Yellow - Species that is apparently secure</span></span>
-<span id="cb55-21"><a href="app-fish-species.html#cb55-21" tabindex="-1"></a><span class="st">                Blue - Species that is of special concern</span></span>
-<span id="cb55-22"><a href="app-fish-species.html#cb55-22" tabindex="-1"></a><span class="st">                Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
-<span id="cb55-23"><a href="app-fish-species.html#cb55-23" tabindex="-1"></a></span>
-<span id="cb55-24"><a href="app-fish-species.html#cb55-24" tabindex="-1"></a><span class="st">                Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].</span></span>
-<span id="cb55-25"><a href="app-fish-species.html#cb55-25" tabindex="-1"></a><span class="st">                &#39;</span></span>
-<span id="cb55-26"><a href="app-fish-species.html#cb55-26" tabindex="-1"></a></span>
-<span id="cb55-27"><a href="app-fish-species.html#cb55-27" tabindex="-1"></a><span class="cf">if</span> (gitbook_on) {</span>
-<span id="cb55-28"><a href="app-fish-species.html#cb55-28" tabindex="-1"></a>  fiss_species_table <span class="sc">|&gt;</span></span>
-<span id="cb55-29"><a href="app-fish-species.html#cb55-29" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb55-30"><a href="app-fish-species.html#cb55-30" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
-<span id="cb55-31"><a href="app-fish-species.html#cb55-31" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
-<span id="cb55-32"><a href="app-fish-species.html#cb55-32" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">TRUE</span></span>
-<span id="cb55-33"><a href="app-fish-species.html#cb55-33" tabindex="-1"></a>    )</span>
-<span id="cb55-34"><a href="app-fish-species.html#cb55-34" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb55-35"><a href="app-fish-species.html#cb55-35" tabindex="-1"></a>  meta_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Scientific Name&quot;</span>, <span class="st">&quot;Species Name&quot;</span>, <span class="st">&quot;BC List&quot;</span>, <span class="st">&quot;COSEWIC&quot;</span>)</span>
-<span id="cb55-36"><a href="app-fish-species.html#cb55-36" tabindex="-1"></a>  wsg_cols  <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(fiss_species_table), meta_cols)</span>
-<span id="cb55-37"><a href="app-fish-species.html#cb55-37" tabindex="-1"></a></span>
-<span id="cb55-38"><a href="app-fish-species.html#cb55-38" tabindex="-1"></a>  fiss_species_table_pdf <span class="ot">&lt;-</span> fiss_species_table <span class="sc">|&gt;</span></span>
-<span id="cb55-39"><a href="app-fish-species.html#cb55-39" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb55-40"><a href="app-fish-species.html#cb55-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb55-41"><a href="app-fish-species.html#cb55-41" tabindex="-1"></a>      <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(</span>
-<span id="cb55-42"><a href="app-fish-species.html#cb55-42" tabindex="-1"></a>        wsg_cols[dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)) <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb55-43"><a href="app-fish-species.html#cb55-43" tabindex="-1"></a>                 <span class="sc">!</span><span class="fu">is.na</span>(dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)))],</span>
-<span id="cb55-44"><a href="app-fish-species.html#cb55-44" tabindex="-1"></a>        <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span></span>
-<span id="cb55-45"><a href="app-fish-species.html#cb55-45" tabindex="-1"></a>      )</span>
-<span id="cb55-46"><a href="app-fish-species.html#cb55-46" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb55-47"><a href="app-fish-species.html#cb55-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb55-48"><a href="app-fish-species.html#cb55-48" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(meta_cols), <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span>)</span>
-<span id="cb55-49"><a href="app-fish-species.html#cb55-49" tabindex="-1"></a></span>
-<span id="cb55-50"><a href="app-fish-species.html#cb55-50" tabindex="-1"></a>  fiss_species_table_pdf <span class="sc">|&gt;</span></span>
-<span id="cb55-51"><a href="app-fish-species.html#cb55-51" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb55-52"><a href="app-fish-species.html#cb55-52" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
-<span id="cb55-53"><a href="app-fish-species.html#cb55-53" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
-<span id="cb55-54"><a href="app-fish-species.html#cb55-54" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb55-55"><a href="app-fish-species.html#cb55-55" tabindex="-1"></a>    )</span>
-<span id="cb55-56"><a href="app-fish-species.html#cb55-56" tabindex="-1"></a>}</span></code></pre></div>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
-<table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
-<caption style="font-size: initial !important;">
-<span id="tab:tab-fiss-species">Table 5.3: </span>Fish species recorded in the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
-</caption>
+<div id="appendix---phase-1-fish-passage-assessment-data-and-photos" class="section level1 unnumbered hasAnchor">
+<h1>Appendix - Phase 1 Fish Passage Assessment Data and Photos<a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html#appendix---phase-1-fish-passage-assessment-data-and-photos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Scientific Name
+<th style="text-align:left;">
+Location and Stream Data
 </th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Species Name
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
 </th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-BC List
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-COSEWIC
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Carp Lake
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Crooked
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Finlay Arm
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Finlay
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Firesteel
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Fox
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Ingenika
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Lower Omineca
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Mesilinka
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Nation
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Ospika
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Parsnip Arm
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Parsnip
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Peace Arm
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Toodoggone
-</th>
-<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
-Upper Omineca
+<th style="text-align:left;">
+–
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-Catostomus catostomus
+Date
 </td>
 <td style="text-align:left;">
-Longnose Sucker
+2025-09-23
 </td>
 <td style="text-align:left;">
-Yellow
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Round Culvert
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Catostomus columbianus
+PSCIS ID
 </td>
 <td style="text-align:left;">
-Bridgelip Sucker
+6559
 </td>
 <td style="text-align:left;">
-Yellow
+Diameter (m)
 </td>
 <td style="text-align:left;">
-–
+0.9
 </td>
+</tr>
+<tr>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
+External ID
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-–
+Length (m)
 </td>
 <td style="text-align:left;">
-–
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-–
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -674,123 +510,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Catostomus commersonii
+Easting
 </td>
 <td style="text-align:left;">
-White Sucker
+489950
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Catostomus macrocheilus
-</td>
-<td style="text-align:left;">
-Largescale Sucker
-</td>
-<td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -798,123 +524,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Coregonus clupeaformis
+Northing
 </td>
 <td style="text-align:left;">
-Lake Whitefish
+6112363
 </td>
 <td style="text-align:left;">
-Yellow
+Backwatered
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+No
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Cottus aleuticus
+Stream
 </td>
 <td style="text-align:left;">
-Coastrange Sculpin (formerly Aleutian Sculpin)
+Tributary To Williston Reservoir
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -922,309 +552,219 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Cottus asper
+Road
 </td>
 <td style="text-align:left;">
-Prickly Sculpin
+Finlay Community Connector
 </td>
 <td style="text-align:left;">
-Yellow
+Fill Depth (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+2.5
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Cottus cognatus
+Road Tenure
 </td>
 <td style="text-align:left;">
-Slimy Sculpin
+Sekani R01883 83
 </td>
 <td style="text-align:left;">
-Yellow
+Outlet Drop (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+1.1
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Cottus ricei
+Channel Width (m)
 </td>
 <td style="text-align:left;">
-Spoonhead Sculpin
+1
 </td>
 <td style="text-align:left;">
-Yellow
+Outlet Pool Depth (m)
 </td>
 <td style="text-align:left;">
-NAR (May 1989)
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Couesius plumbeus
+Stream Slope (%)
 </td>
 <td style="text-align:left;">
-Lake Chub
+1.5
 </td>
 <td style="text-align:left;">
-Yellow
+Inlet Drop
 </td>
 <td style="text-align:left;">
-DD
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+No
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Esox lucius
-</td>
-<td style="text-align:left;">
-Northern Pike
-</td>
-<td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Beaver Activity
 </td>
 <td style="text-align:left;">
 Yes
 </td>
 <td style="text-align:left;">
-–
+Slope (%)
 </td>
 <td style="text-align:left;">
-–
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
 </td>
 <td style="text-align:left;">
-–
+Low
 </td>
 <td style="text-align:left;">
-–
+Valley Fill
 </td>
 <td style="text-align:left;">
-–
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
 </td>
 <td style="text-align:left;">
-–
+36
 </td>
 <td style="text-align:left;">
-–
+Barrier Result
 </td>
 <td style="text-align:left;">
-–
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
 </td>
 <td style="text-align:left;">
-–
+Replace Structure with Streambed Simulation CBS
 </td>
 <td style="text-align:left;">
-–
+Fix Span / Diameter
 </td>
 <td style="text-align:left;">
+3
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Wetland upstream. Stream was not flowing at time of assessment. Small channel downstream. Beaver grate devices on inlet and outlet
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 6559. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/6559/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-–
+2025-09-22
 </td>
 <td style="text-align:left;">
-–
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203597
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+0.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+15201563
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -1232,61 +772,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Hybognathus hankinsoni
+Easting
 </td>
 <td style="text-align:left;">
-Brassy Minnow
+425959
 </td>
 <td style="text-align:left;">
-No Status
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -1294,185 +786,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Lota lota
+Northing
 </td>
 <td style="text-align:left;">
-Burbot
+6122703
 </td>
 <td style="text-align:left;">
-Yellow
+Backwatered
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+No
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Mylocheilus caurinus
+Stream
 </td>
 <td style="text-align:left;">
-Peamouth Chub
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Oncorhynchus clarkii
-</td>
-<td style="text-align:left;">
-Cutthroat Trout
-</td>
-<td style="text-align:left;">
-No Status
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -1480,185 +814,55 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus clarkii clarkii
+Road
 </td>
 <td style="text-align:left;">
-Coastal Cutthroat Trout
+Thut 15000
 </td>
 <td style="text-align:left;">
-Blue
+Fill Depth (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+1.5
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus kisutch
+Road Tenure
 </td>
 <td style="text-align:left;">
-Coho Salmon
+Sekani R07214 8
 </td>
 <td style="text-align:left;">
-Not Reviewed
+Outlet Drop (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+0.25
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus mykiss
+Channel Width (m)
 </td>
 <td style="text-align:left;">
-Rainbow Trout
+2.5
 </td>
 <td style="text-align:left;">
-Yellow
+Outlet Pool Depth (m)
 </td>
 <td style="text-align:left;">
-–
+0.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
 </td>
 <td style="text-align:left;">
-Yes
+2.5
 </td>
 <td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Inlet Drop
 </td>
 <td style="text-align:left;">
 Yes
@@ -1666,61 +870,163 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus mykiss
+Beaver Activity
 </td>
 <td style="text-align:left;">
-Steelhead
+No
 </td>
 <td style="text-align:left;">
-Yellow
+Slope (%)
 </td>
 <td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: High-quality stream with abundant gravels and cover, directly connected to the Nation River. Bull trout noted near the confluence. eDNA samples collected upstream and downstream of the crossing. This crossing is located on a road identified by BCTS as a candidate for potential deactivation.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203597. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203597/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-–
+2025-09-22
 </td>
 <td style="text-align:left;">
-–
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
 </td>
 <td style="text-align:left;">
-–
+203598
 </td>
 <td style="text-align:left;">
-–
+Diameter (m)
 </td>
 <td style="text-align:left;">
-–
+0.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
 </td>
 <td style="text-align:left;">
-–
+15201146
 </td>
 <td style="text-align:left;">
-–
+Length (m)
 </td>
 <td style="text-align:left;">
-Yes
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-–
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -1728,61 +1034,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus mykiss
+Easting
 </td>
 <td style="text-align:left;">
-Steelhead (Winter-run)
+426678
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -1790,61 +1048,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus nerka
+Northing
 </td>
 <td style="text-align:left;">
-Kokanee
+6123035
 </td>
 <td style="text-align:left;">
-Not Reviewed
+Backwatered
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
 </td>
 <td style="text-align:left;">
-–
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -1852,61 +1076,219 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Oncorhynchus nerka
+Road
 </td>
 <td style="text-align:left;">
-Sockeye Salmon
+Thut 15000
 </td>
 <td style="text-align:left;">
-Not Reviewed
+Fill Depth (m)
 </td>
 <td style="text-align:left;">
+1.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R07214 22
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+3.4
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace Structure with Streambed Simulation CBS
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Small stream with short channel length before entering a large wetland area. Pockets of small gravel were present throughout. This crossing is located on a road identified by BCTS as a candidate for potential deactivation.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203598. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203598/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-–
+2025-09-22
 </td>
 <td style="text-align:left;">
-–
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
 </td>
 <td style="text-align:left;">
-–
+203599
 </td>
 <td style="text-align:left;">
-–
+Diameter (m)
 </td>
 <td style="text-align:left;">
-–
+2.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
 </td>
 <td style="text-align:left;">
-–
+15202249
 </td>
 <td style="text-align:left;">
-–
+Length (m)
 </td>
 <td style="text-align:left;">
-Yes
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-–
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -1914,61 +1296,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Osmerus dentex
+Easting
 </td>
 <td style="text-align:left;">
-Rainbow Smelt
+429213
 </td>
 <td style="text-align:left;">
-Unknown
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -1976,123 +1310,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Prosopium coulterii
+Northing
 </td>
 <td style="text-align:left;">
-Pygmy Whitefish
+6126036
 </td>
 <td style="text-align:left;">
-Yellow
+Backwatered
 </td>
 <td style="text-align:left;">
-NAR (Nov 2016)
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
+No
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Prosopium cylindraceum
+Stream
 </td>
 <td style="text-align:left;">
-Round Whitefish
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -2100,371 +1338,219 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Prosopium williamsoni
+Road
 </td>
 <td style="text-align:left;">
-Mountain Whitefish
+Thut 14000
 </td>
 <td style="text-align:left;">
-Yellow
+Fill Depth (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+1.2
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Ptychocheilus oregonensis
+Road Tenure
 </td>
 <td style="text-align:left;">
-Northern Pikeminnow
+MoF
 </td>
 <td style="text-align:left;">
-Yellow
+Outlet Drop (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+0
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Rhinichthys cataractae
+Channel Width (m)
 </td>
 <td style="text-align:left;">
-Longnose Dace
+3
 </td>
 <td style="text-align:left;">
-Yellow
+Outlet Pool Depth (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+0.4
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Richardsonius balteatus
+Stream Slope (%)
 </td>
 <td style="text-align:left;">
-Redside Shiner
+1.5
 </td>
 <td style="text-align:left;">
-Yellow
+Inlet Drop
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
+No
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Salvelinus confluentus
+Beaver Activity
 </td>
 <td style="text-align:left;">
-Bull Trout
+No
 </td>
 <td style="text-align:left;">
-Blue
+Slope (%)
 </td>
 <td style="text-align:left;">
-SC (Nov 2012)
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+2
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Salvelinus fontinalis
+Habitat Value
 </td>
 <td style="text-align:left;">
-Brook Trout
+Medium
 </td>
 <td style="text-align:left;">
-Exotic
+Valley Fill
 </td>
 <td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Wetland type habitat downstream with good habitat upstream with pockets of gravel and a wide channel. Culverts beginning to sag in the middle. No outlet drop.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203599. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203599/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-–
+2025-09-22
 </td>
 <td style="text-align:left;">
-Yes
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
 </td>
 <td style="text-align:left;">
-–
+203600
 </td>
 <td style="text-align:left;">
-–
+Diameter (m)
 </td>
 <td style="text-align:left;">
-–
+2.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
 </td>
 <td style="text-align:left;">
-–
+15200985
 </td>
 <td style="text-align:left;">
-–
+Length (m)
 </td>
 <td style="text-align:left;">
-–
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-Yes
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-Yes
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -2472,247 +1558,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-Salvelinus malma
+Easting
 </td>
 <td style="text-align:left;">
-Dolly Varden
+458498
 </td>
 <td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Salvelinus namaycush
-</td>
-<td style="text-align:left;">
-Lake Trout
-</td>
-<td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Thymallus arcticus
-</td>
-<td style="text-align:left;">
-Arctic Grayling
-</td>
-<td style="text-align:left;">
-Yellow
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Arctic Char
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -2720,61 +1572,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Northing
 </td>
 <td style="text-align:left;">
-Chub (General)
+6137654
 </td>
 <td style="text-align:left;">
-–
+Backwatered
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
 </td>
 <td style="text-align:left;">
-Yes
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -2782,185 +1600,55 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Road
 </td>
 <td style="text-align:left;">
-Dace (General)
+Finlay-Nation FSR
 </td>
 <td style="text-align:left;">
-–
+Fill Depth (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+2
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Road Tenure
 </td>
 <td style="text-align:left;">
-Lamprey (General)
+Sekani R09952 1
 </td>
 <td style="text-align:left;">
-–
+Outlet Drop (m)
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+0.15
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Channel Width (m)
 </td>
 <td style="text-align:left;">
-Minnow (General)
+4.1
 </td>
 <td style="text-align:left;">
-–
+Outlet Pool Depth (m)
 </td>
 <td style="text-align:left;">
-–
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
 </td>
 <td style="text-align:left;">
-Yes
+6
 </td>
 <td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Inlet Drop
 </td>
 <td style="text-align:left;">
 Yes
@@ -2968,61 +1656,163 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Large stream with abundant woody debris, pools, and gravels upstream. Outlet dropped minimally onto a boulder.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203600. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203600/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-Mottled Sculpin
+2025-09-22
 </td>
 <td style="text-align:left;">
-–
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
 </td>
 <td style="text-align:left;">
-–
+203601
 </td>
 <td style="text-align:left;">
-–
+Diameter (m)
 </td>
 <td style="text-align:left;">
-–
+2.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
 </td>
 <td style="text-align:left;">
-–
+15201007
 </td>
 <td style="text-align:left;">
-Yes
+Length (m)
 </td>
 <td style="text-align:left;">
-–
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-Yes
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -3030,61 +1820,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Easting
 </td>
 <td style="text-align:left;">
-Salmon (General)
+459772
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -3092,61 +1834,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Northing
 </td>
 <td style="text-align:left;">
-Sculpin (General)
+6140076
 </td>
 <td style="text-align:left;">
-–
+Backwatered
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
 </td>
 <td style="text-align:left;">
-Yes
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -3154,61 +1862,219 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay-Nation FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+1.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R09952 1
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+3.5
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Large stream with pools and gravels present upstream. Significant amounts of road fill had been graded into the channel.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203601. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203601/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
 –
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
 </td>
 <td style="text-align:left;">
-Smelt (General)
+2025-09-23
 </td>
 <td style="text-align:left;">
-–
+Crossing Sub Type
 </td>
 <td style="text-align:left;">
-–
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
 </td>
 <td style="text-align:left;">
-–
+203602
 </td>
 <td style="text-align:left;">
-–
+Diameter (m)
 </td>
 <td style="text-align:left;">
-Yes
+1.55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
 </td>
 <td style="text-align:left;">
-–
+15201006
 </td>
 <td style="text-align:left;">
-–
+Length (m)
 </td>
 <td style="text-align:left;">
-–
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
 </td>
 <td style="text-align:left;">
-–
+AI
 </td>
 <td style="text-align:left;">
-–
+Embedded
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
 </td>
 <td style="text-align:left;">
-–
+10
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
@@ -3216,61 +2082,13 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Easting
 </td>
 <td style="text-align:left;">
-Squanga
+466124
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
+Resemble Channel
 </td>
 <td style="text-align:left;">
 –
@@ -3278,61 +2096,27 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Northing
 </td>
 <td style="text-align:left;">
-Sucker (General)
+6147887
 </td>
 <td style="text-align:left;">
-–
+Backwatered
 </td>
 <td style="text-align:left;">
-–
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
 </td>
 <td style="text-align:left;">
-Yes
+Tributary To Nation River
 </td>
 <td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
+Percent Backwatered
 </td>
 <td style="text-align:left;">
 –
@@ -3340,61 +2124,1945 @@ Yes
 </tr>
 <tr>
 <td style="text-align:left;">
-–
+Road
 </td>
 <td style="text-align:left;">
-Whitefish (General)
+Finlay-Nation FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+3.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R01884 61
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+3.4
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+5.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+16.5
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Large, low gradient, high value system. Significant amounts of road fill is eroding from the road prism into the stream on both sides of the FSR. Habitat confirmation and electrofishing or EDNA sampling is recommended.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203602. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203602/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Oval Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203603
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+5.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16400714
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
 </td>
 <td style="text-align:left;">
 –
 </td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+469020
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
 <td style="text-align:left;">
 –
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6148916
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay-Nation FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+MoF
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+7.4
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
 </td>
 <td style="text-align:left;">
 Yes
 </td>
 <td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Very large stream with 2.5m high beaver dam located in the middle of the culvert backing up a massive wetland upstream. First passage is definitely hindered by the beaver dam however, the wetland it creates provides likely stable hydrology for the downstream system.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203603. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203603/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203604
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401990
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+480204
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6138985
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R10040 25
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
 Yes
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+27
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Very large system with extremely undersized pipe that is submerged at the inlet with obvious beaver activity within the pipe itself. Upstream is a huge wetland, beaver-influenced area. Culvert slope estimated as the outlet pool is extremely deep.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203604. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203604/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203605
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+3.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401519
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+486504
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6124990
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+2.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+MoF
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: High value habitat on very large system with pipe that has large outlet drop near 1m. Habitat confirmation and eDNA sampling conducted upstream and downstream of the crossing.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203605. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203605/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Oval Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203606
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+4.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401529
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+486441
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6119999
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Scovil Creek
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+MoF
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+9.3
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+32
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Huge stream with abundant gravels and low gradient complex habitat upstream. Smaller outlet drop however pipe is somewhat undersized for the watershed.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203606. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203606/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203607
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+1.65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16400428
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+488459
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6112370
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finl 19000
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+BCTS
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+2.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Potential
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace Structure with Streambed Simulation CBS
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Dry, poorly defined channel. Unlikely fish habitat.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203607. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203607/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203608
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+2.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16491533
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+479612
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6141425
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Dastaiga Creek
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+1.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R01886 140
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+1.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+27
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Barrier
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+Replace with New Open Bottom Structure
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+15
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Very large stream with a beaver dam located 30m upstream of the crossing. No outlet drop, but culvert is well undersized for the watershed. Stream width and gradient are rough estimates.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203608. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203608/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203609
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+3.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401530
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+0.27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+486707
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6116611
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R06855 33
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+3.7
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+0.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+High
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Passable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
 </td>
 <td style="text-align:left;">
 –
 </td>
 <td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-–
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-–
+Fix Span / Diameter
 </td>
 <td style="text-align:left;">
 –
@@ -3403,13 +4071,563 @@ Yes
 </tbody>
 <tfoot>
 <tr>
-<td style="padding: 0; " colspan="100%">
-<sup>*</sup> COSEWIC abbreviations :<br> SC - Special concern<br> DD - Data deficient<br> NAR - Not at risk<br> E - Endangered<br> T - Threatened<br><br> BC List definitions :<br> Yellow - Species that is apparently secure<br> Blue - Species that is of special concern<br> Exotic - Species that have been moved beyond their natural range as a result of human activity<br><br> Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout <span class="citation">(COSEWIC 2012)</span>.<br>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Low gradient, larger system with abundant gravel. Culvert is fully embedded. Culvert length estimated based on photos.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203609. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203609/crossing_all.JPG" />
 </td>
 </tr>
 </tfoot>
 </table>
-</div>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Round Culvert
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203610
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+2.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401547
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+0.6
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+476482
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6147549
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Finlay FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+Sekani R10040 19
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+Medium
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+Deep Fill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Passable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Beaver dam located 1m upstream from the inlet. Pipe is embedded and the top 10m is backwatered. Smaller stream with some pockets of gravel and decent flow – although there were heavy rains yesterday.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203610. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203610/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br>
+<table class="table table-condensed" style="font-size: 11px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Location and Stream Data
+</th>
+<th style="text-align:left;">
+<ul>
+<li></th>
+<th style="text-align:left;">
+Crossing Characteristics
+</th>
+<th style="text-align:left;">
+–
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Date
+</td>
+<td style="text-align:left;">
+2025-09-23
+</td>
+<td style="text-align:left;">
+Crossing Sub Type
+</td>
+<td style="text-align:left;">
+Bridge
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PSCIS ID
+</td>
+<td style="text-align:left;">
+203611
+</td>
+<td style="text-align:left;">
+Diameter (m)
+</td>
+<td style="text-align:left;">
+18.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+External ID
+</td>
+<td style="text-align:left;">
+16401393
+</td>
+<td style="text-align:left;">
+Length (m)
+</td>
+<td style="text-align:left;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Crew
+</td>
+<td style="text-align:left;">
+AI
+</td>
+<td style="text-align:left;">
+Embedded
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UTM Zone
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Depth Embedded (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Easting
+</td>
+<td style="text-align:left;">
+486421
+</td>
+<td style="text-align:left;">
+Resemble Channel
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Northing
+</td>
+<td style="text-align:left;">
+6124806
+</td>
+<td style="text-align:left;">
+Backwatered
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream
+</td>
+<td style="text-align:left;">
+Tributary To Williston Reservoir
+</td>
+<td style="text-align:left;">
+Percent Backwatered
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road
+</td>
+<td style="text-align:left;">
+Modeste FSR
+</td>
+<td style="text-align:left;">
+Fill Depth (m)
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Road Tenure
+</td>
+<td style="text-align:left;">
+MoF
+</td>
+<td style="text-align:left;">
+Outlet Drop (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Channel Width (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+Outlet Pool Depth (m)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Stream Slope (%)
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+Inlet Drop
+</td>
+<td style="text-align:left;">
+No
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Beaver Activity
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+Slope (%)
+</td>
+<td style="text-align:left;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Habitat Value
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Valley Fill
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Final score
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Barrier Result
+</td>
+<td style="text-align:left;">
+Passable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Fix type
+</td>
+<td style="text-align:left;">
+–
+</td>
+<td style="text-align:left;">
+Fix Span / Diameter
+</td>
+<td style="text-align:left;">
+–
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Comments: Bridge
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> Photos: PSCIS ID 203611. From top left clockwise: Road/Site Card, Barrel, Outlet, Downstream, Upstream, Inlet.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; border:0;" colspan="100%">
+<sup></sup> <img src="data/photos/203611/crossing_all.JPG" />
+</td>
+</tr>
+</tfoot>
+</table>
+<br><br><br><br><br></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 
 </div>
             </section>
@@ -3417,8 +4635,8 @@ Yes
           </div>
         </div>
       </div>
-<a href="app-site-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="app-climate-departure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="app-gis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="app-edna.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

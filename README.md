@@ -8,15 +8,21 @@
 
 ## What this is
 
-The 2025 iteration of the Peace Region fish-passage restoration-planning report. Builds on the 2024 framing with new field data, refined prioritization, a climate-departure appendix grounding the planning horizon in observed climate change, and a standalone executive-summary PDF for partners who need the headline findings without the full report. Source data and methods are open — anyone can rebuild the report from `scripts/run.R`.
+The 2025 iteration of the Peace Region fish-passage restoration-planning report. Builds on the 2024 framing with new field data, refined prioritization, a climate-departure appendix grounding the planning horizon in observed climate change, and a standalone executive-summary PDF for partners who need the headline findings without the full report. Source data and methods are open — anyone can rebuild the report from the scripts in `scripts/` (see [Build](#build)).
 
 ## Build
 
+Three self-contained scripts. Each sources `scripts/staticimports.R` (which inlines helper functions via the [staticimports](https://github.com/wch/staticimports) package) before rendering, so run them rather than calling `bookdown` directly or you'll hit "undefined function" errors:
+
 ```r
-source("scripts/run.R")
+source("scripts/run_gitbook.R")       # web (gitbook) version -> docs/
+```
+```sh
+Rscript scripts/run_pagedown.R        # print PDF -> docs/<repo>.pdf
+Rscript scripts/run_pagedown_app1.R   # standalone Phase 1 attachment -> docs/Appendix_1.pdf
 ```
 
-`scripts/run.R` sources `scripts/staticimports.R` (which inlines helper functions via the [staticimports](https://github.com/wch/staticimports) package) and then runs `bookdown::render_book()`. Bypassing `run.R` gives "undefined function" errors at render time.
+`run_gitbook.R` builds the full report with the inline Phase 1 data+photos appendix. `run_pagedown.R` swaps that heavy appendix for a slim link-stub so the print PDF stays light. `run_pagedown_app1.R` regenerates the standalone Phase 1 attachment PDF that the stub links to — run it only when the Phase 1 data or photos change.
 
 ## Open-source packages used
 

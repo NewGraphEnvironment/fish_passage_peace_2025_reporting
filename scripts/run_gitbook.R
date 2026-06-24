@@ -1,15 +1,15 @@
-# Fast gitbook-only build for iterating on report content.
+# Build the gitbook (web) version of the report.
 #
-# Mirrors `scripts/run.R` block 1 but trimmed to gitbook only (no PDF) +
-# auto-open at the end. Use this when iterating on Rmd content and you
-# want a quick render to inspect. When verifying full ship readiness
-# (both gitbook + pagedown PDF + Phase 1 appendix subset), use
-# `scripts/run.R` instead.
+# Renders the full inline Phase 1 data+photos appendix (0835-...) along with
+# the rest of the report, then auto-opens. The PDF link-stub (2300-...) stays
+# in hold/ so it doesn't appear in the web version. For the print PDF use
+# `scripts/run_pagedown.R`; to regenerate the standalone Phase 1 attachment
+# PDF (docs/Appendix_1.pdf) use `scripts/run_pagedown_app1.R`.
 #
 # Assumes `gitbook_on <- TRUE` is set in index.Rmd (default state).
 #
 # Usage:
-#   source('scripts/run_gitbook_iter.R')
+#   source('scripts/run_gitbook.R')
 
 # Rscript doesn't inherit RStudio's CRAN-mirror setting; set explicitly so
 # scripts/packages.R `available.packages()` calls don't error.
@@ -18,60 +18,35 @@ options(repos = c(CRAN = "https://cloud.r-project.org"))
 staticimports::import()
 source('scripts/staticimports.R')
 
-# Move heavy appendices out of build (mirrors run.R block 1)
-files_to_move     <- list.files(pattern = ".Rmd$") |>
-  stringr::str_subset('0600|2300', negate = FALSE)
-files_destination <- paste0('hold/', files_to_move)
-mapply(file.rename, from = files_to_move, to = files_destination)
-
-# Hide pre-existing phase 1 appendix HTML (rebuilt separately via run.R block 3)
-if (file.exists("docs/appendix---phase-1-fish-passage-assessment-data-and-photos.html")) {
-  file.rename(
-    "docs/2300-Attachment_pdf_phase_1_dat.Rmd",
-    "hold/2300-Attachment_pdf_phase_1_dat.Rmd"
-  )
+# --- Defensive move helpers (report each rename outcome) ----------------
+move_to_hold <- function(path) {
+  if (!file.exists(path)) return(invisible(FALSE))
+  hold_path <- file.path("hold", basename(path))
+  if (file.exists(hold_path)) file.remove(hold_path)
+  ok <- file.rename(path, hold_path)
+  cat(sprintf("  %s -> %s : %s\n", path, hold_path, ok))
+  invisible(ok)
+}
+move_back_from_hold <- function(path) {
+  hold_path <- file.path("hold", basename(path))
+  if (!file.exists(hold_path)) return(invisible(FALSE))
+  if (file.exists(path)) file.remove(path)
+  ok <- file.rename(hold_path, path)
+  cat(sprintf("  %s -> %s : %s\n", hold_path, path, ok))
+  invisible(ok)
 }
 
-# fs::file_copy(
-#   'hold/0600-appendix-placeholder.Rmd',
-#   '0600-appendix-placeholder.Rmd',
-#   overwrite = TRUE
-# )
+# --- Ensure gitbook appendix layout: inline 0835 at root, stub 2300 hold -
+# Resting state already matches this; we self-correct only if a crashed PDF
+# build left the swap half-applied. The inline Phase 1 appendix (0835) renders
+# its own gitbook chapter page (docs/appendix---phase-1-...html) that the PDF
+# stub links to, so nothing needs stashing — the build regenerates it.
+cat("\n=== Ensuring gitbook appendix layout (inline at root) ===\n")
+move_back_from_hold("0835-appendix-phase1-data-photos.Rmd")  # restore inline if stranded in hold
+move_to_hold("2300-Attachment_pdf_phase_1_dat.Rmd")          # stub belongs in hold for gitbook
 
 # Build
 rmarkdown::render_site(output_format = 'bookdown::gitbook', encoding = 'UTF-8')
-
-# Restore moved files. Defensive loop with per-file reporting — earlier
-# `mapply(file.rename, ...)` form silently no-op'd on at least one run and
-# left files stranded in hold/. This loop surfaces what happens on each file.
-cat("\n=== Restoring moved files ===\n")
-for (i in seq_along(files_destination)) {
-  src <- files_destination[i]
-  dst <- files_to_move[i]
-  if (!file.exists(src)) {
-    cat(sprintf("  WARN: source missing, cannot restore: %s\n", src))
-    next
-  }
-  if (file.exists(dst)) {
-    cat(sprintf("  WARN: dest already exists, removing first: %s\n", dst))
-    file.remove(dst)
-  }
-  ok <- file.rename(src, dst)
-  cat(sprintf("  %s -> %s : %s\n", src, dst, ok))
-}
-
-# Restore the pre-existing phase 1 appendix HTML
-phase1_src <- "hold/2300-Attachment_pdf_phase_1_dat.Rmd"
-phase1_dst <- "docs/2300-Attachment_pdf_phase_1_dat.Rmd"
-if (file.exists(phase1_src)) {
-  ok <- fs::file_copy(phase1_src, phase1_dst, overwrite = TRUE)
-  cat(sprintf("  Phase 1 appendix HTML restored: %s\n", as.character(ok)))
-}
-
-# Move the placeholder back to hold/
-# if (file.exists('0600-appendix-placeholder.Rmd')) {
-#   file.rename('0600-appendix-placeholder.Rmd', 'hold/0600-appendix-placeholder.Rmd')
-# }
 
 # Auto-open results chapter (or fall back to index.html)
 results_html <- list.files("docs", pattern = "^results", ignore.case = TRUE, full.names = TRUE)[1]

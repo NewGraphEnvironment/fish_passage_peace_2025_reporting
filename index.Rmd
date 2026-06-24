@@ -31,7 +31,7 @@ output:
           includes:
             in_header: header.html
 params:
-  derive_species: FALSE
+  derive_params: FALSE
   repo_url: 'https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting'
   report_url: 'https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting'
   job_name: '2025-077-sern-peace-fish-passage'
