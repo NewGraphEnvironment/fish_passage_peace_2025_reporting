@@ -264,12 +264,12 @@ A summary of crossings assessed, a rough cost estimate for remediation, and a pr
 
 ## Habitat Confirmation Assessments
 
-During the `r params$project_year` field assessments, habitat confirmation assessments were conducted at `r form_fiss_site |> dplyr::filter(is.na(ef)) |> dplyr::distinct(site) |> nrow()` sites within the `r wsg_names |> knitr::combine_words()`  watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000`km of stream was assessed. Georeferenced field maps are provided in [Attachment - Maps](#attach-maps).
+During the `r params$project_year` field assessments, habitat confirmation assessments were conducted at `r form_fiss_site |> dplyr::filter(is.na(ef)) |> dplyr::distinct(site) |> nrow()` sites within the `r wsg_names |> knitr::combine_words()`  watershed groups. A total of approximately `r habitat_confirmations_priorities |> pull(length_surveyed) |> sum(na.rm = TRUE) |> round(-3)/1000`km of stream was assessed. 
 
 
 <br>
 
-As collaborative decision-making was ongoing at the time of reporting, site prioritization can be considered preliminary. Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat `r if (exists("fish_data_complete")) "and fish sampling " else ""` data included in [Attachment - Data](#attach-dat). A summary of preliminary modelling results illustrating quantities of `r stringr::str_to_lower(model_species_name)` spawning and rearing habitat potentially available upstream of each crossing as estimated by measured/modelled channel width and upstream accessible stream length are presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) are presented within site-specific appendices to this document.
+As collaborative decision-making was ongoing at the time of reporting, site prioritization can be considered preliminary. Results are summarized in `r if(gitbook_on){knitr::asis_output("Figure \\@ref(fig:map-interactive) and ")}` Table \@ref(tab:tab-overview) with raw habitat `r if (exists("fish_data_complete")) "and fish sampling " else ""` data included in [Attachment - Data](#attach-dat). A summary of preliminary modelling results illustrating quantities of `r stringr::str_to_lower(model_species_name)` spawning and rearing habitat potentially available upstream of each crossing as estimated by measured/modelled channel width and upstream accessible stream length are presented in Figure \@ref(fig:plot-model-all). Detailed information for each site assessed with Phase 2 assessments (including maps) is presented in the per-site habitat-confirmation appendices: [Tributary to Parsnip River (PSCIS 199663)](#tributary-to-parsnip-river---199663---appendix), [Tributary to Nation River (PSCIS 203597)](#tributary-to-nation-river---203597---appendix), and [Tributary to Williston Reservoir (PSCIS 203605)](#tributary-to-williston-reservoir---203605---appendix).
 
 `r if(gitbook_on){knitr::asis_output("")} else knitr::asis_output("<br><br><br><br>")`
 
@@ -431,8 +431,8 @@ Fish sampling was conducted at `r tab_fish_sites_sum |> n_distinct()` sites with
 
 
 ```{r tab-fish-site-summary, eval=TRUE}
-tab_fish_sites_sum |> 
-  fpr::fpr_kable(caption_text = 'Summary of electrofishing sites.')
+tab_fish_sites_sum |>
+  fpr::fpr_kable(caption_text = 'Summary of electrofishing sites.', scroll = FALSE)
 ```
 
 <br>
