@@ -5,7 +5,7 @@
 # need to load the params
 
 path <- "data/inputs_raw/xref_fwa_wsg.csv"
-if(params$run_project){
+if(params$derive_species){
   fpr::fpr_db_query(
     query= "SELECT watershed_group_code, watershed_group_name
   FROM whse_basemapping.fwa_watershed_groups_poly"
@@ -26,7 +26,7 @@ wsg_names <- xref_wsg |>
 
 path <- 'data/inputs_extracted/fiss_species_table.csv'
 # you need static imports for this
-if(params$run_project){
+if(params$derive_species){
   fiss_species_table <- sfis_tab_sp(wsg_code = params$wsg_code) |>
     readr::write_csv(
       path
