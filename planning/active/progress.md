@@ -1,10 +1,11 @@
-# Progress — Monitoring appendices for PSCIS 125179, 125131, 198692 (#24)
+# Progress — #34 link Parsnip vignette → appendix
 
-## Session 2026-05-13
+## Session 2026-06-25
 
-- Plan-mode exploration: read 2024 Peace `0800-appendix-125179-trib-to-missinka.Rmd` (~290 lines) and `0800-appendix-198692-trib-to-kerry-lake.Rmd`; confirmed plumbing for `form_monitoring`, `tab_monitoring`, `tab_fish_summary`, `fish_abund` in `scripts/02_reporting/0130-tables.R`; identified missing pieces: `data/form_monitoring_2025.gpkg` and photos for the 3 monitoring sites.
-- User feedback shaped the plan: lean appendix structure (4 sections + intro), incremental build with testing at each step, no regurgitation of past-report context, helpers like `fpr_my_wshd` may not work for monitoring-only sites and shouldn't be assumed.
-- Plan approved.
-- Created branch `24-monitoring-appendices` off main.
-- Scaffolded PWF baseline.
-- Next: Phase 1 — locate the monitoring gpkg.
+- Filed [Peace #34](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/34) — scope: port `link` `pars-habitat-connectivity.Rmd` to a Peace appendix via `/vignette-to-appendix`, cross-ref from Methods + Results.
+- Got `~/Projects/repo/link` onto `main` (@ 29e3e92, v0.43.0); verified vignette + `inst/vignette-data/{pars.gpkg,pars_parity.rds}` present. Local log-csv change stashed at `link` `stash@{0}` (restore on branch `196-streams-access-source-flags`).
+- Read the source vignette in full; captured structure, figures, parity counts, and body cross-ref insertion points in findings.md.
+- Branched Peace `34-vignette-appendix` off main.
+- Archived stale `planning/active/` (completed-but-unarchived issue #24 monitoring appendices) → `planning/archive/2026-06-issue-24-monitoring-appendices/` with outcome README.
+- Scaffolded #34 PWF baseline (task_plan, findings, progress).
+- **Next:** Phase 1 — run `/vignette-to-appendix` report-only and review the draft; decide appendix slot (`07X0` group) + gpkg commit-vs-gitignore.

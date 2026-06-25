@@ -1,36 +1,64 @@
-# Findings — Monitoring appendices for PSCIS 125179, 125131, 198692 (#24)
+# Findings — #34 link Parsnip vignette → appendix
 
-## Issue context
+## Source vignette (link main @ 29e3e92 / v0.43.0)
 
-See [#24](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/24).
+`vignettes/pars-habitat-connectivity.Rmd` — "Bull trout and Arctic grayling: habitat
+and connectivity classification for the Parsnip River Watershed Group". 483 lines.
+Produced under link#215 (planning archived in link at
+`planning/archive/2026-06-issue-215-vignette-pars-mapping-code/`).
 
-## Plan-mode exploration
+**What it does:** runs `link`'s per-segment `mapping_code` classification (access /
+spawning / rearing + downstream barrier type) over the full FWA stream network of the
+Parsnip River Watershed Group (`PARS`, ~5,600 km²). Two parts:
+1. **Parity** — `link`'s bcfishpass configuration reproduces bcfishpass's per-segment
+   classification for bull trout (`BT`), byte-checkable against the upstream reference.
+2. **Extension** — same method applied to Arctic grayling (`GR`), which bcfishpass does
+   not yet model in the Peace.
 
-### 2024 Peace appendix precedents
-- `fish_passage_peace_2024_reporting/0800-appendix-125179-trib-to-missinka.Rmd` (~290 lines) — full structure: site location + background + monitoring + fish sampling + reference site (125180) + conclusion + photos. **Too long for our lean structure** — we keep just monitoring form, fish, eDNA, conclusion + intro paragraph; everything else lives in 2024 appendix (linked).
-- `fish_passage_peace_2024_reporting/0800-appendix-198692-trib-to-kerry-lake.Rmd` — Kerry Lake was a 2024 habitat confirmation; 2025 reframes as baseline-pre-remediation.
-- No prior per-site appendix for 125131. Use 125179 lean structure as template.
+**Structure (headings):** Modelling parameters · Cached inputs · Reproducing bcfishpass
+(parity) · Arctic grayling — a link extension · Maps — detail comparison.
 
-### Data plumbing
-- `form_monitoring` source: `data/form_monitoring_<year>.gpkg` (path defined at `scripts/02_reporting/0130-tables.R:24-29`).
-- Loaded into sqlite when `params$update_form_monitoring: TRUE` (line 162-184).
-- Derived tables in same file: `tab_fish_summary` (line 613), `fish_abund` (line 650), `tab_monitoring` (line 964).
-- `data/form_monitoring_2025.gpkg` **does not exist yet** — must be sourced from Mergin sync.
+**Figures (3, all static — carry to PDF):**
+- `map-bt` — BT per-segment mapping_code across the WSG (bcfishpass symbology registry)
+- `map-gr` — GR per-segment mapping_code across the WSG (link default config)
+- `map-detail` — SE-corner detail, BT vs GR side-by-side, same extent
+**Tables:** `parity-table` + `parity-pct` (BT parity vs bcfishpass).
 
-### Photo plumbing
-- `data/photos/<site>/<photo_str>.JPG` pattern; `fpr::fpr_photo_pull_by_str()` resolves files by substring match against the photo filename.
-- 2025 photos exist for 199663, 203597-203611, 6559. **Not present** for 125179, 125131, 198692.
+**Reported counts (from fig captions):** BT 31,932 classified segments; GR 19,233;
+1,764 GR segments carry no BT classification at all (net-new output vs bcfishpass).
 
-### Anchor strategy
-- 2024 anchors: `#trib-to-missinka`, `#trib-to-kerry` (no year suffix).
-- 2025 anchors must be unique within this build; use `*-2025` suffix to disambiguate.
-- Body Results currently links to external 2024 URLs (e.g. `https://www.newgraphenvironment.com/fish_passage_peace_2024_reporting/trib-to-missinka.html`). Switch to internal anchors in Phase 5.
+## Cached data inputs
 
-### User feedback on structure
-- "These are short and sweet with the form, the fish, the links to the old memos the eDNA and a general site's looking good after work completed or for Kerry it's baseline data collected to inform future effectiveness monitoring."
-- "We may need to wire in some of the plumbing to get the monitoring form information and may need to tidy up the text in the forms as some is talk to text."
-- "Not sure the watershed metadata will be there. We should build one little piece at a time and test as you go."
+Vignette reads via `system.file("vignette-data/...", package = "link")`:
+- `inst/vignette-data/pars.gpkg` — 11.5 MB (stream network + context layers)
+- `inst/vignette-data/pars_parity.rds` — 272 B (parity comparison object)
 
-### Conventions discovered
-- Per-site appendices use `{.unnumbered}` on `##` headers and `{-#anchor}` on `#` (top-level) — see `0840-appendix-199663-trib-to-parsnip.Rmd` as the modern Peace 2025 reference for table wrapping and chunk patterns.
-- Photo pairs: gitbook gets two separate `photo-NNNNN-0X` chunks (full width); PDF gets one `photo-NNNNN-d0X` chunk with `out.width = c("49.5%","1%","49.5%")` side-by-side using `fig/pixel.png` as spacer.
+Skill rewrites these to `data/gis/<file>`. **Open Q:** 11.5 MB gpkg — gitignore vs commit
+(data-snapshot challenge; CLAUDE.md flags sqlite/binary bloat). Decide in Phase 1.
+
+## Body cross-reference insertion points (Peace)
+
+- **Methods** `0300-methods.Rmd` — paragraph "We are building a parameterizable
+  habitat-suitability and connectivity framework using `fresh` and `link`..."
+  (*Statistical Support for Habitat Modelling*). Describes the Arctic grayling intrinsic-
+  habitat model "in development at the time of this report".
+- **Results** `0400-results.Rmd` — paragraph "Alongside the weekly automated updates, we
+  use our open-source R packages `fresh` and `link`..." under *## Statistical Habitat
+  Modelling Outputs*.
+
+Both already name the work; they just need a pointer to the new appendix.
+
+## Appendix placement
+
+Peace's "Appendix -" methodology group is `07X0` (0700 site-assessment, 0710 fish-species,
+0720 climate-departure, 0730 floodplain, 0740 uav, 0750 collaborative-gis). The `08X0`
+range is Phase-1/eDNA/Phase-2-site/monitoring. This habitat-connectivity appendix is a
+methodology/framework showcase → belongs in the `07X0` group (likely `0760`), NOT `08X0`.
+The skill's default "highest `08X0` + 5" heuristic will mis-slot it — override the slug/slot.
+Order by first body reference (consistent with the appendix-ordering convention adopted
+in the 0.9.0 reorg).
+
+## Skill notes
+
+`/vignette-to-appendix` (soul#50): report-only by default; `--apply` writes drafts (no
+render/commit/push). Source-package short code = `link`. Needs dest `_bookdown.yml` (present).

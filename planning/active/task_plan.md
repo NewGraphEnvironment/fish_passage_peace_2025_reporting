@@ -1,60 +1,46 @@
-# Task: Add monitoring appendices for PSCIS 125179, 125131, and 198692 (#24)
+# Task: Showcase the link Parsnip habitat & connectivity vignette as a report appendix (#34)
 
-Effectiveness and baseline monitoring was conducted at three sites in 2025 — 125179 (Trib to Missinka), 125131 (Trib to Table), and 198692 (Kerry Lake). All three have appendices in past Peace reports, so the new appendices should be **short and sweet** — just the new 2025 data, with cross-refs back to the prior-year appendices for site location, background, and history. Don't regurgitate what already exists elsewhere.
+Port the `link` package vignette `pars-habitat-connectivity.Rmd` into a new Peace
+report appendix using the `/vignette-to-appendix` skill (recipe: soul#50), and wire
+explicit cross-references to it from the Methods and Results sections that already
+describe the `fresh` + `link` framework as "in development". Goal: the reader is sent
+from the framework prose straight to a worked Parsnip example (bull-trout parity vs
+bcfishpass + Arctic grayling extension).
 
-**Per-site lean structure:**
+Source: `~/Projects/repo/link/vignettes/pars-habitat-connectivity.Rmd` (link main @ 29e3e92, v0.43.0).
+Cached data: `link` `inst/vignette-data/pars.gpkg` + `pars_parity.rds`.
 
-- One-paragraph intro: where + what was done this year + link to prior-year appendix
-- `## Monitoring Form` — filtered monitoring form data table
-- `## Fish Sampling` — narrative + per-site fish summary + density plot
-- `## Environmental DNA` — cross-ref to `#app-edna` + site-specific commentary
-- `## Conclusion` — one paragraph (effectiveness vs baseline framing)
+## Phase 1 — Pre-flight (gating; nothing else proceeds without this)
 
-## Phase 1 — Data ingestion (gating; nothing else proceeds without this)
+- [ ] Confirm `~/Projects/repo/link` on `main` and vignette + both data files present (done in init)
+- [ ] Run `/vignette-to-appendix` in report-only mode (source = link vignette, dest = this repo); review the drafted appendix + 3-piece body scaffold + gating-review template in scratchpad
+- [ ] Decide appendix slot + slug: fits the `07X0` "Appendix -" methodology group (e.g. `0760-appendix-habitat-connectivity.Rmd`), NOT the `08X0`/site group — ordered by first body reference
+- [ ] Copy `pars.gpkg` + `pars_parity.rds` → `data/gis/` (confirm no name collision); decide gitignore vs commit for the 11 MB gpkg
+- [ ] Confirm Peace `DESCRIPTION` / `scripts/packages.R` load `link` (+ its render-time deps) so the appendix renders
+- [ ] **Gate**: confirm the report-only draft is sound before applying
 
-- [ ] Locate `form_monitoring_2025.gpkg` source (Mergin project `sern_peace_fwcp_2023` likely backup path)
-- [ ] Copy to `data/form_monitoring_2025.gpkg`
-- [ ] Tidy talk-to-text fragments in form comment fields at the gpkg level
-- [ ] Set `index.Rmd` `update_form_monitoring: TRUE`, build once to populate sqlite
-- [ ] Set param back to `FALSE`
-- [ ] Verify `form_monitoring` loads with rows for 125179, 125131, 198692
-- [ ] Verify per-site `tab_monitoring`, `tab_fish_summary`, `fish_abund` entries
-- [ ] Copy photos for the 3 sites to `data/photos/<site>/`
-- [ ] **Gate**: confirm what works before proceeding
+## Phase 2 — Appendix transfer
 
-## Phase 2 — Build 125179 (Trib to Missinka)
+- [ ] `/vignette-to-appendix --apply` (or hand-place the reviewed draft) → write `0760-appendix-habitat-connectivity.Rmd`
+- [ ] Strip vignette YAML; convert to appendix heading with anchor `{-#app-habitat-connectivity}`
+- [ ] Rewrite `system.file()` paths → `data/gis/<file>`
+- [ ] Prefix chunk labels with `link` (e.g. `map-link-bt`, `tab-link-parity`)
+- [ ] Add the appendix to `_bookdown.yml` rmd ordering in the right slot
+- [ ] Confirm static `tmap`/base-R maps (carry to PDF) — no interactive-widget swap needed
 
-- [ ] Create `0860-appendix-125179-trib-to-missinka.Rmd` with lean structure
-- [ ] Anchor `{-#trib-to-missinka-2025}`
-- [ ] Test `tab_monitoring` render first, then add fish sampling, then eDNA cross-ref, then conclusion + photos
-- [ ] Build, verify clean
+## Phase 3 — Body wiring
 
-## Phase 3 — Build 125131 (Trib to Table)
+- [ ] Methods: add cross-ref to the appendix in the `fresh` + `link` framework paragraph (`0300-methods.Rmd`, *Statistical Support for Habitat Modelling*)
+- [ ] Results: add cross-ref in the `fresh` + `link` / Arctic grayling paragraph under *Statistical Habitat Modelling Outputs* (`0400-results.Rmd`)
+- [ ] Confirm `\@ref()` anchors resolve both directions
 
-- [ ] Verify 125131 vs 125231 site-ID accuracy in body text references
-- [ ] Create `0860-appendix-125131-trib-to-table.Rmd` mirroring 125179
-- [ ] Anchor `{-#trib-to-table-2025}`
-- [ ] Build, verify clean
+## Phase 4 — Build + verify
 
-## Phase 4 — Build 198692 (Kerry Lake) — baseline framing
+- [ ] gitbook build (`scripts/run_gitbook.R`) — appendix renders, 3 maps appear, parity table present, cross-refs resolve
+- [ ] pagedown build (`scripts/run_pagedown.R`) — maps render static in PDF, no scroll/overflow, page breaks sane
+- [ ] Resolve any new bib keys the vignette introduces (COSEWIC bull trout, Arctic grayling refs)
 
-- [ ] Create `0860-appendix-198692-trib-to-kerry-lake.Rmd` mirroring 125179
-- [ ] Anchor `{-#trib-to-kerry-2025}`
-- [ ] Intro frames as **baseline ahead of planned remediation**
-- [ ] Conclusion: "baseline collected to inform future effectiveness monitoring"
-- [ ] Build, verify clean
+## Phase 5 — Ship
 
-## Phase 5 — Body cross-refs + release
-
-- [ ] Replace external 2024-URL links in `0400-results.Rmd` Monitoring section with internal anchors
-- [ ] Optionally add anchors in exec summary 3-site sentence
-- [ ] Full build, verify
-- [ ] Bump DESCRIPTION 0.4.1 → 0.5.0; NEWS entry
-- [ ] Commit, push, PR
-
-## Validation
-
-- [ ] Tests pass
-- [ ] `/code-check` clean on each commit
-- [ ] PWF checkboxes match landed work
-- [ ] `/planning-archive` on completion
+- [ ] NEWS entry + version bump
+- [ ] PR (Relates to #34; link#215 as source); merge
