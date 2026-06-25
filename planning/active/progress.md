@@ -8,4 +8,6 @@
 - Branched Peace `34-vignette-appendix` off main.
 - Archived stale `planning/active/` (completed-but-unarchived issue #24 monitoring appendices) → `planning/archive/2026-06-issue-24-monitoring-appendices/` with outcome README.
 - Scaffolded #34 PWF baseline (task_plan, findings, progress).
-- **Next:** Phase 1 — run `/vignette-to-appendix` report-only and review the draft; decide appendix slot (`07X0` group) + gpkg commit-vs-gitignore.
+- Decisions locked: appendix lands at `0760` (07X0 group); commit the gpkg.
+- Ran `/vignette-to-appendix` report-only. Wrote draft appendix + body snippets + build script + manifest to scratchpad; report + review scaffold to `planning/active/`. Key findings: `link` build-script-only (drop `library(link)`); `gq` render-time but MISSING from `packages.R`; **hard filename collision** — source `pars.gpkg` ≠ existing floodplain `data/gis/pars.gpkg`, so rename to `habitat-connectivity.{gpkg,rds}`; body work is cross-ref into existing fresh+link paras (not new sections); hardcoded caption numbers flagged (review F1–F3).
+- **Next:** Phase 2 — user reviews report, then apply: copy+rename data, add `gq` to packages.R, place `0760` appendix, wire cross-refs, build.

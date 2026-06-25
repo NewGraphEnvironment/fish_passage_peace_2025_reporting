@@ -12,12 +12,12 @@ Cached data: `link` `inst/vignette-data/pars.gpkg` + `pars_parity.rds`.
 
 ## Phase 1 — Pre-flight (gating; nothing else proceeds without this)
 
-- [ ] Confirm `~/Projects/repo/link` on `main` and vignette + both data files present (done in init)
-- [ ] Run `/vignette-to-appendix` in report-only mode (source = link vignette, dest = this repo); review the drafted appendix + 3-piece body scaffold + gating-review template in scratchpad
-- [ ] Decide appendix slot + slug: fits the `07X0` "Appendix -" methodology group (e.g. `0760-appendix-habitat-connectivity.Rmd`), NOT the `08X0`/site group — ordered by first body reference
-- [ ] Copy `pars.gpkg` + `pars_parity.rds` → `data/gis/` (confirm no name collision); decide gitignore vs commit for the 11 MB gpkg
-- [ ] Confirm Peace `DESCRIPTION` / `scripts/packages.R` load `link` (+ its render-time deps) so the appendix renders
-- [ ] **Gate**: confirm the report-only draft is sound before applying
+- [x] Confirm `~/Projects/repo/link` on `main` and vignette + both data files present (done in init)
+- [x] Run `/vignette-to-appendix` in report-only mode → report at `planning/active/vignette-to-appendix-report.md`, drafts in scratchpad, review scaffold at `planning/active/review-habitat-connectivity.md`
+- [x] Appendix slot + slug DECIDED: `0760-appendix-habitat-connectivity.Rmd` in the `07X0` group, anchor `#app-habitat-connectivity` — ordered by first body reference. Override the skill's `08X0` default.
+- [x] Filename collision FOUND: source `pars.gpkg` (11.55 MB) ≠ existing `data/gis/pars.gpkg` (12.99 MB floodplain) → mandatory AOI-neutral rename to `habitat-connectivity.{gpkg,rds}`. Copy in Phase 2; commit the gpkg (decided).
+- [x] Dependency check: `link` = build-script-only (drop `library(link)`); render-time `gq` is MISSING from `scripts/packages.R` — must install + add. `sf` already loaded.
+- [ ] **Gate**: user reviews the report-only draft + report before Phase 2 apply
 
 ## Phase 2 — Appendix transfer
 
