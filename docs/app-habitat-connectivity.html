@@ -541,36 +541,20 @@ The values we applied are below.</p>
 <p>We compare our per-segment classification against the <code>bcfishpass</code> snapshot,
 segment by segment. Of the two species, only bull trout occurs in the watershed
 group, so this is a single-species comparison.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="app-habitat-connectivity.html#cb91-1" tabindex="-1"></a>ptab <span class="ot">&lt;-</span> parity[, <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;total_segs&quot;</span>, <span class="st">&quot;match_pct&quot;</span>,</span>
-<span id="cb91-2"><a href="app-habitat-connectivity.html#cb91-2" tabindex="-1"></a>                   <span class="st">&quot;n_diffs&quot;</span>, <span class="st">&quot;top_pattern&quot;</span>, <span class="st">&quot;top_pattern_count&quot;</span>)]</span>
-<span id="cb91-3"><a href="app-habitat-connectivity.html#cb91-3" tabindex="-1"></a><span class="fu">names</span>(ptab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;segments&quot;</span>, <span class="st">&quot;match %&quot;</span>, <span class="st">&quot;n diffs&quot;</span>,</span>
-<span id="cb91-4"><a href="app-habitat-connectivity.html#cb91-4" tabindex="-1"></a>                 <span class="st">&quot;top diff pattern (ours | bcfishpass)&quot;</span>, <span class="st">&quot;count&quot;</span>)</span>
-<span id="cb91-5"><a href="app-habitat-connectivity.html#cb91-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb91-6"><a href="app-habitat-connectivity.html#cb91-6" tabindex="-1"></a>  ptab, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb91-7"><a href="app-habitat-connectivity.html#cb91-7" tabindex="-1"></a>  <span class="at">caption =</span> <span class="fu">paste0</span>(</span>
-<span id="cb91-8"><a href="app-habitat-connectivity.html#cb91-8" tabindex="-1"></a>    <span class="st">&quot;Per-segment classification parity for bull trout, our values vs the &quot;</span>,</span>
-<span id="cb91-9"><a href="app-habitat-connectivity.html#cb91-9" tabindex="-1"></a>    <span class="st">&quot;bcfishpass snapshot. The top diff pattern column shows the most common &quot;</span>,</span>
-<span id="cb91-10"><a href="app-habitat-connectivity.html#cb91-10" tabindex="-1"></a>    <span class="st">&quot;(ours | bcfishpass) disagreement, not a literal value.&quot;</span></span>
-<span id="cb91-11"><a href="app-habitat-connectivity.html#cb91-11" tabindex="-1"></a>  )</span>
-<span id="cb91-12"><a href="app-habitat-connectivity.html#cb91-12" tabindex="-1"></a>)</span></code></pre></div>
-<table style="width:100%;">
-<caption><span id="tab:link-parity-table">Table 5.13: </span>Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot. The top diff pattern column shows the most common (ours | bcfishpass) disagreement, not a literal value.</caption>
-<colgroup>
-<col width="8%" />
-<col width="9%" />
-<col width="8%" />
-<col width="8%" />
-<col width="57%" />
-<col width="6%" />
-</colgroup>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="app-habitat-connectivity.html#cb91-1" tabindex="-1"></a>ptab <span class="ot">&lt;-</span> parity[, <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;total_segs&quot;</span>, <span class="st">&quot;match_pct&quot;</span>, <span class="st">&quot;n_diffs&quot;</span>)]</span>
+<span id="cb91-2"><a href="app-habitat-connectivity.html#cb91-2" tabindex="-1"></a><span class="fu">names</span>(ptab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;segments&quot;</span>, <span class="st">&quot;match %&quot;</span>, <span class="st">&quot;n diffs&quot;</span>)</span>
+<span id="cb91-3"><a href="app-habitat-connectivity.html#cb91-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb91-4"><a href="app-habitat-connectivity.html#cb91-4" tabindex="-1"></a>  ptab, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb91-5"><a href="app-habitat-connectivity.html#cb91-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot.&quot;</span></span>
+<span id="cb91-6"><a href="app-habitat-connectivity.html#cb91-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:link-parity-table">Table 5.13: </span>Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot.</caption>
 <thead>
 <tr class="header">
 <th align="left">species</th>
 <th align="right">segments</th>
 <th align="right">match %</th>
 <th align="right">n diffs</th>
-<th align="left">top diff pattern (ours | bcfishpass)</th>
-<th align="right">count</th>
 </tr>
 </thead>
 <tbody>
@@ -579,8 +563,6 @@ group, so this is a single-species comparison.</p>
 <td align="right">43120</td>
 <td align="right">99.04</td>
 <td align="right">416</td>
-<td align="left">ACCESS;DAM;INTERMITTENT | REAR;DAM;INTERMITTENT</td>
-<td align="right">60</td>
 </tr>
 </tbody>
 </table>

@@ -126,17 +126,11 @@ segment by segment. Of the two species, only bull trout occurs in the watershed
 group, so this is a single-species comparison.
 
 ```{r link-parity-table}
-ptab <- parity[, c("species", "total_segs", "match_pct",
-                   "n_diffs", "top_pattern", "top_pattern_count")]
-names(ptab) <- c("species", "segments", "match %", "n diffs",
-                 "top diff pattern (ours | bcfishpass)", "count")
+ptab <- parity[, c("species", "total_segs", "match_pct", "n_diffs")]
+names(ptab) <- c("species", "segments", "match %", "n diffs")
 knitr::kable(
   ptab, row.names = FALSE,
-  caption = paste0(
-    "Per-segment classification parity for bull trout, our values vs the ",
-    "bcfishpass snapshot. The top diff pattern column shows the most common ",
-    "(ours | bcfishpass) disagreement, not a literal value."
-  )
+  caption = "Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot."
 )
 ```
 
