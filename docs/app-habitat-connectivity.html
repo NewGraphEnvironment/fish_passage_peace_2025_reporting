@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Appendix - Parsnip River Habitat and Connectivity Modelling | Restoring Fish Passage in the Peace Region - 2025</title>
+  <meta name="description" content="My Description." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Appendix - Parsnip River Habitat and Connectivity Modelling | Restoring Fish Passage in the Peace Region - 2025" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="My Description." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Appendix - Parsnip River Habitat and Connectivity Modelling | Restoring Fish Passage in the Peace Region - 2025" />
+  
+  <meta name="twitter:description" content="My Description." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="app-gis.html"/>
+<link rel="next" href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.2.3/leaflet.js"></script>
+<script src="libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
+<link href="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.css" rel="stylesheet" />
+<script src="libs/leaflet-awesomemarkers-2.0.3/leaflet.awesome-markers.min.js"></script>
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+<link href="libs/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+<script src="libs/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+<link href="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.css" rel="stylesheet" />
+<script src="libs/lfx-fullscreen-1.0.2/lfx-fullscreen-prod.js"></script>
+<link href="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet" />
+<script src="libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.34.0/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="libs/jszip-1.13.6/jszip.min.js"></script>
+<link href="libs/dt-ext-buttons-1.13.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.13.6/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.13.6/js/buttons.print.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/dt-ext-colreorder-1.13.6/css/colReorder.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-colreorder-1.13.6/js/dataTables.colReorder.min.js"></script>
+<link href="libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet" />
+<script src="libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet" />
+<script src="libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<script type="text/javascript">
+
+// toggle visibility of R source blocks in R Markdown output
+function toggle_R() {
+  var x = document.getElementsByClassName('r');
+  if (x.length == 0) return;
+  function toggle_vis(o) {
+    var d = o.style.display;
+    o.style.display = (d == 'block' || d == '') ? 'none':'block';
+  }
+
+  for (i = 0; i < x.length; i++) {
+    var y = x[i];
+    if (y.tagName.toLowerCase() === 'pre') toggle_vis(y);
+  }
+
+    var elem = document.getElementById("myButton1");
+    if (elem.value === "Show/Hide Code") elem.value = "Show/Hide Code";
+    else elem.value = "Show/Hide Code";
+}
+
+document.write('<input onclick="toggle_R();" type="button" value="Show/Hide Code" id="myButton1" style="position: absolute; top: 10%; right: 2%; z-index: 200"></input>')
+
+document.addEventListener('DOMContentLoaded', toggle_R);
+
+</script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Fish Passage in the Peace Region 2025</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Acknowledgement</a></li>
+<li class="chapter" data-level="" data-path="executive-summary.html"><a href="executive-summary.html"><i class="fa fa-check"></i>Executive Summary</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
+<li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
+<li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
+<li class="chapter" data-level="2.5" data-path="background.html"><a href="background.html#fisheries"><i class="fa fa-check"></i><b>2.5</b> Fisheries</a>
+<ul>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#bull-trout---saba"><i class="fa fa-check"></i>Bull Trout - sa’ba</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#arctic-grayling---duskihje"><i class="fa fa-check"></i>Arctic Grayling - dusk’ihje</a></li>
+<li class="chapter" data-level="" data-path="background.html"><a href="background.html#fish-presence-by-habitat-type"><i class="fa fa-check"></i>Fish presence by Habitat Type</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#climate-departure"><i class="fa fa-check"></i><b>3.1</b> Climate Departure</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#planning-habitat-connectivity-and-floodplain-modelling"><i class="fa fa-check"></i><b>3.2</b> Planning — Habitat, Connectivity and Floodplain Modelling</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#habitat-modelling"><i class="fa fa-check"></i><b>3.2.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#bull-trout-and-arctic-grayling-critical-habitat"><i class="fa fa-check"></i><b>3.2.2</b> Bull Trout and Arctic Grayling Critical Habitat</a></li>
+<li class="chapter" data-level="3.2.3" data-path="methods.html"><a href="methods.html#floodplain-delineation"><i class="fa fa-check"></i><b>3.2.3</b> Floodplain Delineation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#statistical-support-for-habitat-modelling"><i class="fa fa-check"></i><b>3.3</b> Statistical Support for Habitat Modelling</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#channel-width"><i class="fa fa-check"></i><b>3.3.1</b> Channel Width</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#stream-temperature-and-growing-season-degree-days"><i class="fa fa-check"></i><b>3.3.2</b> Stream Temperature and Growing-Season Degree Days</a></li>
+<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#habitat-modelling-framework-trajectory"><i class="fa fa-check"></i><b>3.3.3</b> Habitat-Modelling Framework — Trajectory</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#fish-passage-assessments"><i class="fa fa-check"></i><b>3.4</b> Fish Passage Assessments</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#natural-barriers-to-fish-passage"><i class="fa fa-check"></i><b>3.4.1</b> Natural Barriers to Fish Passage</a></li>
+<li class="chapter" data-level="3.4.2" data-path="methods.html"><a href="methods.html#road-stream-crossings"><i class="fa fa-check"></i><b>3.4.2</b> Road Stream Crossings</a></li>
+<li class="chapter" data-level="3.4.3" data-path="methods.html"><a href="methods.html#cost-estimates"><i class="fa fa-check"></i><b>3.4.3</b> Cost Estimates</a></li>
+<li class="chapter" data-level="3.4.4" data-path="methods.html"><a href="methods.html#climate-change-risk-assessment"><i class="fa fa-check"></i><b>3.4.4</b> Climate Change Risk Assessment</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="methods.html"><a href="methods.html#habitat-confirmation-assessments"><i class="fa fa-check"></i><b>3.5</b> Habitat Confirmation Assessments</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="methods.html"><a href="methods.html#fish-sampling"><i class="fa fa-check"></i><b>3.5.1</b> Fish Sampling</a></li>
+<li class="chapter" data-level="3.5.2" data-path="methods.html"><a href="methods.html#environmental-dna-edna-sampling"><i class="fa fa-check"></i><b>3.5.2</b> Environmental DNA (eDNA) Sampling</a></li>
+<li class="chapter" data-level="3.5.3" data-path="methods.html"><a href="methods.html#open-source-reporting-framework"><i class="fa fa-check"></i><b>3.5.3</b> Open Source Reporting Framework</a></li>
+<li class="chapter" data-level="3.5.4" data-path="methods.html"><a href="methods.html#aerial-imagery"><i class="fa fa-check"></i><b>3.5.4</b> Aerial Imagery</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="methods.html"><a href="methods.html#engineering-design"><i class="fa fa-check"></i><b>3.6</b> Engineering Design</a></li>
+<li class="chapter" data-level="3.7" data-path="methods.html"><a href="methods.html#remediations"><i class="fa fa-check"></i><b>3.7</b> Remediations</a></li>
+<li class="chapter" data-level="3.8" data-path="methods.html"><a href="methods.html#monitoring"><i class="fa fa-check"></i><b>3.8</b> Monitoring</a></li>
+<li class="chapter" data-level="3.9" data-path="methods.html"><a href="methods.html#collaborative-gis-environment"><i class="fa fa-check"></i><b>3.9</b> Collaborative GIS Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>4</b> Results and Discussion</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#engage-partners"><i class="fa fa-check"></i><b>4.1</b> Engage Partners</a></li>
+<li class="chapter" data-level="4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#site-assessment-data"><i class="fa fa-check"></i><b>4.2</b> Site Assessment Data</a></li>
+<li class="chapter" data-level="4.3" data-path="results-and-discussion.html"><a href="results-and-discussion.html#climate-departure-1"><i class="fa fa-check"></i><b>4.3</b> Climate Departure</a></li>
+<li class="chapter" data-level="4.4" data-path="results-and-discussion.html"><a href="results-and-discussion.html#planning-habitat-connectivity-and-floodplain-modelling-1"><i class="fa fa-check"></i><b>4.4</b> Planning — Habitat, Connectivity and Floodplain Modelling</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-modelling-1"><i class="fa fa-check"></i><b>4.4.1</b> Habitat Modelling</a></li>
+<li class="chapter" data-level="4.4.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#floodplain-delineation-1"><i class="fa fa-check"></i><b>4.4.2</b> Floodplain Delineation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="results-and-discussion.html"><a href="results-and-discussion.html#statistical-habitat-modelling-outputs"><i class="fa fa-check"></i><b>4.5</b> Statistical Habitat Modelling Outputs</a></li>
+<li class="chapter" data-level="4.6" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-passage-assessments-1"><i class="fa fa-check"></i><b>4.6</b> Fish Passage Assessments</a></li>
+<li class="chapter" data-level="4.7" data-path="results-and-discussion.html"><a href="results-and-discussion.html#habitat-confirmation-assessments-1"><i class="fa fa-check"></i><b>4.7</b> Habitat Confirmation Assessments</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="results-and-discussion.html"><a href="results-and-discussion.html#fish-sampling-1"><i class="fa fa-check"></i><b>4.7.1</b> Fish Sampling</a></li>
+<li class="chapter" data-level="4.7.2" data-path="results-and-discussion.html"><a href="results-and-discussion.html#environmental-dna-edna-sampling-1"><i class="fa fa-check"></i><b>4.7.2</b> Environmental DNA (eDNA) sampling</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="results-and-discussion.html"><a href="results-and-discussion.html#engineering-design-1"><i class="fa fa-check"></i><b>4.8</b> Engineering Design</a></li>
+<li class="chapter" data-level="4.9" data-path="results-and-discussion.html"><a href="results-and-discussion.html#monitoring-1"><i class="fa fa-check"></i><b>4.9</b> Monitoring</a></li>
+<li class="chapter" data-level="4.10" data-path="results-and-discussion.html"><a href="results-and-discussion.html#collaborative-gis-environment-1"><i class="fa fa-check"></i><b>4.10</b> Collaborative GIS Environment</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="recommendations.html"><a href="recommendations.html"><i class="fa fa-check"></i><b>5</b> Recommendations</a></li>
+<li class="chapter" data-level="" data-path="app-site-data.html"><a href="app-site-data.html"><i class="fa fa-check"></i>Appendix - Assessment Data Summary</a></li>
+<li class="chapter" data-level="" data-path="app-fish-species.html"><a href="app-fish-species.html"><i class="fa fa-check"></i>Appendix - Fish Species by Watershed Group</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html"><i class="fa fa-check"></i>Appendix - Climate Departure</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#climate-departure-and-fish-passage"><i class="fa fa-check"></i>Climate departure and fish passage</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#area-of-interest"><i class="fa fa-check"></i>Area of interest</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#recent-decade-versus-pre-warming-reference"><i class="fa fa-check"></i>Recent decade versus pre-warming reference</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#trends-over-the-long-record"><i class="fa fa-check"></i>Trends over the long record</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#daytime-highs-and-overnight-lows"><i class="fa fa-check"></i>Daytime highs and overnight lows</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#snowpack"><i class="fa fa-check"></i>Snowpack</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#seasonal-snowpack-curve"><i class="fa fa-check"></i>Seasonal snowpack curve</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#annual-snowpack-signals"><i class="fa fa-check"></i>Annual snowpack signals</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#what-this-means-for-the-fwcp-peace-region"><i class="fa fa-check"></i>What this means for the FWCP Peace Region</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#spatial-pattern-of-warming"><i class="fa fa-check"></i>Spatial pattern of warming</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#per-ecoregion-variation"><i class="fa fa-check"></i>Per-ecoregion variation</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#snow-by-ecoregion"><i class="fa fa-check"></i>Snow by ecoregion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#watershed-groups-across-ecoregions"><i class="fa fa-check"></i>Watershed groups across ecoregions</a></li>
+<li class="chapter" data-level="" data-path="app-climate-departure.html"><a href="app-climate-departure.html#interpretation-for-fish-passage"><i class="fa fa-check"></i>Interpretation for fish passage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a></li>
+<li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i>Appendix - UAV Imagery</a></li>
+<li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i>Appendix - Collaborative GIS Layers</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html"><i class="fa fa-check"></i>Appendix - Parsnip River Habitat and Connectivity Modelling</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#modelling-parameters"><i class="fa fa-check"></i>Modelling parameters</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#reproducing-bcfishpass-parity"><i class="fa fa-check"></i>Reproducing bcfishpass (parity)</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#arctic-grayling-extending-the-method"><i class="fa fa-check"></i>Arctic grayling — extending the method</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#maps-detail-comparison"><i class="fa fa-check"></i>Maps — detail comparison</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html"><i class="fa fa-check"></i>Appendix - Environmental DNA Results</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#per-site-detection-results"><i class="fa fa-check"></i>Per-site detection results</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#field-blanks"><i class="fa fa-check"></i>Field blanks</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#retests"><i class="fa fa-check"></i>Retests</a></li>
+<li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html#interactive-map"><i class="fa fa-check"></i>Interactive map</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html"><i class="fa fa-check"></i>Tributary To Parsnip River - 199663 - Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#site-location"><i class="fa fa-check"></i>Site Location</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#background-1"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-at-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics at Crossing 199663</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-downstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 199663</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#stream-characteristics-upstream-of-crossing-199663"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 199663</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#environmental-dna"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#structure-remediation-and-cost-estimate"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-parsnip-river---199663---appendix.html"><a href="tributary-to-parsnip-river---199663---appendix.html#conclusion"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html"><i class="fa fa-check"></i>Tributary To Nation River - 203597 - Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#site-location-1"><i class="fa fa-check"></i>Site Location</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#background-2"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-at-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics at Crossing 203597</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-downstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203597</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-upstream-of-crossing-203597"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203597</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#environmental-dna-1"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#structure-remediation-and-cost-estimate-1"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-nation-river---203597---appendix.html"><a href="tributary-to-nation-river---203597---appendix.html#conclusion-1"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html"><i class="fa fa-check"></i>Tributary To Williston Reservoir - 203605 - Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#site-location-2"><i class="fa fa-check"></i>Site Location</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#background-3"><i class="fa fa-check"></i>Background</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-at-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics at Crossing 203605</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-downstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Downstream of Crossing 203605</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#stream-characteristics-upstream-of-crossing-203605"><i class="fa fa-check"></i>Stream Characteristics Upstream of Crossing 203605</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#environmental-dna-2"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#structure-remediation-and-cost-estimate-2"><i class="fa fa-check"></i>Structure Remediation and Cost Estimate</a></li>
+<li class="chapter" data-level="" data-path="tributary-to-williston-reservoir---203605---appendix.html"><a href="tributary-to-williston-reservoir---203605---appendix.html#conclusion-2"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html"><i class="fa fa-check"></i>Tributary to Missinka River - 125179 - Monitoring Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#monitoring-form"><i class="fa fa-check"></i>Monitoring Form</a></li>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#fish-sampling-2"><i class="fa fa-check"></i>Fish Sampling</a></li>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#environmental-dna-3"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#conclusion-3"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html"><i class="fa fa-check"></i>Tributary to the Table River - 125231 - Monitoring Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#monitoring-form-1"><i class="fa fa-check"></i>Monitoring Form</a></li>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#fish-sampling-3"><i class="fa fa-check"></i>Fish Sampling</a></li>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#environmental-dna-4"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#conclusion-4"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html"><i class="fa fa-check"></i>Tributary to Kerry Lake - 198692 - Monitoring Appendix</a>
+<ul>
+<li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#fish-sampling-4"><i class="fa fa-check"></i>Fish Sampling</a></li>
+<li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#environmental-dna-5"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#conclusion-5"><i class="fa fa-check"></i>Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
+<li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i>Attachment - Habitat Assessment and Fish Sampling Data</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Restoring Fish Passage in the Peace Region - 2025</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="app-habitat-connectivity" class="section level1 unnumbered hasAnchor">
+<h1>Appendix - Parsnip River Habitat and Connectivity Modelling<a href="app-habitat-connectivity.html#app-habitat-connectivity" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>For any stream, we want to know three things: can a fish get there, is it good
+habitat, and what — if anything — blocks the way. We model this for every segment
+of the stream network in a watershed group, and for each species we work out:</p>
+<ul>
+<li><strong>Access</strong> — can the fish reach the segment, or is the route downstream
+likely too steep (gradient), or cut off by a barrier such as a dam,
+waterfall, or perched culvert?</li>
+<li><strong>Habitat</strong> — if it is reachable, is the segment likely large enough
+(channel width) and its gradient gentle enough for the modelled species to
+use it as <strong>spawning</strong> habitat, <strong>rearing</strong> habitat, or simply passable water
+with neither?</li>
+<li><strong>Barriers</strong> — the most significant obstacle downstream: a <strong>dam</strong>, a
+<strong>known</strong> barrier that has been assessed in the field (a road culvert, weir,
+etc.), a <strong>modelled</strong> crossing (predicted from road–stream intersections but
+not yet field-checked), or one that has since been <strong>remediated</strong> (fixed).</li>
+</ul>
+<p><a href="https://github.com/smnorris/bcfishpass">bcfishpass</a> (Hillcrest Geographics)
+produces this per-segment classification province-wide. We reproduce it, and
+because we re-express the methodology in our own tools we can re-parameterise the
+rules to our own values and extend the method to species <code>bcfishpass</code> does not
+yet model.</p>
+<p>We demonstrate both here for the Parsnip River Watershed Group: reproducing the
+bull-trout (<code>BT</code>) classification, and a net-new classification for Arctic
+grayling (<code>GR</code>).</p>
+<p>The Parsnip River Watershed Group sits between Prince George and Mackenzie, BC.
+The Parsnip flows north into the southern arm of Williston Reservoir, joining
+the Peace River system; from there the drainage runs Peace → Slave → Mackenzie,
+ultimately discharging to the Arctic Ocean via the Mackenzie Delta. Both bull
+trout and Arctic grayling are cold-water species whose distributions we resolve
+through gradient, channel width, and access. Bull trout — provincially blue-listed and a COSEWIC species of
+special concern in the Western Arctic population — spawn as adfluvial migrants
+in cold, low-gradient tributaries such as the Misinchinka and Anzac. Arctic
+grayling, at the southern edge of their range in the Williston watershed, hold
+to cooler, larger (fourth-order and up) clear-water reaches and spawn over fine
+gravels.</p>
+<p>We build on the canonical <a href="https://github.com/smnorris/fwapg"><code>fwapg</code></a> /
+<code>bcfishpass</code> / <a href="https://github.com/smnorris/bcfishobs"><code>bcfishobs</code></a> stack from
+Hillcrest Geographics — porting the processing methodology into our own
+<a href="https://github.com/NewGraphEnvironment/fresh"><code>fresh</code></a> and
+<a href="https://github.com/NewGraphEnvironment/link"><code>link</code></a> packages while still
+drawing on the canonical <code>bcfishpass</code> inputs (crossing overrides and the like).
+That lets us experiment with the rules for species already modelled and extend to
+species not yet modelled — here, Arctic grayling — while staying checkable,
+segment for segment, against the canonical outputs.</p>
+<div id="modelling-parameters" class="section level2 unnumbered hasAnchor">
+<h2>Modelling parameters<a href="app-habitat-connectivity.html#modelling-parameters" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The main parameters are the maximum gradients for access, spawning, and rearing
+and a minimum channel width for habitat (we apply further rules too — waterbody
+and stream-edge types, clustering of rearing with spawning habitat, and others).
+The values we applied are below.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="app-habitat-connectivity.html#cb90-1" tabindex="-1"></a>param_tab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb90-2"><a href="app-habitat-connectivity.html#cb90-2" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">&quot;BT&quot;</span>, <span class="st">&quot;GR&quot;</span>),</span>
+<span id="cb90-3"><a href="app-habitat-connectivity.html#cb90-3" tabindex="-1"></a>  <span class="at">access_grad_max =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.15</span>),</span>
+<span id="cb90-4"><a href="app-habitat-connectivity.html#cb90-4" tabindex="-1"></a>  <span class="at">spawn_grad_max =</span> <span class="fu">c</span>(<span class="fl">0.0549</span>, <span class="fl">0.0249</span>),</span>
+<span id="cb90-5"><a href="app-habitat-connectivity.html#cb90-5" tabindex="-1"></a>  <span class="at">rear_grad_max =</span> <span class="fu">c</span>(<span class="fl">0.1049</span>, <span class="fl">0.0349</span>),</span>
+<span id="cb90-6"><a href="app-habitat-connectivity.html#cb90-6" tabindex="-1"></a>  <span class="at">spawn_cw_min_m =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>),</span>
+<span id="cb90-7"><a href="app-habitat-connectivity.html#cb90-7" tabindex="-1"></a>  <span class="at">rear_cw_min_m =</span> <span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">1.5</span>),</span>
+<span id="cb90-8"><a href="app-habitat-connectivity.html#cb90-8" tabindex="-1"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb90-9"><a href="app-habitat-connectivity.html#cb90-9" tabindex="-1"></a>)</span>
+<span id="cb90-10"><a href="app-habitat-connectivity.html#cb90-10" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb90-11"><a href="app-habitat-connectivity.html#cb90-11" tabindex="-1"></a>  param_tab, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb90-12"><a href="app-habitat-connectivity.html#cb90-12" tabindex="-1"></a>  <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;access grad max&quot;</span>, <span class="st">&quot;spawn grad max&quot;</span>, <span class="st">&quot;rear grad max&quot;</span>,</span>
+<span id="cb90-13"><a href="app-habitat-connectivity.html#cb90-13" tabindex="-1"></a>                <span class="st">&quot;spawn CW min (m)&quot;</span>, <span class="st">&quot;rear CW min (m)&quot;</span>),</span>
+<span id="cb90-14"><a href="app-habitat-connectivity.html#cb90-14" tabindex="-1"></a>  <span class="at">caption =</span> <span class="fu">paste0</span>(</span>
+<span id="cb90-15"><a href="app-habitat-connectivity.html#cb90-15" tabindex="-1"></a>    <span class="st">&quot;Access, spawning, and rearing gradient ceilings and minimum channel &quot;</span>,</span>
+<span id="cb90-16"><a href="app-habitat-connectivity.html#cb90-16" tabindex="-1"></a>    <span class="st">&quot;widths applied for the two species. Grayling&#39;s tighter access ceiling and &quot;</span>,</span>
+<span id="cb90-17"><a href="app-habitat-connectivity.html#cb90-17" tabindex="-1"></a>    <span class="st">&quot;gradient windows give it the smaller modelled network.&quot;</span></span>
+<span id="cb90-18"><a href="app-habitat-connectivity.html#cb90-18" tabindex="-1"></a>  )</span>
+<span id="cb90-19"><a href="app-habitat-connectivity.html#cb90-19" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:link-params">Table 5.12: </span>Access, spawning, and rearing gradient ceilings and minimum channel widths applied for the two species. Grayling’s tighter access ceiling and gradient windows give it the smaller modelled network.</caption>
+<colgroup>
+<col width="9%" />
+<col width="18%" />
+<col width="17%" />
+<col width="16%" />
+<col width="19%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">access grad max</th>
+<th align="right">spawn grad max</th>
+<th align="right">rear grad max</th>
+<th align="right">spawn CW min (m)</th>
+<th align="right">rear CW min (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BT</td>
+<td align="right">0.25</td>
+<td align="right">0.0549</td>
+<td align="right">0.1049</td>
+<td align="right">2</td>
+<td align="right">1.5</td>
+</tr>
+<tr class="even">
+<td align="left">GR</td>
+<td align="right">0.15</td>
+<td align="right">0.0249</td>
+<td align="right">0.0349</td>
+<td align="right">4</td>
+<td align="right">1.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="reproducing-bcfishpass-parity" class="section level2 unnumbered hasAnchor">
+<h2>Reproducing bcfishpass (parity)<a href="app-habitat-connectivity.html#reproducing-bcfishpass-parity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We compare our per-segment classification against the <code>bcfishpass</code> snapshot,
+segment by segment. Of the two species, only bull trout occurs in the watershed
+group, so this is a single-species comparison.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="app-habitat-connectivity.html#cb91-1" tabindex="-1"></a>ptab <span class="ot">&lt;-</span> parity[, <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;total_segs&quot;</span>, <span class="st">&quot;match_pct&quot;</span>, <span class="st">&quot;n_diffs&quot;</span>)]</span>
+<span id="cb91-2"><a href="app-habitat-connectivity.html#cb91-2" tabindex="-1"></a><span class="fu">names</span>(ptab) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;species&quot;</span>, <span class="st">&quot;segments&quot;</span>, <span class="st">&quot;match %&quot;</span>, <span class="st">&quot;n diffs&quot;</span>)</span>
+<span id="cb91-3"><a href="app-habitat-connectivity.html#cb91-3" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb91-4"><a href="app-habitat-connectivity.html#cb91-4" tabindex="-1"></a>  ptab, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb91-5"><a href="app-habitat-connectivity.html#cb91-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot.&quot;</span></span>
+<span id="cb91-6"><a href="app-habitat-connectivity.html#cb91-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:link-parity-table">Table 5.13: </span>Per-segment classification parity for bull trout, our values vs the bcfishpass snapshot.</caption>
+<thead>
+<tr class="header">
+<th align="left">species</th>
+<th align="right">segments</th>
+<th align="right">match %</th>
+<th align="right">n diffs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">BT</td>
+<td align="right">43120</td>
+<td align="right">99.04</td>
+<td align="right">416</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="app-habitat-connectivity.html#cb92-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="fu">paste0</span>(<span class="st">&quot;We reproduce **%.2f%%** of bcfishpass&#39;s per-segment &quot;</span>,</span>
+<span id="cb92-2"><a href="app-habitat-connectivity.html#cb92-2" tabindex="-1"></a>                   <span class="st">&quot;bull-trout classification across %s segments, with %s &quot;</span>,</span>
+<span id="cb92-3"><a href="app-habitat-connectivity.html#cb92-3" tabindex="-1"></a>                   <span class="st">&quot;disagreements, consistent with the ~99.7%% study-area &quot;</span>,</span>
+<span id="cb92-4"><a href="app-habitat-connectivity.html#cb92-4" tabindex="-1"></a>                   <span class="st">&quot;median we see across the Peace.</span><span class="sc">\n</span><span class="st">&quot;</span>),</span>
+<span id="cb92-5"><a href="app-habitat-connectivity.html#cb92-5" tabindex="-1"></a>            parity<span class="sc">$</span>match_pct[<span class="dv">1</span>],</span>
+<span id="cb92-6"><a href="app-habitat-connectivity.html#cb92-6" tabindex="-1"></a>            <span class="fu">format</span>(parity<span class="sc">$</span>total_segs[<span class="dv">1</span>], <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>),</span>
+<span id="cb92-7"><a href="app-habitat-connectivity.html#cb92-7" tabindex="-1"></a>            <span class="fu">format</span>(parity<span class="sc">$</span>n_diffs[<span class="dv">1</span>], <span class="at">big.mark =</span> <span class="st">&quot;,&quot;</span>)))</span></code></pre></div>
+<p>We reproduce <strong>99.04%</strong> of bcfishpass’s per-segment bull-trout classification across 43,120 segments, with 416 disagreements, consistent with the ~99.7% study-area median we see across the Peace.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="app-habitat-connectivity.html#cb93-1" tabindex="-1"></a>bt <span class="ot">&lt;-</span> streams[<span class="sc">!</span><span class="fu">is.na</span>(streams<span class="sc">$</span>mapping_code_bt) <span class="sc">&amp;</span> <span class="fu">nzchar</span>(streams<span class="sc">$</span>mapping_code_bt), ]</span>
+<span id="cb93-2"><a href="app-habitat-connectivity.html#cb93-2" tabindex="-1"></a>bt<span class="sc">$</span>col <span class="ot">&lt;-</span> cls<span class="sc">$</span>values[bt<span class="sc">$</span>mapping_code_bt]</span>
+<span id="cb93-3"><a href="app-habitat-connectivity.html#cb93-3" tabindex="-1"></a>bt<span class="sc">$</span>col[<span class="fu">is.na</span>(bt<span class="sc">$</span>col)] <span class="ot">&lt;-</span> <span class="st">&quot;#999999&quot;</span></span>
+<span id="cb93-4"><a href="app-habitat-connectivity.html#cb93-4" tabindex="-1"></a>bt<span class="sc">$</span>w <span class="ot">&lt;-</span> <span class="fu">width_for</span>(bt<span class="sc">$</span>mapping_code_bt)</span>
+<span id="cb93-5"><a href="app-habitat-connectivity.html#cb93-5" tabindex="-1"></a>bt<span class="sc">$</span>lty <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;;INTERMITTENT&quot;</span>, bt<span class="sc">$</span>mapping_code_bt), <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;solid&quot;</span>)</span>
+<span id="cb93-6"><a href="app-habitat-connectivity.html#cb93-6" tabindex="-1"></a></span>
+<span id="cb93-7"><a href="app-habitat-connectivity.html#cb93-7" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">8</span>))</span>
+<span id="cb93-8"><a href="app-habitat-connectivity.html#cb93-8" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(aoi), <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb93-9"><a href="app-habitat-connectivity.html#cb93-9" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Bull trout — Parsnip River Watershed Group&quot;</span>)</span>
+<span id="cb93-10"><a href="app-habitat-connectivity.html#cb93-10" tabindex="-1"></a><span class="fu">draw_context_full</span>()</span>
+<span id="cb93-11"><a href="app-habitat-connectivity.html#cb93-11" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(bt), <span class="at">col =</span> bt<span class="sc">$</span>col, <span class="at">lwd =</span> bt<span class="sc">$</span>w <span class="sc">*</span> <span class="fl">0.6</span>, <span class="at">lty =</span> bt<span class="sc">$</span>lty, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb93-12"><a href="app-habitat-connectivity.html#cb93-12" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(aoi), <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb93-13"><a href="app-habitat-connectivity.html#cb93-13" tabindex="-1"></a><span class="fu">draw_reserves</span>(reserves)</span>
+<span id="cb93-14"><a href="app-habitat-connectivity.html#cb93-14" tabindex="-1"></a><span class="fu">label_reserves</span>(reserves)</span>
+<span id="cb93-15"><a href="app-habitat-connectivity.html#cb93-15" tabindex="-1"></a><span class="fu">legend_mapping_code</span>(bt<span class="sc">$</span>mapping_code_bt)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:link-map-bt"></span>
+<img src="fig/background/link-map-bt-1.png" alt="Bull-trout habitat and connectivity classification across the Parsnip River Watershed Group. Each stream segment is coloured by the most significant barrier downstream and weighted by habitat value; the legend gives the full key." width="100%" />
+<p class="caption">
+Figure 5.19: Bull-trout habitat and connectivity classification across the Parsnip River Watershed Group. Each stream segment is coloured by the most significant barrier downstream and weighted by habitat value; the legend gives the full key.
+</p>
+</div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="app-habitat-connectivity.html#cb94-1" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+</div>
+<div id="arctic-grayling-extending-the-method" class="section level2 unnumbered hasAnchor">
+<h2>Arctic grayling — extending the method<a href="app-habitat-connectivity.html#arctic-grayling-extending-the-method" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>bcfishpass</code> does not yet model Arctic grayling, so this is net-new output —
+there is nothing to compare against. We apply the same method, re-parameterised
+for grayling, and map the result with the same symbology so the two species are
+directly comparable.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="app-habitat-connectivity.html#cb95-1" tabindex="-1"></a>gr <span class="ot">&lt;-</span> streams[<span class="sc">!</span><span class="fu">is.na</span>(streams<span class="sc">$</span>mapping_code_gr) <span class="sc">&amp;</span> <span class="fu">nzchar</span>(streams<span class="sc">$</span>mapping_code_gr), ]</span>
+<span id="cb95-2"><a href="app-habitat-connectivity.html#cb95-2" tabindex="-1"></a>gr<span class="sc">$</span>col <span class="ot">&lt;-</span> cls<span class="sc">$</span>values[gr<span class="sc">$</span>mapping_code_gr]</span>
+<span id="cb95-3"><a href="app-habitat-connectivity.html#cb95-3" tabindex="-1"></a>gr<span class="sc">$</span>col[<span class="fu">is.na</span>(gr<span class="sc">$</span>col)] <span class="ot">&lt;-</span> <span class="st">&quot;#999999&quot;</span></span>
+<span id="cb95-4"><a href="app-habitat-connectivity.html#cb95-4" tabindex="-1"></a>gr<span class="sc">$</span>w <span class="ot">&lt;-</span> <span class="fu">width_for</span>(gr<span class="sc">$</span>mapping_code_gr)</span>
+<span id="cb95-5"><a href="app-habitat-connectivity.html#cb95-5" tabindex="-1"></a>gr<span class="sc">$</span>lty <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;;INTERMITTENT&quot;</span>, gr<span class="sc">$</span>mapping_code_gr), <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;solid&quot;</span>)</span>
+<span id="cb95-6"><a href="app-habitat-connectivity.html#cb95-6" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="app-habitat-connectivity.html#cb95-7" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">8</span>))</span>
+<span id="cb95-8"><a href="app-habitat-connectivity.html#cb95-8" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(aoi), <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb95-9"><a href="app-habitat-connectivity.html#cb95-9" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Arctic grayling — Parsnip River Watershed Group&quot;</span>)</span>
+<span id="cb95-10"><a href="app-habitat-connectivity.html#cb95-10" tabindex="-1"></a><span class="fu">draw_context_full</span>()</span>
+<span id="cb95-11"><a href="app-habitat-connectivity.html#cb95-11" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(gr), <span class="at">col =</span> gr<span class="sc">$</span>col, <span class="at">lwd =</span> gr<span class="sc">$</span>w <span class="sc">*</span> <span class="fl">0.6</span>, <span class="at">lty =</span> gr<span class="sc">$</span>lty, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb95-12"><a href="app-habitat-connectivity.html#cb95-12" tabindex="-1"></a><span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(aoi), <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb95-13"><a href="app-habitat-connectivity.html#cb95-13" tabindex="-1"></a><span class="fu">draw_reserves</span>(reserves)</span>
+<span id="cb95-14"><a href="app-habitat-connectivity.html#cb95-14" tabindex="-1"></a><span class="fu">label_reserves</span>(reserves)</span>
+<span id="cb95-15"><a href="app-habitat-connectivity.html#cb95-15" tabindex="-1"></a><span class="fu">legend_mapping_code</span>(gr<span class="sc">$</span>mapping_code_gr)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:link-map-gr"></span>
+<img src="fig/background/link-map-gr-1.png" alt="Arctic grayling habitat and connectivity classification across the Parsnip River Watershed Group — a species bcfishpass does not yet model. Same symbology as the bull-trout map, so the two are directly comparable; grayling's modelled network is the smaller of the two." width="100%" />
+<p class="caption">
+Figure 5.20: Arctic grayling habitat and connectivity classification across the Parsnip River Watershed Group — a species bcfishpass does not yet model. Same symbology as the bull-trout map, so the two are directly comparable; grayling’s modelled network is the smaller of the two.
+</p>
+</div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="app-habitat-connectivity.html#cb96-1" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+</div>
+<div id="maps-detail-comparison" class="section level2 unnumbered hasAnchor">
+<h2>Maps — detail comparison<a href="app-habitat-connectivity.html#maps-detail-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The full-watershed views compress a lot of network. Cropping to a sub-reach puts
+bull trout and grayling side by side at full resolution — the reaches where
+grayling carries a classification that bull trout does not are where the
+extension does genuinely new work.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="app-habitat-connectivity.html#cb97-1" tabindex="-1"></a>e <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_bbox</span>(aoi)</span>
+<span id="cb97-2"><a href="app-habitat-connectivity.html#cb97-2" tabindex="-1"></a>inset_bbox <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_bbox</span>(<span class="fu">c</span>(</span>
+<span id="cb97-3"><a href="app-habitat-connectivity.html#cb97-3" tabindex="-1"></a>  <span class="at">xmin =</span> <span class="fu">unname</span>(e[<span class="st">&quot;xmin&quot;</span>] <span class="sc">+</span> (e[<span class="st">&quot;xmax&quot;</span>] <span class="sc">-</span> e[<span class="st">&quot;xmin&quot;</span>]) <span class="sc">*</span> <span class="fl">0.55</span>),</span>
+<span id="cb97-4"><a href="app-habitat-connectivity.html#cb97-4" tabindex="-1"></a>  <span class="at">ymin =</span> <span class="fu">unname</span>(e[<span class="st">&quot;ymin&quot;</span>]),</span>
+<span id="cb97-5"><a href="app-habitat-connectivity.html#cb97-5" tabindex="-1"></a>  <span class="at">xmax =</span> <span class="fu">unname</span>(e[<span class="st">&quot;xmax&quot;</span>]),</span>
+<span id="cb97-6"><a href="app-habitat-connectivity.html#cb97-6" tabindex="-1"></a>  <span class="at">ymax =</span> <span class="fu">unname</span>(e[<span class="st">&quot;ymin&quot;</span>] <span class="sc">+</span> (e[<span class="st">&quot;ymax&quot;</span>] <span class="sc">-</span> e[<span class="st">&quot;ymin&quot;</span>]) <span class="sc">*</span> <span class="fl">0.45</span>)</span>
+<span id="cb97-7"><a href="app-habitat-connectivity.html#cb97-7" tabindex="-1"></a>), <span class="at">crs =</span> sf<span class="sc">::</span><span class="fu">st_crs</span>(aoi))</span>
+<span id="cb97-8"><a href="app-habitat-connectivity.html#cb97-8" tabindex="-1"></a></span>
+<span id="cb97-9"><a href="app-habitat-connectivity.html#cb97-9" tabindex="-1"></a>crop_sf <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb97-10"><a href="app-habitat-connectivity.html#cb97-10" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(x) <span class="sc">||</span> <span class="fu">nrow</span>(x) <span class="sc">==</span> <span class="dv">0</span><span class="dt">L</span>) <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb97-11"><a href="app-habitat-connectivity.html#cb97-11" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(sf<span class="sc">::</span><span class="fu">st_crop</span>(x, inset_bbox))</span>
+<span id="cb97-12"><a href="app-habitat-connectivity.html#cb97-12" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(out) <span class="sc">==</span> <span class="dv">0</span><span class="dt">L</span>) <span class="cn">NULL</span> <span class="cf">else</span> out</span>
+<span id="cb97-13"><a href="app-habitat-connectivity.html#cb97-13" tabindex="-1"></a>}</span>
+<span id="cb97-14"><a href="app-habitat-connectivity.html#cb97-14" tabindex="-1"></a></span>
+<span id="cb97-15"><a href="app-habitat-connectivity.html#cb97-15" tabindex="-1"></a>frame <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_as_sfc</span>(inset_bbox)</span>
+<span id="cb97-16"><a href="app-habitat-connectivity.html#cb97-16" tabindex="-1"></a>all_d   <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(streams)</span>
+<span id="cb97-17"><a href="app-habitat-connectivity.html#cb97-17" tabindex="-1"></a>bt_d    <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(bt)</span>
+<span id="cb97-18"><a href="app-habitat-connectivity.html#cb97-18" tabindex="-1"></a>gr_d    <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(gr)</span>
+<span id="cb97-19"><a href="app-habitat-connectivity.html#cb97-19" tabindex="-1"></a>wb_d    <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(waterbodies)</span>
+<span id="cb97-20"><a href="app-habitat-connectivity.html#cb97-20" tabindex="-1"></a>aoi_d   <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(aoi)</span>
+<span id="cb97-21"><a href="app-habitat-connectivity.html#cb97-21" tabindex="-1"></a>roads_d <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(roads)</span>
+<span id="cb97-22"><a href="app-habitat-connectivity.html#cb97-22" tabindex="-1"></a>rail_d  <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(railways)</span>
+<span id="cb97-23"><a href="app-habitat-connectivity.html#cb97-23" tabindex="-1"></a>res_d   <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(reserves)</span>
+<span id="cb97-24"><a href="app-habitat-connectivity.html#cb97-24" tabindex="-1"></a>parks_d <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(parks)</span>
+<span id="cb97-25"><a href="app-habitat-connectivity.html#cb97-25" tabindex="-1"></a>ns_d    <span class="ot">&lt;-</span> <span class="fu">crop_sf</span>(named_streams)</span>
+<span id="cb97-26"><a href="app-habitat-connectivity.html#cb97-26" tabindex="-1"></a></span>
+<span id="cb97-27"><a href="app-habitat-connectivity.html#cb97-27" tabindex="-1"></a>panel <span class="ot">&lt;-</span> <span class="cf">function</span>(seg, title) {</span>
+<span id="cb97-28"><a href="app-habitat-connectivity.html#cb97-28" tabindex="-1"></a>  <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(frame), <span class="at">col =</span> <span class="cn">NA</span>, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb97-29"><a href="app-habitat-connectivity.html#cb97-29" tabindex="-1"></a>       <span class="at">main =</span> title)</span>
+<span id="cb97-30"><a href="app-habitat-connectivity.html#cb97-30" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(wb_d)) {</span>
+<span id="cb97-31"><a href="app-habitat-connectivity.html#cb97-31" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(wb_d), <span class="at">col =</span> <span class="st">&quot;#a3cdb988&quot;</span>, <span class="at">border =</span> <span class="st">&quot;#2171B5&quot;</span>,</span>
+<span id="cb97-32"><a href="app-habitat-connectivity.html#cb97-32" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="fl">0.4</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-33"><a href="app-habitat-connectivity.html#cb97-33" tabindex="-1"></a>  }</span>
+<span id="cb97-34"><a href="app-habitat-connectivity.html#cb97-34" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(all_d)) {</span>
+<span id="cb97-35"><a href="app-habitat-connectivity.html#cb97-35" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(all_d), <span class="at">col =</span> <span class="st">&quot;#cccccc&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.4</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-36"><a href="app-habitat-connectivity.html#cb97-36" tabindex="-1"></a>  }</span>
+<span id="cb97-37"><a href="app-habitat-connectivity.html#cb97-37" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(roads_d)) {</span>
+<span id="cb97-38"><a href="app-habitat-connectivity.html#cb97-38" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(roads_d), <span class="at">col =</span> <span class="st">&quot;#666666aa&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.4</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-39"><a href="app-habitat-connectivity.html#cb97-39" tabindex="-1"></a>  }</span>
+<span id="cb97-40"><a href="app-habitat-connectivity.html#cb97-40" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(rail_d)) {</span>
+<span id="cb97-41"><a href="app-habitat-connectivity.html#cb97-41" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(rail_d), <span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.0</span>, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>,</span>
+<span id="cb97-42"><a href="app-habitat-connectivity.html#cb97-42" tabindex="-1"></a>         <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-43"><a href="app-habitat-connectivity.html#cb97-43" tabindex="-1"></a>  }</span>
+<span id="cb97-44"><a href="app-habitat-connectivity.html#cb97-44" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(parks_d)) {</span>
+<span id="cb97-45"><a href="app-habitat-connectivity.html#cb97-45" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(parks_d), <span class="at">col =</span> <span class="st">&quot;#639b5f55&quot;</span>, <span class="at">border =</span> <span class="st">&quot;#33a02c&quot;</span>,</span>
+<span id="cb97-46"><a href="app-habitat-connectivity.html#cb97-46" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="fl">0.8</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-47"><a href="app-habitat-connectivity.html#cb97-47" tabindex="-1"></a>  }</span>
+<span id="cb97-48"><a href="app-habitat-connectivity.html#cb97-48" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(seg) <span class="sc">&amp;&amp;</span> <span class="fu">nrow</span>(seg) <span class="sc">&gt;</span> <span class="dv">0</span><span class="dt">L</span>) {</span>
+<span id="cb97-49"><a href="app-habitat-connectivity.html#cb97-49" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(seg), <span class="at">col =</span> seg<span class="sc">$</span>col, <span class="at">lwd =</span> seg<span class="sc">$</span>w, <span class="at">lty =</span> seg<span class="sc">$</span>lty,</span>
+<span id="cb97-50"><a href="app-habitat-connectivity.html#cb97-50" tabindex="-1"></a>         <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-51"><a href="app-habitat-connectivity.html#cb97-51" tabindex="-1"></a>  }</span>
+<span id="cb97-52"><a href="app-habitat-connectivity.html#cb97-52" tabindex="-1"></a>  <span class="fu">draw_reserves</span>(res_d, <span class="at">fill =</span> <span class="st">&quot;#b2b2b2aa&quot;</span>, <span class="at">cex =</span> <span class="fl">1.0</span>)</span>
+<span id="cb97-53"><a href="app-habitat-connectivity.html#cb97-53" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(aoi_d)) {</span>
+<span id="cb97-54"><a href="app-habitat-connectivity.html#cb97-54" tabindex="-1"></a>    <span class="fu">plot</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(aoi_d), <span class="at">border =</span> <span class="st">&quot;black&quot;</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb97-55"><a href="app-habitat-connectivity.html#cb97-55" tabindex="-1"></a>  }</span>
+<span id="cb97-56"><a href="app-habitat-connectivity.html#cb97-56" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(ns_d)) {</span>
+<span id="cb97-57"><a href="app-habitat-connectivity.html#cb97-57" tabindex="-1"></a>    dedup <span class="ot">&lt;-</span> ns_d[<span class="sc">!</span><span class="fu">duplicated</span>(ns_d<span class="sc">$</span>gnis_name), ]</span>
+<span id="cb97-58"><a href="app-habitat-connectivity.html#cb97-58" tabindex="-1"></a>    npts <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(sf<span class="sc">::</span><span class="fu">st_centroid</span>(sf<span class="sc">::</span><span class="fu">st_geometry</span>(dedup)))</span>
+<span id="cb97-59"><a href="app-habitat-connectivity.html#cb97-59" tabindex="-1"></a>    <span class="fu">text</span>(sf<span class="sc">::</span><span class="fu">st_coordinates</span>(npts), <span class="at">labels =</span> dedup<span class="sc">$</span>gnis_name, <span class="at">cex =</span> <span class="fl">0.45</span>,</span>
+<span id="cb97-60"><a href="app-habitat-connectivity.html#cb97-60" tabindex="-1"></a>         <span class="at">font =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#0d3a6c&quot;</span>)</span>
+<span id="cb97-61"><a href="app-habitat-connectivity.html#cb97-61" tabindex="-1"></a>  }</span>
+<span id="cb97-62"><a href="app-habitat-connectivity.html#cb97-62" tabindex="-1"></a>}</span>
+<span id="cb97-63"><a href="app-habitat-connectivity.html#cb97-63" tabindex="-1"></a></span>
+<span id="cb97-64"><a href="app-habitat-connectivity.html#cb97-64" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb97-65"><a href="app-habitat-connectivity.html#cb97-65" tabindex="-1"></a><span class="fu">panel</span>(bt_d, <span class="st">&quot;Bull trout&quot;</span>)</span>
+<span id="cb97-66"><a href="app-habitat-connectivity.html#cb97-66" tabindex="-1"></a><span class="fu">panel</span>(gr_d, <span class="st">&quot;Arctic grayling&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:link-map-detail"></span>
+<img src="fig/background/link-map-detail-1.png" alt="South-east corner of the Parsnip River Watershed Group at full resolution: bull trout (left) and Arctic grayling (right), same extent and symbology. Grey background streams are the full modelled network, so the coloured overlay shows where each species' classification reaches." width="100%" />
+<p class="caption">
+Figure 5.21: South-east corner of the Parsnip River Watershed Group at full resolution: bull trout (left) and Arctic grayling (right), same extent and symbology. Grey background streams are the full modelled network, so the coloured overlay shows where each species’ classification reaches.
+</p>
+</div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="app-habitat-connectivity.html#cb98-1" tabindex="-1"></a><span class="fu">par</span>(op)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="app-gis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["fish_passage_peace_2025_reporting.pdf", "fish_passage_peace_2025_reporting.html"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

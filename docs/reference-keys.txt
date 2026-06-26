@@ -14,6 +14,7 @@ tab:tab-cost-mult
 tab:tab-moti-params
 tab:tab-monitoring-metrics
 tab:tab-engage-partners
+fig:map-interactive
 tab:cost-est-phase-1
 tab:tab-overview
 tab:phase-2-cv-assess-sum
@@ -27,6 +28,7 @@ fig:fish-histogram
 tab:tab-edna-summary
 tab:tab-mon-overview
 tab:tab-sites-sum-kable
+tab:tab-sites-cap
 tab:tab-fiss-species
 fig:cd-map-aoi
 tab:cd-compare-table
@@ -52,6 +54,13 @@ tab:cd-wsg-xref-table
 tab:flood-table
 fig:flood-map-wsg
 fig:flood-map-detail
+tab:tab-uav-imagery-cap
+tab:tab-rfp-tracking
+tab:link-params
+tab:link-parity-table
+fig:link-map-bt
+fig:link-map-gr
+fig:link-map-detail
 tab:tab-edna-per-site
 tab:tab-edna-field-blanks
 tab:tab-edna-retests
@@ -62,7 +71,8 @@ tab:tab-culvert-199663
 tab:tab-edna-199663
 tab:tab-edna-results-199663
 tab:tab-habitat-summary-199663
-fig:photo-199663-d01
+fig:photo-199663-01
+fig:photo-199663-02
 fig:map-203597
 tab:tab-wshd-203597
 tab:tab-culvert-bcfp-203597
@@ -70,7 +80,8 @@ tab:tab-culvert-203597
 tab:tab-edna-203597
 tab:tab-edna-results-203597
 tab:tab-habitat-summary-203597
-fig:photo-203597-d01
+fig:photo-203597-01
+fig:photo-203597-02
 fig:map-203605
 tab:tab-wshd-203605
 tab:tab-culvert-bcfp-203605
@@ -78,7 +89,9 @@ tab:tab-culvert-203605
 tab:tab-edna-203605
 tab:tab-edna-results-203605
 tab:tab-habitat-summary-203605
-fig:photo-203605-d01
+fig:photo-203605-01
+fig:photo-203605-02
+fig:photo-203605-03
 tab:tab-monitoring-125179
 tab:tab-fish-site-125179-mon
 tab:tab-fish-dens-125179-mon
@@ -148,3 +161,4 @@ engineering-design-1
 monitoring-1
 collaborative-gis-environment-1
 recommendations
+methodology
