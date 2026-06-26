@@ -1,3 +1,7 @@
+# fish_passage_peace_2025_reporting 0.10.0 (2026-06-26)
+
+* Add the Parsnip River Habitat and Connectivity Modelling appendix (`0760-appendix-habitat-connectivity.Rmd`), ported from the `link` `pars-habitat-connectivity` vignette. Shows our habitat-and-connectivity modelling for the Parsnip River Watershed Group — reproducing `bcfishpass`'s per-segment bull-trout classification (99.04% parity) and extending the same method to Arctic grayling, a species `bcfishpass` does not yet model — with three per-segment maps. Written in technical-report "we" voice; cross-referenced from the Methods and Results habitat-modelling sections. Cached data added as `data/gis/habitat-connectivity.{gpkg,rds}`; `gq` added to `scripts/packages.R` for the symbology. ([#34](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/34))
+
 # fish_passage_peace_2025_reporting 0.9.0 (2026-06-24)
 
 * Reorganize the appendices so all thematic `Appendix -` chapters are grouped first — ordered by where they are first referenced in the body (Assessment Data Summary, Fish Species, Climate Departure, Floodplain, UAV Imagery, Collaborative GIS, Phase 1 Data and Photos, Environmental DNA) — followed by the per-site Phase 2 habitat-confirmation memos and then the effectiveness-monitoring memos. Renumbered six thematic appendix files; UAV Imagery and Collaborative GIS no longer trail after the site-specific memos and UAV is out of the `0860` site-memo prefix. Moved the eDNA appendix to `0837` so it sits with the other thematic appendices.
