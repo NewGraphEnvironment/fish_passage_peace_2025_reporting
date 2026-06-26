@@ -60,12 +60,12 @@ appendix HTML for stray "vignette".)
   (used via `gq::gq_reg_main()` / `gq::gq_tmap_classes()` in `link-symbology`). `sf`
   already loaded. `link` is NOT needed at render (build-script-only). Confirm the build
   doesn't error on a missing `gq`.
-- **F7 — PDF path (KNOWN BUG).** The three base-R/sf maps render correctly in gitbook
-  but come out **blank** in the pagedown PDF (figure space + caption present, plot area
-  empty). Root cause likely the wide right-margin legend (`mar=c(2,1,4,8)`) consuming the
-  plot region at the narrower pagedown figure size. Filed upstream as
-  NewGraphEnvironment/mybookdown-template#91. Gitbook (primary deliverable) is unaffected;
-  PDF map rendering deferred to the upstream fix.
+- **F7 — PDF path (RESOLVED, no bug).** The three maps render correctly in both gitbook
+  and the pagedown PDF. An earlier "blank in PDF" call was a false positive from inspecting
+  the PDF via `pdftools::pdf_convert` (poppler), which can't rasterize the embedded map
+  JPEGs because they carry a malformed ICC colour profile (`read ICCBased color space
+  profile error`); Preview/Acrobat render them fine. `pdfimages -list` confirms all three
+  figures are embedded (840x600 JPEGs). mybookdown-template#91 closed as mis-diagnosed.
 
 ## Resolutions (implementation pass, <date>)
 
