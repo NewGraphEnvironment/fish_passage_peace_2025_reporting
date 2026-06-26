@@ -60,8 +60,12 @@ appendix HTML for stray "vignette".)
   (used via `gq::gq_reg_main()` / `gq::gq_tmap_classes()` in `link-symbology`). `sf`
   already loaded. `link` is NOT needed at render (build-script-only). Confirm the build
   doesn't error on a missing `gq`.
-- **F7 — PDF path.** Maps are static base-R/sf plots → carry to pagedown PDF. Confirm
-  no scroll/overflow and the right-margin legend isn't clipped at PDF page width.
+- **F7 — PDF path (KNOWN BUG).** The three base-R/sf maps render correctly in gitbook
+  but come out **blank** in the pagedown PDF (figure space + caption present, plot area
+  empty). Root cause likely the wide right-margin legend (`mar=c(2,1,4,8)`) consuming the
+  plot region at the narrower pagedown figure size. Filed upstream as
+  NewGraphEnvironment/mybookdown-template#91. Gitbook (primary deliverable) is unaffected;
+  PDF map rendering deferred to the upstream fix.
 
 ## Resolutions (implementation pass, <date>)
 

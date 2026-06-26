@@ -334,6 +334,13 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="app-floodplain.html"><a href="app-floodplain.html"><i class="fa fa-check"></i>Appendix - Floodplain Delineation</a></li>
 <li class="chapter" data-level="" data-path="app-uav.html"><a href="app-uav.html"><i class="fa fa-check"></i>Appendix - UAV Imagery</a></li>
 <li class="chapter" data-level="" data-path="app-gis.html"><a href="app-gis.html"><i class="fa fa-check"></i>Appendix - Collaborative GIS Layers</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html"><i class="fa fa-check"></i>Appendix - Parsnip River Habitat and Connectivity Modelling</a>
+<ul>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#modelling-parameters"><i class="fa fa-check"></i>Modelling parameters</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#reproducing-bcfishpass-parity"><i class="fa fa-check"></i>Reproducing bcfishpass (parity)</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#arctic-grayling-extending-the-method"><i class="fa fa-check"></i>Arctic grayling — extending the method</a></li>
+<li class="chapter" data-level="" data-path="app-habitat-connectivity.html"><a href="app-habitat-connectivity.html#maps-detail-comparison"><i class="fa fa-check"></i>Maps — detail comparison</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><a href="appendix---phase-1-fish-passage-assessment-data-and-photos.html"><i class="fa fa-check"></i>Appendix - Phase 1 Fish Passage Assessment Data and Photos</a></li>
 <li class="chapter" data-level="" data-path="app-edna.html"><a href="app-edna.html"><i class="fa fa-check"></i>Appendix - Environmental DNA Results</a>
 <ul>
@@ -424,12 +431,12 @@ div.csl-indent {
 <p><br></p>
 <div id="fish-sampling-4" class="section level2 unnumbered hasAnchor">
 <h2>Fish Sampling<a href="trib-to-kerry-2025.html#fish-sampling-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Electrofishing was conducted downstream and upstream of PSCIS crossing 198692 in 2025 to establish a pre-remediation baseline. Per-site capture results are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-site-198692-mon">5.41</a>; densities are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-dens-198692-mon">5.42</a>.</p>
+<p>Electrofishing was conducted downstream and upstream of PSCIS crossing 198692 in 2025 to establish a pre-remediation baseline. Per-site capture results are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-site-198692-mon">5.43</a>; densities are in Table <a href="trib-to-kerry-2025.html#tab:tab-fish-dens-198692-mon">5.44</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="trib-to-kerry-2025.html#cb159-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="trib-to-kerry-2025.html#cb168-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-site-198692-mon">Table 5.41: </span>Fish sampling site summary for 198692.
+<span id="tab:tab-fish-site-198692-mon">Table 5.43: </span>Fish sampling site summary for 198692.
 </caption>
 <thead>
 <tr>
@@ -537,10 +544,10 @@ open
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="trib-to-kerry-2025.html#cb160-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="trib-to-kerry-2025.html#cb169-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-dens-198692-mon">Table 5.42: </span>Fish sampling density results summary for 198692.
+<span id="tab:tab-fish-dens-198692-mon">Table 5.44: </span>Fish sampling density results summary for 198692.
 </caption>
 <thead>
 <tr>
@@ -738,16 +745,16 @@ FALSE
 </div>
 <div id="environmental-dna-5" class="section level2 unnumbered hasAnchor">
 <h2>Environmental DNA<a href="trib-to-kerry-2025.html#environmental-dna-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>eDNA samples were collected upstream and downstream of PSCIS crossing 198692 in 2025 as part of the program-wide eDNA sampling effort. Per-position detection results are presented in Table <a href="trib-to-kerry-2025.html#tab:tab-edna-results-198692-mon">5.43</a>. Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples UNBC reran. Site-level detail across all sampled crossings is in <a href="app-edna.html#app-edna">Appendix - Environmental DNA Results</a>, and the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a> provides a toggleable per-species view.</p>
+<p>eDNA samples were collected upstream and downstream of PSCIS crossing 198692 in 2025 as part of the program-wide eDNA sampling effort. Per-position detection results are presented in Table <a href="trib-to-kerry-2025.html#tab:tab-edna-results-198692-mon">5.45</a>. Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples UNBC reran. Site-level detail across all sampled crossings is in <a href="app-edna.html#app-edna">Appendix - Environmental DNA Results</a>, and the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a> provides a toggleable per-species view.</p>
 <p><br></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="trib-to-kerry-2025.html#cb161-1" tabindex="-1"></a>edna_results_198692_mon <span class="sc">|&gt;</span></span>
-<span id="cb161-2"><a href="trib-to-kerry-2025.html#cb161-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb161-3"><a href="trib-to-kerry-2025.html#cb161-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb161-4"><a href="trib-to-kerry-2025.html#cb161-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb161-5"><a href="trib-to-kerry-2025.html#cb161-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="trib-to-kerry-2025.html#cb170-1" tabindex="-1"></a>edna_results_198692_mon <span class="sc">|&gt;</span></span>
+<span id="cb170-2"><a href="trib-to-kerry-2025.html#cb170-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb170-3"><a href="trib-to-kerry-2025.html#cb170-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb170-4"><a href="trib-to-kerry-2025.html#cb170-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb170-5"><a href="trib-to-kerry-2025.html#cb170-5" tabindex="-1"></a>  )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-edna-results-198692-mon">Table 5.43: </span>eDNA detection results at crossing 198692.
+<span id="tab:tab-edna-results-198692-mon">Table 5.45: </span>eDNA detection results at crossing 198692.
 </caption>
 <thead>
 <tr>

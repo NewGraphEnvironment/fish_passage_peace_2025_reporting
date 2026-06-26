@@ -8,7 +8,7 @@
  collate  en_US.UTF-8
  ctype    en_US.UTF-8
  tz       America/Vancouver
- date     2026-06-24
+ date     2026-06-26
  pandoc   3.9.0.2 @ /opt/homebrew/bin/ (via rmarkdown)
  quarto   1.4.553 @ /usr/local/bin/quarto
 
@@ -62,6 +62,7 @@
  ggrepel             0.9.7      2026-02-25 [2] CRAN (R 4.5.2)
  gh                  1.5.0      2025-05-26 [2] CRAN (R 4.5.0)
  glue                1.8.1      2026-04-17 [1] CRAN (R 4.5.2)
+ gq                * 0.1.0      2026-06-25 [1] local
  gtable              0.3.6      2024-10-25 [1] CRAN (R 4.5.0)
  here                1.0.2      2025-09-15 [2] CRAN (R 4.5.0)
  hms                 1.1.4      2025-10-17 [1] CRAN (R 4.5.0)

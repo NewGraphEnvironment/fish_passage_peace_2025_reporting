@@ -27,6 +27,7 @@ pkgs_cran <- c(
 pkgs_gh <- c(
   "newgraphenvironment/fpr",
   "newgraphenvironment/ngr",
+  "newgraphenvironment/gq",
   "newgraphenvironment/staticimports",
   "newgraphenvironment/fishbc@updated_data",
   "poissonconsulting/readwritesqlite", #https://github.com/poissonconsulting/readwritesqlite/issues/47

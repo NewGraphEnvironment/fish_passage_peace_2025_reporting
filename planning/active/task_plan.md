@@ -21,24 +21,25 @@ Cached data: `link` `inst/vignette-data/pars.gpkg` + `pars_parity.rds`.
 
 ## Phase 2 — Appendix transfer
 
-- [ ] `/vignette-to-appendix --apply` (or hand-place the reviewed draft) → write `0760-appendix-habitat-connectivity.Rmd`
-- [ ] Strip vignette YAML; convert to appendix heading with anchor `{-#app-habitat-connectivity}`
-- [ ] Rewrite `system.file()` paths → `data/gis/<file>`
-- [ ] Prefix chunk labels with `link` (e.g. `map-link-bt`, `tab-link-parity`)
-- [ ] Add the appendix to `_bookdown.yml` rmd ordering in the right slot
-- [ ] Confirm static `tmap`/base-R maps (carry to PDF) — no interactive-widget swap needed
+- [x] Hand-placed the reviewed draft → `0760-appendix-habitat-connectivity.Rmd` (title: "Parsnip River Habitat and Connectivity Modelling")
+- [x] YAML stripped; appendix heading + anchor `{-#app-habitat-connectivity}`
+- [x] `system.file()` paths rewritten → `data/gis/habitat-connectivity.{gpkg,rds}`
+- [x] Chunk labels prefixed `link-` (link-setup, link-params, link-load, link-parity-table, link-parity-pct, link-symbology, link-map-bt, link-map-gr, link-map-detail)
+- [x] Copied + renamed data into `data/gis/`; added `gq` to `scripts/packages.R` + installed (render-time dep); dropped `library(link)`
+- [x] `_bookdown.yml` auto-orders by filename — `0760` slots between `0750` and `0835`, no manifest edit needed
+- [x] Maps are static base-R/sf plots → carry to PDF, no interactive-widget swap
 
 ## Phase 3 — Body wiring
 
-- [ ] Methods: add cross-ref to the appendix in the `fresh` + `link` framework paragraph (`0300-methods.Rmd`, *Statistical Support for Habitat Modelling*)
-- [ ] Results: add cross-ref in the `fresh` + `link` / Arctic grayling paragraph under *Statistical Habitat Modelling Outputs* (`0400-results.Rmd`)
-- [ ] Confirm `\@ref()` anchors resolve both directions
+- [x] Methods: cross-ref added to the `fresh` + `link` paragraph (`0300-methods.Rmd`)
+- [x] Results: cross-ref added to the `fresh` + `link` / Arctic grayling paragraph (`0400-results.Rmd`), with figure refs
+- [x] `\@ref()` anchors resolve both directions (verified in gitbook: methods + results → appendix; figs 5.19/5.20/5.21)
 
 ## Phase 4 — Build + verify
 
-- [ ] gitbook build (`scripts/run_gitbook.R`) — appendix renders, 3 maps appear, parity table present, cross-refs resolve
-- [ ] pagedown build (`scripts/run_pagedown.R`) — maps render static in PDF, no scroll/overflow, page breaks sane
-- [ ] Resolve any new bib keys the vignette introduces (COSEWIC bull trout, Arctic grayling refs)
+- [x] gitbook build (`scripts/run_gitbook.R`) — appendix renders (`app-habitat-connectivity.html`), 3 maps embedded, params+parity tables present, cross-refs resolve. NOTE: required two fixes — (1) renamed local `params`→`param_tab` (collided with bookdown's locked YAML `params`); (2) reinstalled `gq` from local HEAD (pak had a STALE `gq` lacking `gq_tmap_classes()` widths).
+- [ ] pagedown build (`scripts/run_pagedown.R`) — maps render static in PDF, no scroll/overflow, legend not clipped
+- [x] No new bib keys — vignette cites no `@keys` (COSEWIC/blue-list mentioned narratively only)
 
 ## Phase 5 — Ship
 
