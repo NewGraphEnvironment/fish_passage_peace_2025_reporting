@@ -241,7 +241,10 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="background.html"><a href="background.html#scales-of-work"><i class="fa fa-check"></i><b>2.1.1</b> Scales of work</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
 <li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
 <li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
@@ -433,18 +436,18 @@ div.csl-indent {
 <h2>Monitoring Form<a href="trib-to-table-2025.html#monitoring-form-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>2025 effectiveness monitoring form results are summarized in Table <a href="trib-to-table-2025.html#tab:tab-monitoring-125231">5.39</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="trib-to-table-2025.html#cb161-1" tabindex="-1"></a>tab_monitoring <span class="sc">|&gt;</span></span>
-<span id="cb161-2"><a href="trib-to-table-2025.html#cb161-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">Pscis Crossing Id</span><span class="st">`</span> <span class="sc">==</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb161-3"><a href="trib-to-table-2025.html#cb161-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">|&gt;</span></span>
-<span id="cb161-4"><a href="trib-to-table-2025.html#cb161-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb161-5"><a href="trib-to-table-2025.html#cb161-5" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb161-6"><a href="trib-to-table-2025.html#cb161-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>,</span>
-<span id="cb161-7"><a href="trib-to-table-2025.html#cb161-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span></span>
-<span id="cb161-8"><a href="trib-to-table-2025.html#cb161-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb161-9"><a href="trib-to-table-2025.html#cb161-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb161-10"><a href="trib-to-table-2025.html#cb161-10" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of effectiveness monitoring form results for site &quot;</span>, my_site, <span class="st">&quot; in &quot;</span>, params<span class="sc">$</span>project_year, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb161-11"><a href="trib-to-table-2025.html#cb161-11" tabindex="-1"></a>    <span class="at">scroll =</span> gitbook_on</span>
-<span id="cb161-12"><a href="trib-to-table-2025.html#cb161-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="trib-to-table-2025.html#cb162-1" tabindex="-1"></a>tab_monitoring <span class="sc">|&gt;</span></span>
+<span id="cb162-2"><a href="trib-to-table-2025.html#cb162-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">Pscis Crossing Id</span><span class="st">`</span> <span class="sc">==</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb162-3"><a href="trib-to-table-2025.html#cb162-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">|&gt;</span></span>
+<span id="cb162-4"><a href="trib-to-table-2025.html#cb162-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb162-5"><a href="trib-to-table-2025.html#cb162-5" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb162-6"><a href="trib-to-table-2025.html#cb162-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>,</span>
+<span id="cb162-7"><a href="trib-to-table-2025.html#cb162-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span></span>
+<span id="cb162-8"><a href="trib-to-table-2025.html#cb162-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb162-9"><a href="trib-to-table-2025.html#cb162-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb162-10"><a href="trib-to-table-2025.html#cb162-10" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of effectiveness monitoring form results for site &quot;</span>, my_site, <span class="st">&quot; in &quot;</span>, params<span class="sc">$</span>project_year, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb162-11"><a href="trib-to-table-2025.html#cb162-11" tabindex="-1"></a>    <span class="at">scroll =</span> gitbook_on</span>
+<span id="cb162-12"><a href="trib-to-table-2025.html#cb162-12" tabindex="-1"></a>  )</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -606,7 +609,7 @@ No maintenance required
 <h2>Fish Sampling<a href="trib-to-table-2025.html#fish-sampling-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Electrofishing was conducted downstream and upstream of PSCIS crossing 125231 in 2025. Per-site capture results are in Table <a href="trib-to-table-2025.html#tab:tab-fish-site-125231-mon">5.40</a>; densities are in Table <a href="trib-to-table-2025.html#tab:tab-fish-dens-125231-mon">5.41</a> and Figure <a href="trib-to-table-2025.html#fig:plot-fish-box-125231-mon">5.33</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="trib-to-table-2025.html#cb162-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="trib-to-table-2025.html#cb163-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-site-125231-mon">Table 5.40: </span>Fish sampling site summary for 125231.
@@ -677,7 +680,7 @@ partial enclosure
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="trib-to-table-2025.html#cb163-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="trib-to-table-2025.html#cb164-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-dens-125231-mon">Table 5.41: </span>Fish sampling density results summary for 125231.
@@ -895,20 +898,20 @@ FALSE
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="trib-to-table-2025.html#cb164-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb164-2"><a href="trib-to-table-2025.html#cb164-2" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="trib-to-table-2025.html#cb164-3" tabindex="-1"></a>fish_abund <span class="sc">|&gt;</span></span>
-<span id="cb164-4"><a href="trib-to-table-2025.html#cb164-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb164-5"><a href="trib-to-table-2025.html#cb164-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
-<span id="cb164-6"><a href="trib-to-table-2025.html#cb164-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb164-7"><a href="trib-to-table-2025.html#cb164-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="at">stackdir =</span> <span class="st">&quot;center&quot;</span>, <span class="at">dotsize =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb164-8"><a href="trib-to-table-2025.html#cb164-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb164-9"><a href="trib-to-table-2025.html#cb164-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb164-10"><a href="trib-to-table-2025.html#cb164-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
-<span id="cb164-11"><a href="trib-to-table-2025.html#cb164-11" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb164-12"><a href="trib-to-table-2025.html#cb164-12" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
-<span id="cb164-13"><a href="trib-to-table-2025.html#cb164-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb164-14"><a href="trib-to-table-2025.html#cb164-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="trib-to-table-2025.html#cb165-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb165-2"><a href="trib-to-table-2025.html#cb165-2" tabindex="-1"></a></span>
+<span id="cb165-3"><a href="trib-to-table-2025.html#cb165-3" tabindex="-1"></a>fish_abund <span class="sc">|&gt;</span></span>
+<span id="cb165-4"><a href="trib-to-table-2025.html#cb165-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb165-5"><a href="trib-to-table-2025.html#cb165-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
+<span id="cb165-6"><a href="trib-to-table-2025.html#cb165-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb165-7"><a href="trib-to-table-2025.html#cb165-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="at">stackdir =</span> <span class="st">&quot;center&quot;</span>, <span class="at">dotsize =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb165-8"><a href="trib-to-table-2025.html#cb165-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb165-9"><a href="trib-to-table-2025.html#cb165-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb165-10"><a href="trib-to-table-2025.html#cb165-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
+<span id="cb165-11"><a href="trib-to-table-2025.html#cb165-11" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb165-12"><a href="trib-to-table-2025.html#cb165-12" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
+<span id="cb165-13"><a href="trib-to-table-2025.html#cb165-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb165-14"><a href="trib-to-table-2025.html#cb165-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plot-fish-box-125231-mon"></span>
 <img src="fig/background/plot-fish-box-125231-mon-1.png" alt="Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing 125231 in 2025." width="100%" />
 <p class="caption">
@@ -921,11 +924,11 @@ Figure 5.33: Densities of fish (fish/100m2) captured upstream and downstream of 
 <h2>Environmental DNA<a href="trib-to-table-2025.html#environmental-dna-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>eDNA samples were collected upstream and downstream of PSCIS crossing 125231 in 2025 as part of the program-wide eDNA sampling effort. Per-position detection results are presented in Table <a href="trib-to-table-2025.html#tab:tab-edna-results-125231-mon">5.42</a>. Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples UNBC reran. Site-level detail across all sampled crossings is in <a href="app-edna.html#app-edna">Appendix - Environmental DNA Results</a>, and the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a> provides a toggleable per-species view.</p>
 <p><br></p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="trib-to-table-2025.html#cb165-1" tabindex="-1"></a>edna_results_125231_mon <span class="sc">|&gt;</span></span>
-<span id="cb165-2"><a href="trib-to-table-2025.html#cb165-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb165-3"><a href="trib-to-table-2025.html#cb165-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb165-4"><a href="trib-to-table-2025.html#cb165-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb165-5"><a href="trib-to-table-2025.html#cb165-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="trib-to-table-2025.html#cb166-1" tabindex="-1"></a>edna_results_125231_mon <span class="sc">|&gt;</span></span>
+<span id="cb166-2"><a href="trib-to-table-2025.html#cb166-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb166-3"><a href="trib-to-table-2025.html#cb166-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb166-4"><a href="trib-to-table-2025.html#cb166-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb166-5"><a href="trib-to-table-2025.html#cb166-5" tabindex="-1"></a>  )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-edna-results-125231-mon">Table 5.42: </span>eDNA detection results at crossing 125231.
@@ -992,11 +995,11 @@ BULT(0), GRAY(0), SOCK(0)
 <h2>Conclusion<a href="trib-to-table-2025.html#conclusion-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At the time of reporting, the structure at PSCIS crossing 125231 appears stable and the site is showing positive signals of recovery. Continued effectiveness monitoring at this site is recommended in future years to extend the multi-year time series of structure performance and fish use.</p>
 
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="trib-to-table-2025.html#cb166-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb166-2"><a href="trib-to-table-2025.html#cb166-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb166-3"><a href="trib-to-table-2025.html#cb166-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb166-4"><a href="trib-to-table-2025.html#cb166-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="trib-to-table-2025.html#cb167-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198692</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="trib-to-table-2025.html#cb167-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb167-2"><a href="trib-to-table-2025.html#cb167-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb167-3"><a href="trib-to-table-2025.html#cb167-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb167-4"><a href="trib-to-table-2025.html#cb167-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="trib-to-table-2025.html#cb168-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">198692</span></span></code></pre></div>
 </div>
 </div>
             </section>

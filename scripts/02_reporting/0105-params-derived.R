@@ -24,6 +24,12 @@ wsg_names <- xref_wsg |>
   dplyr::filter(watershed_group_code %in% params$wsg_code) |>
   dplyr::pull(watershed_group_name)
 
+# field assessments happen in a subset of the region-wide modelling extent. keeping these
+# separate prevents the report claiming ground work in watershed groups we only model.
+wsg_names_field <- xref_wsg |>
+  dplyr::filter(watershed_group_code %in% params$wsg_code_field) |>
+  dplyr::pull(watershed_group_name)
+
 path <- 'data/inputs_extracted/fiss_species_table.csv'
 # you need static imports for this
 if(params$derive_params){

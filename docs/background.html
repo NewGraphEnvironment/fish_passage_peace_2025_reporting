@@ -241,7 +241,10 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="background.html"><a href="background.html#scales-of-work"><i class="fa fa-check"></i><b>2.1.1</b> Scales of work</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
 <li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
 <li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
@@ -440,19 +443,143 @@ div.csl-indent {
 <p>Many road and rail corridors were built without consideration of fish passage or floodplain function. Damage frequently extends beyond the structure at the crossing — channelized streams, dykes that sever lateral connection, drained wetlands, cleared riparian buffers. Replacing a culvert in-kind can restore longitudinal passage while leaving the broader corridor-scale disconnection unaddressed. Understanding where infrastructure constrains watershed function helps distinguish cases where structural replacement is sufficient from cases where remediation needs to address more than the structure itself.</p>
 <p><br></p>
 <p>This report compiles the layers used for prioritization in the watershed groups where the work is active: structural assessment data, habitat modelling, climate trajectory, and floodplain extent. Each layer contributes a piece of the picture — what is present, what it could support, how it is changing, and the surrounding watershed context. The work happens over many years across many partners; this report documents one year’s contribution to that effort.</p>
+<p><br></p>
+<div id="scales-of-work" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Scales of work<a href="background.html#scales-of-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The activities described in this report operate at different extents, and conflating them makes the work harder to read. Field assessments and effectiveness monitoring happen at a small number of sites and watershed groups. Connectivity modelling runs across the whole region. The watershed-scale context layers sit somewhere between. Table <a href="background.html#tab:tab-scales">2.1</a> sets out what each activity covers and what it is for.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a>tab_scales <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="background.html#cb9-2" tabindex="-1"></a>  <span class="at">Activity =</span> <span class="fu">c</span>(</span>
+<span id="cb9-3"><a href="background.html#cb9-3" tabindex="-1"></a>    <span class="st">&quot;Field assessments and habitat confirmations&quot;</span>,</span>
+<span id="cb9-4"><a href="background.html#cb9-4" tabindex="-1"></a>    <span class="st">&quot;Effectiveness monitoring&quot;</span>,</span>
+<span id="cb9-5"><a href="background.html#cb9-5" tabindex="-1"></a>    <span class="st">&quot;Connectivity modelling (`bcfishpass`)&quot;</span>,</span>
+<span id="cb9-6"><a href="background.html#cb9-6" tabindex="-1"></a>    <span class="st">&quot;Modelled-crossing corrections&quot;</span>,</span>
+<span id="cb9-7"><a href="background.html#cb9-7" tabindex="-1"></a>    <span class="st">&quot;Floodplain delineation&quot;</span>,</span>
+<span id="cb9-8"><a href="background.html#cb9-8" tabindex="-1"></a>    <span class="st">&quot;Climate departure&quot;</span></span>
+<span id="cb9-9"><a href="background.html#cb9-9" tabindex="-1"></a>  ),</span>
+<span id="cb9-10"><a href="background.html#cb9-10" tabindex="-1"></a>  <span class="at">Extent =</span> <span class="fu">c</span>(</span>
+<span id="cb9-11"><a href="background.html#cb9-11" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">length</span>(params<span class="sc">$</span>wsg_code_field), <span class="st">&quot; watershed groups&quot;</span>),</span>
+<span id="cb9-12"><a href="background.html#cb9-12" tabindex="-1"></a>    <span class="st">&quot;3 sites&quot;</span>,</span>
+<span id="cb9-13"><a href="background.html#cb9-13" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">&quot;All &quot;</span>, <span class="fu">length</span>(params<span class="sc">$</span>wsg_code), <span class="st">&quot; watershed groups, updated weekly&quot;</span>),</span>
+<span id="cb9-14"><a href="background.html#cb9-14" tabindex="-1"></a>    <span class="st">&quot;Region-wide&quot;</span>,</span>
+<span id="cb9-15"><a href="background.html#cb9-15" tabindex="-1"></a>    <span class="st">&quot;Parsnip River watershed group (pilot)&quot;</span>,</span>
+<span id="cb9-16"><a href="background.html#cb9-16" tabindex="-1"></a>    <span class="st">&quot;Region and constituent ecoregions&quot;</span></span>
+<span id="cb9-17"><a href="background.html#cb9-17" tabindex="-1"></a>  ),</span>
+<span id="cb9-18"><a href="background.html#cb9-18" tabindex="-1"></a>  <span class="at">Purpose =</span> <span class="fu">c</span>(</span>
+<span id="cb9-19"><a href="background.html#cb9-19" tabindex="-1"></a>    <span class="st">&quot;Establishes actual barrier severity and actual habitat value at a crossing. Fish sampling and environmental DNA (eDNA) are conducted within this program to establish which species are present, and which are possible.&quot;</span>,</span>
+<span id="cb9-20"><a href="background.html#cb9-20" tabindex="-1"></a>    <span class="st">&quot;Shows what restoration achieves, shares those results with partners, and feeds the learning that informs adaptive management of subsequent projects.&quot;</span>,</span>
+<span id="cb9-21"><a href="background.html#cb9-21" tabindex="-1"></a>    <span class="st">&quot;Screens many thousands of modelled stream-road intersections down to a candidate set, so that field effort is directed where it has the potential to matter.&quot;</span>,</span>
+<span id="cb9-22"><a href="background.html#cb9-22" tabindex="-1"></a>    <span class="st">&quot;The model cannot see that a bridge was installed or a road deactivated, so it flags crossings that are not problems. Recording them keeps field crews away from non-issues and improves the provincial layer that analyses across British Columbia depend on.&quot;</span>,</span>
+<span id="cb9-23"><a href="background.html#cb9-23" tabindex="-1"></a>    <span class="st">&quot;Builds understanding of watershed health and of how infrastructure is affecting it. Locates the off-channel habitat — side channels, wetlands, riparian recruitment areas — that mainstem passage alone does not restore, and shows where corridors constrain the floodplain.&quot;</span>,</span>
+<span id="cb9-24"><a href="background.html#cb9-24" tabindex="-1"></a>    <span class="st">&quot;Establishes what is changing and whether some areas are changing more than others. Informs the hydrology assumptions that new structures are engineered against, and the flow, temperature, and timing conditions that fish life cycles depend on.&quot;</span></span>
+<span id="cb9-25"><a href="background.html#cb9-25" tabindex="-1"></a>  ),</span>
+<span id="cb9-26"><a href="background.html#cb9-26" tabindex="-1"></a>  <span class="at">check.names =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-27"><a href="background.html#cb9-27" tabindex="-1"></a>)</span>
+<span id="cb9-28"><a href="background.html#cb9-28" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="background.html#cb9-29" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>(</span>
+<span id="cb9-30"><a href="background.html#cb9-30" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(tab_scales, <span class="at">label =</span> <span class="cn">NA</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-31"><a href="background.html#cb9-31" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">&quot;Activities described in this report, the extent each covers, and what each is for. Connectivity modelling covers the entire FWCP Peace Region; field assessments, monitoring, and the floodplain pilot cover progressively smaller areas within it.&quot;</span>),</span>
+<span id="cb9-32"><a href="background.html#cb9-32" tabindex="-1"></a>  <span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>)</span>
+<span id="cb9-33"><a href="background.html#cb9-33" tabindex="-1"></a>)</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tab-scales">Table 2.1: </span>Activities described in this report, the extent each covers, and what each is for. Connectivity modelling covers the entire FWCP Peace Region; field assessments, monitoring, and the floodplain pilot cover progressively smaller areas within it.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Activity
+</th>
+<th style="text-align:left;">
+Extent
+</th>
+<th style="text-align:left;">
+Purpose
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Field assessments and habitat confirmations
+</td>
+<td style="text-align:left;">
+5 watershed groups
+</td>
+<td style="text-align:left;">
+Establishes actual barrier severity and actual habitat value at a crossing. Fish sampling and environmental DNA (eDNA) are conducted within this program to establish which species are present, and which are possible.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Effectiveness monitoring
+</td>
+<td style="text-align:left;">
+3 sites
+</td>
+<td style="text-align:left;">
+Shows what restoration achieves, shares those results with partners, and feeds the learning that informs adaptive management of subsequent projects.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Connectivity modelling (<code>bcfishpass</code>)
+</td>
+<td style="text-align:left;">
+All 16 watershed groups, updated weekly
+</td>
+<td style="text-align:left;">
+Screens many thousands of modelled stream-road intersections down to a candidate set, so that field effort is directed where it has the potential to matter.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Modelled-crossing corrections
+</td>
+<td style="text-align:left;">
+Region-wide
+</td>
+<td style="text-align:left;">
+The model cannot see that a bridge was installed or a road deactivated, so it flags crossings that are not problems. Recording them keeps field crews away from non-issues and improves the provincial layer that analyses across British Columbia depend on.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Floodplain delineation
+</td>
+<td style="text-align:left;">
+Parsnip River watershed group (pilot)
+</td>
+<td style="text-align:left;">
+Builds understanding of watershed health and of how infrastructure is affecting it. Locates the off-channel habitat — side channels, wetlands, riparian recruitment areas — that mainstem passage alone does not restore, and shows where corridors constrain the floodplain.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Climate departure
+</td>
+<td style="text-align:left;">
+Region and constituent ecoregions
+</td>
+<td style="text-align:left;">
+Establishes what is changing and whether some areas are changing more than others. Informs the hydrology assumptions that new structures are engineered against, and the flow, temperature, and timing conditions that fish life cycles depend on.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="project-location" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Project Location<a href="background.html#project-location" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse’khene First Nations.
-In 2025, field assessments were completed with the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>).</p>
+In 2025, field assessments were completed within the Carp Lake, Crooked River, Nation River, Parsnip Arm, and Parsnip River watershed groups (Figure <a href="background.html#fig:overview-map">2.1</a>). Connectivity modelling covers all 16 watershed groups of the FWCP Peace Region; the activities and the extent each one covers are set out in Table <a href="background.html#tab:tab-scales">2.1</a>.</p>
 <p><br></p>
 <p>In 2019/2020, following a literature review, analysis of fish habitat modelling data, the Provincial Stream Crossing Inventory System (PSCIS) and a community scoping exercise within the McLeod Lake Indian Band habitat confirmation assessments were conducted at 17 sites throughout the Parsnip River watershed with 10 crossings rated as high priorities for rehabilitation and three crossings rated as moderate priorities for restoration. An engineering design for site 125179 on a tributary to the Missinka River was also completed through the 2019/2020 project. In 2021/2022, project activities reconvened through FWCP directed project PEA-F22-F-3577-DCA. Partners were engaged, funding was raised, planning was conducted and reporting was completed to initiate restoration activities of high priority crossings. Materials were purchased and permitting was put in place to prepare for replacement of the twin culverts on the Missinka River tributary with a clear-span bridge. In 2025/2026, this collaborative project leveraged ongoing connectivity restoration initiatives in the province and engaged multiple partners to catalyze fish passage restoration activities at high-priority sites identified in from 2019-2024.</p>
 <p><br></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="background.html#cb9-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/fishpassage_2024_fwcp_progress.jpeg&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="background.html#cb10-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;fig/fishpassage_2024_fwcp_progress.jpeg&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:overview-map"></span>
-<img src="fig/fishpassage_2024_fwcp_progress.jpeg" alt="Overview map of Study Area" width="100%" />
+<img src="fig/fishpassage_2024_fwcp_progress.jpeg" alt="Overview map of the study area, showing fish passage assessment and restoration progress to date. The mapped extent reflects where field work has been concentrated; connectivity modelling covers all 16 watershed groups of the FWCP Peace Region, as set out in the scales of work table above. Future versions will render the full regional extent so the modelled and field-assessed areas are visible together." width="100%" />
 <p class="caption">
-Figure 2.1: Overview map of Study Area
+Figure 2.1: Overview map of the study area, showing fish passage assessment and restoration progress to date. The mapped extent reflects where field work has been concentrated; connectivity modelling covers all 16 watershed groups of the FWCP Peace Region, as set out in the scales of work table above. Future versions will render the full regional extent so the modelled and field-assessed areas are visible together.
 </p>
 </div>
 <p><br></p>
@@ -465,12 +592,12 @@ Figure 2.1: Overview map of Study Area
 <p><br></p>
 <p>Construction of the 183m high and 2134m long W.A.C. Bennett Dam was completed in 1967 at Hudson’s Hope, BC, creating the Williston Reservoir <span class="citation">(Hirst 1991)</span>. Filling of the 375km<sup>2</sup> reservoir was complete in 1972 and flooded a substantial portion of the Parsnip River and major tributary valleys forming what is now known as the Peace and Parsnip reaches. The replacement of riverine habitat with an inundated reservoir environment resulted in profound changes to the ecology, resource use and human settlement patterns in these systems <span class="citation">(Hagen et al. 2015; Pearce et al. 2019; Stamford et al. 2017)</span>. Prior to the filling of the reservoir, the Pack River, into which McLeod Lake flows, was a major tributary to the Parsnip River. The Pack River currently enters the Williston Reservoir directly as the historic location of the confluence of the two rivers lies within the reservoir’s footprint.</p>
 <p><br></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="background.html#cb10-1" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> fasstr<span class="sc">::</span><span class="fu">plot_longterm_monthly_stats</span>(</span>
-<span id="cb10-2"><a href="background.html#cb10-2" tabindex="-1"></a>  <span class="at">station_number =</span> <span class="st">&quot;07EE007&quot;</span>,</span>
-<span id="cb10-3"><a href="background.html#cb10-3" tabindex="-1"></a>  <span class="at">ignore_missing =</span> <span class="cn">TRUE</span></span>
-<span id="cb10-4"><a href="background.html#cb10-4" tabindex="-1"></a>)</span>
-<span id="cb10-5"><a href="background.html#cb10-5" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="background.html#cb10-6" tabindex="-1"></a><span class="fu">print</span>(plot1<span class="sc">$</span><span class="st">`</span><span class="at">Long-term_Monthly_Statistics</span><span class="st">`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="background.html#cb11-1" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> fasstr<span class="sc">::</span><span class="fu">plot_longterm_monthly_stats</span>(</span>
+<span id="cb11-2"><a href="background.html#cb11-2" tabindex="-1"></a>  <span class="at">station_number =</span> <span class="st">&quot;07EE007&quot;</span>,</span>
+<span id="cb11-3"><a href="background.html#cb11-3" tabindex="-1"></a>  <span class="at">ignore_missing =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-4"><a href="background.html#cb11-4" tabindex="-1"></a>)</span>
+<span id="cb11-5"><a href="background.html#cb11-5" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="background.html#cb11-6" tabindex="-1"></a><span class="fu">print</span>(plot1<span class="sc">$</span><span class="st">`</span><span class="at">Long-term_Monthly_Statistics</span><span class="st">`</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fig-hydrology-plot-flow"></span>
 <img src="fig/background/fig-hydrology-plot-flow-1.png" alt="Hydrograph for Parsnip River above Misinchinka River (Station #07EE007)." width="100%" />
 <p class="caption">
@@ -520,26 +647,26 @@ Figure 2.2: Hydrograph for Parsnip River above Misinchinka River (Station #07EE0
 </div>
 <div id="fish-presence-by-habitat-type" class="section level3 unnumbered hasAnchor">
 <h3>Fish presence by Habitat Type<a href="background.html#fish-presence-by-habitat-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A review of available fisheries data for the Parsnip River watershed stratified by different habitat characteristics (stream gradient, channel width, and watershed size) can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Tables <a href="background.html#tab:tab-fish-grad">2.1</a> - <a href="background.html#tab:tab-fish-wshed">2.3</a> and Figures <a href="background.html#fig:fish-plot-grad">2.3</a> - <a href="background.html#fig:fish-plot-wshed">2.5</a>). It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).</p>
+<p>A review of available fisheries data for the Parsnip River watershed stratified by different habitat characteristics (stream gradient, channel width, and watershed size) can provide insight into which habitats may provide the highest intrinsic value for fish species based on the number of fish captured in those habitats in past assessment work (Tables <a href="background.html#tab:tab-fish-grad">2.2</a> - <a href="background.html#tab:tab-fish-wshed">2.4</a> and Figures <a href="background.html#fig:fish-plot-grad">2.3</a> - <a href="background.html#fig:fish-plot-wshed">2.5</a>). It should be noted however that it should not be assumed that all habitat types have been sampled in a non-biased fashion or that particular sites selected do not have a disproportionate influence on the overall dataset composition (ie. fish salvage sites are often located adjacent to construction sites which are more commonly located near lower gradient stream reaches).</p>
 <p><br></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="background.html#cb11-1" tabindex="-1"></a><span class="co"># fiss_sum &lt;- readr::read_csv(file = paste0(getwd(), &#39;/data/extracted_inputs/fiss_sum.csv&#39;))</span></span>
-<span id="cb11-2"><a href="background.html#cb11-2" tabindex="-1"></a>fiss_sum_grad <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_grad.csv&#39;</span>))</span>
-<span id="cb11-3"><a href="background.html#cb11-3" tabindex="-1"></a>fiss_sum_width <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_width.csv&#39;</span>))</span>
-<span id="cb11-4"><a href="background.html#cb11-4" tabindex="-1"></a>fiss_sum_wshed <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_wshed.csv&#39;</span>)) </span>
-<span id="cb11-5"><a href="background.html#cb11-5" tabindex="-1"></a>  </span>
-<span id="cb11-6"><a href="background.html#cb11-6" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="background.html#cb11-7" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="background.html#cb11-8" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="background.html#cb11-9" tabindex="-1"></a><span class="co"># A summary of historical westslope cutthrout trout observations in the Elk River watershed group by average gradient category of associated stream segment is provided in Figure \@ref(fig:fish-wct-bar). Of `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(total)` observations, `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(Percent) + wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent) + wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 8) %&gt;% pull(Percent)`% were within stream segments with average gradients ranging from 0 - 8%.  A total of `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(Percent)`% of historic observations were within stream segments with gradients between 0 - 3%, `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent)`% were within stream segments with gradients ranging from 3 - 5% and `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent)`% were within stream segments with gradients between 5 - 8% [@moe2024KnownBC; @norris2020bcfishobs]. </span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. stream gradient category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
-<span id="cb12-2"><a href="background.html#cb12-2" tabindex="-1"></a>fiss_sum_grad <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="background.html#cb12-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>gradient_id) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href="background.html#cb12-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
-<span id="cb12-5"><a href="background.html#cb12-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="background.html#cb12-1" tabindex="-1"></a><span class="co"># fiss_sum &lt;- readr::read_csv(file = paste0(getwd(), &#39;/data/extracted_inputs/fiss_sum.csv&#39;))</span></span>
+<span id="cb12-2"><a href="background.html#cb12-2" tabindex="-1"></a>fiss_sum_grad <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_grad.csv&#39;</span>))</span>
+<span id="cb12-3"><a href="background.html#cb12-3" tabindex="-1"></a>fiss_sum_width <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_width.csv&#39;</span>))</span>
+<span id="cb12-4"><a href="background.html#cb12-4" tabindex="-1"></a>fiss_sum_wshed <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">paste0</span>(<span class="fu">getwd</span>(), <span class="st">&#39;/data/inputs_extracted/fiss_sum_wshed.csv&#39;</span>)) </span>
+<span id="cb12-5"><a href="background.html#cb12-5" tabindex="-1"></a>  </span>
+<span id="cb12-6"><a href="background.html#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="background.html#cb12-7" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="background.html#cb12-8" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="background.html#cb12-9" tabindex="-1"></a><span class="co"># A summary of historical westslope cutthrout trout observations in the Elk River watershed group by average gradient category of associated stream segment is provided in Figure \@ref(fig:fish-wct-bar). Of `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(total)` observations, `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(Percent) + wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent) + wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 8) %&gt;% pull(Percent)`% were within stream segments with average gradients ranging from 0 - 8%.  A total of `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 3) %&gt;% pull(Percent)`% of historic observations were within stream segments with gradients between 0 - 3%, `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent)`% were within stream segments with gradients ranging from 3 - 5% and `r wct_elkr_grad %&gt;% dplyr::filter(gradient_id == 5) %&gt;% pull(Percent)`% were within stream segments with gradients between 5 - 8% [@moe2024KnownBC; @norris2020bcfishobs]. </span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="background.html#cb13-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. stream gradient category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
+<span id="cb13-2"><a href="background.html#cb13-2" tabindex="-1"></a>fiss_sum_grad <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="background.html#cb13-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>gradient_id) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="background.html#cb13-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
+<span id="cb13-5"><a href="background.html#cb13-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-grad">Table 2.1: </span>Summary of historic fish observations vs. stream gradient category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
+<span id="tab:tab-fish-grad">Table 2.2: </span>Summary of historic fish observations vs. stream gradient category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
 </caption>
 <thead>
 <tr>
@@ -854,13 +981,13 @@ RB
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="background.html#cb13-1" tabindex="-1"></a>fiss_sum_grad <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="background.html#cb13-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(gradient_id <span class="sc">!=</span> <span class="dv">99</span>) <span class="sc">|&gt;</span></span>
-<span id="cb13-3"><a href="background.html#cb13-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Gradient, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="background.html#cb13-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="background.html#cb13-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="background.html#cb13-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="background.html#cb13-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average Stream Gradient&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="background.html#cb14-1" tabindex="-1"></a>fiss_sum_grad <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="background.html#cb14-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(gradient_id <span class="sc">!=</span> <span class="dv">99</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="background.html#cb14-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Gradient, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="background.html#cb14-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="background.html#cb14-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="background.html#cb14-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="background.html#cb14-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average Stream Gradient&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-grad"></span>
 <img src="fig/background/fish-plot-grad-1.png" alt="Summary of historic fish observations vs. stream gradient category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups." width="100%" />
 <p class="caption">
@@ -868,15 +995,15 @@ Figure 2.3: Summary of historic fish observations vs. stream gradient category 
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="background.html#cb14-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. channel width category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
-<span id="cb14-2"><a href="background.html#cb14-2" tabindex="-1"></a>fiss_sum_width <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="background.html#cb14-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>width_id) <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="background.html#cb14-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
-<span id="cb14-5"><a href="background.html#cb14-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="background.html#cb15-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. channel width category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
+<span id="cb15-2"><a href="background.html#cb15-2" tabindex="-1"></a>fiss_sum_width <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="background.html#cb15-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>width_id) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="background.html#cb15-4" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
+<span id="cb15-5"><a href="background.html#cb15-5" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-width">Table 2.2: </span>Summary of historic fish observations vs. channel width category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
+<span id="tab:tab-fish-width">Table 2.3: </span>Summary of historic fish observations vs. channel width category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
 </caption>
 <thead>
 <tr>
@@ -1344,13 +1471,13 @@ RB
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="background.html#cb15-1" tabindex="-1"></a>fiss_sum_width <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="background.html#cb15-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(width_id)) <span class="sc">|&gt;</span></span>
-<span id="cb15-3"><a href="background.html#cb15-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Width, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
-<span id="cb15-4"><a href="background.html#cb15-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="background.html#cb15-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb15-6"><a href="background.html#cb15-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="background.html#cb15-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Channel Width&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="background.html#cb16-1" tabindex="-1"></a>fiss_sum_width <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="background.html#cb16-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(width_id)) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="background.html#cb16-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Width, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="background.html#cb16-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="background.html#cb16-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="background.html#cb16-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="background.html#cb16-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Channel Width&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-width"></span>
 <img src="fig/background/fish-plot-width-1.png" alt="Summary of historic fish observations vs. channel width category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups." width="100%" />
 <p class="caption">
@@ -1358,14 +1485,14 @@ Figure 2.4: Summary of historic fish observations vs. channel width category fo
 </p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="background.html#cb16-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. watershed size category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
-<span id="cb16-2"><a href="background.html#cb16-2" tabindex="-1"></a>fiss_sum_wshed <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="background.html#cb16-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
-<span id="cb16-4"><a href="background.html#cb16-4" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="background.html#cb17-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Summary of historic fish observations vs. watershed size category for the &#39;</span>, knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names), <span class="st">&#39; watershed groups.&#39;</span>)</span>
+<span id="cb17-2"><a href="background.html#cb17-2" tabindex="-1"></a>fiss_sum_wshed <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="background.html#cb17-3" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(<span class="at">caption_text =</span> my_caption,</span>
+<span id="cb17-4"><a href="background.html#cb17-4" tabindex="-1"></a>                 <span class="at">scroll =</span> gitbook_on)</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fish-wshed">Table 2.3: </span>Summary of historic fish observations vs. watershed size category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
+<span id="tab:tab-fish-wshed">Table 2.4: </span>Summary of historic fish observations vs. watershed size category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
 </caption>
 <thead>
 <tr>
@@ -1714,13 +1841,13 @@ RB
 </table>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="background.html#cb17-1" tabindex="-1"></a>fiss_sum_wshed <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="background.html#cb17-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Watershed, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
-<span id="cb17-3"><a href="background.html#cb17-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="background.html#cb17-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb17-5"><a href="background.html#cb17-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="background.html#cb17-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Watershed Area&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>) <span class="sc">+</span></span>
-<span id="cb17-7"><a href="background.html#cb17-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="background.html#cb18-1" tabindex="-1"></a>fiss_sum_wshed <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="background.html#cb18-2" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> Watershed, <span class="at">y =</span> Percent)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="background.html#cb18-3" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="background.html#cb18-4" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>species_code, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="background.html#cb18-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="background.html#cb18-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Watershed Area&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Occurrences (%)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="background.html#cb18-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">axis.text.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fish-plot-wshed"></span>
 <img src="fig/background/fish-plot-wshed-1.png" alt="Summary of historic fish observations vs. watershed size category for the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups." width="100%" />
 <p class="caption">

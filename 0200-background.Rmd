@@ -26,11 +26,53 @@ Many road and rail corridors were built without consideration of fish passage or
 
 This report compiles the layers used for prioritization in the watershed groups where the work is active: structural assessment data, habitat modelling, climate trajectory, and floodplain extent. Each layer contributes a piece of the picture — what is present, what it could support, how it is changing, and the surrounding watershed context. The work happens over many years across many partners; this report documents one year's contribution to that effort.
 
+<br>
+
+### Scales of work
+
+The activities described in this report operate at different extents, and conflating them makes the work harder to read. Field assessments and effectiveness monitoring happen at a small number of sites and watershed groups. Connectivity modelling runs across the whole region. The watershed-scale context layers sit somewhere between. Table \@ref(tab:tab-scales) sets out what each activity covers and what it is for.
+
+```{r tab-scales}
+tab_scales <- data.frame(
+  Activity = c(
+    "Field assessments and habitat confirmations",
+    "Effectiveness monitoring",
+    "Connectivity modelling (`bcfishpass`)",
+    "Modelled-crossing corrections",
+    "Floodplain delineation",
+    "Climate departure"
+  ),
+  Extent = c(
+    paste0(length(params$wsg_code_field), " watershed groups"),
+    "3 sites",
+    paste0("All ", length(params$wsg_code), " watershed groups, updated weekly"),
+    "Region-wide",
+    "Parsnip River watershed group (pilot)",
+    "Region and constituent ecoregions"
+  ),
+  Purpose = c(
+    "Establishes actual barrier severity and actual habitat value at a crossing. Fish sampling and environmental DNA (eDNA) are conducted within this program to establish which species are present, and which are possible.",
+    "Shows what restoration achieves, shares those results with partners, and feeds the learning that informs adaptive management of subsequent projects.",
+    "Screens many thousands of modelled stream-road intersections down to a candidate set, so that field effort is directed where it has the potential to matter.",
+    "The model cannot see that a bridge was installed or a road deactivated, so it flags crossings that are not problems. Recording them keeps field crews away from non-issues and improves the provincial layer that analyses across British Columbia depend on.",
+    "Builds understanding of watershed health and of how infrastructure is affecting it. Locates the off-channel habitat — side channels, wetlands, riparian recruitment areas — that mainstem passage alone does not restore, and shows where corridors constrain the floodplain.",
+    "Establishes what is changing and whether some areas are changing more than others. Informs the hydrology assumptions that new structures are engineered against, and the flow, temperature, and timing conditions that fish life cycles depend on."
+  ),
+  check.names = FALSE
+)
+
+kableExtra::kable_styling(
+  knitr::kable(tab_scales, label = NA, row.names = FALSE,
+    caption = "Activities described in this report, the extent each covers, and what each is for. Connectivity modelling covers the entire FWCP Peace Region; field assessments, monitoring, and the floodplain pilot cover progressively smaller areas within it."),
+  bootstrap_options = c("striped", "hover", "condensed")
+)
+```
+
 
 ## Project Location
 
 The study area includes the FWCP Peace Region with a focus to date on traditional territories of the Tse'khene First Nations.
-In `r params$project_year`, field assessments were completed with the `r wsg_names |> knitr::combine_words()` watershed groups (Figure \@ref(fig:overview-map)).  
+In `r params$project_year`, field assessments were completed within the `r wsg_names_field |> knitr::combine_words()` watershed groups (Figure \@ref(fig:overview-map)). Connectivity modelling covers all `r length(params$wsg_code)` watershed groups of the FWCP Peace Region; the activities and the extent each one covers are set out in Table \@ref(tab:tab-scales).
 
 <br>
 
@@ -38,7 +80,7 @@ In 2019/2020, following a literature review, analysis of fish habitat modelling 
 
 <br>
 
-```{r overview-map, fig.cap = 'Overview map of Study Area',eval=T}
+```{r overview-map, fig.cap = paste0('Overview map of the study area, showing fish passage assessment and restoration progress to date. The mapped extent reflects where field work has been concentrated; connectivity modelling covers all ', length(params$wsg_code), ' watershed groups of the FWCP Peace Region, as set out in the scales of work table above. Future versions will render the full regional extent so the modelled and field-assessed areas are visible together.'), eval=T}
 knitr::include_graphics("fig/fishpassage_2024_fwcp_progress.jpeg")
 ```
 
