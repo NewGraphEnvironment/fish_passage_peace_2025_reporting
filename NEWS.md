@@ -1,3 +1,13 @@
+# fish_passage_peace_2025_reporting 0.11.0 (2026-07-09)
+
+Addresses review comments from the Fish and Wildlife Compensation Program on the submitted report.
+
+* Fix an incorrect scope claim in the Background. `wsg_names` derives from `params$wsg_code`, which is the region-wide connectivity-modelling extent, so the Project Location sentence rendered all 16 watershed groups — including Finlay, Ingenika, Toodoggone, and both Omineca groups — as having received field assessments. Add a `wsg_code_field` param and derive `wsg_names_field` from it, rather than narrowing `wsg_code`, which is used correctly at seven other call sites (historic fish-observation plots, the fish species appendix, and the site-assessment-data filter).
+* Add a scales-of-work table (`tab-scales`) to the Background giving the extent and purpose of each activity, ordered so field assessments and effectiveness monitoring lead. The reviewer found the analytical layers hard to integrate; naming what each covers and what each is for makes the nesting legible. The climate-departure row states that the analysis does not discriminate between sites, consistent with the appendix's own finding that the regional signal is uniform.
+* Move the purpose-and-constraint paragraph in the Executive Summary ahead of the data-product paragraphs, so a reader learns what the work is for before being walked through connectivity modelling, eDNA, floodplain delineation, and climate departure.
+* Recommendations and Executive Summary: replace "inherently subjective" and "made opportunistically" with the underlying reasoning — the prioritization criteria are not measured in common units, so no single ordering exists, and the deciding constraint is tenure-holder capacity, which sits outside the project.
+* Caption the overview map with the extent it depicts and note that future versions will render the full regional extent.
+
 # fish_passage_peace_2025_reporting 0.10.0 (2026-06-26)
 
 * Add the Parsnip River Habitat and Connectivity Modelling appendix (`0760-appendix-habitat-connectivity.Rmd`), ported from the `link` `pars-habitat-connectivity` vignette. Shows our habitat-and-connectivity modelling for the Parsnip River Watershed Group — reproducing `bcfishpass`'s per-segment bull-trout classification (99.04% parity) and extending the same method to Arctic grayling, a species `bcfishpass` does not yet model — with three per-segment maps. Written in technical-report "we" voice; cross-referenced from the Methods and Results habitat-modelling sections. Cached data added as `data/gis/habitat-connectivity.{gpkg,rds}`; `gq` added to `scripts/packages.R` for the symbology. ([#34](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/34))

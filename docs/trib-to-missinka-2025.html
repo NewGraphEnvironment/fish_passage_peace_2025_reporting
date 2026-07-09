@@ -241,7 +241,10 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="background.html"><a href="background.html"><i class="fa fa-check"></i><b>2</b> Background</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a></li>
+<li class="chapter" data-level="2.1" data-path="background.html"><a href="background.html#approach"><i class="fa fa-check"></i><b>2.1</b> Approach</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="background.html"><a href="background.html#scales-of-work"><i class="fa fa-check"></i><b>2.1.1</b> Scales of work</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="background.html"><a href="background.html#project-location"><i class="fa fa-check"></i><b>2.2</b> Project Location</a></li>
 <li class="chapter" data-level="2.3" data-path="background.html"><a href="background.html#tsekhene"><i class="fa fa-check"></i><b>2.3</b> Tse’khene</a></li>
 <li class="chapter" data-level="2.4" data-path="background.html"><a href="background.html#floodplains-and-watershed-function"><i class="fa fa-check"></i><b>2.4</b> Floodplains and Watershed Function</a></li>
@@ -433,18 +436,18 @@ div.csl-indent {
 <h2>Monitoring Form<a href="trib-to-missinka-2025.html#monitoring-form" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>2025 effectiveness monitoring form results are summarized in Table <a href="trib-to-missinka-2025.html#tab:tab-monitoring-125179">5.35</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="trib-to-missinka-2025.html#cb154-1" tabindex="-1"></a>tab_monitoring <span class="sc">|&gt;</span></span>
-<span id="cb154-2"><a href="trib-to-missinka-2025.html#cb154-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">Pscis Crossing Id</span><span class="st">`</span> <span class="sc">==</span> my_site) <span class="sc">|&gt;</span></span>
-<span id="cb154-3"><a href="trib-to-missinka-2025.html#cb154-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">|&gt;</span></span>
-<span id="cb154-4"><a href="trib-to-missinka-2025.html#cb154-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb154-5"><a href="trib-to-missinka-2025.html#cb154-5" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb154-6"><a href="trib-to-missinka-2025.html#cb154-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>,</span>
-<span id="cb154-7"><a href="trib-to-missinka-2025.html#cb154-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span></span>
-<span id="cb154-8"><a href="trib-to-missinka-2025.html#cb154-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb154-9"><a href="trib-to-missinka-2025.html#cb154-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb154-10"><a href="trib-to-missinka-2025.html#cb154-10" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of effectiveness monitoring form results for site &quot;</span>, my_site, <span class="st">&quot; in &quot;</span>, params<span class="sc">$</span>project_year, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb154-11"><a href="trib-to-missinka-2025.html#cb154-11" tabindex="-1"></a>    <span class="at">scroll =</span> gitbook_on</span>
-<span id="cb154-12"><a href="trib-to-missinka-2025.html#cb154-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="trib-to-missinka-2025.html#cb155-1" tabindex="-1"></a>tab_monitoring <span class="sc">|&gt;</span></span>
+<span id="cb155-2"><a href="trib-to-missinka-2025.html#cb155-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="st">`</span><span class="at">Pscis Crossing Id</span><span class="st">`</span> <span class="sc">==</span> my_site) <span class="sc">|&gt;</span></span>
+<span id="cb155-3"><a href="trib-to-missinka-2025.html#cb155-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), as.character)) <span class="sc">|&gt;</span></span>
+<span id="cb155-4"><a href="trib-to-missinka-2025.html#cb155-4" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb155-5"><a href="trib-to-missinka-2025.html#cb155-5" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb155-6"><a href="trib-to-missinka-2025.html#cb155-6" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;Variable&quot;</span>,</span>
+<span id="cb155-7"><a href="trib-to-missinka-2025.html#cb155-7" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;Value&quot;</span></span>
+<span id="cb155-8"><a href="trib-to-missinka-2025.html#cb155-8" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb155-9"><a href="trib-to-missinka-2025.html#cb155-9" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb155-10"><a href="trib-to-missinka-2025.html#cb155-10" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;Summary of effectiveness monitoring form results for site &quot;</span>, my_site, <span class="st">&quot; in &quot;</span>, params<span class="sc">$</span>project_year, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb155-11"><a href="trib-to-missinka-2025.html#cb155-11" tabindex="-1"></a>    <span class="at">scroll =</span> gitbook_on</span>
+<span id="cb155-12"><a href="trib-to-missinka-2025.html#cb155-12" tabindex="-1"></a>  )</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
@@ -606,7 +609,7 @@ No maintenance required
 <h2>Fish Sampling<a href="trib-to-missinka-2025.html#fish-sampling-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Electrofishing was conducted downstream and upstream of PSCIS crossing 125179 in 2025. Per-site capture results are in Table <a href="trib-to-missinka-2025.html#tab:tab-fish-site-125179-mon">5.36</a>; densities are in Table <a href="trib-to-missinka-2025.html#tab:tab-fish-dens-125179-mon">5.37</a> and Figure <a href="trib-to-missinka-2025.html#fig:plot-fish-box-125179-mon">5.32</a>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="trib-to-missinka-2025.html#cb155-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="trib-to-missinka-2025.html#cb156-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_site</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-site-125179-mon">Table 5.36: </span>Fish sampling site summary for 125179.
@@ -677,7 +680,7 @@ partial enclosure
 </tbody>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="trib-to-missinka-2025.html#cb156-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="trib-to-missinka-2025.html#cb157-1" tabindex="-1"></a>fpr<span class="sc">::</span><span class="fu">fpr_table_fish_density</span>()</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-fish-dens-125179-mon">Table 5.37: </span>Fish sampling density results summary for 125179.
@@ -875,20 +878,20 @@ FALSE
 </tfoot>
 </table>
 <p><br></p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="trib-to-missinka-2025.html#cb157-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;.&#39;</span>)</span>
-<span id="cb157-2"><a href="trib-to-missinka-2025.html#cb157-2" tabindex="-1"></a></span>
-<span id="cb157-3"><a href="trib-to-missinka-2025.html#cb157-3" tabindex="-1"></a>fish_abund <span class="sc">|&gt;</span></span>
-<span id="cb157-4"><a href="trib-to-missinka-2025.html#cb157-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb157-5"><a href="trib-to-missinka-2025.html#cb157-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
-<span id="cb157-6"><a href="trib-to-missinka-2025.html#cb157-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb157-7"><a href="trib-to-missinka-2025.html#cb157-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="at">stackdir =</span> <span class="st">&quot;center&quot;</span>, <span class="at">dotsize =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb157-8"><a href="trib-to-missinka-2025.html#cb157-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
-<span id="cb157-9"><a href="trib-to-missinka-2025.html#cb157-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
-<span id="cb157-10"><a href="trib-to-missinka-2025.html#cb157-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
-<span id="cb157-11"><a href="trib-to-missinka-2025.html#cb157-11" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb157-12"><a href="trib-to-missinka-2025.html#cb157-12" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
-<span id="cb157-13"><a href="trib-to-missinka-2025.html#cb157-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb157-14"><a href="trib-to-missinka-2025.html#cb157-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="trib-to-missinka-2025.html#cb158-1" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;.&#39;</span>)</span>
+<span id="cb158-2"><a href="trib-to-missinka-2025.html#cb158-2" tabindex="-1"></a></span>
+<span id="cb158-3"><a href="trib-to-missinka-2025.html#cb158-3" tabindex="-1"></a>fish_abund <span class="sc">|&gt;</span></span>
+<span id="cb158-4"><a href="trib-to-missinka-2025.html#cb158-4" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site, species_code <span class="sc">!=</span> <span class="st">&quot;NFC&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb158-5"><a href="trib-to-missinka-2025.html#cb158-5" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">x =</span> location, <span class="at">y =</span> density_100m2, <span class="at">color =</span> local_name, <span class="at">fill =</span> local_name)) <span class="sc">+</span></span>
+<span id="cb158-6"><a href="trib-to-missinka-2025.html#cb158-6" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">&quot;lightgray&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb158-7"><a href="trib-to-missinka-2025.html#cb158-7" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_dotplot</span>(<span class="at">binaxis =</span> <span class="st">&quot;y&quot;</span>, <span class="at">stackdir =</span> <span class="st">&quot;center&quot;</span>, <span class="at">dotsize =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb158-8"><a href="trib-to-missinka-2025.html#cb158-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">facet_grid</span>(. <span class="sc">~</span> life_stage, <span class="at">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb158-9"><a href="trib-to-missinka-2025.html#cb158-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb158-10"><a href="trib-to-missinka-2025.html#cb158-10" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(</span>
+<span id="cb158-11"><a href="trib-to-missinka-2025.html#cb158-11" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb158-12"><a href="trib-to-missinka-2025.html#cb158-12" tabindex="-1"></a>    <span class="at">axis.title.x =</span> ggplot2<span class="sc">::</span><span class="fu">element_blank</span>()</span>
+<span id="cb158-13"><a href="trib-to-missinka-2025.html#cb158-13" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb158-14"><a href="trib-to-missinka-2025.html#cb158-14" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">ylab</span>(<span class="fu">expression</span>(Density <span class="sc">~</span> (fish<span class="sc">/</span><span class="dv">100</span> <span class="sc">~</span> m<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:plot-fish-box-125179-mon"></span>
 <img src="fig/background/plot-fish-box-125179-mon-1.png" alt="Densities of fish (fish/100m2) captured upstream and downstream of PSCIS crossing 125179 in 2025." width="100%" />
 <p class="caption">
@@ -901,11 +904,11 @@ Figure 5.32: Densities of fish (fish/100m2) captured upstream and downstream of 
 <h2>Environmental DNA<a href="trib-to-missinka-2025.html#environmental-dna-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>eDNA samples were collected upstream and downstream of PSCIS crossing 125179 in 2025 as part of the program-wide eDNA sampling effort. The reference site at PSCIS crossing 125180, located on the same road as documented in <span class="citation">Irvine and Schick (2025)</span>, was also sampled for eDNA in 2025. Per-position detection results for both sites are presented in Table <a href="trib-to-missinka-2025.html#tab:tab-edna-results-125179-mon">5.38</a>. Detections are based on the standard ddPCR call threshold of ≥4 positive droplets; format is <code>CODE(max_droplets)</code>, with <code>*</code> flagging samples UNBC reran. Site-level detail across all sampled crossings is in <a href="app-edna.html#app-edna">Appendix - Environmental DNA Results</a>, and the <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/edna_unbc_results_2025_peace_map.html" target="_blank">interactive Peace eDNA map</a> provides a toggleable per-species view.</p>
 <p><br></p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="trib-to-missinka-2025.html#cb158-1" tabindex="-1"></a>edna_results_125179_mon <span class="sc">|&gt;</span></span>
-<span id="cb158-2"><a href="trib-to-missinka-2025.html#cb158-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb158-3"><a href="trib-to-missinka-2025.html#cb158-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
-<span id="cb158-4"><a href="trib-to-missinka-2025.html#cb158-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb158-5"><a href="trib-to-missinka-2025.html#cb158-5" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="trib-to-missinka-2025.html#cb159-1" tabindex="-1"></a>edna_results_125179_mon <span class="sc">|&gt;</span></span>
+<span id="cb159-2"><a href="trib-to-missinka-2025.html#cb159-2" tabindex="-1"></a>  fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb159-3"><a href="trib-to-missinka-2025.html#cb159-3" tabindex="-1"></a>    <span class="at">caption_text =</span> <span class="fu">paste0</span>(<span class="st">&quot;eDNA detection results at crossing &quot;</span>, my_site, <span class="st">&quot;.&quot;</span>),</span>
+<span id="cb159-4"><a href="trib-to-missinka-2025.html#cb159-4" tabindex="-1"></a>    <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb159-5"><a href="trib-to-missinka-2025.html#cb159-5" tabindex="-1"></a>  )</span></code></pre></div>
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 <span id="tab:tab-edna-results-125179-mon">Table 5.38: </span>eDNA detection results at crossing 125179.
@@ -1006,11 +1009,11 @@ GRAY(0), SOCK(0)
 <h2>Conclusion<a href="trib-to-missinka-2025.html#conclusion-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At the time of reporting, the structure at PSCIS crossing 125179 appears stable and the site is showing positive signals of recovery. Continued effectiveness monitoring at this site is recommended in future years to extend the multi-year time series of structure performance and fish use.</p>
 
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="trib-to-missinka-2025.html#cb159-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb159-2"><a href="trib-to-missinka-2025.html#cb159-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb159-3"><a href="trib-to-missinka-2025.html#cb159-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb159-4"><a href="trib-to-missinka-2025.html#cb159-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="trib-to-missinka-2025.html#cb160-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">125231</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="trib-to-missinka-2025.html#cb160-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb160-2"><a href="trib-to-missinka-2025.html#cb160-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb160-3"><a href="trib-to-missinka-2025.html#cb160-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb160-4"><a href="trib-to-missinka-2025.html#cb160-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="trib-to-missinka-2025.html#cb161-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">125231</span></span></code></pre></div>
 </div>
 </div>
             </section>
