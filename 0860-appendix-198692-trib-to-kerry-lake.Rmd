@@ -76,6 +76,43 @@ edna_results_198692_mon |>
 
 <br>
 
+## Photos {.unnumbered}
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+```{r photo-198692-mon-prep, eval=T}
+my_photo1_mon <- fpr::fpr_photo_pull_by_str(str_to_pull = 'ds_ef1_typical_1_k_')
+my_photo2_mon <- fpr::fpr_photo_pull_by_str(str_to_pull = 'ef2_fishprocess_k_')
+
+my_caption1_mon <- paste0(
+  'Electrofishing downstream of PSCIS crossing ', my_site, '.'
+)
+my_caption2_mon <- paste0(
+  'Processing fish captured during electrofishing at PSCIS crossing ', my_site,
+  ' — lengths, weights, and PIT tag surgeries for fish greater than 60 mm in length.'
+)
+```
+
+```{r photo-198692-mon-01, fig.cap = my_caption1_mon, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo1_mon)
+```
+
+<br>
+
+```{r photo-198692-mon-02, fig.cap = my_caption2_mon, out.width = photo_width, eval=gitbook_on}
+knitr::include_graphics(my_photo2_mon)
+```
+
+```{r photo-198692-mon-d01, fig.cap = my_caption_mon, fig.show = "hold", out.width = c("49.5%","1%","49.5%"), eval=identical(gitbook_on, FALSE)}
+my_caption_mon <- paste0('Left: ', my_caption1_mon, ' Right: ', my_caption2_mon)
+
+knitr::include_graphics(my_photo1_mon)
+knitr::include_graphics("fig/pixel.png")
+knitr::include_graphics(my_photo2_mon)
+```
+
+<br>
+
 ## Conclusion {.unnumbered}
 
 Baseline fish and eDNA data were collected at PSCIS crossing `r as.character(my_site)` in `r params$project_year` to inform future effectiveness monitoring once remediation completes. Resampling at the site once the structure is upgraded will allow direct comparison of fish abundance and habitat conditions before and after the intervention.

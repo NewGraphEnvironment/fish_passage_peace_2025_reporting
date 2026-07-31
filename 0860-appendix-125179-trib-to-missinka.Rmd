@@ -118,6 +118,40 @@ edna_results_125179_mon |>
 
 <br>
 
+## Photos {.unnumbered}
+
+`r if(gitbook_on){knitr::asis_output("<br>")} else knitr::asis_output("\\pagebreak")`
+
+```{r photo-125179-mon-prep, eval=T}
+# crossing_all_<year> photos, oldest to newest. One chunk each so every photo
+# carries its own caption and cross-reference.
+my_photo_2019_mon <- fpr::fpr_photo_pull_by_str(str_to_pull = 'crossing_all_2019')
+my_photo_2024_mon <- fpr::fpr_photo_pull_by_str(str_to_pull = 'crossing_all_2024')
+my_photo_2025_mon <- fpr::fpr_photo_pull_by_str(str_to_pull = 'crossing_all_2025')
+
+my_caption_2019_mon <- paste0('PSCIS crossing ', my_site, ' in 2019.')
+my_caption_2024_mon <- paste0('PSCIS crossing ', my_site, ' in 2024.')
+my_caption_2025_mon <- paste0('PSCIS crossing ', my_site, ' in ', params$project_year, '.')
+```
+
+```{r photo-125179-mon-2019, fig.cap = my_caption_2019_mon, out.width = photo_width, eval=T}
+knitr::include_graphics(my_photo_2019_mon)
+```
+
+<br>
+
+```{r photo-125179-mon-2024, fig.cap = my_caption_2024_mon, out.width = photo_width, eval=T}
+knitr::include_graphics(my_photo_2024_mon)
+```
+
+<br>
+
+```{r photo-125179-mon-2025, fig.cap = my_caption_2025_mon, out.width = photo_width, eval=T}
+knitr::include_graphics(my_photo_2025_mon)
+```
+
+<br>
+
 ## Conclusion {.unnumbered}
 
 At the time of reporting, the structure at PSCIS crossing `r as.character(my_site)` appears stable and the site is showing positive signals of recovery. Continued effectiveness monitoring at this site is recommended in future years to extend the multi-year time series of structure performance and fish use.
