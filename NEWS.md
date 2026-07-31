@@ -1,5 +1,7 @@
 # fish_passage_peace_2025_reporting 0.13.0 (2026-07-30)
 
+* Add Upper Peace River (`UPCE`) to the FWCP Peace watershed-group list, bringing the region to 17 groups. The scope statements in the executive summary and results now derive the count from `params$wsg_code` and note that Upper Peace River falls only partially within the FWCP boundary. The climate-departure appendix continues to reference 16 watershed groups, which correctly describes the extent that analysis was run on.
+* Build the fish-species appendix caption from the watershed-group columns actually present in the cached table rather than from `wsg_names`, so the caption cannot claim coverage the extract does not have.
 * Fix the empty "Summary of Phase 2 habitat confirmation details" table in Results. The chunk filtered with `stringr::str_like(Location, 'upstream')`, but the values are capitalised ("Upstream") and `str_like()` became case sensitive in stringr 1.6.0, so the filter silently matched nothing. The underlying data was present throughout; the table now renders the three Phase 2 upstream survey summaries (PSCIS 199663, 203597, 203605).
 * Scope the historic fish-observation query (`scripts/02_reporting/0145-analyze-fish.R`) to `params$wsg_code_field` rather than the region-wide `params$wsg_code`. The cached extract already covered only the five field watershed groups, matching the figure captions; the query did not, so any `derive_params: TRUE` rebuild would have silently widened the data to all 16 watershed groups and left the captions understating their own figures.
 

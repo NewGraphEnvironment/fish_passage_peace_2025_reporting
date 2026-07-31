@@ -440,61 +440,69 @@ div.csl-indent {
 <span id="cb56-3"><a href="app-fish-species.html#cb56-3" tabindex="-1"></a>  <span class="at">show_col_types =</span> <span class="cn">FALSE</span></span>
 <span id="cb56-4"><a href="app-fish-species.html#cb56-4" tabindex="-1"></a>)</span>
 <span id="cb56-5"><a href="app-fish-species.html#cb56-5" tabindex="-1"></a></span>
-<span id="cb56-6"><a href="app-fish-species.html#cb56-6" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb56-7"><a href="app-fish-species.html#cb56-7" tabindex="-1"></a>  <span class="st">&quot;Fish species recorded in the &quot;</span>,</span>
-<span id="cb56-8"><a href="app-fish-species.html#cb56-8" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">asis_output</span>(wsg_names) <span class="sc">|&gt;</span> knitr<span class="sc">::</span><span class="fu">combine_words</span>(),</span>
-<span id="cb56-9"><a href="app-fish-species.html#cb56-9" tabindex="-1"></a>  <span class="st">&quot; watershed groups.&quot;</span></span>
-<span id="cb56-10"><a href="app-fish-species.html#cb56-10" tabindex="-1"></a>)</span>
-<span id="cb56-11"><a href="app-fish-species.html#cb56-11" tabindex="-1"></a></span>
-<span id="cb56-12"><a href="app-fish-species.html#cb56-12" tabindex="-1"></a>my_footnote <span class="ot">&lt;-</span> <span class="st">&#39;COSEWIC abbreviations :</span></span>
-<span id="cb56-13"><a href="app-fish-species.html#cb56-13" tabindex="-1"></a><span class="st">                SC - Special concern</span></span>
-<span id="cb56-14"><a href="app-fish-species.html#cb56-14" tabindex="-1"></a><span class="st">                DD - Data deficient</span></span>
-<span id="cb56-15"><a href="app-fish-species.html#cb56-15" tabindex="-1"></a><span class="st">                NAR - Not at risk</span></span>
-<span id="cb56-16"><a href="app-fish-species.html#cb56-16" tabindex="-1"></a><span class="st">                E - Endangered</span></span>
-<span id="cb56-17"><a href="app-fish-species.html#cb56-17" tabindex="-1"></a><span class="st">                T - Threatened</span></span>
-<span id="cb56-18"><a href="app-fish-species.html#cb56-18" tabindex="-1"></a></span>
-<span id="cb56-19"><a href="app-fish-species.html#cb56-19" tabindex="-1"></a><span class="st">                BC List definitions :</span></span>
-<span id="cb56-20"><a href="app-fish-species.html#cb56-20" tabindex="-1"></a><span class="st">                Yellow - Species that is apparently secure</span></span>
-<span id="cb56-21"><a href="app-fish-species.html#cb56-21" tabindex="-1"></a><span class="st">                Blue - Species that is of special concern</span></span>
-<span id="cb56-22"><a href="app-fish-species.html#cb56-22" tabindex="-1"></a><span class="st">                Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
-<span id="cb56-23"><a href="app-fish-species.html#cb56-23" tabindex="-1"></a></span>
-<span id="cb56-24"><a href="app-fish-species.html#cb56-24" tabindex="-1"></a><span class="st">                Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].</span></span>
-<span id="cb56-25"><a href="app-fish-species.html#cb56-25" tabindex="-1"></a><span class="st">                &#39;</span></span>
+<span id="cb56-6"><a href="app-fish-species.html#cb56-6" tabindex="-1"></a><span class="co"># Build the caption from the watershed-group columns actually present in the</span></span>
+<span id="cb56-7"><a href="app-fish-species.html#cb56-7" tabindex="-1"></a><span class="co"># table rather than from `wsg_names`, so the caption cannot claim coverage the</span></span>
+<span id="cb56-8"><a href="app-fish-species.html#cb56-8" tabindex="-1"></a><span class="co"># cached extract does not have.</span></span>
+<span id="cb56-9"><a href="app-fish-species.html#cb56-9" tabindex="-1"></a>wsg_names_tab <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(</span>
+<span id="cb56-10"><a href="app-fish-species.html#cb56-10" tabindex="-1"></a>  <span class="fu">names</span>(fiss_species_table),</span>
+<span id="cb56-11"><a href="app-fish-species.html#cb56-11" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;Scientific Name&quot;</span>, <span class="st">&quot;Species Name&quot;</span>, <span class="st">&quot;BC List&quot;</span>, <span class="st">&quot;COSEWIC&quot;</span>)</span>
+<span id="cb56-12"><a href="app-fish-species.html#cb56-12" tabindex="-1"></a>)</span>
+<span id="cb56-13"><a href="app-fish-species.html#cb56-13" tabindex="-1"></a></span>
+<span id="cb56-14"><a href="app-fish-species.html#cb56-14" tabindex="-1"></a>my_caption <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb56-15"><a href="app-fish-species.html#cb56-15" tabindex="-1"></a>  <span class="st">&quot;Fish species recorded in the &quot;</span>,</span>
+<span id="cb56-16"><a href="app-fish-species.html#cb56-16" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">combine_words</span>(wsg_names_tab),</span>
+<span id="cb56-17"><a href="app-fish-species.html#cb56-17" tabindex="-1"></a>  <span class="st">&quot; watershed groups.&quot;</span></span>
+<span id="cb56-18"><a href="app-fish-species.html#cb56-18" tabindex="-1"></a>)</span>
+<span id="cb56-19"><a href="app-fish-species.html#cb56-19" tabindex="-1"></a></span>
+<span id="cb56-20"><a href="app-fish-species.html#cb56-20" tabindex="-1"></a>my_footnote <span class="ot">&lt;-</span> <span class="st">&#39;COSEWIC abbreviations :</span></span>
+<span id="cb56-21"><a href="app-fish-species.html#cb56-21" tabindex="-1"></a><span class="st">                SC - Special concern</span></span>
+<span id="cb56-22"><a href="app-fish-species.html#cb56-22" tabindex="-1"></a><span class="st">                DD - Data deficient</span></span>
+<span id="cb56-23"><a href="app-fish-species.html#cb56-23" tabindex="-1"></a><span class="st">                NAR - Not at risk</span></span>
+<span id="cb56-24"><a href="app-fish-species.html#cb56-24" tabindex="-1"></a><span class="st">                E - Endangered</span></span>
+<span id="cb56-25"><a href="app-fish-species.html#cb56-25" tabindex="-1"></a><span class="st">                T - Threatened</span></span>
 <span id="cb56-26"><a href="app-fish-species.html#cb56-26" tabindex="-1"></a></span>
-<span id="cb56-27"><a href="app-fish-species.html#cb56-27" tabindex="-1"></a><span class="cf">if</span> (gitbook_on) {</span>
-<span id="cb56-28"><a href="app-fish-species.html#cb56-28" tabindex="-1"></a>  fiss_species_table <span class="sc">|&gt;</span></span>
-<span id="cb56-29"><a href="app-fish-species.html#cb56-29" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb56-30"><a href="app-fish-species.html#cb56-30" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
-<span id="cb56-31"><a href="app-fish-species.html#cb56-31" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
-<span id="cb56-32"><a href="app-fish-species.html#cb56-32" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">TRUE</span></span>
-<span id="cb56-33"><a href="app-fish-species.html#cb56-33" tabindex="-1"></a>    )</span>
-<span id="cb56-34"><a href="app-fish-species.html#cb56-34" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb56-35"><a href="app-fish-species.html#cb56-35" tabindex="-1"></a>  meta_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Scientific Name&quot;</span>, <span class="st">&quot;Species Name&quot;</span>, <span class="st">&quot;BC List&quot;</span>, <span class="st">&quot;COSEWIC&quot;</span>)</span>
-<span id="cb56-36"><a href="app-fish-species.html#cb56-36" tabindex="-1"></a>  wsg_cols  <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(fiss_species_table), meta_cols)</span>
-<span id="cb56-37"><a href="app-fish-species.html#cb56-37" tabindex="-1"></a></span>
-<span id="cb56-38"><a href="app-fish-species.html#cb56-38" tabindex="-1"></a>  fiss_species_table_pdf <span class="ot">&lt;-</span> fiss_species_table <span class="sc">|&gt;</span></span>
-<span id="cb56-39"><a href="app-fish-species.html#cb56-39" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb56-40"><a href="app-fish-species.html#cb56-40" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
-<span id="cb56-41"><a href="app-fish-species.html#cb56-41" tabindex="-1"></a>      <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(</span>
-<span id="cb56-42"><a href="app-fish-species.html#cb56-42" tabindex="-1"></a>        wsg_cols[dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)) <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span></span>
-<span id="cb56-43"><a href="app-fish-species.html#cb56-43" tabindex="-1"></a>                 <span class="sc">!</span><span class="fu">is.na</span>(dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)))],</span>
-<span id="cb56-44"><a href="app-fish-species.html#cb56-44" tabindex="-1"></a>        <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span></span>
-<span id="cb56-45"><a href="app-fish-species.html#cb56-45" tabindex="-1"></a>      )</span>
-<span id="cb56-46"><a href="app-fish-species.html#cb56-46" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb56-47"><a href="app-fish-species.html#cb56-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb56-48"><a href="app-fish-species.html#cb56-48" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(meta_cols), <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span>)</span>
-<span id="cb56-49"><a href="app-fish-species.html#cb56-49" tabindex="-1"></a></span>
-<span id="cb56-50"><a href="app-fish-species.html#cb56-50" tabindex="-1"></a>  fiss_species_table_pdf <span class="sc">|&gt;</span></span>
-<span id="cb56-51"><a href="app-fish-species.html#cb56-51" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
-<span id="cb56-52"><a href="app-fish-species.html#cb56-52" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
-<span id="cb56-53"><a href="app-fish-species.html#cb56-53" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
-<span id="cb56-54"><a href="app-fish-species.html#cb56-54" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
-<span id="cb56-55"><a href="app-fish-species.html#cb56-55" tabindex="-1"></a>    )</span>
-<span id="cb56-56"><a href="app-fish-species.html#cb56-56" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb56-27"><a href="app-fish-species.html#cb56-27" tabindex="-1"></a><span class="st">                BC List definitions :</span></span>
+<span id="cb56-28"><a href="app-fish-species.html#cb56-28" tabindex="-1"></a><span class="st">                Yellow - Species that is apparently secure</span></span>
+<span id="cb56-29"><a href="app-fish-species.html#cb56-29" tabindex="-1"></a><span class="st">                Blue - Species that is of special concern</span></span>
+<span id="cb56-30"><a href="app-fish-species.html#cb56-30" tabindex="-1"></a><span class="st">                Exotic - Species that have been moved beyond their natural range as a result of human activity</span></span>
+<span id="cb56-31"><a href="app-fish-species.html#cb56-31" tabindex="-1"></a></span>
+<span id="cb56-32"><a href="app-fish-species.html#cb56-32" tabindex="-1"></a><span class="st">                Dolly Varden are documented in all three study watersheds — Carp, Crooked, and Parsnip — but these records are likely misidentifications of bull trout [@cosewic2012COSEWICassessment].</span></span>
+<span id="cb56-33"><a href="app-fish-species.html#cb56-33" tabindex="-1"></a><span class="st">                &#39;</span></span>
+<span id="cb56-34"><a href="app-fish-species.html#cb56-34" tabindex="-1"></a></span>
+<span id="cb56-35"><a href="app-fish-species.html#cb56-35" tabindex="-1"></a><span class="cf">if</span> (gitbook_on) {</span>
+<span id="cb56-36"><a href="app-fish-species.html#cb56-36" tabindex="-1"></a>  fiss_species_table <span class="sc">|&gt;</span></span>
+<span id="cb56-37"><a href="app-fish-species.html#cb56-37" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb56-38"><a href="app-fish-species.html#cb56-38" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
+<span id="cb56-39"><a href="app-fish-species.html#cb56-39" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
+<span id="cb56-40"><a href="app-fish-species.html#cb56-40" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">TRUE</span></span>
+<span id="cb56-41"><a href="app-fish-species.html#cb56-41" tabindex="-1"></a>    )</span>
+<span id="cb56-42"><a href="app-fish-species.html#cb56-42" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb56-43"><a href="app-fish-species.html#cb56-43" tabindex="-1"></a>  meta_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Scientific Name&quot;</span>, <span class="st">&quot;Species Name&quot;</span>, <span class="st">&quot;BC List&quot;</span>, <span class="st">&quot;COSEWIC&quot;</span>)</span>
+<span id="cb56-44"><a href="app-fish-species.html#cb56-44" tabindex="-1"></a>  wsg_cols  <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(fiss_species_table), meta_cols)</span>
+<span id="cb56-45"><a href="app-fish-species.html#cb56-45" tabindex="-1"></a></span>
+<span id="cb56-46"><a href="app-fish-species.html#cb56-46" tabindex="-1"></a>  fiss_species_table_pdf <span class="ot">&lt;-</span> fiss_species_table <span class="sc">|&gt;</span></span>
+<span id="cb56-47"><a href="app-fish-species.html#cb56-47" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb56-48"><a href="app-fish-species.html#cb56-48" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb56-49"><a href="app-fish-species.html#cb56-49" tabindex="-1"></a>      <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(</span>
+<span id="cb56-50"><a href="app-fish-species.html#cb56-50" tabindex="-1"></a>        wsg_cols[dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)) <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">&amp;</span></span>
+<span id="cb56-51"><a href="app-fish-species.html#cb56-51" tabindex="-1"></a>                 <span class="sc">!</span><span class="fu">is.na</span>(dplyr<span class="sc">::</span><span class="fu">c_across</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(wsg_cols)))],</span>
+<span id="cb56-52"><a href="app-fish-species.html#cb56-52" tabindex="-1"></a>        <span class="at">collapse =</span> <span class="st">&quot;, &quot;</span></span>
+<span id="cb56-53"><a href="app-fish-species.html#cb56-53" tabindex="-1"></a>      )</span>
+<span id="cb56-54"><a href="app-fish-species.html#cb56-54" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb56-55"><a href="app-fish-species.html#cb56-55" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb56-56"><a href="app-fish-species.html#cb56-56" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">select</span>(dplyr<span class="sc">::</span><span class="fu">all_of</span>(meta_cols), <span class="st">`</span><span class="at">Present in WSGs</span><span class="st">`</span>)</span>
+<span id="cb56-57"><a href="app-fish-species.html#cb56-57" tabindex="-1"></a></span>
+<span id="cb56-58"><a href="app-fish-species.html#cb56-58" tabindex="-1"></a>  fiss_species_table_pdf <span class="sc">|&gt;</span></span>
+<span id="cb56-59"><a href="app-fish-species.html#cb56-59" tabindex="-1"></a>    fpr<span class="sc">::</span><span class="fu">fpr_kable</span>(</span>
+<span id="cb56-60"><a href="app-fish-species.html#cb56-60" tabindex="-1"></a>      <span class="at">caption_text =</span> my_caption,</span>
+<span id="cb56-61"><a href="app-fish-species.html#cb56-61" tabindex="-1"></a>      <span class="at">footnote_text =</span> my_footnote,</span>
+<span id="cb56-62"><a href="app-fish-species.html#cb56-62" tabindex="-1"></a>      <span class="at">scroll =</span> <span class="cn">FALSE</span></span>
+<span id="cb56-63"><a href="app-fish-species.html#cb56-63" tabindex="-1"></a>    )</span>
+<span id="cb56-64"><a href="app-fish-species.html#cb56-64" tabindex="-1"></a>}</span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table class="table table-condensed table-responsive" style="font-size: 11px; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <caption style="font-size: initial !important;">
-<span id="tab:tab-fiss-species">Table 5.3: </span>Fish species recorded in the Carp Lake, Crooked River, Finlay Arm, Finlay River, Firesteel River, Fox River, Ingenika River, Lower Omineca River, Mesilinka River, Nation River, Ospika River, Parsnip Arm, Parsnip River, Peace Arm, Toodoggone River, and Upper Omineca River watershed groups.
+<span id="tab:tab-fiss-species">Table 5.3: </span>Fish species recorded in the Carp Lake, Crooked, Finlay Arm, Finlay, Firesteel, Fox, Ingenika, Lower Omineca, Mesilinka, Nation, Ospika, Parsnip Arm, Parsnip, Peace Arm, Toodoggone, and Upper Omineca watershed groups.
 </caption>
 <thead>
 <tr>
