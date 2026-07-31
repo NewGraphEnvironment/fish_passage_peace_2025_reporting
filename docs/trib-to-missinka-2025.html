@@ -393,6 +393,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#monitoring-form"><i class="fa fa-check"></i>Monitoring Form</a></li>
 <li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#fish-sampling-2"><i class="fa fa-check"></i>Fish Sampling</a></li>
 <li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#environmental-dna-3"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#photos"><i class="fa fa-check"></i>Photos</a></li>
 <li class="chapter" data-level="" data-path="trib-to-missinka-2025.html"><a href="trib-to-missinka-2025.html#conclusion-3"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html"><i class="fa fa-check"></i>Tributary to the Table River - 125231 - Monitoring Appendix</a>
@@ -400,12 +401,14 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#monitoring-form-1"><i class="fa fa-check"></i>Monitoring Form</a></li>
 <li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#fish-sampling-3"><i class="fa fa-check"></i>Fish Sampling</a></li>
 <li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#environmental-dna-4"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#photos-1"><i class="fa fa-check"></i>Photos</a></li>
 <li class="chapter" data-level="" data-path="trib-to-table-2025.html"><a href="trib-to-table-2025.html#conclusion-4"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html"><i class="fa fa-check"></i>Tributary to Kerry Lake - 198692 - Monitoring Appendix</a>
 <ul>
 <li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#fish-sampling-4"><i class="fa fa-check"></i>Fish Sampling</a></li>
 <li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#environmental-dna-5"><i class="fa fa-check"></i>Environmental DNA</a></li>
+<li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#photos-2"><i class="fa fa-check"></i>Photos</a></li>
 <li class="chapter" data-level="" data-path="trib-to-kerry-2025.html"><a href="trib-to-kerry-2025.html#conclusion-5"><i class="fa fa-check"></i>Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -1008,15 +1011,52 @@ GRAY(0), SOCK(0)
 </table>
 <p><br></p>
 </div>
+<div id="photos" class="section level2 unnumbered hasAnchor">
+<h2>Photos<a href="trib-to-missinka-2025.html#photos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><br></p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="trib-to-missinka-2025.html#cb160-1" tabindex="-1"></a><span class="co"># crossing_all_&lt;year&gt; photos, oldest to newest. One chunk each so every photo</span></span>
+<span id="cb160-2"><a href="trib-to-missinka-2025.html#cb160-2" tabindex="-1"></a><span class="co"># carries its own caption and cross-reference.</span></span>
+<span id="cb160-3"><a href="trib-to-missinka-2025.html#cb160-3" tabindex="-1"></a>my_photo_2019_mon <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;crossing_all_2019&#39;</span>)</span>
+<span id="cb160-4"><a href="trib-to-missinka-2025.html#cb160-4" tabindex="-1"></a>my_photo_2024_mon <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;crossing_all_2024&#39;</span>)</span>
+<span id="cb160-5"><a href="trib-to-missinka-2025.html#cb160-5" tabindex="-1"></a>my_photo_2025_mon <span class="ot">&lt;-</span> fpr<span class="sc">::</span><span class="fu">fpr_photo_pull_by_str</span>(<span class="at">str_to_pull =</span> <span class="st">&#39;crossing_all_2025&#39;</span>)</span>
+<span id="cb160-6"><a href="trib-to-missinka-2025.html#cb160-6" tabindex="-1"></a></span>
+<span id="cb160-7"><a href="trib-to-missinka-2025.html#cb160-7" tabindex="-1"></a>my_caption_2019_mon <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in 2019.&#39;</span>)</span>
+<span id="cb160-8"><a href="trib-to-missinka-2025.html#cb160-8" tabindex="-1"></a>my_caption_2024_mon <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in 2024.&#39;</span>)</span>
+<span id="cb160-9"><a href="trib-to-missinka-2025.html#cb160-9" tabindex="-1"></a>my_caption_2025_mon <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;PSCIS crossing &#39;</span>, my_site, <span class="st">&#39; in &#39;</span>, params<span class="sc">$</span>project_year, <span class="st">&#39;.&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="trib-to-missinka-2025.html#cb161-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo_2019_mon)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-125179-mon-2019"></span>
+<img src="data/photos/125179/crossing_all_2019.JPG" alt="PSCIS crossing 125179 in 2019." width="100%" />
+<p class="caption">
+Figure 5.33: PSCIS crossing 125179 in 2019.
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="trib-to-missinka-2025.html#cb162-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo_2024_mon)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-125179-mon-2024"></span>
+<img src="data/photos/125179/crossing_all_2024.JPG" alt="PSCIS crossing 125179 in 2024." width="100%" />
+<p class="caption">
+Figure 5.34: PSCIS crossing 125179 in 2024.
+</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="trib-to-missinka-2025.html#cb163-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(my_photo_2025_mon)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:photo-125179-mon-2025"></span>
+<img src="data/photos/125179/crossing_all_2025.JPG" alt="PSCIS crossing 125179 in 2025." width="100%" />
+<p class="caption">
+Figure 5.35: PSCIS crossing 125179 in 2025.
+</p>
+</div>
+<p><br></p>
+</div>
 <div id="conclusion-3" class="section level2 unnumbered hasAnchor">
 <h2>Conclusion<a href="trib-to-missinka-2025.html#conclusion-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At the time of reporting, the structure at PSCIS crossing 125179 appears stable and the site is showing positive signals of recovery. Continued effectiveness monitoring at this site is recommended in future years to extend the multi-year time series of structure performance and fish use.</p>
 
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="trib-to-missinka-2025.html#cb160-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
-<span id="cb160-2"><a href="trib-to-missinka-2025.html#cb160-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
-<span id="cb160-3"><a href="trib-to-missinka-2025.html#cb160-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
-<span id="cb160-4"><a href="trib-to-missinka-2025.html#cb160-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="trib-to-missinka-2025.html#cb161-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">125231</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="trib-to-missinka-2025.html#cb164-1" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>)</span>
+<span id="cb164-2"><a href="trib-to-missinka-2025.html#cb164-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/packages.R&#39;</span>)</span>
+<span id="cb164-3"><a href="trib-to-missinka-2025.html#cb164-3" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/tables.R&#39;</span>)</span>
+<span id="cb164-4"><a href="trib-to-missinka-2025.html#cb164-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&#39;scripts/functions.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="trib-to-missinka-2025.html#cb165-1" tabindex="-1"></a>my_site <span class="ot">&lt;-</span> <span class="dv">125231</span></span></code></pre></div>
 </div>
 </div>
             </section>

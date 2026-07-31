@@ -1,7 +1,7 @@
 Package: placeholder
 Type: Book
 Title: Does not matter.
-Version: 0.13.0
-Date: 2026-07-30
+Version: 0.14.0
+Date: 2026-07-31
 Imports: bookdown
 Remotes: rstudio/bookdown

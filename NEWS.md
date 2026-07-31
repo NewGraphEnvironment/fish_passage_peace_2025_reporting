@@ -1,3 +1,8 @@
+# fish_passage_peace_2025_reporting 0.14.0 (2026-07-31)
+
+* Add 331 site photos (72 MB) across 28 crossing directories to `data/photos/`. These are served from GitHub raw on `main` by `photo_metadata$url`, so the interactive map popups depend on them being tracked here.
+* Add a Photos section to the three effectiveness-monitoring memos. Crossings 125179 and 125231 show the `crossing_all_<year>` series oldest to newest, one figure and caption per year (125179: 2019, 2024, 2025; 125231: 2024, 2025). Crossing 198692 shows electrofishing downstream of the crossing alongside fish processing — lengths, weights, and PIT tag surgeries for fish over 60 mm — rendered side by side in the print PDF using the established `fig.show="hold"` spacer technique and stacked in the web version.
+
 # fish_passage_peace_2025_reporting 0.13.0 (2026-07-30)
 
 * Add Upper Peace River (`UPCE`) to the FWCP Peace watershed-group list, bringing the region to 17 groups. The scope statements in the executive summary and results now derive the count from `params$wsg_code` and note that Upper Peace River falls only partially within the FWCP boundary. The climate-departure appendix continues to reference 16 watershed groups, which correctly describes the extent that analysis was run on.
