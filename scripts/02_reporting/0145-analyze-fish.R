@@ -2,13 +2,18 @@ source('scripts/packages.R')
 
 # Require params from index.Rmd - fail with helpful error if not set
 # See https://github.com/NewGraphEnvironment/fish_passage_template_reporting/issues/151
-if (!exists("params") || is.null(params$wsg_code)) {
-  stop("params$wsg_code must be set in index.Rmd. Example: wsg_code: [PARS, CARP, CRKD]")
+if (!exists("params") || is.null(params$wsg_code_field)) {
+  stop("params$wsg_code_field must be set in index.Rmd. Example: wsg_code_field: [PARS, CARP, CRKD]")
 }
 if (!exists("params") || is.null(params$species_of_interest)) {
   stop("params$species_of_interest must be set in index.Rmd. Example: species_of_interest: [BT, GR, KO, RB]")
 }
-wsg <- params$wsg_code
+# Scoped to the field watershed groups, not the region-wide `wsg_code` modelling
+# extent — these summaries provide context for the areas assessed on the ground,
+# and the figure captions in the background chapter are built from
+# `wsg_names_field`. Querying `wsg_code` here would silently widen the data
+# beyond what those captions describe.
+wsg <- params$wsg_code_field
 species_of_interest <- params$species_of_interest
 
 fiss_sum <- fpr::fpr_db_query(

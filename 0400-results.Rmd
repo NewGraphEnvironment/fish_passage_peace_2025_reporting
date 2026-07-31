@@ -9,10 +9,24 @@ readr::read_csv("data/communications/partners_2025.csv", show_col_types = FALSE)
   dplyr::arrange(affiliation) |>
   dplyr::select(`Organization / Role` = affiliation, `Topic / Focus` = topic) |>
   fpr::fpr_kable(
-    caption_text = paste0("Project partners engaged in ", params$project_year, "."),
+    caption_text = "Project partners engaged, May 2025 - May 2026.",
     scroll = gitbook_on
   )
 ```
+
+<br>
+
+### McLeod Lake Indian Band
+
+The McLeod Lake Indian Band (MLIB) is a core collaborator in this work. In `r params$project_year`, MLIB technicians were integrated into all aspects of the program — data transcription, eDNA filtration, backpack electrofishing, fish processing, and the routine effectiveness evaluations at both baseline and remediated crossings — working alongside the field crew throughout Tse'khene territory.
+
+<br>
+
+Capacity building was a deliberate part of this. The University of Northern British Columbia (UNBC) delivered an electrofishing training course hosted in the community, funded in part through this project alongside other funding sources, equipping community members with backpack-electrofishing skills applicable to fisheries work across their territory.
+
+<br>
+
+Field data collection spanned more than ten sites across two systems — tributaries to the Table River and tributaries to Kerry Lake. Work included backpack electrofishing with fish lengths and weights recorded and PIT-tag surgical implantation, alongside extensive environmental DNA (eDNA) collection. This fed both the program-scale eDNA effort ([Appendix - Environmental DNA Results](#app-edna)) and the multi-year effectiveness-monitoring baselines at the Table River and Kerry Lake sites.
 
 <br>
 
@@ -214,7 +228,7 @@ Modelled functional floodplain in the Parsnip River Watershed Group covers `r fo
 
 ## Statistical Habitat Modelling Outputs
 
-Connectivity modelling now runs weekly with automated updates across all 16 watershed groups in the FWCP Peace area, driven by `bcfishpass` outputs using channel width, gradient, and provincial / federal barrier inventories — channel-width estimates are themselves a product of the Bayesian statistical work described in the methods [@thorley_irvine2021ChannelWidtha; @thorley_etal2021ChannelWidthc]. Field assessments were completed this year in five of those watershed groups (Parsnip River, Crooked River, Carp River, Nation River, and Parsnip Arm) to maintain momentum and surface candidate sites and partners. The work has the support of the Provincial Fish Passage Technical Working Group (FPTWG) — a partnership between the Province of British Columbia (WLRS, MOF, MOE, MOTI) and Fisheries and Oceans Canada.
+Connectivity modelling now runs weekly with automated updates across all `r length(params$wsg_code)` watershed groups of the FWCP Peace area (the Upper Peace River group falls only partially within the FWCP boundary), driven by `bcfishpass` outputs using channel width, gradient, and provincial / federal barrier inventories — channel-width estimates are themselves a product of the Bayesian statistical work described in the methods [@thorley_irvine2021ChannelWidtha; @thorley_etal2021ChannelWidthc]. Field assessments were completed this year in five of those watershed groups (Parsnip River, Crooked River, Carp Lake, Nation River, and Parsnip Arm) to maintain momentum and surface candidate sites and partners. The work has the support of the Provincial Fish Passage Technical Working Group (FPTWG) — a partnership between the Province of British Columbia (WLRS, MOF, MOE, MOTI) and Fisheries and Oceans Canada.
 
 <br>
 
@@ -336,7 +350,10 @@ tab_cost_est_phase2 |>
 
 ```{r tab-habitat-summary}
 tab_hab_summary |> 
-  dplyr::filter(stringr::str_like(Location, 'upstream')) |> 
+  # `Location` is capitalised upstream ("Upstream"/"Downstream"); match it exactly.
+  # stringr 1.6.0 made `str_like()` case sensitive, so a lowercase 'upstream'
+  # pattern silently matched nothing and emptied this table.
+  dplyr::filter(Location == "Upstream") |>
   dplyr::select(-Location) |> 
   dplyr::rename(`PSCIS ID` = Site, `Length surveyed upstream (m)` = `Length Surveyed (m)`) |>
   fpr::fpr_kable(caption_text = 'Summary of Phase 2 habitat confirmation details.', scroll = F)

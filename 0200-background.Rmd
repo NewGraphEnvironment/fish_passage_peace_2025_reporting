@@ -80,8 +80,8 @@ In 2019/2020, following a literature review, analysis of fish habitat modelling 
 
 <br>
 
-```{r overview-map, fig.cap = paste0('Overview map of the study area, showing fish passage assessment and restoration progress to date. The mapped extent reflects where field work has been concentrated; connectivity modelling covers all ', length(params$wsg_code), ' watershed groups of the FWCP Peace Region, as set out in the scales of work table above. Future versions will render the full regional extent so the modelled and field-assessed areas are visible together.'), eval=T}
-knitr::include_graphics("fig/fishpassage_2024_fwcp_progress.jpeg")
+```{r overview-map, fig.cap = paste0('Overview map of the FWCP Peace Region showing fish passage assessment and restoration progress to date, by project phase. Connectivity modelling covers all ', length(params$wsg_code), ' watershed groups of the region (lightest shading); the ', length(params$wsg_code_field), ' watershed groups where field work was concentrated are shown in darker blue. The distinction between the modelled extent and the field-assessed extent is set out in the scales of work table above.'), eval=T}
+knitr::include_graphics("fig/fishpassage_2025_fwcp_progress.jpeg")
 ```
 
 <br>
@@ -96,7 +96,7 @@ The continental divide separates watersheds flowing north into the Arctic Ocean 
 
 <br>
 
-Construction of the 183m high and 2134m long W.A.C. Bennett Dam was completed in 1967 at Hudson's Hope, BC, creating the Williston Reservoir [@hirst1991Impactsoperations]. Filling of the 375km^2^ reservoir was complete in 1972 and flooded a substantial portion of the Parsnip River and major tributary valleys forming what is now known as the Peace and Parsnip reaches. The replacement of riverine habitat with an inundated reservoir environment resulted in profound changes to the ecology, resource use and human settlement patterns in these systems [@hagen_etal2015Criticalhabitats; @pearce_etal2019FirstNations; @stamford_etal2017FWCPArctic]. Prior to the filling of the reservoir, the Pack River, into which McLeod Lake flows, was a major tributary to the Parsnip River.  The Pack River currently enters the Williston Reservoir directly as the historic location of the confluence of the two rivers lies within the reservoir's footprint.
+Construction of the 183m high and 2134m long W.A.C. Bennett Dam was completed in 1967 at Hudson's Hope, BC, creating the Williston Reservoir [@hirst1991Impactsoperations]. Filling of the 375km^2^ reservoir was complete in 1972 and flooded a substantial portion of the Parsnip River, Finlay reach and major tributary valleys forming what is now known as the Peace, Parsnip and Finlay reaches. The replacement of riverine habitat with an inundated reservoir environment resulted in profound changes to the ecology, resource use and human settlement patterns in these systems [@hagen_etal2015Criticalhabitats; @pearce_etal2019FirstNations; @stamford_etal2017FWCPArctic]. Prior to the filling of the reservoir, the Pack River, into which McLeod Lake flows, was a major tributary to the Parsnip River.  The Pack River currently enters the Williston Reservoir directly as the historic location of the confluence of the two rivers lies within the reservoir's footprint.
 
 <br>
 
@@ -193,7 +193,7 @@ fiss_sum_wshed <- readr::read_csv(file = paste0(getwd(), '/data/inputs_extracted
 ```
 
 ```{r tab-fish-grad}
-my_caption <- paste0('Summary of historic fish observations vs. stream gradient category for the ', knitr::combine_words(wsg_names), ' watershed groups.')
+my_caption <- paste0('Summary of historic fish observations vs. stream gradient category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.')
 fiss_sum_grad |>
   dplyr::select(-gradient_id) |>
   fpr::fpr_kable(caption_text = my_caption,
@@ -204,7 +204,7 @@ fiss_sum_grad |>
 <br>
 
 
-```{r fish-plot-grad, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. stream gradient category for the ', knitr::combine_words(wsg_names), ' watershed groups.'), eval=T}
+```{r fish-plot-grad, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. stream gradient category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.'), eval=T}
 fiss_sum_grad |>
   dplyr::filter(gradient_id != 99) |>
   ggplot2::ggplot(ggplot2::aes(x = Gradient, y = Percent)) +
@@ -218,7 +218,7 @@ fiss_sum_grad |>
 <br>
 
 ```{r tab-fish-width}
-my_caption <- paste0('Summary of historic fish observations vs. channel width category for the ', knitr::combine_words(wsg_names), ' watershed groups.')
+my_caption <- paste0('Summary of historic fish observations vs. channel width category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.')
 fiss_sum_width |>
   dplyr::select(-width_id) |>
   fpr::fpr_kable(caption_text = my_caption,
@@ -227,7 +227,7 @@ fiss_sum_width |>
 
 <br>
 
-```{r fish-plot-width, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. channel width category for the ', knitr::combine_words(wsg_names), ' watershed groups.'), eval=T}
+```{r fish-plot-width, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. channel width category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.'), eval=T}
 fiss_sum_width |>
   dplyr::filter(!is.na(width_id)) |>
   ggplot2::ggplot(ggplot2::aes(x = Width, y = Percent)) +
@@ -242,7 +242,7 @@ fiss_sum_width |>
 
 
 ```{r tab-fish-wshed}
-my_caption <- paste0('Summary of historic fish observations vs. watershed size category for the ', knitr::combine_words(wsg_names), ' watershed groups.')
+my_caption <- paste0('Summary of historic fish observations vs. watershed size category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.')
 fiss_sum_wshed |>
   fpr::fpr_kable(caption_text = my_caption,
                  scroll = gitbook_on)
@@ -252,7 +252,7 @@ fiss_sum_wshed |>
 <br>
 
 
-```{r fish-plot-wshed, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. watershed size category for the ', knitr::combine_words(wsg_names), ' watershed groups.'), eval=T}
+```{r fish-plot-wshed, out.width = photo_width, fig.cap= paste0('Summary of historic fish observations vs. watershed size category for the ', knitr::combine_words(wsg_names_field), ' watershed groups.'), eval=T}
 fiss_sum_wshed |>
   ggplot2::ggplot(ggplot2::aes(x = Watershed, y = Percent)) +
   ggplot2::geom_bar(stat = "identity") +

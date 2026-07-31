@@ -50,7 +50,7 @@ form_edna <- tryCatch(
 
 <div style="text-align: center; font-size: 0.85em; line-height: 1.6;">
 
-Version `r version` DRAFT | `r build_date`
+Version `r version` | `r build_date`
 
 </div>
 

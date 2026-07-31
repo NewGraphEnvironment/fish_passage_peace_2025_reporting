@@ -18,9 +18,17 @@ fiss_species_table <- readr::read_csv(
   show_col_types = FALSE
 )
 
+# Build the caption from the watershed-group columns actually present in the
+# table rather than from `wsg_names`, so the caption cannot claim coverage the
+# cached extract does not have.
+wsg_names_tab <- setdiff(
+  names(fiss_species_table),
+  c("Scientific Name", "Species Name", "BC List", "COSEWIC")
+)
+
 my_caption <- paste0(
   "Fish species recorded in the ",
-  knitr::asis_output(wsg_names) |> knitr::combine_words(),
+  knitr::combine_words(wsg_names_tab),
   " watershed groups."
 )
 

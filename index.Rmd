@@ -41,8 +41,9 @@ params:
   project_year: "2025"
   project_start_year: "2020"
   model_species: "bt"
-  # region-wide extent: connectivity modelling, historic fish observations, species tables
-  wsg_code: [CARP, CRKD, FINA, FINL, FIRE, FOXR, INGR, LOMI, MESI, NATR, OSPK, PARA, PARS, PCEA, TOOD, UOMI]
+  # region-wide extent: connectivity modelling, historic fish observations, species tables.
+  # UPCE (Upper Peace River) falls only partially within the FWCP Peace boundary.
+  wsg_code: [CARP, CRKD, FINA, FINL, FIRE, FOXR, INGR, LOMI, MESI, NATR, OSPK, PARA, PARS, PCEA, TOOD, UOMI, UPCE]
   # field-season extent: watershed groups assessed on the ground in project_year
   wsg_code_field: [CARP, CRKD, NATR, PARA, PARS]
   species_of_interest: [BT, GR, KO, RB]
