@@ -120,11 +120,27 @@ so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
       disagree by 100x for the same sites** - the report matches the label, the
       submission does not. The other four averages are unaffected.
 
-- [ ] **DECISION REQUIRED before Phase 5** - let the template compute (consistent with
-      our back catalogue, knowingly wrong), write the R value (correct, but clobbers a
-      derived cell and diverges from prior submissions), or ask the province. Their
-      formula and their header disagree, so option three first. Contact recorded at
-      `fds_prep_for_submission_2023.Rmd:60`.
+- [x] **DECIDED: submit true percent values.** Write the R-computed
+      `average_gradient_percent` into the Step 4 average gradient column rather than let
+      `AVERAGE(...)/100` stand. The column is headed `(%)` and its inputs are percents.
+
+      This is a deliberate, scoped exception to the do-not-overwrite-derived-cells rule
+      - it applies to the gradient average **only**. The other four Step 4 averages have
+      no divisor and stay as formulas; so do the five `VLOOKUP(...)` pulls.
+
+      Values going in, for the 5 non-`_ef` sites that survive the strip:
+
+      | site | measured #1-#4 | submitting | template would have written |
+      |---|---|---|---|
+      | 199663_us | - | 2.8 | 0.028 |
+      | 199663_ds | - | 3.0 | 0.030 |
+      | 203597_us | 3.5, 2.5, 3.0 | 3.0 | 0.030 |
+      | 203605_us | 2.0, 6.0, 2.0, 1.5 | 2.9 | 0.029 |
+      | 203605_ds | 2.0, 1.5, 2.0 | 1.8 | 0.018 |
+
+      Two follow-ups tracked on fptr#217, not blocking this submission: whether the
+      100x-low values in Peace 2023/2024 and Skeena 2023/2024 warrant a correction
+      notice, and raising the template defect with the Province.
 
 ## Phase 4 - Generate the four step CSVs
 
@@ -200,7 +216,18 @@ affects **every step_4 row that will actually be submitted**.
       | Step 4 (Stream Site Data) | 21 | **22** | 93 |
 
       Step 1's start is corroborated by the template's own VLOOKUP range, `'Step 1 (Ref. and Loc. Info)'!$..$33:$..$625`.
-- [ ] **Do not paste over derived columns** - Step 4 carries five `AVERAGE(...)` formulas and five `VLOOKUP(...)` pulls from Step 1 that self-populate. Same rule `0140_pscis_export_to_template.R:111` already applies on the PSCIS side
+- [ ] **Do not paste over derived columns, with one deliberate exception.** Step 4
+      carries five `AVERAGE(...)` formulas and five `VLOOKUP(...)` pulls from Step 1
+      that self-populate. Same rule `0140_pscis_export_to_template.R:111` already applies
+      on the PSCIS side.
+
+      **Exception: `Average Gradient (%)`.** Paste the R-computed
+      `average_gradient_percent` over that formula - the template divides by 100 and
+      would write a proportion into a percent column. See Phase 3. Affects all 5 rows
+      that survive the `_ef` strip. Leave the other four averages and all five VLOOKUPs
+      alone.
+- [ ] After population, spot-check that Step 4's gradient column reads 2.8 / 3.0 / 3.0 /
+      2.9 / 1.8 and **not** 0.028 / 0.030 / 0.030 / 0.029 / 0.018
 - [ ] Apply the submission transforms from `fds_prep_for_submission_2023.Rmd`: drop `step_4_stream_site_data` rows for small `_ef` sites (fptr#27 - fish and locations stay, only non-conforming habitat rows go), consolidate site identifiers into comments, trim features
 - [ ] Record every hand step taken, for the fptr#216 spec
 
