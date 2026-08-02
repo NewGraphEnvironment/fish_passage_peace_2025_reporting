@@ -212,10 +212,21 @@ affects **every step_4 row that will actually be submitted**.
 
 ## Phase 7 - Report wiring and propagation
 
-- [ ] `2400-Attachment_data.Rmd:11` - repoint the habitat link at `data/permit_submission/PG25-983916.xlsx`, noting it excludes step_4 habitat rows for small EF sites
-- [ ] `2400-Attachment_data.Rmd:15` - fix `fish_data_tags_joined.csv` -> `fish_data_tags_joined_2025.csv`
-- [ ] Rebuild the report; confirm both links resolve
-- [ ] Port `0205`/`0210` changes back to `fish_passage_template_reporting`. Not optional - the three 2025 scripts are byte-identical today, and skipping this is how peace_2024 and skeena_2024 ended up a generation apart
+- [x] `2400-Attachment_data.Rmd` - habitat link repointed at
+      `data/permit_submission/<permit_id>.xlsx`, with a note that it excludes step_4
+      habitat rows for the small EF sites; fish link derived from `project_year`
+      instead of the hardcoded, year-less filename
+- [x] Added `permit_id: "PG25-983916"` to `index.Rmd` params so the permit number has
+      one source of truth across the attachment and the submission scripts
+- [x] Verified both links render (`ngr_str_link_url` evaluated against the real params).
+      The fish CSV resolves now; the workbook link resolves once Phase 5 lands
+- [x] Ported to `fish_passage_template_reporting` (branch
+      `fds-2026-template-and-prep-fixes`, commit `e1d800b`): both prep scripts, the
+      2026 blank template, the attachment change, and a `permit_id` placeholder.
+      Confirmed byte-identical to the pre-fix peace copies before overwriting, so no
+      template-specific work was clobbered
+- [ ] Rebuild the report and confirm the rendered links resolve (deferred - the
+      workbook does not exist until Phase 5)
 
 ## Files
 
