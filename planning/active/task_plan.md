@@ -128,15 +128,16 @@ so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
       - it applies to the gradient average **only**. The other four Step 4 averages have
       no divisor and stay as formulas; so do the five `VLOOKUP(...)` pulls.
 
-      Values going in, for the 5 non-`_ef` sites that survive the strip:
+      Values going in. **Six** rows survive the `_ef` strip; five carry a gradient:
 
-      | site | measured #1-#4 | submitting | template would have written |
-      |---|---|---|---|
-      | 199663_us | - | 2.8 | 0.028 |
-      | 199663_ds | - | 3.0 | 0.030 |
-      | 203597_us | 3.5, 2.5, 3.0 | 3.0 | 0.030 |
-      | 203605_us | 2.0, 6.0, 2.0, 1.5 | 2.9 | 0.029 |
-      | 203605_ds | 2.0, 1.5, 2.0 | 1.8 | 0.018 |
+      | site | #1 | #2 | #3 | #4 | submitting (%) | template would write |
+      |---|---|---|---|---|---|---|
+      | 199663_ds | - | - | - | - | - | - |
+      | 199663_us | 3.0 | 2.5 | 3.0 | - | **2.8** | 0.028 |
+      | 203597_ds | 3.0 | 2.5 | 3.5 | - | **3.0** | 0.030 |
+      | 203597_us | 3.5 | 2.5 | 3.0 | - | **3.0** | 0.030 |
+      | 203605_us | 2.0 | 6.0 | 2.0 | 1.5 | **2.9** | 0.029 |
+      | 203605_ds | 2.0 | 1.5 | 2.0 | - | **1.8** | 0.018 |
 
       Two follow-ups tracked on fptr#217, not blocking this submission: whether the
       100x-low values in Peace 2023/2024 and Skeena 2023/2024 warrant a correction
@@ -223,11 +224,28 @@ affects **every step_4 row that will actually be submitted**.
 
       **Exception: `Average Gradient (%)`.** Paste the R-computed
       `average_gradient_percent` over that formula - the template divides by 100 and
-      would write a proportion into a percent column. See Phase 3. Affects all 5 rows
-      that survive the `_ef` strip. Leave the other four averages and all five VLOOKUPs
-      alone.
-- [ ] After population, spot-check that Step 4's gradient column reads 2.8 / 3.0 / 3.0 /
-      2.9 / 1.8 and **not** 0.028 / 0.030 / 0.030 / 0.029 / 0.018
+      would write a proportion into a percent column. See Phase 3. Leave the other four
+      averages and all five VLOOKUPs alone.
+- [ ] After population, spot-check Step 4's gradient column reads
+      `- / 2.8 / 3.0 / 3.0 / 2.9 / 1.8` and **not** `- / 0.028 / 0.030 / 0.030 / 0.029 / 0.018`
+
+### Prep script
+
+`scripts/03_permit_submission/fds_prep_2025.R` applies the submission-only transforms
+and writes the four sheets to `data/permit_submission/`, ready to paste:
+
+| sheet | rows | note |
+|---|---|---|
+| `step_1_ref_and_loc_info.csv` | 14 | all sites, unchanged |
+| `step_2_fish_coll_data.csv` | 33 | inherits comments from the dropped step_4 rows |
+| `step_3_individual_fish_data.csv` | 97 | all fish, unchanged |
+| `step_4_stream_site_data.csv` | **6 of 14** | 8 `_ef` sites dropped |
+
+It supersedes `fds_prep_for_submission_2023.Rmd` for 2025. That script also rebuilt
+watershed codes and reference numbers because the 2023 workflow keyed off a hand-filled
+`habitat_confirmations.xls`; `0205`/`0210` now produce both upstream, so only the
+shaping transforms remain. It also anchors the ef predicate as `_ef[0-9]*$` rather than
+the 2023 script's bare `grepl("ef", local_name)` substring match.
 - [ ] Apply the submission transforms from `fds_prep_for_submission_2023.Rmd`: drop `step_4_stream_site_data` rows for small `_ef` sites (fptr#27 - fish and locations stay, only non-conforming habitat rows go), consolidate site identifiers into comments, trim features
 - [ ] Record every hand step taken, for the fptr#216 spec
 

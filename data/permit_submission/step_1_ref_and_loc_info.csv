@@ -1,0 +1,15 @@
+reference_number,gazetted_name,alias_local_name,waterbody_type,waterbody_id_identifier,watershed_code_45_digit,twc_number,reach_number,site_number,survey_date,utm_method,utm_zone,utm_easting,utm_northing,no_visible_channel,dewatered_dry_int_channel
+1,Tributary to Missinka River,125179_us_ef1,stream,00000PARS,236-614900-20900-03300-0000-0000-000-000-000-000-000-000,,,1,2025-09-13,GPS General,10,570328,6052847,No,No
+2,Tributary to Missinka River,125179_ds_ef1,stream,00000PARS,236-614900-20900-03300-0000-0000-000-000-000-000-000-000,,,2,2025-09-13,GPS General,10,570275,6052820,No,No
+3,Tributary to Table River,125231_ds_ef1,stream,00000PARS,236-450800-15400-00000-0000-0000-000-000-000-000-000-000,,,3,2025-09-17,GPS General,10,549934,6065104,No,No
+4,Tributary to Table River,125231_us_ef1,stream,00000PARS,236-450800-15400-00000-0000-0000-000-000-000-000-000-000,,,4,2025-09-17,GPS General,10,549965,6065133,No,No
+5,Tributary to Kerry Lake,198692_us_ef1,stream,00000CRKD,230-906800-97600-22400-0000-0000-000-000-000-000-000-000,,,5,2025-09-19,GPS General,10,511729,6059293,No,No
+6,Tributary to Kerry Lake,198692_us_ef2,stream,00000CRKD,230-906800-97600-22400-0000-0000-000-000-000-000-000-000,,,6,2025-09-19,GPS General,10,511716,6059292,No,No
+7,Tributary to Kerry Lake,198692_ds_ef1,stream,00000CRKD,230-906800-97600-22400-0000-0000-000-000-000-000-000-000,,,7,2025-09-19,GPS General,10,511770,6059322,No,No
+8,Tributary to Kerry Lake,198692_ds_ef2,stream,00000CRKD,230-906800-97600-22400-0000-0000-000-000-000-000-000-000,,,8,2025-09-19,GPS General,10,511752,6059305,No,No
+9,Tributary to Parsnip River,199663_ds,stream,00000NA,,,,9,2025-09-21,GPS General,10,515479,6094974,No,No
+10,Tributary to Parsnip River,199663_us,stream,00000NA,,,,10,2025-09-21,GPS General,10,515398,6095013,No,No
+11,Tributary to Nation River,203597_ds,stream,00000NA,,,,11,2025-09-22,GPS General,10,426038,6122343,No,No
+12,Tributary to Nation River,203597_us,stream,00000NA,,,,12,2025-09-22,GPS General,10,425948,6122725,No,No
+13,Tributary to Williston Reservoir,203605_us,stream,00000NA,,,,13,2025-09-23,GPS General,10,486497,6124971,No,No
+14,Tributary to Williston Reservoir,203605_ds,stream,00000NA,,,,14,2025-09-23,GPS General,10,486704,6125076,No,No
