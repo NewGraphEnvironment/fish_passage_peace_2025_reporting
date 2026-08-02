@@ -128,9 +128,62 @@ so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
 
 ## Phase 4 - Generate the four step CSVs
 
-- [ ] Run `0205_fiss_wrangle.R` - reads `form_fiss_site_2025.gpkg` from `~/Projects/gis/sern_peace_fwcp_2023/data_field/2025/`, queries `bcfishpass.crossings_vw` for watershed codes, computes the five habitat averages
-- [ ] Run `0210_fiss_export_to_template.Rmd` -> `form_fiss_loc_tidy.csv` (step_1), `form_fiss_site_tidy.csv` (step_4)
-- [ ] Run `0220_fish_data_tidy.R` -> `fish_data_ind.csv` (step_3), `fish_data_coll.csv` (step_2)
+- [x] **`0205_fiss_wrangle.R` NOT re-run - deliberately.** The gpkg is already wrangled:
+      averages populated and `watershed_code_50k` in the correct 12-group form. `0205`
+      ends with `sf::st_write(..., delete_dsn = TRUE)` against a **Mergin-synced** gpkg,
+      which is a destructive rewrite for no gain here. Two path bugs noted for the
+      template port: `0205:7` reads `form_fiss_<year>.csv` from the **template repo**,
+      but the file lives locally and the template repo's copy is named
+      `form_fiss_site_<year>.csv`.
+- [x] Run `0210_fiss_export_to_template.Rmd` -> `form_fiss_loc_tidy.csv` (14 x 16, step_1),
+      `form_fiss_site_tidy.csv` (14 x 94 = step_4's 93 + `survey_date`)
+- [x] Run `0220_fish_data_tidy.R` -> `fish_data_ind.csv` (97 x 8, step_3),
+      `fish_data_coll.csv` (33 x 24, step_2). Required three further fixes, below.
+
+### Further faults found and fixed in 0220
+
+- **Non-idempotent destructive merge (the serious one).** `0220` read
+  `pit_tag_data_all_years.csv` with `col_names = FALSE`, unconditionally
+  `bind_rows()`ed the project-year tags in, re-derived `rowid`, and wrote the result
+  **back over the same file**. Because the write stores the parsed shape while the read
+  expects the raw shape, a second run appends the same tags again and renumbers
+  `rowid` - which is the join key to individual fish, so every prior year's join would
+  silently shift. All 53 of the 2025 tags were already present (2017:216, 2021:115,
+  2023:18, 2024:190, 2025:53). Now guarded with an `anti_join` on `tag_id` and a
+  write-back only when there is something new. Verified the file is byte-unchanged
+  across two runs.
+- `0220:143` cross-referenced reference numbers from the populated workbook. Those
+  numbers are assigned in `0210` and written to `form_fiss_loc_tidy.csv`; now read from
+  there. Establishes the real dependency: 0210 before 0220.
+- `0220:19` was a bare `pit_tag` symbol - undefined, immediate error. Removed.
+- `0220:267` re-read the populated workbook purely to dump sheets to `data/backup/`.
+  Obsolete with no workbook; removed.
+- Params loaded from `index.Rmd` front matter, as in `0210`.
+
+### Reconciliation - inputs vs report
+
+| Check | Result |
+|---|---|
+| source `fish_data_tags_joined_2025.csv` -> step_3 | 97 = 97 |
+| step_2 `total_num` sums to | **97** |
+| rows missing `reference_number` (step_2 / step_3) | 0 / 0 |
+| step_3 reference numbers absent from step_1 | none |
+| step_1 vs step_4 site lists | identical (14) |
+| five habitat averages, CSV vs gpkg (report's source) | **all identical** |
+| species | 84 Rainbow Trout + 12 Unidentified + 1 Sucker = 97 |
+
+The 14 Peace sites resolve to six crossings - 125179, 125231, 198692, 199663, 203597,
+203605 - matching the six appendix files in the report exactly. The mega-form CSV holds
+26 rows because it carries Fraser's sites too (126158, 196076, 196085, 196332, 197912,
+203581, 203582), which match Fraser's appendix filenames.
+
+Fish occur only at the eight `_ef` sites on crossings 125179, 125231 and 198692 - the
+three monitoring sites. **Issue #23 lists these as "125179, 198692, 125131"; the data
+says 125231, so `125131` in the issue is a transposition.**
+
+Gradient scope: only 5 of 14 sites carry an average gradient, and they are the non-`_ef`
+sites - precisely the rows that survive the Phase 5 `_ef` strip. So the fptr#217 decision
+affects **every step_4 row that will actually be submitted**.
 - [ ] Sanity-check row counts against 97 fish and the assessed site list
 
 ## Phase 5 - Build the submission workbook
