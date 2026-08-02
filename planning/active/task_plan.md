@@ -48,27 +48,45 @@ automating Fraser and Skeena.
 
 ## Phase 1 - Adopt the current provincial template
 
-- [ ] Download `fish_data_sub_template__qa_tool.zip` and extract `FDS_Template2026-03-11.xlsx`
-- [ ] Add to `rfp/inst/extdata/templates/` - the canonical home, already holding `FDS_Template2023-05-03.xls` and `pscis_assessment_template_v24.xlsm`
-- [ ] Commit in rfp with `Fixes NewGraphEnvironment/dff-2022#94`
-- [ ] Copy the blank into `fish_passage_peace_2025_reporting/data/` as the working template
+- [x] Download `fish_data_sub_template__qa_tool.zip` and extract `FDS_Template2026-03-11.xlsx`
+- [x] Add to `rfp/inst/extdata/templates/` - the canonical home, already holding `FDS_Template2023-05-03.xls` and `pscis_assessment_template_v24.xlsm`
+- [x] Commit in rfp with `Fixes NewGraphEnvironment/dff-2022#94` (branch `fds-template-2026`, commit `4a979f1`)
+- [x] Copy the blank into `data/templates/`, matching the committed-template convention already used for PSCIS (`data/spreadsheets/pscis_assessment_template_v24.xlsm`)
 
-## Phase 2 - Remove the bootstrap trap
+## Phase 2 - Make 0210 runnable
 
-`0210_fiss_export_to_template.Rmd` calls `fpr::fpr_import_hab_con()` four times
-(`:57`, `:65`, `:109`, `:143`) purely to harvest target column names - but peace_2025
-has no populated workbook, so the script cannot run at all today.
+`0210_fiss_export_to_template.Rmd` could not run in this repo at all. Four separate
+faults, only the first of which was visible from the issue:
 
-Keep the function; change only its `path`. It is format-agnostic (`excel_sheets` ->
-read -> `janitor` -> `fpr_sheet_trim`), and `fpr_sheet_trim` locates the header by
-taking the first fully-populated row - which is why it lands on the right row per
-sheet without anyone hardcoding one.
+1. Four `fpr::fpr_import_hab_con()` calls defaulted to `data/habitat_confirmations.xls`,
+   which does not exist here.
+2. `:52` and `:83` referenced `form_fiss_site_prep2` - an object `0205_fiss_wrangle.R`
+   **deletes on exit** (`0205:191`, `rm(list = ls(pattern = "^form_fiss_site_prep"))`).
+   It can never be in scope.
+3. `params$gis_project_name` / `params$project_year` (`:21`) are absent from the file's
+   own YAML block, which declared unrelated and stale keys (`repo_name:
+   "fish_passage_template_reporting"`, `job_name: "2024-073-..."`). Knitted standalone
+   both resolve `NULL`.
+4. `0210:35` was reading the gpkg into `form_fiss_site`, then the reassignment at `:140`
+   shadowed it - so the correct data source was fetched and discarded.
 
-- [ ] Pass the **blank** template path to those four calls (the default is
-      `data/habitat_confirmations.xls`, which does not exist here)
-- [ ] Remove the no-op `fpr::fpr_sp_gpkg_backup()` call at `0210:35` (return discarded at `:140`; UTM update discarded via `write_back_to_path = FALSE`; backup duplicated by `0100_backup_forms.R`)
-- [ ] Make `0210` runnable on its own - it currently depends on `form_fiss_site_prep2` from `0205`'s environment
-- [ ] Confirm `0210` runs end to end with no `data/habitat_confirmations.xls` present
+**Correction to the approved plan:** it recorded `fpr_sp_gpkg_backup()` as a no-op to
+delete. That was wrong. Reading `0205` in full showed it deletes its own prep objects,
+so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
+`return_object = TRUE` are load-bearing. The bug was the stale variable name, not the call.
+
+- [x] Point `fpr_import_hab_con()` at the blank template; read it **once** into
+      `fds_names` and pluck **by sheet name** rather than position, so a future sheet
+      reorder fails loudly instead of silently
+- [x] Rename the gpkg read to `form_fiss_site_qa` (no longer shadowed at `:140`) and
+      use it at `:52` / `:83` in place of the deleted `form_fiss_site_prep2`
+- [x] Load params from `index.Rmd` front matter via `rmarkdown::yaml_front_matter()` -
+      same pattern as `scripts/run_pagedown.R:44`; drop the stale YAML block. Restores
+      the `01_prep_inputs/README.md` contract that these are "self sufficient scripts
+      with everything in them necessary ... with a clean working environment"
+- [x] Verified: `fpr_import_hab_con()` reads the blank `.xlsx` in 2.3 s, returns 7
+      sheets, `step_1_ref_and_loc_info` 16 cols and `step_4_stream_site_data` 93 cols -
+      matching the `tidyxl` counts, and carrying `watershed_code_45_digit`
 
 ## Phase 3 - Correctness fixes before any data is written
 
