@@ -5,13 +5,54 @@
 # result to data/permit_submission/. Nothing here touches the workbook - the
 # outputs are what gets pasted into a copy of the blank provincial template.
 #
-# Supersedes fds_prep_for_submission_2023.Rmd for 2025. That script also rebuilt
-# watershed codes and reference numbers because the 2023 workflow keyed off a
-# hand-filled habitat_confirmations.xls; 0205/0210 now produce both upstream, so
-# only the submission-shaping transforms remain.
-#
 # Usage (from repo root):
-#   Rscript scripts/03_permit_submission/fds_prep_2025.R
+#   Rscript scripts/03_permit_submission/fds_prep_for_submission.R
+#
+# ---------------------------------------------------------------------------
+# MANUAL STEPS AROUND THIS SCRIPT
+# ---------------------------------------------------------------------------
+#
+# 1. Copy the blank template to data/permit_submission/<permit_id>.xlsx.
+#    Blank lives at data/templates/FDS_Template2026-03-11.xlsx.
+#
+# 2. Fill the Step 1 header block by hand:
+#      Project Title              same as the report title
+#      Company/Agency             Other
+#      Company/Agency (Other)     New Graph Environment Ltd.
+#      Spreadsheet Recorder(s)    whoever assembled it
+#      Project Type               Research
+#      PROVINCIAL PERMIT NUMBER   params$permit_id
+#      Reviewed and verified by a Registered Professional Biologist    Yes
+#      Biologist's Name           Allan Irvine
+#      Registration Number        2775
+#      Province of Registration   British Columbia
+#
+# 3. Run this script, then paste the four CSVs in. Data starts at rows
+#    33 / 25 / 20 / 22 for Steps 1-4.
+#
+#    Step 4 self-populates five AVERAGE() and five VLOOKUP() columns - leave
+#    those alone, EXCEPT `Average Gradient (%)`. See the note at the foot of
+#    this script.
+#
+# 4. QA. The provincial QA tool ships in the same zip as the template and runs
+#    only on Windows, Excel 2010 or earlier. It is optional but recommended.
+#    The historical route is: copy the workbook to OneDrive, open on a Windows
+#    machine, run the tool, record issues, copy back. Anything fixed there must
+#    be fixed in the repo copy too or the two diverge.
+#
+# 5. Submit via the WLRS SPO FDS SharePoint site
+#    (https://bcgov.sharepoint.com/sites/WLRS-FDS; access via
+#    fishdatasub@gov.bc.ca), plus DFO if the permit requires it. Capture the
+#    confirmation in the repo.
+#
+# ---------------------------------------------------------------------------
+#
+# Replaces fds_prep_for_submission_2023.Rmd. That version also rebuilt watershed
+# codes and reference numbers because the 2023 workflow keyed off a hand-filled
+# habitat_confirmations.xls; 0205/0210 now produce both upstream, so only the
+# submission-shaping transforms remain here. Its per-season values are in git
+# history rather than duplicated in a second file - the year in that filename is
+# what let it be copied forward into the 2024 and 2025 repos unchanged.
 
 suppressMessages({
   library(dplyr)
