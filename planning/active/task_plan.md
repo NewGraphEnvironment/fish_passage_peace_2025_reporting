@@ -90,8 +90,41 @@ so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
 
 ## Phase 3 - Correctness fixes before any data is written
 
-- [ ] Port the 1:20k -> 1:50k watershed-code fix from the Skeena scripts (fptr#82). `0205_fiss_wrangle.R` is byte-identical across template/peace_2025/fraser_2025 (7246 B), so none of them have it, and these codes feed `step_1_ref_and_loc_info`
-- [ ] Resolve gradient units (fptr#217): template computes `AVERAGE(...)/100`, our R column is `average_gradient_percent` with no divisor. Fastest check is comparing against the submitted `PG24-879256_data.xls`
+- [x] **Watershed codes (fptr#82) - investigated, NO code change.** Porting the Skeena
+      parsing would have been a regression. Evidence, from the submitted workbooks:
+
+      | Submission | Groups | Segmentation |
+      |---|---|---|
+      | skeena_2023, skeena_2024 | 12 | 3-6-5-5-4-4-3-3-3-3-3-3 |
+      | peace_2024 | **10** | 3-6-5x7 + orphan trailing digit |
+
+      Raw `watershed_code_50k` is 45 undelimited characters (verified by query), so
+      grouping is ours to choose. The alternate parsing at
+      `skeena_2024/.../0205_fiss_wrangle.Rmd:193-205` substrings to position 49 against
+      a 45-character input - which is what produces peace_2024's trailing `-0`. Both
+      Skeena submissions used the 12-group form that `parse_ws_code()` already produces
+      here. The 2026 template does not specify a delimiter format; INSTRUCTIONS row 87
+      names only the sources (FIDQ, Habitat Wizard). Recorded on fptr#82.
+
+- [x] **Gradient units (fptr#217) - confirmed a defect in the provincial template,
+      inherited by every past submission.** From submitted `SM24-882238_data.xls`:
+
+      | #1 (%) | #2 (%) | #3 | #4 (%) | submitted "Average Gradient (%)" | true mean |
+      |---|---|---|---|---|---|
+      | 2 | 3.5 | 1.0 | - | 0.02166667 | 2.167 |
+      | 6 | 5.0 | 3.5 | 2.0 | 0.04125 | 4.125 |
+
+      Exactly 100x low on every row. The template's `AVERAGE(...)/100` writes a
+      proportion into a column headed `(%)`, whose inputs are percents. Our R
+      `average_gradient_percent` has no divisor, so **the report and the submission
+      disagree by 100x for the same sites** - the report matches the label, the
+      submission does not. The other four averages are unaffected.
+
+- [ ] **DECISION REQUIRED before Phase 5** - let the template compute (consistent with
+      our back catalogue, knowingly wrong), write the R value (correct, but clobbers a
+      derived cell and diverges from prior submissions), or ask the province. Their
+      formula and their header disagree, so option three first. Contact recorded at
+      `fds_prep_for_submission_2023.Rmd:60`.
 
 ## Phase 4 - Generate the four step CSVs
 
