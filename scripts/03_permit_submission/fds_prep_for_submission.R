@@ -63,6 +63,17 @@ params <- rmarkdown::yaml_front_matter("index.Rmd")$params
 dir_out <- fs::path("data/permit_submission")
 fs::dir_create(dir_out)
 
+# Where the built workbook lands.
+#
+# Defaults to hold/ so a draft can be reviewed before it becomes the submission
+# artifact. Once the draft is confirmed good, flip to the submission dir and
+# re-run - it overwrites in place.
+dir_workbook <- fs::path("hold")
+# dir_workbook <- dir_out   ## <- flip when the draft has been reviewed
+
+path_workbook <- fs::path(dir_workbook, paste0(params$permit_id, ".xlsx"))
+path_template <- fs::path("data/templates/FDS_Template2026-03-11.xlsx")
+
 rd <- function(p) readr::read_csv(p, show_col_types = FALSE)
 
 step_1 <- rd("data/inputs_extracted/form_fiss_loc_tidy.csv")
@@ -137,13 +148,69 @@ message(
   " (dropped ", sum(is_ef(step_4$local_name)), " ef sites)"
 )
 
-# Reminder for the paste step -----------------------------------------------
+# Build the workbook --------------------------------------------------------
 #
-# Step 4 self-populates five AVERAGE() and five VLOOKUP() columns - leave those
-# alone, EXCEPT `Average Gradient (%)`. The template computes AVERAGE(...)/100,
-# writing a proportion into a column headed (%) whose inputs are percents, so
-# paste our average_gradient_percent over it. See
-# fish_passage_template_reporting#217.
+# Writes the four sheets into a copy of the blank provincial template, so no
+# copy-paste-special is required. The CSVs above remain the reviewable
+# intermediate, and still support the manual route if this is ever distrusted.
+#
+# Two rules, both enforced by `col_skip` below:
+#
+#  - Derived columns are left alone so the workbook computes them itself: the
+#    VLOOKUP pulls from Step 1 on every sheet, Step 2's Soak Time, and four of
+#    Step 4's five AVERAGE columns.
+#  - `Average Gradient (%)` (Step 4, col 44) is deliberately NOT skipped. The
+#    template computes AVERAGE(...)/100, writing a proportion into a column
+#    headed (%) whose inputs are percents, so we overwrite it with the true
+#    percent. See fish_passage_template_reporting#217.
+
+sheet_spec <- list(
+  list(sheet = "Step 1 (Ref. and Loc. Info)",   row_header = 32, dat = step_1_submission, col_skip = integer(0)),
+  list(sheet = "Step 2 (Fish Coll. Data)",      row_header = 24, dat = step_2_submission, col_skip = c(2:6, 31)),
+  list(sheet = "Step 3 (Individual Fish Data)", row_header = 19, dat = step_3_submission, col_skip = c(2:6)),
+  list(sheet = "Step 4 (Stream Site Data)",     row_header = 21, dat = step_4_submission, col_skip = c(2:6, 14, 23, 32, 38))
+)
+
+# 0210 builds step_1 and step_4 by binding onto the template's own empty sheet,
+# so their names already match. 0220 does not, so the fish sheets need a map
+# from our column name to the template's. Folding that into 0220 would delete
+# this - see fish_passage_template_reporting#216.
+col_rename <- list(
+  "Step 2 (Fish Coll. Data)" = c(
+    haul_number_pass_number = "pass_number", ef_length_m = "site_length",
+    ef_width_m = "avg_wetted_width_m", stage = "life_stage",
+    total_number = "total_num", min_length_mm = "min_length",
+    max_length_mm = "max_length"),
+  "Step 3 (Individual Fish Data)" = c(
+    haul_number_pass_number = "pass_number", length_mm = "length",
+    weight_g = "weight")
+)
+
+fs::dir_create(dir_workbook)
+cells <- tidyxl::xlsx_cells(path_template)
+wb <- openxlsx::loadWorkbook(path_template)
+
+for (sp in sheet_spec) {
+  hdr <- cells |>
+    filter(sheet == sp$sheet, row == sp$row_header, !is.na(character)) |>
+    arrange(col)
+  nms <- janitor::make_clean_names(trimws(hdr$character))
+  map <- col_rename[[sp$sheet]]
+
+  for (i in seq_len(nrow(hdr))) {
+    if (hdr$col[i] %in% sp$col_skip) next
+    nm <- nms[i]
+    if (!is.null(map) && nm %in% names(map)) nm <- unname(map[[nm]])
+    if (!nm %in% names(sp$dat)) next   # field we do not collect - left blank
+    openxlsx::writeData(wb, sheet = sp$sheet, x = sp$dat[[nm]],
+                        startRow = sp$row_header + 1, startCol = hdr$col[i],
+                        colNames = FALSE)
+  }
+}
+
+openxlsx::saveWorkbook(wb, path_workbook, overwrite = TRUE)
+message("\nworkbook written: ", path_workbook,
+        if (identical(as.character(dir_workbook), "hold")) "  (DRAFT - review, then flip dir_workbook)" else "")
 message(
   "\ngradient values to verify after pasting (percent, not proportion):\n",
   paste0(
