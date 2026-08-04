@@ -415,7 +415,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i>Attachment - Habitat Assessment and Fish Sampling Data</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -993,12 +993,12 @@ Fix Span / Diameter
 </div>
 <div id="stream-characteristics-downstream-of-crossing-203597" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Downstream of Crossing 203597<a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-downstream-of-crossing-203597" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed downstream from crossing 203597 for 400m (Figure <a href="tributary-to-nation-river---203597---appendix.html#fig:photo-203597-01">5.26</a>). The stream had good flow, likely elevated due to significant precipitation the previous night. Abundant gravels were present throughout, and cover was provided by multiple sources including woody debris and undercut banks. No barriers were observed. The dominant substrate was cobbles with gravels sub-dominant.Total cover amount was rated as abundant with undercut banks dominant. Cover was also present as small woody debris, large woody debris, boulders, deep pools, and overhanging vegetation.The average channel width was 2.8m, the average wetted width was 2.6m, and the average gradient was 3%.</p>
+<p>The stream was surveyed downstream from crossing 203597 for 400m (Figure <a href="tributary-to-nation-river---203597---appendix.html#fig:photo-203597-01">5.26</a>). The stream had good flow, likely elevated due to significant precipitation the previous night. Abundant gravels were present throughout, and cover was provided by multiple sources including woody debris and undercut banks. No barriers were observed. Total cover amount was rated as abundant with undercut banks dominant. Cover was also present as small woody debris, large woody debris, boulders, deep pools, and overhanging vegetation.The dominant substrate was cobbles with gravels sub-dominant.The average channel width was 2.8m, the average wetted width was 2.6m, and the average gradient was 3%.</p>
 <p><br></p>
 </div>
 <div id="stream-characteristics-upstream-of-crossing-203597" class="section level2 unnumbered hasAnchor">
 <h2>Stream Characteristics Upstream of Crossing 203597<a href="tributary-to-nation-river---203597---appendix.html#stream-characteristics-upstream-of-crossing-203597" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The stream was surveyed upstream from crossing 203597 for 350m up to the beginning of the wetlands (Figure <a href="tributary-to-nation-river---203597---appendix.html#fig:photo-203597-02">5.27</a>). The habitat was rated as NA value. The dominant substrate was fines with cobbles sub-dominant.Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.The average channel width was 2.5m, the average wetted width was 2.4m, and the average gradient was 3%. The stream had good flow, although recent rainfall may have influenced discharge. Pockets of gravels were present within the area surveyed. Wetlands adjacent to the channel appeared shallow, suggesting they may freeze to the bottom during winter.</p>
+<p>The stream was surveyed upstream from crossing 203597 for 350m up to the beginning of the wetlands (Figure <a href="tributary-to-nation-river---203597---appendix.html#fig:photo-203597-02">5.27</a>). The habitat was rated as NA value. Total cover amount was rated as moderate with small woody debris dominant. Cover was also present as large woody debris, undercut banks, and overhanging vegetation.The dominant substrate was fines with cobbles sub-dominant.The average channel width was 2.5m, the average wetted width was 2.4m, and the average gradient was 3%. The stream had good flow, although recent rainfall may have influenced discharge. Pockets of gravels were present within the area surveyed. Wetlands adjacent to the channel appeared shallow, suggesting they may freeze to the bottom during winter.</p>
 <p><br></p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="tributary-to-nation-river---203597---appendix.html#cb126-1" tabindex="-1"></a><span class="do">##this is useful to get some comments for the report</span></span>
 <span id="cb126-2"><a href="tributary-to-nation-river---203597---appendix.html#cb126-2" tabindex="-1"></a>form_edna <span class="sc">|&gt;</span><span class="fu">filter</span>(site <span class="sc">==</span> my_site <span class="sc">&amp;</span> location <span class="sc">==</span> <span class="st">&#39;ds&#39;</span>) <span class="sc">|&gt;</span><span class="fu">pull</span>(comments_field)</span>
@@ -1132,9 +1132,6 @@ UNBC ID
 Detected
 </th>
 <th style="text-align:left;">
-Sub-threshold
-</th>
-<th style="text-align:left;">
 Not detected
 </th>
 </tr>
@@ -1151,10 +1148,7 @@ M41366
 RAIN(173)*
 </td>
 <td style="text-align:left;">
-BULT(3)*
-</td>
-<td style="text-align:left;">
-GRAY(0)<em>, SOCK(0)</em>
+BULT(3)<em>, GRAY(0)</em>, SOCK(0)*
 </td>
 </tr>
 <tr>
@@ -1166,9 +1160,6 @@ M41367
 </td>
 <td style="text-align:left;">
 RAIN(213)*
-</td>
-<td style="text-align:left;">
-—
 </td>
 <td style="text-align:left;">
 BULT(0)<em>, GRAY(0)</em>, SOCK(0)*

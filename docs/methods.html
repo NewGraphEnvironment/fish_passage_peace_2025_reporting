@@ -415,7 +415,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="session-info.html"><a href="session-info.html"><i class="fa fa-check"></i>Session Info</a></li>
 <li class="chapter" data-level="" data-path="attach-dat.html"><a href="attach-dat.html"><i class="fa fa-check"></i>Attachment - Habitat Assessment and Fish Sampling Data</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_reporting_2025" target="blank">Scripts and Data</a></li>
+<li><a href="https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting" target="blank">Scripts and Data</a></li>
 
 </ul>
 
@@ -1626,13 +1626,15 @@ Describe details and rational for priority rankings
 </div>
 <div id="laboratory-analysis" class="section level4 hasAnchor" number="3.5.2.3">
 <h4><span class="header-section-number">3.5.2.3</span> Laboratory Analysis<a href="methods.html#laboratory-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Samples were shipped frozen to UNBC for extraction and analysis. DNA was extracted and analyzed using quantitative polymerase chain reaction (qPCR) with species-specific assays following protocols developed by <span class="citation">Murray and Booth (2023)</span>. Assays targeted mitochondrial genes (COI, CytB) using fluorescent dyes (FAM, VIC, HEX), allowing multiple species to be tested per sample through multiplexing. Target species included Chinook, Coho, Sockeye, Rainbow Trout, Bull Trout, Arctic Grayling, and Kokanee, with additional assays for Coastal Cutthroat and White Sturgeon at select sites.</p>
-<p>Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished using mtDNA-based assays. The Bull Trout assay also detects Dolly Varden, requiring geographic context to interpret results in areas where ranges overlap. Similarly, Rainbow Trout and Coastal Cutthroat assays may cross-react where these species co-occur or hybridize.</p>
-<p>To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An assay mapping table cross-referencing species codes to assay identifiers and dye types was developed, along with processing scripts to generate sample groupings and a run order configuration specifying species order within each group.</p>
-</div>
-<div id="edna-extraction" class="section level4 hasAnchor" number="3.5.2.4">
-<h4><span class="header-section-number">3.5.2.4</span> eDNA Extraction<a href="methods.html#edna-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>eDNA was extracted in the dedicated eDNA lab at UNBC and analysed with the protocols developed by <span class="citation">Murray and Booth (2023)</span>.</p>
+<p>Samples were shipped frozen to the UNBC Genetics Facility for extraction and analysis. Full laboratory methods, per-sample results and the laboratory’s interpretation are in their technical report, available <a href="https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/UNBC-eDNA_Report-New_Graph-13July2026.pdf" target="_blank">here</a>. The points below are the ones needed to read the results in this report; the technical report is the authority on everything else.</p>
+<p><br></p>
+<p>Species-specific TaqMan assays were run on a droplet digital PCR (ddPCR) platform, paired as duplex reactions with FAM and VIC reporter dyes. Each filter was extracted in two elutions and both were analysed. <strong>A sample was called positive for a species where four or more positive droplets were detected.</strong> Samples returning two or three droplets were retested against an additional portion of the elution volume; where the additional droplets did not bring the total to four or more, the sample was called negative. Results below the four-droplet threshold are reported here as not detected.</p>
+<p><br></p>
+<p>Exogenous lambda phage DNA and an ePlant assay were used to test for PCR inhibition and eDNA degradation in samples returning no detections. Where those tests indicated inhibition or degradation, elutions were combined and cleaned before retesting.</p>
+<p><br></p>
+<p>Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished by these assays. The bull trout assay does not distinguish Bull Trout from Dolly Varden, and results for that assay should be read as applying to either species.</p>
+<p><br></p>
+<p>To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of runs required.</p>
 </div>
 </div>
 <div id="open-source-reporting-framework" class="section level3 hasAnchor" number="3.5.3">
