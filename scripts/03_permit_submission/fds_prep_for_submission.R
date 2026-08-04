@@ -154,21 +154,22 @@ message(
 # copy-paste-special is required. The CSVs above remain the reviewable
 # intermediate, and still support the manual route if this is ever distrusted.
 #
-# Two rules, both enforced by `col_skip` below:
+# One rule, enforced by `col_skip` below: derived columns are left alone so the
+# workbook computes them itself - the VLOOKUP pulls from Step 1 on every sheet,
+# Step 2's Soak Time, and all five of Step 4's AVERAGE columns.
 #
-#  - Derived columns are left alone so the workbook computes them itself: the
-#    VLOOKUP pulls from Step 1 on every sheet, Step 2's Soak Time, and four of
-#    Step 4's five AVERAGE columns.
-#  - `Average Gradient (%)` (Step 4, col 44) is deliberately NOT skipped. The
-#    template computes AVERAGE(...)/100, writing a proportion into a column
-#    headed (%) whose inputs are percents, so we overwrite it with the true
-#    percent. See fish_passage_template_reporting#217.
+# That includes `Average Gradient (%)` (Step 4, col 44), whose formula is
+# AVERAGE(...)/100. The /100 is correct and must not be overridden: that cell
+# carries Excel number format `0.0%`, and a percent-formatted cell multiplies by
+# 100 for display. So 0.028 displays as 2.8%, which is what the measurements
+# (2.0, 3.5, ...) average to. Writing 2.8 into it would display as 280.0%.
+# See fish_passage_template_reporting#217.
 
 sheet_spec <- list(
   list(sheet = "Step 1 (Ref. and Loc. Info)",   row_header = 32, dat = step_1_submission, col_skip = integer(0)),
   list(sheet = "Step 2 (Fish Coll. Data)",      row_header = 24, dat = step_2_submission, col_skip = c(2:6, 31)),
   list(sheet = "Step 3 (Individual Fish Data)", row_header = 19, dat = step_3_submission, col_skip = c(2:6)),
-  list(sheet = "Step 4 (Stream Site Data)",     row_header = 21, dat = step_4_submission, col_skip = c(2:6, 14, 23, 32, 38))
+  list(sheet = "Step 4 (Stream Site Data)",     row_header = 21, dat = step_4_submission, col_skip = c(2:6, 14, 23, 32, 38, 44))
 )
 
 # 0210 builds step_1 and step_4 by binding onto the template's own empty sheet,
@@ -211,12 +212,21 @@ for (sp in sheet_spec) {
 openxlsx::saveWorkbook(wb, path_workbook, overwrite = TRUE)
 message("\nworkbook written: ", path_workbook,
         if (identical(as.character(dir_workbook), "hold")) "  (DRAFT - review, then flip dir_workbook)" else "")
-message(
-  "\ngradient values to verify after pasting (percent, not proportion):\n",
-  paste0(
-    "  ", step_4_submission$local_name, ": ",
-    ifelse(is.na(step_4_submission$average_gradient_percent), "-",
-           step_4_submission$average_gradient_percent),
-    collapse = "\n"
-  )
-)
+# Gaps worth seeing before the workbook is reviewed -------------------------
+#
+# Sites whose watershed code did not resolve. Some crossings have no entry in
+# whse_basemapping.fwa_streams_20k_50k, so the 20k -> 50k cross-reference
+# returns nothing and both the code and the waterbody id are missing. These
+# need a manual lookup - the documented route is QA in QGIS against
+# whse_fish.wdic_waterbody_route_line_svw.
+gaps <- step_1_submission |>
+  filter(is.na(watershed_code_45_digit) | is.na(waterbody_id_identifier)) |>
+  select(alias_local_name, waterbody_id_identifier, watershed_code_45_digit)
+
+if (nrow(gaps) > 0) {
+  message("\n!! ", nrow(gaps), " of ", nrow(step_1_submission),
+          " sites are missing a watershed code / waterbody id:")
+  message(paste0("     ", gaps$alias_local_name, collapse = "\n"))
+} else {
+  message("\nall sites carry a watershed code and waterbody id")
+}

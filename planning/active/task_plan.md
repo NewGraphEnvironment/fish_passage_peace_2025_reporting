@@ -106,42 +106,24 @@ so the gpkg re-read *is* the intended data source, and `update_utm = TRUE` /
       here. The 2026 template does not specify a delimiter format; INSTRUCTIONS row 87
       names only the sources (FIDQ, Habitat Wizard). Recorded on fptr#82.
 
-- [x] **Gradient units (fptr#217) - confirmed a defect in the provincial template,
-      inherited by every past submission.** From submitted `SM24-882238_data.xls`:
+- [x] **Gradient units (fptr#217) - RESOLVED: no defect, no change.** I initially
+      concluded the template was 100x wrong and that past submissions were too. That was
+      an error - I read raw stored values and never checked the cell number format.
 
-      | #1 (%) | #2 (%) | #3 | #4 (%) | submitted "Average Gradient (%)" | true mean |
-      |---|---|---|---|---|---|
-      | 2 | 3.5 | 1.0 | - | 0.02166667 | 2.167 |
-      | 6 | 5.0 | 3.5 | 2.0 | 0.04125 | 4.125 |
+      | Step 4 column | Excel number format |
+      |---|---|
+      | Gradient #1 - #4 | `0.00` (plain number) |
+      | **Average Gradient (%)** | **`0.0%` (percentage)** |
 
-      Exactly 100x low on every row. The template's `AVERAGE(...)/100` writes a
-      proportion into a column headed `(%)`, whose inputs are percents. Our R
-      `average_gradient_percent` has no divisor, so **the report and the submission
-      disagree by 100x for the same sites** - the report matches the label, the
-      submission does not. The other four averages are unaffected.
+      A percent-formatted cell multiplies by 100 for display, so a stored `0.028`
+      renders as `2.8%` - exactly the average of the measured values. The template's
+      `AVERAGE(...)/100` is correct. Writing `2.8` there would render as `280.0%`.
 
-- [x] **DECIDED: submit true percent values.** Write the R-computed
-      `average_gradient_percent` into the Step 4 average gradient column rather than let
-      `AVERAGE(...)/100` stand. The column is headed `(%)` and its inputs are percents.
+      Consequences: no correction notice for Peace 2023/2024 or Skeena 2023/2024, nothing
+      to raise with the Province, report and submission do not disagree, and the
+      do-not-overwrite-derived-columns rule stands unqualified. Retracted on fptr#217.
 
-      This is a deliberate, scoped exception to the do-not-overwrite-derived-cells rule
-      - it applies to the gradient average **only**. The other four Step 4 averages have
-      no divisor and stay as formulas; so do the five `VLOOKUP(...)` pulls.
-
-      Values going in. **Six** rows survive the `_ef` strip; five carry a gradient:
-
-      | site | #1 | #2 | #3 | #4 | submitting (%) | template would write |
-      |---|---|---|---|---|---|---|
-      | 199663_ds | - | - | - | - | - | - |
-      | 199663_us | 3.0 | 2.5 | 3.0 | - | **2.8** | 0.028 |
-      | 203597_ds | 3.0 | 2.5 | 3.5 | - | **3.0** | 0.030 |
-      | 203597_us | 3.5 | 2.5 | 3.0 | - | **3.0** | 0.030 |
-      | 203605_us | 2.0 | 6.0 | 2.0 | 1.5 | **2.9** | 0.029 |
-      | 203605_ds | 2.0 | 1.5 | 2.0 | - | **1.8** | 0.018 |
-
-      Two follow-ups tracked on fptr#217, not blocking this submission: whether the
-      100x-low values in Peace 2023/2024 and Skeena 2023/2024 warrant a correction
-      notice, and raising the template defect with the Province.
+      Caught only because the workbook was opened and looked at.
 
 ## Phase 4 - Generate the four step CSVs
 
