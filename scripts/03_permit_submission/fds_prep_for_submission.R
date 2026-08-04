@@ -72,14 +72,29 @@ dir_workbook <- fs::path("hold")
 # dir_workbook <- dir_out   ## <- flip when the draft has been reviewed
 
 path_workbook <- fs::path(dir_workbook, paste0(params$permit_id, ".xlsx"))
-path_template <- fs::path("data/templates/FDS_Template2026-03-11.xlsx")
+
+# Newest shipped template, rather than a pinned filename - the province reissues
+# it periodically and the column sets have been stable across reissues.
+path_template <- sort(fs::dir_ls("data/templates", regexp = "FDS_Template.*\\.xlsx$"),
+                      decreasing = TRUE)[1]
+stopifnot(length(path_template) == 1, !is.na(path_template))
 
 rd <- function(p) readr::read_csv(p, show_col_types = FALSE)
 
 step_1 <- rd("data/inputs_extracted/form_fiss_loc_tidy.csv")
-step_2 <- rd("data/inputs_raw/fish_data_coll.csv")
-step_3 <- rd("data/inputs_raw/fish_data_ind.csv")
 step_4 <- rd("data/inputs_extracted/form_fiss_site_tidy.csv")
+
+# A season with no fish sampled still submits locations and habitat - it records
+# where we were and what was assessed. 0220_fish_data_tidy.R produces nothing in
+# that case, so the fish sheets are optional and left empty in the workbook.
+path_step_2 <- "data/inputs_raw/fish_data_coll.csv"
+path_step_3 <- "data/inputs_raw/fish_data_ind.csv"
+has_fish <- fs::file_exists(path_step_2) && fs::file_exists(path_step_3)
+
+step_2 <- if (has_fish) rd(path_step_2) else NULL
+step_3 <- if (has_fish) rd(path_step_3) else NULL
+
+if (!has_fish) message("no fish data found - submitting locations and habitat only")
 
 # Which sites are small electrofishing sites -------------------------------
 #
@@ -117,33 +132,113 @@ step_4_submission <- step_4_commented |>
 comments_from_step_4 <- step_4_commented |>
   select(reference_number, comments_site = comments)
 
-step_2_submission <- step_2 |>
-  left_join(comments_from_step_4, by = "reference_number") |>
-  mutate(
-    comments = dplyr::case_when(
-      is.na(comments_site) ~ comments,
-      is.na(comments) | !nzchar(trimws(comments)) ~ comments_site,
-      TRUE ~ paste(comments_site, comments)
-    )
-  ) |>
-  select(-comments_site)
+step_2_submission <- if (!has_fish) NULL else {
+  step_2 |>
+    left_join(comments_from_step_4, by = "reference_number") |>
+    mutate(
+      comments = dplyr::case_when(
+        is.na(comments_site) ~ comments,
+        is.na(comments) | !nzchar(trimws(comments)) ~ comments_site,
+        TRUE ~ paste(comments_site, comments)
+      )
+    ) |>
+    select(-comments_site)
+}
 
-# step_1 and step_3 pass through unchanged - every site's location is
-# submitted, and so is every fish.
-step_1_submission <- step_1
+# step_1 - refresh watershed codes, then assign TWCs where none exists ------
+#
+# Two reasons this happens here rather than in 0205_fiss_wrangle.R:
+#
+#  - 0205 writes back to the field-form gpkgs with delete_dsn = TRUE, and the
+#    `source` column pools all three regions, so running it from one repo
+#    destructively rewrites three Mergin projects. Not worth it for a lookup.
+#  - The gpkg's watershed data is only as fresh as the last 0205 run. Querying
+#    here means the submission always carries current codes.
+#
+# The template's own rules, from the cell comments on Step 1 (F32 and G32):
+#
+#   "If there is no Watershed Code results for your waterbody, then leave this
+#    field blank and fill out the TWC# field."
+#   "For TWCs, leave WSC code and Waterbody ID blank. Do not use the WSC of the
+#    parent stream."
+#   "identify the waterbody by creating a numeric TWC (maximum 5 digits). All
+#    the sites on a waterbody must be given the same #."
+#
+# "Same waterbody" is keyed on blue_line_key, the FWA stream identifier, so two
+# crossings on one stream share a TWC.
+
+parse_ws_code <- function(code) {
+  dplyr::case_when(
+    stringr::str_length(code) != 45 ~ NA_character_,
+    TRUE ~ stringr::str_c(
+      stringr::str_sub(code, 1, 3), "-",  stringr::str_sub(code, 4, 9), "-",
+      stringr::str_sub(code, 10, 14), "-", stringr::str_sub(code, 15, 19), "-",
+      stringr::str_sub(code, 20, 23), "-", stringr::str_sub(code, 24, 27), "-",
+      stringr::str_sub(code, 28, 30), "-", stringr::str_sub(code, 31, 33), "-",
+      stringr::str_sub(code, 34, 36), "-", stringr::str_sub(code, 37, 39), "-",
+      stringr::str_sub(code, 40, 42), "-", stringr::str_sub(code, 43, 45)
+    )
+  )
+}
+
+ids <- step_1 |>
+  mutate(site = as.integer(sub("_.*$", "", alias_local_name))) |>
+  distinct(site) |>
+  filter(!is.na(site)) |>
+  pull(site)
+
+wsc <- fpr::fpr_db_query(query = glue::glue("
+  SELECT DISTINCT ON (a.stream_crossing_id)
+    a.stream_crossing_id, a.blue_line_key, a.watershed_group_code,
+    b.watershed_code_50k
+  FROM bcfishpass.crossings_vw a
+  LEFT OUTER JOIN whse_basemapping.fwa_streams_20k_50k b
+    ON a.linear_feature_id = b.linear_feature_id_20k
+  WHERE a.stream_crossing_id IN ({glue::glue_collapse(ids, sep = ', ')})
+  ORDER BY a.stream_crossing_id, b.match_type;")) |>
+  # watershed_group_code comes from crossings_vw, not from the 50k join, so it
+  # survives a missing 50k code. 0205 filtered on code length before selecting
+  # both, which discarded an available group code alongside the missing one.
+  mutate(wsc_parsed = parse_ws_code(watershed_code_50k))
+
+step_1_submission <- step_1 |>
+  mutate(site = as.integer(sub("_.*$", "", alias_local_name))) |>
+  select(-watershed_code_45_digit, -waterbody_id_identifier) |>
+  left_join(wsc |> select(site = stream_crossing_id, blue_line_key,
+                          watershed_group_code, wsc_parsed),
+            by = "site") |>
+  # A TWC is required only where no 45-digit code exists; one number per stream.
+  group_by(blue_line_key) |>
+  mutate(needs_twc = all(is.na(wsc_parsed))) |>
+  ungroup() |>
+  mutate(
+    twc_number = dplyr::if_else(needs_twc,
+                                as.character(dense_rank(dplyr::if_else(needs_twc, blue_line_key, NA_integer_))),
+                                NA_character_),
+    watershed_code_45_digit = wsc_parsed,
+    # Blank for TWC sites, per the template: do not use the parent stream's WSC.
+    waterbody_id_identifier = dplyr::if_else(
+      needs_twc | is.na(watershed_group_code), NA_character_,
+      paste0("00000", watershed_group_code))
+  ) |>
+  select(any_of(names(step_1)))
+
+# step_3 passes through unchanged - every fish is submitted.
 step_3_submission <- step_3
 
 # Write ---------------------------------------------------------------------
 readr::write_csv(step_1_submission, fs::path(dir_out, "step_1_ref_and_loc_info.csv"), na = "")
-readr::write_csv(step_2_submission, fs::path(dir_out, "step_2_fish_coll_data.csv"), na = "")
-readr::write_csv(step_3_submission, fs::path(dir_out, "step_3_individual_fish_data.csv"), na = "")
 readr::write_csv(step_4_submission, fs::path(dir_out, "step_4_stream_site_data.csv"), na = "")
+if (has_fish) {
+  readr::write_csv(step_2_submission, fs::path(dir_out, "step_2_fish_coll_data.csv"), na = "")
+  readr::write_csv(step_3_submission, fs::path(dir_out, "step_3_individual_fish_data.csv"), na = "")
+}
 
 message(
-  "permit ", params$permit_id, " - rows to paste:\n",
+  "permit ", params$permit_id, " - rows:\n",
   "  step_1 ", nrow(step_1_submission), " (all sites)\n",
-  "  step_2 ", nrow(step_2_submission), "\n",
-  "  step_3 ", nrow(step_3_submission), " (all fish)\n",
+  "  step_2 ", if (has_fish) nrow(step_2_submission) else "- (no fish sampled)", "\n",
+  "  step_3 ", if (has_fish) paste(nrow(step_3_submission), "(all fish)") else "- (no fish sampled)", "\n",
   "  step_4 ", nrow(step_4_submission), " of ", nrow(step_4),
   " (dropped ", sum(is_ef(step_4$local_name)), " ef sites)"
 )
@@ -166,11 +261,12 @@ message(
 # See fish_passage_template_reporting#217.
 
 sheet_spec <- list(
-  list(sheet = "Step 1 (Ref. and Loc. Info)",   row_header = 32, dat = step_1_submission, col_skip = integer(0)),
-  list(sheet = "Step 2 (Fish Coll. Data)",      row_header = 24, dat = step_2_submission, col_skip = c(2:6, 31)),
-  list(sheet = "Step 3 (Individual Fish Data)", row_header = 19, dat = step_3_submission, col_skip = c(2:6)),
-  list(sheet = "Step 4 (Stream Site Data)",     row_header = 21, dat = step_4_submission, col_skip = c(2:6, 14, 23, 32, 38, 44))
+  list(sheet = "Step 1 (Ref. and Loc. Info)",   dat = step_1_submission),
+  list(sheet = "Step 2 (Fish Coll. Data)",      dat = step_2_submission),
+  list(sheet = "Step 3 (Individual Fish Data)", dat = step_3_submission),
+  list(sheet = "Step 4 (Stream Site Data)",     dat = step_4_submission)
 )
+sheet_spec <- Filter(function(x) !is.null(x$dat), sheet_spec)
 
 # 0210 builds step_1 and step_4 by binding onto the template's own empty sheet,
 # so their names already match. 0220 does not, so the fish sheets need a map
@@ -191,20 +287,35 @@ fs::dir_create(dir_workbook)
 cells <- tidyxl::xlsx_cells(path_template)
 wb <- openxlsx::loadWorkbook(path_template)
 
+# Header row and formula columns are read from the template rather than pinned,
+# so a reissued template with shifted rows or new derived columns still works.
+# The header is the row carrying the most text cells; the formula columns are
+# whichever cells hold a formula in the first data row.
+sheet_geometry <- function(sheet) {
+  d <- cells |> filter(sheet == !!sheet)
+  row_header <- d |> filter(!is.na(character)) |> count(row) |>
+    slice_max(n, n = 1, with_ties = FALSE) |> pull(row)
+  list(
+    row_header = row_header,
+    col_skip   = d |> filter(row == row_header + 1, !is.na(formula)) |> pull(col)
+  )
+}
+
 for (sp in sheet_spec) {
+  geo <- sheet_geometry(sp$sheet)
   hdr <- cells |>
-    filter(sheet == sp$sheet, row == sp$row_header, !is.na(character)) |>
+    filter(sheet == sp$sheet, row == geo$row_header, !is.na(character)) |>
     arrange(col)
   nms <- janitor::make_clean_names(trimws(hdr$character))
   map <- col_rename[[sp$sheet]]
 
   for (i in seq_len(nrow(hdr))) {
-    if (hdr$col[i] %in% sp$col_skip) next
+    if (hdr$col[i] %in% geo$col_skip) next   # derived - let the workbook compute it
     nm <- nms[i]
     if (!is.null(map) && nm %in% names(map)) nm <- unname(map[[nm]])
-    if (!nm %in% names(sp$dat)) next   # field we do not collect - left blank
+    if (!nm %in% names(sp$dat)) next         # field we do not collect - left blank
     openxlsx::writeData(wb, sheet = sp$sheet, x = sp$dat[[nm]],
-                        startRow = sp$row_header + 1, startCol = hdr$col[i],
+                        startRow = geo$row_header + 1, startCol = hdr$col[i],
                         colNames = FALSE)
   }
 }
