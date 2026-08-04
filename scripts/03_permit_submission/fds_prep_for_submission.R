@@ -73,6 +73,24 @@ dir_workbook <- fs::path("hold")
 
 path_workbook <- fs::path(dir_workbook, paste0(params$permit_id, ".xlsx"))
 
+# Step 1 header block ------------------------------------------------------
+#
+# Values for the referencing and sign-off block above the data. Written by this
+# script rather than typed, so a rebuild cannot lose them. Layout verified
+# against the submitted SM24-882238 and PG24-879256 workbooks: labels sit in
+# columns B and F, values in C and K.
+#
+# Project title comes from the report front matter - past submissions used the
+# report title verbatim. Permit number comes from params. The rest are either
+# organisation constants or change per submission, so they are set here.
+hdr_recorder     <- "Allan Irvine"          # who assembled this spreadsheet
+hdr_permit_dfo   <- NA_character_           # Peace has no DFO permit; Skeena carries e.g. "XR 470 2025"
+hdr_rpbio_name   <- "Allan Irvine"
+hdr_rpbio_reg    <- "2775"
+hdr_rpbio_prov   <- "British Columbia"
+
+hdr_title <- rmarkdown::yaml_front_matter("index.Rmd")$title
+
 # Newest shipped template, rather than a pinned filename - the province reissues
 # it periodically and the column sets have been stable across reissues.
 path_template <- sort(fs::dir_ls("data/templates", regexp = "FDS_Template.*\\.xlsx$"),
@@ -319,6 +337,35 @@ for (sp in sheet_spec) {
                         colNames = FALSE)
   }
 }
+
+# Header block. Written by label rather than by fixed address: each label is
+# located in column B (or F for the sign-off side) and the value goes in the
+# same row, so a template that shifts these rows still fills correctly.
+sheet_1 <- "Step 1 (Ref. and Loc. Info)"
+hdr_cells <- cells |> filter(sheet == sheet_1, col %in% c(2, 6), !is.na(character))
+
+put_by_label <- function(label, value, col_value) {
+  if (is.na(value)) return(invisible(NULL))
+  hit <- hdr_cells |> filter(grepl(label, character, ignore.case = TRUE, fixed = FALSE))
+  if (nrow(hit) != 1) {
+    warning("header label not uniquely found, skipped: ", label, call. = FALSE)
+    return(invisible(NULL))
+  }
+  openxlsx::writeData(wb, sheet = sheet_1, x = value,
+                      startRow = hit$row[1], startCol = col_value, colNames = FALSE)
+}
+
+put_by_label("^Project Title",             hdr_title,           3)
+put_by_label("^Company/Agency$",           "Other",             3)
+put_by_label("^Company/Agency \\(Other\\)", "New Graph Environment Ltd.", 3)
+put_by_label("^Spreadsheet Recorder",      hdr_recorder,        3)
+put_by_label("^Project Type",              "Research",          3)
+put_by_label("^PROVINCIAL PERMIT NUMBER",  params$permit_id,    3)
+put_by_label("^DFO",                       hdr_permit_dfo,      3)
+put_by_label("^The information in this submission", "Yes",     11)
+put_by_label("^Biologist's Name",          hdr_rpbio_name,     11)
+put_by_label("^Registration Number",       hdr_rpbio_reg,      11)
+put_by_label("^Province of Registration",  hdr_rpbio_prov,     11)
 
 openxlsx::saveWorkbook(wb, path_workbook, overwrite = TRUE)
 message("\nworkbook written: ", path_workbook,
