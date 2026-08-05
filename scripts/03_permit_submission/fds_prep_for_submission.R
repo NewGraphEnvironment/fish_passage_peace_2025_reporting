@@ -150,6 +150,19 @@ step_4_submission <- step_4_commented |>
 comments_from_step_4 <- step_4_commented |>
   select(reference_number, comments_site = comments)
 
+# Electrofisher settings belong only to electrofishing rows. The site-level gear
+# columns are carried onto every row upstream, so a visual observation ends up
+# reporting a voltage and an enclosure it never had. The template scopes each of
+# these to electrofishing in its own definitions - "used during the
+# electrofishing pass" (voltage), "prevent fish escaping capture during
+# electrofishing" (enclosure), "the company which manufactured the
+# electrofishing equipment" (make). Blank them for anything else.
+#
+# Haul/Pass is deliberately left alone: the template defines it as "the number of
+# the Haul (Traps or Nets) or Pass (Electrofishing)", so it is not gear-specific.
+cols_ef_only <- c("ef_seconds", "site_length", "avg_wetted_width_m", "enclosure",
+                  "voltage", "frequency", "pulse", "make", "model")
+
 step_2_submission <- if (!has_fish) NULL else {
   step_2 |>
     left_join(comments_from_step_4, by = "reference_number") |>
@@ -160,7 +173,10 @@ step_2_submission <- if (!has_fish) NULL else {
         TRUE ~ paste(comments_site, comments)
       )
     ) |>
-    select(-comments_site)
+    select(-comments_site) |>
+    mutate(across(any_of(cols_ef_only),
+                  ~ dplyr::if_else(grepl("electrofish", sampling_method, ignore.case = TRUE),
+                                   .x, NA)))
 }
 
 # step_1 - refresh watershed codes, then assign TWCs where none exists ------
