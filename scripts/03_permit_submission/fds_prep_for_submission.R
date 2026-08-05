@@ -65,11 +65,11 @@ fs::dir_create(dir_out)
 
 # Where the built workbook lands.
 #
-# Defaults to hold/ so a draft can be reviewed before it becomes the submission
-# artifact. Once the draft is confirmed good, flip to the submission dir and
-# re-run - it overwrites in place.
-dir_workbook <- fs::path("hold")
-# dir_workbook <- dir_out   ## <- flip when the draft has been reviewed
+# Point at hold/ while a rebuild is under review, and at dir_out once it is
+# confirmed - it overwrites in place either way. The report's data attachment
+# links to dir_out, so that is where the submitted artifact has to live.
+# dir_workbook <- fs::path("hold")   ## <- use while reviewing a rebuild
+dir_workbook <- dir_out
 
 path_workbook <- fs::path(dir_workbook, paste0(params$permit_id, ".xlsx"))
 
