@@ -7,6 +7,8 @@
 * Blank electrofisher settings on visual-observation records in Step 2. The gear columns are site-level upstream and were attached to every row, so eight visual observations reported a voltage, an enclosure and a fished area they never had.
 * Make `0210_fiss_export_to_template.Rmd` and `0220_fish_data_tidy.R` runnable. Neither could execute in this repo: both defaulted to the retired workbook, `0210` referenced an object that `0205` deletes on exit, and both read parameters absent from their own front matter. Parameters now come from `index.Rmd`, restoring the `01_prep_inputs/README.md` contract that these scripts are self-sufficient in a clean environment.
 * Make the pit tag merge in `0220` idempotent. It read the all-years file expecting a raw shape while writing back a parsed one, so a second run would have appended the same tags again and renumbered `rowid` — the join key to individual fish — silently shifting every prior year.
+* Point the print PDF's Phase 1 attachment link at the published report site rather than a GitHub raw URL. `https://www.newgraphenvironment.com/fish_passage_peace_2025_reporting/Appendix_1.pdf` serves the attachment as a page; the raw URL served the 6.6 MB binary as a download and required repository access, which readers of the PDF do not have. Matches the sibling link in the same sentence, which already used the report site.
+
 # fish_passage_peace_2025_reporting 0.14.0 (2026-07-31)
 
 * Add 331 site photos (72 MB) across 28 crossing directories to `data/photos/`. These are served from GitHub raw on `main` by `photo_metadata$url`, so the interactive map popups depend on them being tracked here.
