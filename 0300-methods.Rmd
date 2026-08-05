@@ -384,17 +384,23 @@ Approximately 10% of samples were collected for quality assurance. Field blanks 
 
 #### Laboratory Analysis
 
-Samples were shipped frozen to UNBC for extraction and analysis. DNA was extracted and analyzed using quantitative polymerase chain reaction (qPCR) with species-specific assays following protocols developed by @murray_booth2023Report2023. Assays targeted mitochondrial genes (COI, CytB) using fluorescent dyes (FAM, VIC, HEX), allowing multiple species to be tested per sample through multiplexing. Target species included Chinook, Coho, Sockeye, Rainbow Trout, Bull Trout, Arctic Grayling, and Kokanee, with additional assays for Coastal Cutthroat and White Sturgeon at select sites.
+Samples were shipped frozen to the UNBC Genetics Facility for extraction and analysis. Full laboratory methods, per-sample results and the laboratory's interpretation are in their technical report, available `r ngr::ngr_str_link_url(url_base = params$report_url, url_resource = "UNBC-eDNA_Report-New_Graph-13July2026.pdf", anchor_text = "here")`. The points below are the ones needed to read the results in this report; the technical report is the authority on everything else.
 
-Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished using mtDNA-based assays. The Bull Trout assay also detects Dolly Varden, requiring geographic context to interpret results in areas where ranges overlap. Similarly, Rainbow Trout and Coastal Cutthroat assays may cross-react where these species co-occur or hybridize.
+<br>
 
-To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of qPCR runs required. An assay mapping table cross-referencing species codes to assay identifiers and dye types was developed, along with processing scripts to generate sample groupings and a run order configuration specifying species order within each group. 
+Species-specific TaqMan assays were run on a droplet digital PCR (ddPCR) platform, paired as duplex reactions with FAM and VIC reporter dyes. Each filter was extracted in two elutions and both were analysed. **A sample was called positive for a species where four or more positive droplets were detected.** Samples returning two or three droplets were retested against an additional portion of the elution volume; where the additional droplets did not bring the total to four or more, the sample was called negative. Results below the four-droplet threshold are reported here as not detected.
 
+<br>
 
-#### eDNA Extraction
+Exogenous lambda phage DNA and an ePlant assay were used to test for PCR inhibition and eDNA degradation in samples returning no detections. Where those tests indicated inhibition or degradation, elutions were combined and cleaned before retesting.
 
-eDNA was extracted in the dedicated eDNA lab at UNBC and analysed with the protocols developed by @murray_booth2023Report2023. 
+<br>
 
+Due to close evolutionary relationships and hybridization, some species pairs cannot be distinguished by these assays. The bull trout assay does not distinguish Bull Trout from Dolly Varden, and results for that assay should be read as applying to either species.
+
+<br>
+
+To optimize laboratory efficiency, we collaborated with UNBC to develop a sample run plan that grouped samples by compatible dye types, minimizing the number of runs required.
 
 ### Open Source Reporting Framework
 
