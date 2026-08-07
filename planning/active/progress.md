@@ -81,3 +81,57 @@ six crossings that have appendix files.
 Phase 5 and 6 are manual and unstarted: build the workbook by paste-special, run the
 provincial QA tool, submit via WLRS. **Resolve the fptr#217 gradient question first** —
 it changes what goes into every submitted step_4 row.
+
+## Session 2026-08-03 to 08-05 (Phases 5-7, release, merge)
+
+Commits: `69108dc` `4c72138` `29c6720` `75fb638` `27d8d7b` `4ad5593` `3490efb`
+`a6c8aa5` `a030596` `42da0e6` `3949001`, merged as `a70f0dc`, tagged **v0.15.0**.
+
+### Approach changed mid-execution
+
+The plan called for paste-special into a copy of the blank template, on the reasoning
+that the programmatic writer was unproven. Once the current provincial template turned
+out to be `.xlsx` rather than legacy `.xls`, `openxlsx` could open it and the writer
+became straightforward. **The submission is now built end to end by
+`scripts/03_permit_submission/fds_prep_for_submission.R` with no hand steps** - which is
+what fptr#216 asked for, delivered a season earlier than planned.
+
+### Two things I got wrong, both caught by the user
+
+- **The gradient "defect" was not a defect.** I reported that the template's
+  `AVERAGE(...)/100` wrote a proportion into a percent-headed column, that every past
+  submission was 100x low, and that it warranted telling the Province. All wrong: the
+  cell carries Excel number format `0.0%`, which multiplies by 100 for display, so the
+  stored `0.028` renders as `2.8%`. I had read raw values without checking `numFmt`.
+  Retracted on fptr#217; the override was removed and the workbook computes all five
+  Step 4 averages itself. Caught only because the user opened the file and looked.
+- **The `#82` watershed fix would have been a regression.** The parsing described there
+  as the fix substrings to position 49 against a 45-character code, which is what put
+  the orphan trailing digit in the peace_2024 submission. Both Skeena submissions used
+  the 12-group form `parse_ws_code()` already produces. No change made.
+
+### Also found
+
+- `0220`'s pit tag merge was destructive and non-idempotent - a second run would have
+  appended 53 duplicate tags and renumbered `rowid`, the join key to individual fish,
+  silently shifting every prior year. The type error that first blocked the script is
+  the only reason it had not happened.
+- `waterbody_id` was built with `paste0('00000', watershed_group_code)`, rendering a
+  missing code as the literal `"00000NA"` - something that looks like a real id.
+- The gpkg's watershed data was stale: `203597` and `203605` have valid 45-digit codes
+  today that were blank in the file. Now queried live at build time.
+- `199663` has no 1:50,000 cross-reference at all, so it carries **TWC 1** with the
+  watershed code and waterbody id blank, per the template's own cell comments.
+- Eight visual-observation rows in Step 2 carried full electrofisher settings.
+- The Skeena 2024 submission carries the **Peace** permit number - filed as
+  `fish_passage_skeena_2025_reporting#8` pending portal access.
+
+### Still outstanding
+
+Phase 6 only, all manual: run the provincial QA tool, submit via WLRS SPO FDS, capture
+the confirmation. The workbook is built and committed at
+`data/permit_submission/PG25-983916.xlsx`.
+
+Unverified by me, needs Excel: whether the VLOOKUP columns populate on open. Also
+unexplained: `openxlsx` adds two data-validation entries to Step 2 on every write,
+including when writing to an untouched template.

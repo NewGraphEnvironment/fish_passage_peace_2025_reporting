@@ -183,33 +183,36 @@ says 125231, so `125131` in the issue is a transposition.**
 Gradient scope: only 5 of 14 sites carry an average gradient, and they are the non-`_ef`
 sites - precisely the rows that survive the Phase 5 `_ef` strip. So the fptr#217 decision
 affects **every step_4 row that will actually be submitted**.
-- [ ] Sanity-check row counts against 97 fish and the assessed site list
+- [x] Sanity-check row counts against 97 fish and the assessed site list - see the
+      reconciliation table above; every check passed
 
 ## Phase 5 - Build the submission workbook
 
-- [ ] Copy the blank template to `data/permit_submission/PG25-983916.xlsx`
-- [ ] Fill Step 1 header block: project title "Restoring Fish Passage in the Peace Region - 2025", Company/Agency Other -> New Graph Environment Ltd., Project Type Research, permit `PG25-983916`, RPBio verification fields
-- [ ] Paste-special the four CSVs into their sheets. Verified geometry (absolute rows, via `tidyxl::xlsx_cells()`):
+**Superseded during execution.** The plan called for paste-special into a copy of the
+blank template. Once the current provincial template turned out to be `.xlsx` rather
+than legacy `.xls`, `openxlsx` could open it, so the workbook is built programmatically
+and there are no hand steps. The five copy-paste-special steps are gone.
 
-      | Sheet | Header row | Data starts | Columns |
-      |---|---|---|---|
-      | Step 1 (Ref. and Loc. Info) | 32 | **33** | 16 |
-      | Step 2 (Fish Coll. Data) | 24 | **25** | 40 |
-      | Step 3 (Individual Fish Data) | 19 | **20** | 20 |
-      | Step 4 (Stream Site Data) | 21 | **22** | 93 |
-
-      Step 1's start is corroborated by the template's own VLOOKUP range, `'Step 1 (Ref. and Loc. Info)'!$..$33:$..$625`.
-- [ ] **Do not paste over derived columns, with one deliberate exception.** Step 4
-      carries five `AVERAGE(...)` formulas and five `VLOOKUP(...)` pulls from Step 1
-      that self-populate. Same rule `0140_pscis_export_to_template.R:111` already applies
-      on the PSCIS side.
-
-      **Exception: `Average Gradient (%)`.** Paste the R-computed
-      `average_gradient_percent` over that formula - the template divides by 100 and
-      would write a proportion into a percent column. See Phase 3. Leave the other four
-      averages and all five VLOOKUPs alone.
-- [ ] After population, spot-check Step 4's gradient column reads
-      `- / 2.8 / 3.0 / 3.0 / 2.9 / 1.8` and **not** `- / 0.028 / 0.030 / 0.030 / 0.029 / 0.018`
+- [x] `scripts/03_permit_submission/fds_prep_for_submission.R` writes the four sheets
+      into a copy of the blank template and saves to `data/permit_submission/PG25-983916.xlsx`
+- [x] Step 1 header block written by the script, located by label rather than cell
+      address: project title from the report front matter, permit from `params$permit_id`,
+      Company/Agency Other -> New Graph Environment Ltd., Project Type Research,
+      recorder, and the RPBio sign-off fields. DFO field left blank - Peace has no DFO
+      permit
+- [x] **Derived columns left alone, with no exception.** All five Step 4 `AVERAGE(...)`
+      formulas and all five `VLOOKUP(...)` pulls self-populate. The gradient exception
+      carried in the approved plan was **withdrawn** - see Phase 3; the template is
+      correct and overriding it would have shipped 280% where 2.8% was meant
+- [x] Watershed codes and waterbody ids refreshed from bcfishpass at build time; TWC 1
+      assigned to both `199663` sites, which have no 1:50,000 cross-reference
+- [x] Electrofisher settings blanked on the eight visual-observation rows in Step 2
+- [x] Drafted to `hold/` for review, then promoted to `data/permit_submission/` after
+      the draft was confirmed - verified identical in content, 164,151 cells
+- [x] Fidelity verified against the blank template: validations, protection and formula
+      counts unchanged on every sheet
+- [x] Released as v0.15.0 with docs and PDFs rebuilt; both attachment links verified in
+      the rendered gitbook and PDF
 
 ### Prep script
 
@@ -228,8 +231,12 @@ watershed codes and reference numbers because the 2023 workflow keyed off a hand
 `habitat_confirmations.xls`; `0205`/`0210` now produce both upstream, so only the
 shaping transforms remain. It also anchors the ef predicate as `_ef[0-9]*$` rather than
 the 2023 script's bare `grepl("ef", local_name)` substring match.
-- [ ] Apply the submission transforms from `fds_prep_for_submission_2023.Rmd`: drop `step_4_stream_site_data` rows for small `_ef` sites (fptr#27 - fish and locations stay, only non-conforming habitat rows go), consolidate site identifiers into comments, trim features
-- [ ] Record every hand step taken, for the fptr#216 spec
+- [x] Submission transforms applied by the script: `step_4` rows dropped for the small
+      `_ef` sites (fptr#27 - fish and locations stay, only non-conforming habitat rows
+      go), site identifiers consolidated into comments so the province's copy stays
+      cross-referenceable to our reports
+- [x] No hand steps to record - the build is scripted end to end, which is what
+      fptr#216 asked for
 
 ## Phase 6 - QA and submit
 
@@ -252,8 +259,9 @@ the 2023 script's bare `grepl("ef", local_name)` substring match.
       2026 blank template, the attachment change, and a `permit_id` placeholder.
       Confirmed byte-identical to the pre-fix peace copies before overwriting, so no
       template-specific work was clobbered
-- [ ] Rebuild the report and confirm the rendered links resolve (deferred - the
-      workbook does not exist until Phase 5)
+- [x] Report rebuilt at v0.15.0 and both links verified in rendered output - gitbook
+      `attach-dat.html` and the print PDF. No `habitat_confirmations` reference remains
+      anywhere in `docs/`
 
 ## Files
 
