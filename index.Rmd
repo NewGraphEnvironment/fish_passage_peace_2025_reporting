@@ -58,6 +58,10 @@ params:
   update_bib: FALSE  # Temporarily FALSE for v0.7.0: hill_etal2025Spatialstream is hand-bombed in references.bib pending proper Zotero add (see #27 follow-up). Flip back to TRUE once the key is registered via BBT.
   update_gis: FALSE
   update_bcfishpass: FALSE
+  # Regenerate the Culvert Data / Model Data popup pages under docs/sum/ that the
+  # results interactive map links to. The underlying data changes rarely and the
+  # pages are committed, so this stays FALSE for a normal build - see template#231.
+  update_html_map_tables: FALSE
   pscis_funding_project_number: "peace_2025_phase1"
 nocite: |
   @busch_etal2011LandscapeLevelModel, 
@@ -125,6 +129,7 @@ source("scripts/02_reporting/0100-load-bcfishpass-data.R")
 source("scripts/02_reporting/0120-read-sqlite.R")
 source("scripts/02_reporting/0105-params-derived.R")
 source('scripts/02_reporting/0130-tables.R')
+source('scripts/02_reporting/0190-build-html-map-tables.R')
 
 
 
