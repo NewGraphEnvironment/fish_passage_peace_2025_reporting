@@ -43,15 +43,15 @@ Both want the same switch — design it once.
 
 - [x] Bump to 0.16.0 with NEWS
 - [x] Rebuild gitbook + PDF + executive summary PDF
-- [ ] Verify published links resolve from a fresh clone, not just locally
+- [x] Verify published links resolve from a fresh clone, not just locally
 
 ## Phase 5: Port to the template
 
 The link block is byte-identical in template, Peace and Fraser (`a655cb44`), so this is a clean transplant.
 
-- [ ] Port all three fixes plus the link check
-- [ ] Wire the check into `run_gitbook.R` so it runs unprompted
-- [ ] PR closing #61, #230, #231, #232
+- [x] Port all three fixes plus the link check
+- [x] Wire the check into `run_gitbook.R` so it runs unprompted
+- [x] PR closing #61, #231, #232 (template PR #233). **#230 stays open** — the template has no eDNA map link or region-scoped script, so landing it there would introduce a feature rather than fix one; it belongs in the Fraser/Skeena sync, promoting Skeena's generic version
 
 ## Phase 6: Sync Fraser and Skeena
 
@@ -62,7 +62,7 @@ The link block is byte-identical in template, Peace and Fraser (`a655cb44`), so 
 ## Validation
 
 - [x] Link check fails on Peace before the fixes, passes after
-- [ ] Every `sum/` and photo href resolves from a fresh clone
+- [x] Every `sum/` and photo href resolves from a fresh clone
 - [ ] `/code-check` clean on each commit
 - [ ] PWF checkboxes match landed work
 - [ ] `/planning-archive` on completion
