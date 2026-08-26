@@ -24,20 +24,20 @@ Built before the fixes so there is a red test to fix against — otherwise "fixe
 
 ## Phase 2: Photo links (#61)
 
-- [ ] Point `photo_link` at `pscis_crossing_id` in `scripts/02_reporting/0130-tables.R`
-- [ ] Keep the caveat recorded in #61: crossing details must still reach an appendix, and reassessment data must not end up in a report appendix where it does not belong
-- [ ] Rebuild; link check clears the 15 photo failures
+- [x] Point `photo_link` at `pscis_crossing_id` in `scripts/02_reporting/0130-tables.R`
+- [x] Keep the caveat recorded in #61: crossing details must still reach an appendix, and reassessment data must not end up in a report appendix where it does not belong
+- [x] Rebuild; link check clears the 15 photo failures
 
 ## Phase 3: Culvert + model pages, and the eDNA map (#231, #230)
 
 Both want the same switch — design it once.
 
-- [ ] Add an `update_*` switch to `index.Rmd` following `update_bcfishpass`
-- [ ] Gate `scripts/02_reporting/0190-build-html-map-tables.R` on it
-- [ ] Reconsider `0190`'s unconditional `fs::file_delete()` — with output committed, deleting before a run that then fails leaves the repo worse than before it started
-- [ ] Commit `docs/sum/`
-- [ ] Same switch for the eDNA map script; make it self-sufficient (`params` from front matter)
-- [ ] Rebuild; link check green
+- [x] Add an `update_*` switch to `index.Rmd` following `update_bcfishpass`
+- [x] Gate `scripts/02_reporting/0190-build-html-map-tables.R` on it
+- [x] Reconsider `0190`'s unconditional `fs::file_delete()` — with output committed, deleting before a run that then fails leaves the repo worse than before it started
+- [x] Commit `docs/sum/`
+- [ ] ~~Same switch for the eDNA map script~~ — **moved to Phase 5.** Peace's `edna_map_peace.R` is a Peace-hardcoded lineage (376 lines) while Skeena's `edna_map.R` is already region-generic (418). Consolidating in the template, with Skeena's as the base, avoids creating a fifth variant of the script we are trying to unify.
+- [x] Rebuild; link check green
 
 ## Phase 4: Release Peace
 

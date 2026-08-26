@@ -71,3 +71,17 @@ One PCRE trap: lookbehind must be fixed width, so `(?<=href *= *)` fails to comp
 ## Third finding, unrelated to the two known causes
 
 The check also flagged `attach-pdf-phase1-dat.html`, linked from `docs/ai-disclosure.html` and `docs/changelog.html`. That anchor is only emitted when `gitbook_on` is FALSE (`0400-results.Rmd:256`), so those two pages are **stale artifacts left in `docs/` from an earlier PDF build** — bookdown does not clean the output directory. Worth watching whether the Phase 4 rebuild clears them.
+
+## Phase 3 was deeper than "run the script" — `0190` could never have run
+
+Two undeclared dependencies, either of which is fatal:
+
+1. It filtered on **`pscis_all`, which nothing in the reporting chain creates.** The name exists only in `scripts/tutorials/road_tenure.Rmd`. Now keyed off `tab_map_phase_1` / `tab_map_phase_2` instead, so the set of pages and the set of links cannot drift apart.
+2. **`fpr::fpr_table_cv_html()` takes a site id but reads the site data from a global `pscis_all`.** So even a correct id list fails. `fpr::fpr_import_pscis_all()` is not the substitute — it reads the PSCIS template workbooks, which this season carry 10 rows and a single non-NA id. The report's own `form_pscis` is the populated source and carries every column the detailed culvert table needs.
+
+Also: `fs::file_delete()` errors on a path that is not there, so the original could not run from a clean checkout even with the data present.
+
+## The check earned its keep twice
+
+- After the photo fix and the `docs/sum` build, it dropped 51 → 36 and reported the remainder as **"exists locally but is NOT tracked by git"**. That is the eDNA-map failure exactly, caught before it shipped rather than months later.
+- It surfaced a cluster of four orphaned pages — `ai-disclosure.html`, `changelog.html`, `attach-bayes.html`, `attach-maps.html` — dated 2026-05-19, with no source Rmd, linking only to each other, and still live on the published site. bookdown never cleans `docs/`. `ai-disclosure.html` is the telling one: the convention moved the AI disclosure into the title block precisely so it stops being a chapter page, and the old page was left behind serving the superseded version.
