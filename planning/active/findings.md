@@ -59,3 +59,15 @@ The `update_*` switch family already does cache-with-invalidation for the expens
 ## Related history
 
 Same shape as the eDNA map (#230), where the map HTML had never been committed and the appendix link returned 404 on the published site — fixed in `fish_passage_skeena_2025_reporting@32a654c`. Three instances of one pattern: an artifact the published site links to, produced by a manual script, verified by nothing.
+
+## The DOM is not enough (Phase 1)
+
+First version of the check parsed `href`/`src` attributes with `xml2` and reported the report as almost clean — **2 broken links out of 51**. Leaflet popups are serialised as JSON inside a `<script>` tag, so their links are never parsed as attributes, and those popups are exactly where the dead photo and `sum/` links live.
+
+The raw pass also has to cope with how the popup markup is written. `paste0('<a href =', 'sum/cv/', id, '.html ', ...)` emits `href =sum/cv/203597.html ` — a space after `=`, and no quotes — which most href regexes miss.
+
+One PCRE trap: lookbehind must be fixed width, so `(?<=href *= *)` fails to compile. Match the attribute name and strip it afterwards.
+
+## Third finding, unrelated to the two known causes
+
+The check also flagged `attach-pdf-phase1-dat.html`, linked from `docs/ai-disclosure.html` and `docs/changelog.html`. That anchor is only emitted when `gitbook_on` is FALSE (`0400-results.Rmd:256`), so those two pages are **stale artifacts left in `docs/` from an earlier PDF build** — bookdown does not clean the output directory. Worth watching whether the Phase 4 rebuild clears them.

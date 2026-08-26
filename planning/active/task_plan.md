@@ -15,12 +15,12 @@ The issues live in `fish_passage_template_reporting`:
 
 Built before the fixes so there is a red test to fix against — otherwise "fixed" means "I clicked a few and they looked fine".
 
-- [ ] Script that walks rendered `docs/**/*.html`, extracts `href`/`src`
-- [ ] Repo-relative links: assert the file exists **and is tracked by git** (untracked is the eDNA-map failure — present locally, absent on the published site)
-- [ ] `raw.githubusercontent.com` links into this repo: resolve to a repo path and check the same way, offline
-- [ ] External links: opt-in only, off by default, so the check stays fast and deterministic
-- [ ] Reports page + href for every failure, exits non-zero
-- [ ] **Confirm it fails on Peace as it stands, reporting the 15 photo and 34 `sum/` links**
+- [x] Script that walks rendered `docs/**/*.html`, extracts `href`/`src`
+- [x] Repo-relative links: assert the file exists **and is tracked by git** (untracked is the eDNA-map failure — present locally, absent on the published site)
+- [x] `raw.githubusercontent.com` links into this repo: resolve to a repo path and check the same way, offline
+- [x] External links: opt-in only, off by default, so the check stays fast and deterministic
+- [x] Reports page + href for every failure, exits non-zero
+- [x] **Confirm it fails on Peace as it stands, reporting the 15 photo and 34 `sum/` links**
 
 ## Phase 2: Photo links (#61)
 
