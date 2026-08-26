@@ -41,8 +41,8 @@ Both want the same switch — design it once.
 
 ## Phase 4: Release Peace
 
-- [ ] Bump to 0.16.0 with NEWS
-- [ ] Rebuild gitbook + PDF + executive summary PDF
+- [x] Bump to 0.16.0 with NEWS
+- [x] Rebuild gitbook + PDF + executive summary PDF
 - [ ] Verify published links resolve from a fresh clone, not just locally
 
 ## Phase 5: Port to the template
@@ -61,7 +61,7 @@ The link block is byte-identical in template, Peace and Fraser (`a655cb44`), so 
 
 ## Validation
 
-- [ ] Link check fails on Peace before the fixes, passes after
+- [x] Link check fails on Peace before the fixes, passes after
 - [ ] Every `sum/` and photo href resolves from a fresh clone
 - [ ] `/code-check` clean on each commit
 - [ ] PWF checkboxes match landed work
