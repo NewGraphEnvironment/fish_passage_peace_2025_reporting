@@ -60,5 +60,5 @@ in the 0.9.0 reorg).
 
 ## Skill notes
 
-`/vignette-to-appendix` (soul#50): report-only by default; `--apply` writes drafts (no
+`/vignette-to-appendix`: report-only by default; `--apply` writes drafts (no
 render/commit/push). Source-package short code = `link`. Needs dest `_bookdown.yml` (present).

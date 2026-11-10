@@ -96,7 +96,7 @@ Addresses review comments from the Fish and Wildlife Compensation Program on the
 # fish_passage_peace_2025_reporting 0.6.0 (2026-05-14)
 
 * Move FISS species table out of body Background into a new dedicated appendix (`0700-appendix-fish-species.Rmd`) with conditional gitbook/PDF render. Gitbook shows wide one-column-per-WSG table; PDF collapses presence to a comma-separated `Present in WSGs` list — unblocks paged.js PDF builds at 16 WSGs (was overflowing at this scope). Preserves Peace-specific Dolly Varden footnote. Ports template PR #190 / template #188. ([#27](https://github.com/NewGraphEnvironment/fish_passage_peace_2025_reporting/issues/27))
-* Update `scripts/run_pagedown_iter.R` — `bookdown::render_book(envir = globalenv())` instead of `rmarkdown::render_site` so fresh-Rscript PDF builds don't fail on lazy-default lookups in `fpr::fpr_kable(font = font_set)` / `my_tab_caption()`. See [soul `bookdown.md`](https://github.com/NewGraphEnvironment/soul/commit/f970830) for the convention.
+* Update `scripts/run_pagedown_iter.R` — `bookdown::render_book(envir = globalenv())` instead of `rmarkdown::render_site` so fresh-Rscript PDF builds don't fail on lazy-default lookups in `fpr::fpr_kable(font = font_set)` / `my_tab_caption()`. See soul `bookdown.md` for the convention.
 * `scripts/packages.R` — guard `if(params$update_packages)` with `exists("params")` so the script sources cleanly outside a render with `params` bound.
 
 # fish_passage_peace_2025_reporting 0.5.1 (2026-05-14)

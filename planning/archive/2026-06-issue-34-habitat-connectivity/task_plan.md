@@ -1,7 +1,7 @@
 # Task: Showcase the link Parsnip habitat & connectivity vignette as a report appendix (#34)
 
 Port the `link` package vignette `pars-habitat-connectivity.Rmd` into a new Peace
-report appendix using the `/vignette-to-appendix` skill (recipe: soul#50), and wire
+report appendix using the `/vignette-to-appendix` skill (recipe: an internal issue), and wire
 explicit cross-references to it from the Methods and Results sections that already
 describe the `fresh` + `link` framework as "in development". Goal: the reader is sent
 from the framework prose straight to a worked Parsnip example (bull-trout parity vs
